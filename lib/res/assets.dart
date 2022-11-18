@@ -14,5 +14,6 @@ class Assets {
   static const String splashLogo = "assets/png/splashLogo.png";
   static const String onBoarding1 = "assets/png/onBoarding1.png";
   static const String onBoarding2 = "assets/png/onBoarding2.png";
+  static const String backIcon = "assets/png/back_icon.png";
 
 }

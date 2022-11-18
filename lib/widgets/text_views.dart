@@ -6,10 +6,10 @@ import '../res/res.dart';
 
 class TextView {
 
-  static Text size24Text700(
+  static Text size24Text(
       final text, final fontFamily,
       {@required final color,
-      final TextAlign textAlign = TextAlign.start,
+      final TextAlign textAlign = TextAlign.start, final fontWeight,
       @required final lines}) {
     return Text(
       text,
@@ -18,7 +18,7 @@ class TextView {
       maxLines: lines,
       style: TextStyle(
         fontSize: sizes!.fontSize24,
-        fontWeight: FontWeight.w700,
+        fontWeight: fontWeight?? FontWeight.w400,
         fontFamily: fontFamily,
         color: color,
       ),
@@ -27,7 +27,7 @@ class TextView {
 
   static Text size16Text(final text, final fontFamily,
       {@required final color,
-      final TextAlign textAlign = TextAlign.start,
+      final TextAlign textAlign = TextAlign.start, final fontWeight,
       @required final lines}) {
     return Text(
       text,
@@ -36,7 +36,7 @@ class TextView {
       maxLines: lines,
       style: TextStyle(
         fontSize: sizes!.fontSize16,
-        fontWeight: FontWeight.w400,
+        fontWeight: fontWeight?? FontWeight.w400,
         fontFamily: fontFamily,
         color: color,
       ),
@@ -47,7 +47,7 @@ class TextView {
   final text,
       {@required final color,
         final TextAlign textAlign = TextAlign.start,
-        final fontFamily,
+        final fontFamily, final fontWeight,
         final lines}) {
     return Text(
       text ?? "",
@@ -57,6 +57,7 @@ class TextView {
       overflow: TextOverflow.ellipsis,
       style: TextStyle(
         fontSize: sizes!.fontSize10,
+        fontWeight: fontWeight?? FontWeight.w400,
         fontFamily: fontFamily?? Assets.raleWaySemiBold,
         color: color,
       ),
@@ -68,7 +69,7 @@ class TextView {
       final text,
       {@required final color,
         final TextAlign textAlign = TextAlign.start,
-        final fontFamily,
+        final fontFamily, final fontWeight,
         final lines}) {
     return Text(
       text ?? "",
@@ -78,6 +79,7 @@ class TextView {
       overflow: TextOverflow.ellipsis,
       style: TextStyle(
         fontSize: sizes!.fontSize12,
+        fontWeight: fontWeight?? FontWeight.w400,
         fontFamily: fontFamily?? Assets.raleWayBold,
         color: color,
       ),
@@ -88,7 +90,7 @@ class TextView {
       final text,
       {@required final color,
         final TextAlign textAlign = TextAlign.start,
-        final fontFamily,
+        final fontFamily, final fontWeight,
         final lines}) {
     return Text(
       text ?? "",
@@ -98,6 +100,7 @@ class TextView {
       overflow: TextOverflow.ellipsis,
       style: TextStyle(
         fontSize: sizes!.fontSize14,
+        fontWeight: fontWeight?? FontWeight.w400,
         fontFamily: fontFamily?? Assets.raleWayBold,
         color: color,
       ),
@@ -108,7 +111,7 @@ class TextView {
       final text,
       {@required final color,
         final TextAlign textAlign = TextAlign.start,
-        final fontFamily,
+        final fontFamily, final fontWeight,
         final lines}) {
     return Text(
       text ?? "",
@@ -118,6 +121,7 @@ class TextView {
       overflow: TextOverflow.ellipsis,
       style: TextStyle(
         fontSize: sizes!.fontSize15,
+        fontWeight: fontWeight?? FontWeight.w400,
         fontFamily: fontFamily?? Assets.raleWayBold,
         color: color,
       ),
@@ -128,7 +132,7 @@ class TextView {
       final text,
       {@required final color,
         final TextAlign textAlign = TextAlign.start,
-        final fontFamily,
+        final fontFamily, final fontWeight,
         final lines}) {
     return Text(
       text ?? "",
@@ -138,6 +142,7 @@ class TextView {
       overflow: TextOverflow.ellipsis,
       style: TextStyle(
         fontSize: sizes!.fontSize18,
+        fontWeight: fontWeight?? FontWeight.w400,
         fontFamily: fontFamily?? Assets.raleWayBold,
         color: color,
       ),
@@ -149,7 +154,7 @@ class TextView {
       final text,
       {@required final color,
         final TextAlign textAlign = TextAlign.start,
-        final fontFamily,
+        final fontFamily, final fontWeight,
         final lines}) {
     return Text(
       text ?? "",
@@ -159,26 +164,7 @@ class TextView {
       overflow: TextOverflow.ellipsis,
       style: TextStyle(
         fontSize: sizes!.fontSize20,
-        fontFamily: fontFamily?? Assets.raleWayBold,
-        color: color,
-      ),
-    );
-  }
-
-  static Text size24Text(
-      final text,
-      {@required final color,
-        final TextAlign textAlign = TextAlign.start,
-        final fontFamily,
-        final lines}) {
-    return Text(
-      text ?? "",
-      textAlign: textAlign,
-      softWrap: true,
-      maxLines: lines,
-      overflow: TextOverflow.ellipsis,
-      style: TextStyle(
-        fontSize: sizes!.fontSize24,
+        fontWeight: fontWeight?? FontWeight.w400,
         fontFamily: fontFamily?? Assets.raleWayBold,
         color: color,
       ),
@@ -189,7 +175,7 @@ class TextView {
       final text,
       {@required final color,
         final TextAlign textAlign = TextAlign.start,
-        final fontFamily,
+        final fontFamily, final fontWeight,
         final lines}) {
     return Text(
       text ?? "",
@@ -199,6 +185,28 @@ class TextView {
       overflow: TextOverflow.ellipsis,
       style: TextStyle(
         fontSize: sizes!.fontSize30,
+        fontWeight: fontWeight?? FontWeight.w400,
+        fontFamily: fontFamily?? Assets.raleWayBold,
+        color: color,
+      ),
+    );
+  }
+
+  static Text size32Text(
+      final text,
+      {@required final color,
+        final TextAlign textAlign = TextAlign.start,
+        final fontFamily, final fontWeight,
+        final lines}) {
+    return Text(
+      text ?? "",
+      textAlign: textAlign,
+      softWrap: true,
+      maxLines: lines,
+      overflow: TextOverflow.ellipsis,
+      style: TextStyle(
+        fontSize: sizes!.fontSize32,
+        fontWeight: fontWeight?? FontWeight.w400,
         fontFamily: fontFamily?? Assets.raleWayBold,
         color: color,
       ),
@@ -209,7 +217,7 @@ class TextView {
       final text,
       {@required final color,
         final TextAlign textAlign = TextAlign.start,
-        final fontFamily,
+        final fontFamily, final fontWeight,
         final lines}) {
     return Text(
       text ?? "",
@@ -219,6 +227,7 @@ class TextView {
       overflow: TextOverflow.ellipsis,
       style: TextStyle(
         fontSize: sizes!.fontSize28,
+        fontWeight: fontWeight?? FontWeight.w400,
         fontFamily: fontFamily?? Assets.raleWayBold,
         color: color,
       ),
