@@ -71,6 +71,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                         },
                         btnColor: AppColors.pinkColor,
                         text: "Next",
+
                         fontWeight: FontWeight.w600,
                         textColor: AppColors.pureWhiteColor,
                         fontFamily: Assets.raleWaySemiBold),
