@@ -2,20 +2,21 @@ import 'package:flutter/material.dart';
 import 'package:we_skool_app/res/assets.dart';
 import 'package:we_skool_app/res/res.dart';
 import 'package:we_skool_app/screens/forgot_password/otp_screen.dart';
+import 'package:we_skool_app/screens/registration/child_information.dart';
 import 'package:we_skool_app/widgets/common_widgets.dart';
 import 'package:we_skool_app/widgets/text_views.dart';
 import 'package:we_skool_app/screens/forgot_password/change_password.dart';
 import '../../res/colors.dart';
 import '../../res/strings.dart';
 
-class ForgotPassword extends StatefulWidget {
-  const ForgotPassword({Key? key}) : super(key: key);
+class RegisterAs extends StatefulWidget {
+  const RegisterAs({Key? key}) : super(key: key);
 
   @override
-  _ForgotPasswordState createState() => _ForgotPasswordState();
+  _RegisterAsState createState() => _RegisterAsState();
 }
 
-class _ForgotPasswordState extends State<ForgotPassword> {
+class _RegisterAsState extends State<RegisterAs> {
   TextEditingController? emailController;
 
   @override
@@ -47,7 +48,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                           Navigator.pop(context);
                         }),
                     SizedBox(height: getHeight() * 0.12),
-                    TextView.size32Text("Forgot Password",
+                    TextView.size32Text("Register As",
                         fontFamily: Assets.raleWayBold,
                         color: AppColors.blackTextColor,
                         fontWeight: FontWeight.w500,
@@ -58,20 +59,23 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                         color: AppColors.greyTextColor,
                         fontFamily: Assets.raleWayRegular,
                         lines: 2),
-                    SizedBox(height: getHeight() * 0.03),
-                    CommonWidgets.textField(
-                      textEditingController: emailController,
-                      hint: "Enter Your Email",
-                      textInputType: TextInputType.emailAddress,
-                    ),
                     SizedBox(height: getHeight() * 0.06),
                     CommonWidgets.getButton(
                         onPress: () {
-                          Navigator.push(context,
-                              MaterialPageRoute(builder: (_) => const OtpScreen()));
+
                         },
-                        btnColor: AppColors.pinkColor,
-                        text: "Next",
+
+                        text: "We Teacher",
+                        fontWeight: FontWeight.w600,
+                        textColor: AppColors.pureWhiteColor,
+                        fontFamily: Assets.raleWaySemiBold),
+                    SizedBox(height: getHeight() * 0.03),
+                    CommonWidgets.getButton(
+                        onPress: () {
+                          Navigator.push(context,
+                              MaterialPageRoute(builder: (_) => const ChildInformation()));
+                        },
+                        text: "We Member",
                         fontWeight: FontWeight.w600,
                         textColor: AppColors.pureWhiteColor,
                         fontFamily: Assets.raleWaySemiBold),

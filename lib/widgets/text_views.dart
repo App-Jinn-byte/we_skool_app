@@ -192,7 +192,7 @@ class TextView {
     );
   }
 
-  static Text size32Text(
+  static Text size26Text(
       final text,
       {@required final color,
         final TextAlign textAlign = TextAlign.start,
@@ -205,7 +205,7 @@ class TextView {
       maxLines: lines,
       overflow: TextOverflow.ellipsis,
       style: TextStyle(
-        fontSize: sizes!.fontSize32,
+        fontSize: sizes!.fontSize26,
         fontWeight: fontWeight?? FontWeight.w400,
         fontFamily: fontFamily?? Assets.raleWayBold,
         color: color,
@@ -227,6 +227,27 @@ class TextView {
       overflow: TextOverflow.ellipsis,
       style: TextStyle(
         fontSize: sizes!.fontSize28,
+        fontWeight: fontWeight?? FontWeight.w400,
+        fontFamily: fontFamily?? Assets.raleWayBold,
+        color: color,
+      ),
+    );
+  }
+
+  static Text size32Text(
+      final text,
+      {@required final color,
+        final TextAlign textAlign = TextAlign.start,
+        final fontFamily, final fontWeight,
+        final lines}) {
+    return Text(
+      text ?? "",
+      textAlign: textAlign,
+      softWrap: true,
+      maxLines: lines,
+      overflow: TextOverflow.ellipsis,
+      style: TextStyle(
+        fontSize: sizes!.fontSize32,
         fontWeight: fontWeight?? FontWeight.w400,
         fontFamily: fontFamily?? Assets.raleWayBold,
         color: color,

@@ -9,6 +9,7 @@ class AppColors{
   static const greyTextColor = Color.fromRGBO(157, 150, 147, 1);
   static const pinkColor = Color.fromRGBO(193, 2, 48, 1);
   static const hintTextGreyColor = Color.fromRGBO(201, 197, 196, 1);
+  static const yellowColor = Color.fromRGBO(248, 195, 80, 1);
 
 
 }

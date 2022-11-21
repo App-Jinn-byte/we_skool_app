@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:we_skool_app/res/assets.dart';
 import 'package:we_skool_app/res/res.dart';
 import 'package:we_skool_app/screens/forgot_password/forgot_password.dart';
+import 'package:we_skool_app/screens/registration/register_as.dart';
 import 'package:we_skool_app/widgets/common_widgets.dart';
 import 'package:we_skool_app/widgets/text_views.dart';
 import '../../res/colors.dart';
@@ -84,16 +85,22 @@ class _SignInState extends State<SignIn> {
                         textColor: AppColors.pureWhiteColor,
                         fontFamily: Assets.raleWayMedium),
                     SizedBox(height: getHeight() * 0.22),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        TextView.size14Text("Don't have an account? ",
-                            color: AppColors.blackTextColor,
-                            fontFamily: Assets.raleWayMedium),
-                        TextView.size14Text("Register Now",
-                            color: AppColors.pinkColor,
-                            fontFamily: Assets.raleWayBold)
-                      ],
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (_) => const RegisterAs()));
+                      },
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          TextView.size14Text("Don't have an account? ",
+                              color: AppColors.blackTextColor,
+                              fontFamily: Assets.raleWayMedium),
+                          TextView.size14Text("Register Now",
+                              color: AppColors.pinkColor,
+                              fontFamily: Assets.raleWayBold)
+                        ],
+                      ),
                     )
                   ],
                 ),
