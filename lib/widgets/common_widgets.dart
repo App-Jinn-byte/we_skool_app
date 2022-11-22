@@ -227,4 +227,93 @@ class CommonWidgets {
     );
   }
 
+  static Widget getDateField({@required String? date, @required Function? onPressDate, Color? bgColor}) {
+    return GestureDetector(
+      onTap: () {
+        if (onPressDate != null) {
+          onPressDate.call();
+        }
+      },
+      child: Container(
+        height: sizes!.height * 0.07,
+        //width: sizes.width * 0.85,
+        padding: EdgeInsets.symmetric(horizontal: sizes!.width * 0.05),
+        decoration: BoxDecoration(
+            boxShadow:  const [
+              BoxShadow(
+                  color: AppColors.hintTextGreyColor,
+                  blurRadius: 1,
+                  offset: Offset(0,0)
+              )
+            ],
+            color: bgColor ?? AppColors.pureWhiteColor,
+            // border: Border.all(color: borderColor ?? AppColors.blackColor),
+            borderRadius: BorderRadius.all(Radius.circular(getHeight() * .01))),
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            TextView.size14Text(date, color: date == "Please select Date" ? AppColors.hintTextGreyColor: AppColors.blackTextColor, fontFamily: Assets.raleWayRegular),
+            Icon(Icons.calendar_today_outlined, size: getHeight() * 0.025, color: AppColors.hintTextGreyColor,),
+          ],
+        ),
+      ),
+    );
+  }
+
+  static Widget dropDown({
+    @required String ?selectedCategory,
+    @required Function ?updateSelectedCategory,
+    @required List<String> ?categories,
+    @required String ?hint,
+  }){
+    return Container(
+      height: sizes!.height * 0.07,
+      //width: sizes.width * 0.85,
+      padding: EdgeInsets.symmetric(horizontal: sizes!.width * 0.05),
+      decoration: BoxDecoration(
+          boxShadow:  const [
+            BoxShadow(
+                color: AppColors.hintTextGreyColor,
+                blurRadius: 1,
+                offset: Offset(0,0)
+            )
+          ],
+          color: AppColors.pureWhiteColor,
+          // border: Border.all(color: borderColor ?? AppColors.blackColor),
+          borderRadius: BorderRadius.all(Radius.circular(getHeight() * .01))),
+      child: ButtonTheme(
+        child: DropdownButton <String>(
+          hint: Text(hint ?? '',
+            style: TextStyle(
+              color: AppColors.hintTextGreyColor,
+              fontSize: sizes!.fontSize14,
+              fontFamily:Assets.raleWayRegular,
+            ),
+          ),
+          value: selectedCategory,
+          isExpanded: true,
+          icon: Icon(Icons.keyboard_arrow_down,color: AppColors.hintTextGreyColor,size: getHeight()*.035,),
+          underline:SizedBox() ,
+          onChanged: (newValue) {
+            if(updateSelectedCategory != null){
+              updateSelectedCategory(newValue);
+            }
+          },
+            items: categories?.map<DropdownMenuItem<String>> ((String value) {
+              return DropdownMenuItem<String> (
+                value: value,
+                child: Text(value,style: TextStyle(
+                  color: AppColors.blackTextColor,
+                  fontFamily: Assets.raleWayRegular,
+                  fontSize: sizes!.fontSize14,
+                ),
+                ),
+              );
+            }).toList()
+        ),
+      ),
+    );
+  }
+
 }
