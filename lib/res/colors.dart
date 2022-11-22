@@ -11,6 +11,7 @@ class AppColors{
   static const pinkColor = Color.fromRGBO(193, 2, 48, 1);
   static const hintTextGreyColor = Color.fromRGBO(201, 197, 196, 1);
   static const yellowColor = Color.fromRGBO(248, 195, 80, 1);
+  static const creamColor = Color.fromRGBO(253, 241, 214, 1);
 
 
 }
