@@ -20,6 +20,7 @@ class _ParentGuardianState extends State<ParentGuardian> {
   TextEditingController? phoneController;
   TextEditingController? countryController;
   TextEditingController? stateController;
+  bool onCheck = false;
 
 
   @override
@@ -56,7 +57,7 @@ class _ParentGuardianState extends State<ParentGuardian> {
                           CommonWidgets.customBackButton(onPress: () {
                             Navigator.pop(context);
                           }),
-                          SizedBox(height: getHeight() * 0.05),
+                          SizedBox(height: getHeight() * 0.04),
                           TextView.size26Text("Parent Guardian # 1",
                               color: AppColors.blackTextColor,
                               fontFamily: Assets.raleWayBold,
@@ -96,6 +97,29 @@ class _ParentGuardianState extends State<ParentGuardian> {
                             textEditingController: stateController,
                             hint: "Add State",
                             textInputType: TextInputType.emailAddress,
+                          ),
+                          SizedBox(height: getHeight() * 0.01),
+                          Row(
+                            children: [
+                              SizedBox(
+                                height: getHeight() * 0.04,
+                                width: getWidth() * 0.02,
+                                child: Checkbox(
+                                  shape: const CircleBorder(),
+                                  checkColor: Colors.white,
+                                  activeColor: AppColors.yellowColor,
+                                  value: onCheck,
+                                  onChanged: (bool? value) {
+                                    setState(() {
+                                      onCheck = value!;
+                                    });
+                                  },
+                                ),
+                              ),
+                              SizedBox(width: getWidth() * 0.02),
+                              TextView.size14Text("Is Parent/Guardian #1's address same as child's?",
+                                  lines: 2, color: AppColors.greyTextColor, fontFamily: Assets.raleWayLight, fontWeight: FontWeight.w300)
+                            ],
                           ),
                         ],
                       ),
