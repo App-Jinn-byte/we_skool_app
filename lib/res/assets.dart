@@ -1,5 +1,4 @@
 class Assets {
-  static const String splashLogoWhite = "assets/png/splashLogoWhite.png";
 
   // fonts
   static const String raleWayBlack = "Raleway-Black";
@@ -12,7 +11,9 @@ class Assets {
   // images
   static const String backGroundImage = "assets/png/backGroundImage.png";
   static const String splashLogo = "assets/png/splashLogo.png";
+  static const String logo = "assets/png/logo.png";
   static const String onBoarding1 = "assets/png/onBoarding1.png";
   static const String onBoarding2 = "assets/png/onBoarding2.png";
+  static const String backIcon = "assets/png/back_icon.png";
 
 }

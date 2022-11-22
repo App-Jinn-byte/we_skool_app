@@ -53,12 +53,12 @@ class _SplashState extends State<Splash> {
               //       height: getHeightRatio() * 100,
               //     )),
               AnimatedPositioned(
-                top: animated ? getHeight()/6 : getHeight(),
-                left: getWidth() / 4,
+                top: animated ? getHeight()/5 : getHeight(),
+                left: getWidth() / 4.8,
                 duration: const Duration(seconds: 2),
                 curve: Curves.fastOutSlowIn,
                 child: Image.asset(
-                  Assets.splashLogo,
+                  Assets.logo,
                   width: getWidthRatio() * 200,
                   height: getHeightRatio() * 400,
                 ),
