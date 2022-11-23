@@ -11,6 +11,7 @@ void main() {
     DeviceOrientation.portraitDown,
   ]).then((_) {
     runApp(const MyApp());
+    // git push
   });
 }
 
