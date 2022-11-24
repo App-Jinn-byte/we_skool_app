@@ -316,4 +316,19 @@ class CommonWidgets {
     );
   }
 
+  static Widget  buildProfileContainer({required String imagePath,double? height, double? width}){
+    return  Container(
+      height: height?? sizes!.height* 0.08,
+      width: width?? sizes!.width * 0.15,
+      decoration: BoxDecoration(
+        border: Border.all(color: Colors.grey[300]!),
+        borderRadius: BorderRadius.all(Radius.circular(100)),
+      ),
+      child: ClipRRect(
+        borderRadius: BorderRadius.all(Radius.circular(100)),
+        child: Image.asset(imagePath,fit: BoxFit.fill,)
+      ),
+    );
+  }
+
 }
