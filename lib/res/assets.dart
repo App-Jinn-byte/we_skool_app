@@ -15,5 +15,15 @@ class Assets {
   static const String onBoarding1 = "assets/png/onBoarding1.png";
   static const String onBoarding2 = "assets/png/onBoarding2.png";
   static const String backIcon = "assets/png/back_icon.png";
+  static const String homeIcon = "assets/png/home_icon.png";
+  static const String chatIcon = "assets/png/chat_icon.png";
+  static const String profileIcon = "assets/png/profile_icon.png";
+  static const String calendarIcon = "assets/png/calendar_icon.png";
+  static const String notificationIcon = "assets/png/notification_icon.png";
+  static const String homeCalendarIcon = "assets/png/home_calendar_icon.png";
+  static const String homeDevelopmentIcon = "assets/png/home_development_Icon.png";
+  static const String homeKeyboardIcon = "assets/png/home_keyboard_icon.png";
+  static const String homeSearchIcon = "assets/png/home_search_icon.png";
+  static const String imagePlaceHolder = "assets/png/img.png";
 
 }

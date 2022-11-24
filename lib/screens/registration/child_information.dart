@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:we_skool_app/res/assets.dart';
 import 'package:we_skool_app/res/res.dart';
 import 'package:we_skool_app/screens/registration/parent_gaurdian.dart';
+import 'package:we_skool_app/screens/registration/registration_components.dart';
 import 'package:we_skool_app/widgets/common_widgets.dart';
 import 'package:we_skool_app/widgets/text_views.dart';
 import '../../res/colors.dart';
@@ -15,6 +16,7 @@ class ChildInformation extends StatefulWidget {
 }
 
 class _ChildInformationState extends State<ChildInformation> {
+  final RegistrationComponents _registrationComponents = RegistrationComponents();
   TextEditingController? firstNameController;
   TextEditingController? lastNameController;
   DateTime? startDate;
@@ -57,7 +59,18 @@ class _ChildInformationState extends State<ChildInformation> {
                       CommonWidgets.customBackButton(onPress: () {
                         Navigator.pop(context);
                       }),
-                      SizedBox(height: getHeight() * 0.05),
+                      SizedBox(height: getHeight() * 0.01),
+                      _registrationComponents.percentageBar(
+                          box1Color: AppColors.yellowColor,
+                          box2Color: AppColors.veryLightBLue,
+                          box3Color:AppColors.veryLightBLue,
+                          text1Color: AppColors.pureWhiteColor,
+                          text2Color: AppColors.greyColor,
+                          text3Color: AppColors.greyColor,
+                          bar1Color: AppColors.veryLightBLue,
+                          bar2Color: AppColors.veryLightBLue
+                      ),
+                      SizedBox(height: getHeight() * 0.02),
                       TextView.size26Text("Child Information",
                           color: AppColors.blackTextColor,
                           fontFamily: Assets.raleWayBold,
@@ -94,7 +107,7 @@ class _ChildInformationState extends State<ChildInformation> {
                 ),
               ),
                 Positioned(
-                  bottom: getHeight() * 0.03,
+                  bottom: getHeight() * 0.02,
                     child: Padding(
                       padding: EdgeInsets.symmetric(horizontal: getWidth() * 0.05),
                       child: CommonWidgets.getButton(

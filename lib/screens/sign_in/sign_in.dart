@@ -5,6 +5,7 @@ import 'package:we_skool_app/screens/forgot_password/forgot_password.dart';
 import 'package:we_skool_app/screens/registration/register_as.dart';
 import 'package:we_skool_app/widgets/common_widgets.dart';
 import 'package:we_skool_app/widgets/text_views.dart';
+import 'package:we_skool_app/screens/bottomTab/bottom_tab.dart';
 import '../../res/colors.dart';
 import '../../res/strings.dart';
 
@@ -78,7 +79,10 @@ class _SignInState extends State<SignIn> {
                         )),
                     SizedBox(height: getHeight() * 0.05),
                     CommonWidgets.getButton(
-                        onPress: () {},
+                        onPress: () {
+                          Navigator.pushAndRemoveUntil(context,
+                              MaterialPageRoute(builder: (_) => const BottomTab(pageIndex: 0)), (route) => false);
+                        },
                         btnColor: AppColors.pinkColor,
                         text: "LOGIN",
                         fontWeight: FontWeight.w500,
