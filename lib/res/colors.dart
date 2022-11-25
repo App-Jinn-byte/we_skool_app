@@ -22,7 +22,10 @@ class AppColors{
   static const redColor = Color.fromRGBO(193, 2, 48, 1);
 
 
-
-
+  static const pureBlack = Color.fromRGBO(0, 0, 0, 1);
+  static const transparentColor = Color.fromRGBO(255, 255, 255, 0);
+  static const dividerColor = Color.fromRGBO(210, 210, 210, 1);
+  static const borderColor = Color.fromRGBO(242, 242, 242, 1);
+  static const blackLight = Color.fromRGBO(46, 46, 46, 1);
 
 }
