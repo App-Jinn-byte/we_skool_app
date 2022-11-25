@@ -52,7 +52,7 @@ class HomeComponents {
           ),
           Padding(
             padding: EdgeInsets.symmetric(horizontal: getWidth() * 0.05),
-            child: Divider(height: getHeight() * 0.01, thickness: getHeight() * 0.001, color: AppColors.dividerColor),
+            child: Divider(height: getHeight() * 0.02, thickness: getHeight() * 0.001, color: AppColors.dividerColor),
           ),
         ],
       ),
