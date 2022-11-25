@@ -49,7 +49,7 @@ class _HomeState extends State<Home> {
             width: sizes!.width,
             decoration: const BoxDecoration(
                 image: DecorationImage(
-                    image: AssetImage(Assets.backGroundImage),
+                    image: AssetImage(Assets.lightBackground),
                     fit: BoxFit.fill)),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,

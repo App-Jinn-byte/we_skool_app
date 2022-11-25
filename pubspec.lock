@@ -14,7 +14,7 @@ packages:
       name: archive
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "3.3.4"
+    version: "3.3.5"
   async:
     dependency: transitive
     description:
@@ -29,6 +29,13 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "2.1.0"
+  buttons_tabbar:
+    dependency: "direct main"
+    description:
+      name: buttons_tabbar
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "1.3.6"
   characters:
     dependency: transitive
     description:
@@ -184,6 +191,13 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "8.1.1"
+  gap:
+    dependency: "direct main"
+    description:
+      name: gap
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "2.0.1"
   http:
     dependency: transitive
     description:
@@ -468,14 +482,14 @@ packages:
       name: url_launcher
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "6.1.6"
+    version: "6.1.7"
   url_launcher_android:
     dependency: transitive
     description:
       name: url_launcher_android
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "6.0.21"
+    version: "6.0.22"
   url_launcher_ios:
     dependency: transitive
     description:

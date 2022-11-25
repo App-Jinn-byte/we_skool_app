@@ -11,6 +11,7 @@ void main() {
     DeviceOrientation.portraitDown,
   ]).then((_) {
     runApp(const MyApp());
+    // git push
   });
 }
 
@@ -20,13 +21,14 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+
     return MultiProvider(
       providers: multiProviders,
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         initialRoute: Routes.splash,
         routes: Routes.routes,
-        title: 'We Skool',
+        title: 'We Skool' ,
       ),
     );
   }

@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:we_skool_app/res/res.dart';
+import 'package:we_skool_app/screens/WeSpecials/wespecial.dart';
 
 import '../../../../res/assets.dart';
 import '../../../../res/colors.dart';
@@ -182,7 +183,7 @@ class HomeComponents {
                       context: context,
                       onPress: () {
                         onPress!.call(2);
-                        Navigator.pop(context);
+
                         // Navigator.push(context, AppRoutes.appRoutes(AppRoutes.queriesPage));
                       }),
                   singleRow(
@@ -201,7 +202,8 @@ class HomeComponents {
                       onPress: () {
                         onPress!.call(4);
                         Navigator.pop(context);
-                        // Navigator.push(context, AppRoutes.appRoutes(AppRoutes.requestsCusPage));
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (_) => const WeSpecialScreen()));
                       }),
                   singleRow(
                       index: 5,

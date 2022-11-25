@@ -25,5 +25,6 @@ class Assets {
   static const String homeKeyboardIcon = "assets/png/home_keyboard_icon.png";
   static const String homeSearchIcon = "assets/png/home_search_icon.png";
   static const String imagePlaceHolder = "assets/png/img.png";
+  static const String lightBackground = "assets/png/lightBackGround.png";
 
 }
