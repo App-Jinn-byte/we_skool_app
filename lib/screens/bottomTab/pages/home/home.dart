@@ -3,6 +3,7 @@ import 'package:we_skool_app/res/assets.dart';
 import 'package:we_skool_app/res/res.dart';
 import 'package:we_skool_app/res/colors.dart';
 import 'package:we_skool_app/screens/bottomTab/pages/home/home_components.dart';
+import 'package:we_skool_app/screens/daily_schedule/daily_schedule.dart';
 import 'package:we_skool_app/widgets/text_views.dart';
 
 class Home extends StatefulWidget {
@@ -37,7 +38,7 @@ class _HomeState extends State<Home> {
     return SafeArea(
       child: Scaffold(
         drawer: Container(
-          width: sizes!.width * 0.65,
+          width: sizes!.width * 0.64,
           color: Colors.white,
           child: _homeComponents.buildDrawerMenu(
               context: context,
@@ -47,10 +48,7 @@ class _HomeState extends State<Home> {
         body: Container(
             height: sizes!.height,
             width: sizes!.width,
-            decoration: const BoxDecoration(
-                image: DecorationImage(
-                    image: AssetImage(Assets.lightBackground),
-                    fit: BoxFit.fill)),
+            color: AppColors.pureWhiteColor,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -59,12 +57,16 @@ class _HomeState extends State<Home> {
                     openDrawer(context);
                   },
                     text: "Home", image: "", isDataFetched: false),
-                SizedBox(height: getHeight() * 0.02),
-                Padding(
-                    padding:
-                        EdgeInsets.symmetric(horizontal: getWidth() * 0.05),
+                Container(
+                    height: sizes!.height * 0.73,
+                    decoration: const BoxDecoration(
+                        image: DecorationImage(
+                            image: AssetImage(Assets.lightBackground),
+                            fit: BoxFit.fill)),
+                    margin: EdgeInsets.symmetric(horizontal: getWidth() * 0.05),
                     child: Column(
                       children: [
+                        SizedBox(height: getHeight() * 0.03),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
@@ -100,10 +102,16 @@ class _HomeState extends State<Home> {
                                 color: AppColors.pureBlack,
                                 fontFamily: Assets.raleWaySemiBold,
                                 fontWeight: FontWeight.w600),
-                            TextView.size14Text("See all",
-                                color: AppColors.pinkColor,
-                                fontFamily: Assets.raleWaySemiBold,
-                                fontWeight: FontWeight.w600)
+                            GestureDetector(
+                              onTap: () {
+                                Navigator.push(context,
+                                    MaterialPageRoute(builder: (_) => const DailySchedule()));
+                              },
+                              child: TextView.size14Text("See all",
+                                  color: AppColors.pinkColor,
+                                  fontFamily: Assets.raleWaySemiBold,
+                                  fontWeight: FontWeight.w600),
+                            )
                           ],
                         ),
                         SizedBox(height: getHeight() * 0.03),
@@ -127,19 +135,23 @@ class _HomeState extends State<Home> {
                               )
                             ],
                           ),
-                          child: ListView.builder(
-                              itemCount: 4,
-                              itemBuilder: (context, index) {
-                                return Column(
-                                  children: [
-                                    _homeComponents.scheduleContainer(
-                                        time1: "8:30 am - 8:50 am",
-                                        text1: "Tummy Time: Caregiver"
-                                    ),
-                                    Divider(height: getHeight() * 0.03, thickness: getHeight() * 0.001, color: AppColors.dividerColor),
-                                  ],
-                                );
-                              }
+                          child: Expanded(
+                            child: ListView.separated(
+                                itemCount: 4,
+                                itemBuilder: (context, index) {
+                                  return Column(
+                                    children: [
+                                      _homeComponents.scheduleContainer(
+                                          time1: "8:30 am - 8:50 am",
+                                          text1: "Tummy Time: Caregiver"
+                                      ),
+                                    ],
+                                  );
+                                },
+                              separatorBuilder: (BuildContext context, int index) {
+                                  return Divider(height: getHeight() * 0.03, thickness: getHeight() * 0.001, color: AppColors.dividerColor);
+                              },
+                            ),
                           ),
                         ),
                       ],

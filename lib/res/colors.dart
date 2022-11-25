@@ -12,6 +12,7 @@ class AppColors{
   static const hintTextGreyColor = Color.fromRGBO(201, 197, 196, 1);
   static const yellowColor = Color.fromRGBO(248, 195, 80, 1);
   static const creamColor = Color.fromRGBO(253, 241, 214, 1);
+  static const lightBorderColor = Color.fromRGBO(243, 243, 243, 1);
 
   //Adnan Colors:
   static const blurcolr = Color.fromARGB(255, 221, 217, 217);
