@@ -3,7 +3,8 @@ import 'package:gap/gap.dart';
 import 'package:we_skool_app/res/assets.dart';
 import 'package:we_skool_app/res/colors.dart';
 import 'package:we_skool_app/res/res.dart';
-import 'package:we_skool_app/screens/Blog%20Articles/components/bloc_article_components.dart';
+import 'package:we_skool_app/screens/Blog%20Articles/bloc_article_components.dart';
+import 'package:we_skool_app/widgets/common_widgets.dart';
 import 'package:we_skool_app/widgets/text_views.dart';
 
 class BlocArticleScreen extends StatelessWidget {
@@ -19,7 +20,7 @@ class BlocArticleScreen extends StatelessWidget {
           width: sizes!.width,
           decoration: const BoxDecoration(
             image: DecorationImage(
-                image: AssetImage(Assets.backGroundImage), fit: BoxFit.fill),
+                image: AssetImage(Assets.lightBackground), fit: BoxFit.fill),
           ),
           child: Padding(
             padding: EdgeInsets.symmetric(
@@ -29,18 +30,14 @@ class BlocArticleScreen extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    BlocarticleWidgets.myBackButton(
-                      onPress: () {},
-                      height: sizes!.widthRatio * 32,
-                      width: sizes!.widthRatio * 32,
-                    ),
+                    CommonWidgets.customBackButton(onPress: (){}),
                     Gap(getWidth() * 0.03),
                     TextView.size20Text('Blog Articles',
                         color: AppColors.pinkColor,
                         fontFamily: Assets.raleWaySemiBold,
                         fontWeight: FontWeight.w600),
                     const Spacer(),
-                    BlocarticleWidgets.mycircleimage(),
+                    BlocarticleWidgets.mycircleimage(isDataFetched: false,image: '',),
                   ],
                 ),
                 Gap(getHeight() * 0.01),

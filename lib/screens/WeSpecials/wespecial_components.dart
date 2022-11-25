@@ -41,10 +41,16 @@ class WeSpecialWidgets {
     );
   }
 
-  static Widget mycircleimage({dynamic child, Color? clr}) {
+  static Widget mycircleimage({dynamic child, Color? clr,required bool? isDataFetched,required String image,
+  }) {
+    isDataFetched ??= false;
     return CircleAvatar(
-      backgroundColor: clr,
-      maxRadius: getHeight() * 0.02,
+      backgroundImage: isDataFetched
+          ? NetworkImage(image)
+          : const AssetImage(Assets.imagePlaceHolder)
+      as ImageProvider,
+      radius: getHeight() * 0.02, // 50.0
+      backgroundColor: AppColors.transparentColor,
       child: child,
     );
   }
@@ -115,41 +121,7 @@ class WeSpecialWidgets {
             )));
   }
 
-  static Widget myGetButton({
-    double? width,
-    String? text,
-    double? height,
-    required Function? onPress,
-    Color? btnColor,
-    Color? textColor,
-    Color? borderColor,
-    final fontFamily,
-    final fontWeight,
-  }) {
-    return GestureDetector(
-      onTap: () {
-        onPress!.call();
-      },
-      child: Container(
-        height: height ?? sizes!.height,
-        width: width ?? sizes!.width,
-        decoration: BoxDecoration(
-          color: btnColor ?? AppColors.pinkColor,
-          border: Border.all(color: borderColor ?? Colors.transparent),
-          borderRadius: BorderRadius.circular(
-            getWidth() * .02,
-          ),
-        ),
-        child: Center(
-            child: TextView.size14Text(
-              text ?? "SUBMIT",
-              fontFamily: fontFamily ?? Assets.raleWaySemiBold,
-              fontWeight: fontWeight ?? FontWeight.w600,
-              color: textColor ?? AppColors.pureWhiteColor,
-            )),
-      ),
-    );
-  }
+
 
   static Widget myDividers() {
     return const Divider(
