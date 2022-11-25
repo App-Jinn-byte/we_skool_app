@@ -40,10 +40,16 @@ class BlocarticleWidgets {
     );
   }
 
-  static Widget mycircleimage({dynamic child, Color? clr}) {
+  static Widget mycircleimage({dynamic child, Color? clr,required bool? isDataFetched,required String image,
+  }) {
+    isDataFetched ??= false;
     return CircleAvatar(
-      backgroundColor: clr,
-      maxRadius: getHeight() * 0.02,
+      backgroundImage: isDataFetched
+          ? NetworkImage(image)
+          : const AssetImage(Assets.imagePlaceHolder)
+      as ImageProvider,
+      radius: getHeight() * 0.02, // 50.0
+      backgroundColor: AppColors.transparentColor,
       child: child,
     );
   }
@@ -182,4 +188,5 @@ class BlocarticleWidgets {
       ),
     );
   }
+
 }

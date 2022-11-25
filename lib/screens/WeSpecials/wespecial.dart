@@ -4,8 +4,9 @@ import 'package:we_skool_app/res/assets.dart';
 import 'package:we_skool_app/res/res.dart';
 
 import '../../res/colors.dart';
+import '../../widgets/common_widgets.dart';
 import '../../widgets/text_views.dart';
-import 'Components/wespecial_components.dart';
+import 'wespecial_components.dart';
 
 class WeSpecialScreen extends StatelessWidget {
   const WeSpecialScreen({Key? key}) : super(key: key);
@@ -20,7 +21,7 @@ class WeSpecialScreen extends StatelessWidget {
           width: sizes!.width,
           decoration: const BoxDecoration(
             image: DecorationImage(
-                image: AssetImage(Assets.backGroundImage), fit: BoxFit.fill),
+                image: AssetImage(Assets.lightBackground), fit: BoxFit.fill),
           ),
           child: Padding(
             padding: EdgeInsets.symmetric(
@@ -30,18 +31,14 @@ class WeSpecialScreen extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    WeSpecialWidgets.myBackButton(
-                      onPress: () {},
-                      height: sizes!.widthRatio * 32,
-                      width: sizes!.widthRatio * 32,
-                    ),
+                    CommonWidgets.customBackButton(onPress: (){}),
                     Gap(getWidth() * 0.03),
                     TextView.size20Text('We Specials',
                         color: AppColors.pinkColor,
                         fontFamily: Assets.raleWaySemiBold,
                         fontWeight: FontWeight.w600),
                     const Spacer(),
-                    WeSpecialWidgets.mycircleimage(),
+                    WeSpecialWidgets.mycircleimage(isDataFetched: false,image: '',),
                   ],
                 ),
                 Gap(getHeight() * 0.01),
@@ -96,15 +93,10 @@ class WeSpecialScreen extends StatelessWidget {
                     Gap(getHeight() * 0.01),
                     WeSpecialWidgets.myDividers(),
                     Gap(getHeight() * 0.01),
-                    WeSpecialWidgets.myGetButton(
-                      onPress: () {},
-                      height: getHeight() * 0.053,
-                      width: getWidth(),
-                      text: 'Enroll',
-                      fontFamily: Assets.raleWaySemiBold,
-                      fontWeight: FontWeight.bold,
-                      textColor: AppColors.pureWhiteColor,
-                    )
+                    CommonWidgets.getButton(onPress: (){
+
+
+                    },text: 'Enroll'),
                   ],
                 )
               ],

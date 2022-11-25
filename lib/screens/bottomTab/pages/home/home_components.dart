@@ -1,8 +1,8 @@
-import 'package:flutter/cupertino.dart';
+
+
 import 'package:flutter/material.dart';
 import 'package:we_skool_app/res/res.dart';
 import 'package:we_skool_app/screens/WeSpecials/wespecial.dart';
-
 import '../../../../res/assets.dart';
 import '../../../../res/colors.dart';
 import '../../../../widgets/common_widgets.dart';
@@ -140,7 +140,8 @@ class HomeComponents {
                       CommonWidgets.buildProfileContainer(imagePath: Assets.imagePlaceHolder),
                       GestureDetector(
                           onTap: () {
-                            Navigator.pop(context);
+
+                            //Navigator.pop(context);
                           },
                           child: Icon(Icons.cancel_outlined, size: getHeight() * 0.04, color: AppColors.pinkColor))
                     ],
@@ -183,6 +184,15 @@ class HomeComponents {
                       context: context,
                       onPress: () {
                         onPress!.call(2);
+                        PopupMenuButton<int>(
+                          color: Colors.amber,
+                          itemBuilder: (context)=> [
+                            PopupMenuItem<int>(child: Text('blog'),value: 0,),
+                            PopupMenuItem<int>(child: Text('Read'),value: 1,)
+
+                          ]
+                        );
+
 
                         // Navigator.push(context, AppRoutes.appRoutes(AppRoutes.queriesPage));
                       }),
@@ -193,6 +203,7 @@ class HomeComponents {
                       onPress: () {
                         onPress!.call(3);
                         Navigator.pop(context);
+
                         // Navigator.push(context, AppRoutes.appRoutes(AppRoutes.inboxPage));
                       }),
                   singleRow(
@@ -292,4 +303,5 @@ class HomeComponents {
     "We Caregiver",
     "Contact Us"
   ];
+
 }

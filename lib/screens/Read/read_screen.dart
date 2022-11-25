@@ -4,8 +4,10 @@ import 'package:gap/gap.dart';
 import 'package:we_skool_app/res/assets.dart';
 import 'package:we_skool_app/res/colors.dart';
 import 'package:we_skool_app/res/res.dart';
-import 'package:we_skool_app/screens/Read/Components/read_components.dart';
+import 'package:we_skool_app/screens/Read/read_components.dart';
 import 'package:we_skool_app/widgets/text_views.dart';
+
+import '../../widgets/common_widgets.dart';
 
 class ReadScreen extends StatelessWidget {
   const ReadScreen({Key? key}) : super(key: key);
@@ -22,7 +24,7 @@ class ReadScreen extends StatelessWidget {
             width: sizes!.width,
             decoration: const BoxDecoration(
               image: DecorationImage(
-                  image: AssetImage(Assets.backGroundImage), fit: BoxFit.fill),
+                  image: AssetImage(Assets.lightBackground), fit: BoxFit.fill),
             ),
             child: Padding(
               padding: EdgeInsets.symmetric(
@@ -31,18 +33,15 @@ class ReadScreen extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    ReadWidgets.myBackButton(
-                      onPress: () {},
-                      height: sizes!.widthRatio * 32,
-                      width: sizes!.widthRatio * 32,
-                    ),
+                    CommonWidgets.customBackButton(onPress: (){}),
+
                     Gap(getWidth() * 0.03),
                     TextView.size20Text('Read',
                         color: AppColors.pinkColor,
                         fontFamily: Assets.raleWaySemiBold,
                         fontWeight: FontWeight.w600),
                     const Spacer(),
-                    ReadWidgets.mycircleimage(),
+                    ReadWidgets.mycircleimage(isDataFetched: false,image: ''),
                   ],
                 ),
                 Gap(getHeight() * 0.01),
