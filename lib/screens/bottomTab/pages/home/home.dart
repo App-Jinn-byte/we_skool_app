@@ -7,6 +7,9 @@ import 'package:we_skool_app/screens/daily_schedule/daily_schedule.dart';
 import 'package:we_skool_app/screens/monthly_framework/monthly_framework.dart';
 import 'package:we_skool_app/widgets/text_views.dart';
 
+import 'package:we_skool_app/screens/development_checklist/development_checklist.dart';
+
+
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
 
@@ -98,7 +101,10 @@ class _HomeState extends State<Home> {
                             _homeComponents.homeCategoryContainer(
                                 text: "Development Checklist",
                                 image: Assets.homeDevelopmentIcon,
-                                onPress: () {}
+                                onPress: () {
+                                  Navigator.push(context,
+                                      MaterialPageRoute(builder: (_) => const DevelopemntChecklist()));
+                                }
                             )
                           ],
                         ),
