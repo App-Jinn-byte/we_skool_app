@@ -4,6 +4,7 @@ import 'package:we_skool_app/res/res.dart';
 import 'package:we_skool_app/res/colors.dart';
 import 'package:we_skool_app/screens/bottomTab/pages/home/home_components.dart';
 import 'package:we_skool_app/screens/daily_schedule/daily_schedule.dart';
+import 'package:we_skool_app/screens/monthly_framework/monthly_framework.dart';
 import 'package:we_skool_app/widgets/text_views.dart';
 
 class Home extends StatefulWidget {
@@ -72,10 +73,17 @@ class _HomeState extends State<Home> {
                           children: [
                             _homeComponents.homeCategoryContainer(
                                 text: "Monthly Framework",
-                                image: Assets.homeKeyboardIcon),
+                                image: Assets.homeKeyboardIcon,
+                                onPress: () {
+                                  Navigator.push(context,
+                                      MaterialPageRoute(builder: (_) => const MonthlyFramework()));
+                                }
+                            ),
                             _homeComponents.homeCategoryContainer(
                                 text: "Daily Observation",
-                                image: Assets.homeCalendarIcon),
+                                image: Assets.homeCalendarIcon,
+                                onPress: () {}
+                            ),
                           ],
                         ),
                         SizedBox(height: getHeight() * 0.01),
@@ -84,10 +92,14 @@ class _HomeState extends State<Home> {
                           children: [
                             _homeComponents.homeCategoryContainer(
                                 text: "Monthly Schedule",
-                                image: Assets.homeSearchIcon),
+                                image: Assets.homeSearchIcon,
+                                onPress: () {}
+                            ),
                             _homeComponents.homeCategoryContainer(
                                 text: "Development Checklist",
-                                image: Assets.homeDevelopmentIcon)
+                                image: Assets.homeDevelopmentIcon,
+                                onPress: () {}
+                            )
                           ],
                         ),
                         SizedBox(height: getHeight() * 0.02),
@@ -135,23 +147,21 @@ class _HomeState extends State<Home> {
                               )
                             ],
                           ),
-                          child: Expanded(
-                            child: ListView.separated(
-                                itemCount: 4,
-                                itemBuilder: (context, index) {
-                                  return Column(
-                                    children: [
-                                      _homeComponents.scheduleContainer(
-                                          time1: "8:30 am - 8:50 am",
-                                          text1: "Tummy Time: Caregiver"
-                                      ),
-                                    ],
-                                  );
-                                },
-                              separatorBuilder: (BuildContext context, int index) {
-                                  return Divider(height: getHeight() * 0.03, thickness: getHeight() * 0.001, color: AppColors.dividerColor);
+                          child: ListView.separated(
+                              itemCount: 4,
+                              itemBuilder: (context, index) {
+                                return Column(
+                                  children: [
+                                    _homeComponents.scheduleContainer(
+                                        time1: "8:30 am - 8:50 am",
+                                        text1: "Tummy Time: Caregiver"
+                                    ),
+                                  ],
+                                );
                               },
-                            ),
+                            separatorBuilder: (BuildContext context, int index) {
+                                return Divider(height: getHeight() * 0.03, thickness: getHeight() * 0.001, color: AppColors.dividerColor);
+                            },
                           ),
                         ),
                       ],

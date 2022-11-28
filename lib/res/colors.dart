@@ -30,5 +30,8 @@ class AppColors{
   static const dividerColor = Color.fromRGBO(210, 210, 210, 1);
   static const borderColor = Color.fromRGBO(242, 242, 242, 1);
   static const blackLight = Color.fromRGBO(46, 46, 46, 1);
+  static const backGroundColor = Color.fromRGBO(255, 250, 238, 1);
+  static const blackBorderColor = Color.fromRGBO(48, 48, 48, 1);
+  static const darkGreyColor = Color.fromRGBO(91, 91, 91, 1);
 
 }

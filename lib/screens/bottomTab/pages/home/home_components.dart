@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:we_skool_app/res/res.dart';
 import 'package:we_skool_app/screens/WeSpecials/wespecial.dart';
-import 'package:we_skool_app/screens/contact_us/contact_us.dart';
+// import 'package:we_skool_app/screens/contact_us/contact_us.dart';
 import '../../../../res/assets.dart';
 import '../../../../res/colors.dart';
 import '../../../../widgets/common_widgets.dart';
@@ -30,71 +30,75 @@ class HomeComponents {
                     onTap: () {
                       onPressMenu!.call();
                     },
-                    child: const Icon(Icons.menu, color: AppColors.pureBlack, size: 35)),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    TextView.size20Text("Home",
-                        fontFamily: Assets.raleWaySemiBold,
-                        fontWeight: FontWeight.w600,
-                        color: AppColors.pureBlack),
-                    CircleAvatar(
-                      backgroundImage: isDataFetched
-                          ? NetworkImage(image)
-                          : const AssetImage(Assets.imagePlaceHolder)
-                              as ImageProvider,
-                      radius: getHeight() * 0.02, // 50.0
-                      backgroundColor: AppColors.transparentColor,
-                    ),
-                  ],
+                    child: const Icon(Icons.menu, color: AppColors.pinkColor, size: 35)),
+                SizedBox(width: getWidth() * 0.02),
+                SizedBox(
+                  width: getWidth() * 0.7,
+                  child: TextView.size20Text(text,
+                      fontFamily: Assets.raleWaySemiBold,
+                      fontWeight: FontWeight.w600,
+                      color: AppColors.pureBlack),
+                ),
+                CircleAvatar(
+                  backgroundImage: isDataFetched
+                      ? NetworkImage(image)
+                      : const AssetImage(Assets.imagePlaceHolder)
+                  as ImageProvider,
+                  radius: getHeight() * 0.02, // 50.0
+                  backgroundColor: AppColors.transparentColor,
                 ),
               ],
             ),
           ),
           Padding(
             padding: EdgeInsets.symmetric(horizontal: getWidth() * 0.05),
-            child: Divider(height: getHeight() * 0.02, thickness: getHeight() * 0.001, color: AppColors.dividerColor),
+            child: Divider(height: getHeight() * 0.01, thickness: getHeight() * 0.001, color: AppColors.dividerColor),
           ),
         ],
       ),
     );
   }
 
-  Widget homeCategoryContainer({required String text, required String image}) {
-    return Container(
-      padding: EdgeInsets.symmetric(
-          vertical: getHeight() * 0.01, horizontal: getWidth() * 0.03),
-      decoration: BoxDecoration(
-        shape: BoxShape.rectangle,
-        color: AppColors.pureWhiteColor,
-        border:
-            Border.all(color: AppColors.borderColor, width: getWidth() * 0.005),
-        borderRadius: BorderRadius.circular(
-          getWidth() * .02,
-        ),
-        boxShadow:  const [
-          BoxShadow(
-              color: AppColors.borderColor,
-              blurRadius: 5,
-              offset: Offset(0,0)
-          )
-        ],
-      ),
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          SizedBox(
-            height: getHeight() * 0.06,
-            width: getWidth() * 0.07,
-            child: Image.asset(
-              image,
-            ),
+  Widget homeCategoryContainer({required String text, required String image, @required Function? onPress}) {
+    return GestureDetector(
+      onTap: () {
+        onPress!.call();
+      },
+      child: Container(
+        padding: EdgeInsets.symmetric(
+            vertical: getHeight() * 0.01, horizontal: getWidth() * 0.03),
+        decoration: BoxDecoration(
+          shape: BoxShape.rectangle,
+          color: AppColors.pureWhiteColor,
+          border:
+              Border.all(color: AppColors.borderColor, width: getWidth() * 0.005),
+          borderRadius: BorderRadius.circular(
+            getWidth() * .02,
           ),
-          SizedBox(width: getWidth() * 0.04,),
-          SizedBox(
-            width: getWidth() * 0.25,
-              child: TextView.size14Text(text, color: AppColors.blackLight, fontFamily: Assets.raleWayRegular, lines: 2))
-        ],
+          boxShadow:  const [
+            BoxShadow(
+                color: AppColors.borderColor,
+                blurRadius: 5,
+                offset: Offset(0,0)
+            )
+          ],
+        ),
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            SizedBox(
+              height: getHeight() * 0.06,
+              width: getWidth() * 0.07,
+              child: Image.asset(
+                image,
+              ),
+            ),
+            SizedBox(width: getWidth() * 0.04,),
+            SizedBox(
+              width: getWidth() * 0.25,
+                child: TextView.size14Text(text, color: AppColors.blackLight, fontFamily: Assets.raleWayRegular, lines: 2))
+          ],
+        ),
       ),
     );
   }
@@ -250,8 +254,8 @@ class HomeComponents {
                       context: context,
                       onPress: () async {
                         onPress!.call(8);
-                         Navigator.push(context,
-                                MaterialPageRoute(builder: (_) => const ContactUs()));
+                         // Navigator.push(context,
+                         //        MaterialPageRoute(builder: (_) => const ContactUs()));
 
                         // await logoutUser(context: context);
                       }),

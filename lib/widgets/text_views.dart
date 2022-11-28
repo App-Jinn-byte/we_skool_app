@@ -102,6 +102,7 @@ class TextView {
         fontSize: sizes!.fontSize14,
         fontWeight: fontWeight?? FontWeight.w400,
         fontFamily: fontFamily?? Assets.raleWayBold,
+        // height: 1.2,
         color: color,
       ),
     );
