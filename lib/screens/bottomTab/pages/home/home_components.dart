@@ -3,11 +3,13 @@
 import 'package:flutter/material.dart';
 import 'package:we_skool_app/res/res.dart';
 import 'package:we_skool_app/screens/WeSpecials/wespecial.dart';
-// import 'package:we_skool_app/screens/contact_us/contact_us.dart';
+
 import '../../../../res/assets.dart';
 import '../../../../res/colors.dart';
 import '../../../../widgets/common_widgets.dart';
 import '../../../../widgets/text_views.dart';
+import 'package:we_skool_app/screens/caregivers/caregivers.dart';
+import '../../../contact_us/contact_us.dart';
 
 class HomeComponents {
   Widget appBar(
@@ -246,6 +248,8 @@ class HomeComponents {
                       onPress: () async {
                         onPress!.call(7);
                         Navigator.pop(context);
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (_) => const CaregiversScreen()));
                         // await logoutUser(context: context);
                       }),
                   singleRow(
@@ -254,8 +258,8 @@ class HomeComponents {
                       context: context,
                       onPress: () async {
                         onPress!.call(8);
-                         // Navigator.push(context,
-                         //        MaterialPageRoute(builder: (_) => const ContactUs()));
+                         Navigator.push(context,
+                                MaterialPageRoute(builder: (_) => const ContactUs()));
 
                         // await logoutUser(context: context);
                       }),
