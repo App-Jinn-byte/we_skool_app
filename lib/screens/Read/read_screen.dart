@@ -1,11 +1,9 @@
 import 'package:buttons_tabbar/buttons_tabbar.dart';
 import 'package:flutter/material.dart';
-import 'package:gap/gap.dart';
 import 'package:we_skool_app/res/assets.dart';
 import 'package:we_skool_app/res/colors.dart';
 import 'package:we_skool_app/res/res.dart';
 import 'package:we_skool_app/screens/Read/read_components.dart';
-import 'package:we_skool_app/widgets/text_views.dart';
 
 import '../../widgets/common_widgets.dart';
 
@@ -20,44 +18,41 @@ class ReadScreen extends StatelessWidget {
         body: DefaultTabController(
           length: 2,
           child: Container(
-            height: sizes!.height,
-            width: sizes!.width,
+          height: sizes!.height,
+          width: sizes!.width,
+          color: AppColors.pureWhiteColor,
+          child: Column(
+              children: [
+          CommonWidgets.appBarIconImageText(
+          text: "Read",
+              image: "",
+              isDataFetched: false,
+              onPressMenu: () {
+                Navigator.pop(context);
+              }),
+          Container(
+            height: sizes!.height * 0.76,
+            margin: EdgeInsets.symmetric(horizontal: getWidth() * 0.05),
             decoration: const BoxDecoration(
               image: DecorationImage(
-                  image: AssetImage(Assets.lightBackground), fit: BoxFit.fill),
+                  image: AssetImage(Assets.lightBackground),
+                  fit: BoxFit.fill),
             ),
-            child: Padding(
-              padding: EdgeInsets.symmetric(
-                  horizontal: getWidth() * 0.05, vertical: getHeight() * 0.04),
-              child: Column(children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
+                child: Column(
                   children: [
-                    CommonWidgets.customBackButton(onPress: (){}),
+                SizedBox(height: getHeight() * 0.02),
 
-                    Gap(getWidth() * 0.03),
-                    TextView.size20Text('Read',
-                        color: AppColors.pinkColor,
-                        fontFamily: Assets.raleWaySemiBold,
-                        fontWeight: FontWeight.w600),
-                    const Spacer(),
-                    ReadWidgets.mycircleimage(isDataFetched: false,image: ''),
-                  ],
-                ),
-                Gap(getHeight() * 0.01),
-                ReadWidgets.myDividers(),
-                Gap(getHeight() * 0.01),
-                ReadWidgets.searchField(),
-                Gap(getHeight() * 0.04),
+               CommonWidgets.searchField(),
+                 SizedBox(height: getHeight() * 0.04),
+
                 ButtonsTabBar(
-                  contentPadding: EdgeInsets.all(5),
+                  contentPadding:  EdgeInsets.all(getHeight()*0.001),
                   unselectedBorderColor: AppColors.greyColor,
                   borderWidth: 1,
                   height: getHeight() * 0.045,
 
                   backgroundColor: AppColors.redColor,
                   unselectedBackgroundColor: AppColors.pureWhiteColor,
-
 
                   borderColor: AppColors.greyColor,
                   buttonMargin:
@@ -86,7 +81,8 @@ class ReadScreen extends StatelessWidget {
                     ),
                   ],
                 ),
-                Gap(getHeight() * 0.03),
+                SizedBox(height: getHeight() * 0.03),
+
                 Expanded(
                   child: TabBarView(
                     children: [
@@ -95,12 +91,21 @@ class ReadScreen extends StatelessWidget {
                     ],
                   ),
                 ),
-              ]),
+
+                  ],
+                )
+              
+              
+              ),
+              ]
             ),
           ),
         ),
-      ),
+      )
     );
+    
+      
+    
   }
 
   Widget Innermaterial() {
