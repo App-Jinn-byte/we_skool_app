@@ -21,6 +21,8 @@ class AppColors{
   static const textcolr = Color.fromRGBO(46, 46, 46, 1);
   static const btntextcolr = Color.fromRGBO(165, 165, 165, 1);
   static const redColor = Color.fromRGBO(193, 2, 48, 1);
+  static const grey2colrtext = Color.fromRGBO(165, 165, 165, 1);
+
 
 
   static const pureBlack = Color.fromRGBO(0, 0, 0, 1);

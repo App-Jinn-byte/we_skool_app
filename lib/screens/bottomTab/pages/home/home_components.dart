@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:we_skool_app/res/res.dart';
 import 'package:we_skool_app/screens/WeSpecials/wespecial.dart';
+import 'package:we_skool_app/screens/contact_us/contact_us.dart';
 import '../../../../res/assets.dart';
 import '../../../../res/colors.dart';
 import '../../../../widgets/common_widgets.dart';
@@ -249,7 +250,9 @@ class HomeComponents {
                       context: context,
                       onPress: () async {
                         onPress!.call(8);
-                        Navigator.pop(context);
+                         Navigator.push(context,
+                                MaterialPageRoute(builder: (_) => const ContactUs()));
+
                         // await logoutUser(context: context);
                       }),
                 ],
