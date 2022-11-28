@@ -1,48 +1,15 @@
+
+
 import 'package:flutter/material.dart';
-import 'package:we_skool_app/res/assets.dart';
 import 'package:we_skool_app/res/colors.dart';
 import 'package:we_skool_app/res/res.dart';
-import 'package:we_skool_app/widgets/text_views.dart';
+import 'package:we_skool_app/widgets/common_widgets.dart';
 
-class ReadWidgets {
+import '../../res/assets.dart';
+import '../../widgets/text_views.dart';
 
-  static Widget myGetButton({
-    double? width,
-    String? text,
-    double? height,
-    required Function? onPress,
-    Color? btnColor,
-    Color? textColor,
-    Color? borderColor,
-    final fontFamily,
-    final fontWeight,
-  }) {
-    return GestureDetector(
-      onTap: () {
-        onPress!.call();
-      },
-      child: Container(
-        height: height ?? sizes!.height,
-        width: width ?? sizes!.width,
-        decoration: BoxDecoration(
-          color: btnColor ?? AppColors.pinkColor,
-          border: Border.all(color: borderColor ?? Colors.transparent),
-          borderRadius: BorderRadius.circular(
-            getWidth() * .02,
-          ),
-        ),
-        child: Center(
-            child: TextView.size14Text(
-          text ?? "SUBMIT",
-          fontFamily: fontFamily ?? Assets.raleWaySemiBold,
-          fontWeight: fontWeight ?? FontWeight.w600,
-          color: textColor ?? AppColors.pureWhiteColor,
-        )),
-      ),
-    );
-  }
-
-   static Widget myBox({double? height}) {
+class Caregivers {
+  static Widget myBox({double? height,String?firstname,lastname,email,lastslide,lastslide2,}) {
     return Container(
       height: height,
       width: getWidth(),
@@ -60,12 +27,12 @@ class ReadWidgets {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            TextView.size14Text('Title', color: AppColors.textcolr),
+            TextView.size14Text(firstname, color: AppColors.textcolr),
             TextField(
               decoration: InputDecoration(
                   enabledBorder: const UnderlineInputBorder(
                       borderSide: BorderSide(color: AppColors.dividerColor)),
-                  hintText: 'Your text here',
+                  hintText: 'Your first name ',
                   hintStyle: TextStyle(
                     fontFamily: Assets.raleWayMedium,
                     color: AppColors.greyTextColor,
@@ -75,13 +42,13 @@ class ReadWidgets {
             SizedBox(
               height: getHeight() * 0.01,
             ),
-            TextView.size14Text('Description', color: AppColors.textcolr),
+            TextView.size14Text(lastname, color: AppColors.textcolr),
             TextField(
-              maxLines: 4,
+              
               decoration: InputDecoration(
                   enabledBorder: const UnderlineInputBorder(
                       borderSide: BorderSide(color: AppColors.dividerColor)),
-                  hintText: 'Your text here...',
+                  hintText: 'Your Last Name',
                   hintStyle: TextStyle(
                     fontFamily: Assets.raleWayMedium,
                     color: AppColors.greyTextColor,
@@ -91,12 +58,12 @@ class ReadWidgets {
             SizedBox(
               height: getHeight() * 0.01,
             ),
-            TextView.size14Text('Link', color: AppColors.textcolr),
+            TextView.size14Text(email, color: AppColors.textcolr),
             TextField(
               decoration: InputDecoration(
                 enabledBorder: const UnderlineInputBorder(
                     borderSide: BorderSide(color: AppColors.dividerColor)),
-                hintText: 'Your Link here',
+                hintText: 'Your Email here',
                 hintStyle: TextStyle(
                   fontFamily: Assets.raleWayMedium,
                   color: AppColors.greyTextColor,
@@ -107,24 +74,20 @@ class ReadWidgets {
             SizedBox(
               height: getHeight() * 0.01,
             ),
-            TextView.size14Text('Action', color: AppColors.textcolr),
+            TextView.size14Text(lastslide, color: AppColors.textcolr),
             SizedBox(
               height: getHeight() * 0.012,
             ),
-            TextView.size14Text('Active Status', color: AppColors.greyTextColor),
+            TextView.size14Text(lastslide2, color: AppColors.greyTextColor),
+           
           ],
         ),
+        
       ),
+      
+      
     );
+    
   }
-
-  static Widget myDividers() {
-    return Padding(
-      padding: EdgeInsets.symmetric(horizontal: getWidth() * 0.02),
-      child: Divider(
-          height: getHeight() * 0.01,
-          thickness: getHeight() * 0.001,
-          color: AppColors.dividerColor),
-    );
-  }
+  
 }
