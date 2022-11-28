@@ -41,6 +41,8 @@ class BlocArticleScreen extends StatelessWidget {
               
                 SizedBox(height: getHeight() * 0.01),
                 CommonWidgets.searchField(),
+                SizedBox(height: getHeight() * 0.01),
+
           
                 Expanded(
                   child: ListView.separated(

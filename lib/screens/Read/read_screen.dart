@@ -21,84 +21,86 @@ class ReadScreen extends StatelessWidget {
           height: sizes!.height,
           width: sizes!.width,
           color: AppColors.pureWhiteColor,
-          child: Column(
-              children: [
-          CommonWidgets.appBarIconImageText(
-          text: "Read",
-              image: "",
-              isDataFetched: false,
-              onPressMenu: () {
-                Navigator.pop(context);
-              }),
-          Container(
-            height: sizes!.height * 0.76,
-            margin: EdgeInsets.symmetric(horizontal: getWidth() * 0.05),
-            decoration: const BoxDecoration(
-              image: DecorationImage(
-                  image: AssetImage(Assets.lightBackground),
-                  fit: BoxFit.fill),
-            ),
-                child: Column(
-                  children: [
-                SizedBox(height: getHeight() * 0.02),
-
-               CommonWidgets.searchField(),
-                 SizedBox(height: getHeight() * 0.04),
-
-                ButtonsTabBar(
-                  contentPadding:  EdgeInsets.all(getHeight()*0.001),
-                  unselectedBorderColor: AppColors.greyColor,
-                  borderWidth: 1,
-                  height: getHeight() * 0.045,
-
-                  backgroundColor: AppColors.redColor,
-                  unselectedBackgroundColor: AppColors.pureWhiteColor,
-
-                  borderColor: AppColors.greyColor,
-                  buttonMargin:
-                      EdgeInsets.symmetric(horizontal: getWidth() * 0.02),
-
-                  tabs: [
-                    Tab(
-                      child: SizedBox(
-                          height: getHeight() * 0.04,
-                          width: getWidth() * 0.39,
-                          child: const Center(
-                              child: Text(
-                            'Read',
-                            style: TextStyle(color: AppColors.greyColor),
-                          ))),
-                    ),
-                    Tab(
-                      child: SizedBox(
-                          height: getHeight() * 0.04,
-                          width: getWidth() * 0.39,
-                          child: const Center(
-                              child: Text(
-                            'Archived Read',
-                            style: TextStyle(color: AppColors.greyColor),
-                          ))),
-                    ),
-                  ],
-                ),
-                SizedBox(height: getHeight() * 0.03),
-
-                Expanded(
-                  child: TabBarView(
+          child: SingleChildScrollView(
+            child: Column(
+                children: [
+            CommonWidgets.appBarIconImageText(
+            text: "Read",
+                image: "",
+                isDataFetched: false,
+                onPressMenu: () {
+                  Navigator.pop(context);
+                }),
+            Container(
+              height: sizes!.height * 0.76,
+              margin: EdgeInsets.symmetric(horizontal: getWidth() * 0.05),
+              decoration: const BoxDecoration(
+                image: DecorationImage(
+                    image: AssetImage(Assets.lightBackground),
+                    fit: BoxFit.fill),
+              ),
+                  child: Column(
                     children: [
-                      Innermaterial(),
-                      Innermaterial(),
+                  SizedBox(height: getHeight() * 0.02),
+          
+                 CommonWidgets.searchField(),
+                   SizedBox(height: getHeight() * 0.04),
+          
+                  ButtonsTabBar(
+                    contentPadding:  EdgeInsets.all(getHeight()*0.001),
+                    unselectedBorderColor: AppColors.greyColor,
+                    borderWidth: 1,
+                    height: getHeight() * 0.045,
+          
+                    backgroundColor: AppColors.redColor,
+                    unselectedBackgroundColor: AppColors.pureWhiteColor,
+          
+                    borderColor: AppColors.greyColor,
+                    buttonMargin:
+                        EdgeInsets.symmetric(horizontal: getWidth() * 0.02),
+          
+                    tabs: [
+                      Tab(
+                        child: SizedBox(
+                            height: getHeight() * 0.04,
+                            width: getWidth() * 0.39,
+                            child: const Center(
+                                child: Text(
+                              'Read',
+                              style: TextStyle(color: AppColors.greyColor),
+                            ))),
+                      ),
+                      Tab(
+                        child: SizedBox(
+                            height: getHeight() * 0.04,
+                            width: getWidth() * 0.39,
+                            child: const Center(
+                                child: Text(
+                              'Archived Read',
+                              style: TextStyle(color: AppColors.greyColor),
+                            ))),
+                      ),
                     ],
                   ),
+                  SizedBox(height: getHeight() * 0.03),
+          
+                  Expanded(
+                    child: TabBarView(
+                      children: [
+                        Innermaterial(),
+                        Innermaterial(),
+                      ],
+                    ),
+                  ),
+          
+                    ],
+                  )
+                
+                
                 ),
-
-                  ],
-                )
-              
-              
+                ]
               ),
-              ]
-            ),
+          ),
           ),
         ),
       )
@@ -117,14 +119,7 @@ class ReadScreen extends StatelessWidget {
       itemCount: 3,
       itemBuilder: (context, index) {
         return ReadWidgets.myBox(
-          title: 'Title',
-          subtitle: 'your title here',
-          titleaction: 'Action',
-          subtitleaction: 'Action Status',
-          descriptiontext: 'Description',
-          subtitledesc: 'asas asdasd asdasd dasdasdad DsdDad',
-          titlelink: 'Link',
-          subtitlelink: 'your link here',
+         
         );
       },
       separatorBuilder: (BuildContext context, int index) {

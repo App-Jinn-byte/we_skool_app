@@ -2,47 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:we_skool_app/res/assets.dart';
 import 'package:we_skool_app/res/colors.dart';
 import 'package:we_skool_app/res/res.dart';
-import 'package:we_skool_app/widgets/text_views.dart';
+import 'package:we_skool_app/widgets/common_widgets.dart';
 
-class ReadWidgets {
+import '../../widgets/text_views.dart';
 
-  static Widget myGetButton({
-    double? width,
-    String? text,
-    double? height,
-    required Function? onPress,
-    Color? btnColor,
-    Color? textColor,
-    Color? borderColor,
-    final fontFamily,
-    final fontWeight,
-  }) {
-    return GestureDetector(
-      onTap: () {
-        onPress!.call();
-      },
-      child: Container(
-        height: height ?? sizes!.height,
-        width: width ?? sizes!.width,
-        decoration: BoxDecoration(
-          color: btnColor ?? AppColors.pinkColor,
-          border: Border.all(color: borderColor ?? Colors.transparent),
-          borderRadius: BorderRadius.circular(
-            getWidth() * .02,
-          ),
-        ),
-        child: Center(
-            child: TextView.size14Text(
-          text ?? "SUBMIT",
-          fontFamily: fontFamily ?? Assets.raleWaySemiBold,
-          fontWeight: fontWeight ?? FontWeight.w600,
-          color: textColor ?? AppColors.pureWhiteColor,
-        )),
-      ),
-    );
-  }
-
-   static Widget myBox({double? height}) {
+class DevelepmentCheckComponents {
+  static Widget myBox({double? height}) {
     return Container(
       height: height,
       width: getWidth(),
@@ -91,12 +56,12 @@ class ReadWidgets {
             SizedBox(
               height: getHeight() * 0.01,
             ),
-            TextView.size14Text('Link', color: AppColors.textcolr),
+            TextView.size14Text('Age group', color: AppColors.textcolr),
             TextField(
               decoration: InputDecoration(
                 enabledBorder: const UnderlineInputBorder(
                     borderSide: BorderSide(color: AppColors.dividerColor)),
-                hintText: 'Your Link here',
+                hintText: '6 months to 12 months',
                 hintStyle: TextStyle(
                   fontFamily: Assets.raleWayMedium,
                   color: AppColors.greyTextColor,
@@ -107,18 +72,18 @@ class ReadWidgets {
             SizedBox(
               height: getHeight() * 0.01,
             ),
-            TextView.size14Text('Action', color: AppColors.textcolr),
+            TextView.size14Text('Status', color: AppColors.textcolr),
             SizedBox(
               height: getHeight() * 0.012,
             ),
-            TextView.size14Text('Active Status', color: AppColors.greyTextColor),
+            TextView.size14Text('Active', color: AppColors.greyTextColor),
           ],
         ),
       ),
     );
   }
 
-  static Widget myDividers() {
+  static Widget myDivider() {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: getWidth() * 0.02),
       child: Divider(
