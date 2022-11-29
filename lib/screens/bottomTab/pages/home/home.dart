@@ -62,7 +62,7 @@ class _HomeState extends State<Home> {
                   },
                     text: "Home", image: "", isDataFetched: false),
                 Container(
-                    height: sizes!.height * 0.73,
+                    height: sizes!.height * 0.75,
                     decoration: const BoxDecoration(
                         image: DecorationImage(
                             image: AssetImage(Assets.lightBackground),
