@@ -8,6 +8,7 @@ import '../res/res.dart';
 class CommonWidgets {
   static Widget getButton({
     double? width,
+    double? height,
     String? text,
     required Function? onPress,
     Color? btnColor,
@@ -21,7 +22,7 @@ class CommonWidgets {
         onPress!.call();
       },
       child: Container(
-        height: getHeight() * 0.07,
+        height: height ?? getHeight() * 0.07,
         width: width ?? sizes!.width,
         decoration: BoxDecoration(
           color: btnColor ?? AppColors.pinkColor,

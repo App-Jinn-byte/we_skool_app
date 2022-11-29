@@ -19,7 +19,7 @@ class MonthlyFramework extends StatefulWidget {
 class _MonthlyFrameworkState extends State<MonthlyFramework> {
   final MonthlyFrameworkComponents _monthlyFrameworkComponents = MonthlyFrameworkComponents();
   int _currentIndex=0;
-  List<String> list = ["Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor inci didunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exerc kjfss bslngskngs gslgnsngkngngkngk ngokgmgemgk gle gengkqengkeqngkengkengklqe glqe gkengkemgkemgkl eg eglnekgmegmkemngkengkengke g",
+  List<String> list = ["Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor inci didunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exerc kjfss bslngskngs gslgnsngkngngkngk",
     "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor inci didunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exerc .",
     "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor inci didunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exerc ."];
   bool isOpened = false;
@@ -75,7 +75,7 @@ class _MonthlyFrameworkState extends State<MonthlyFramework> {
                                   children: [
                                     CarouselSlider(
                                       options: CarouselOptions(
-                                        height: isOpened == true ? sizes!.height * 0.4: sizes!.height * 0.26,
+                                        height: isOpened == true ? sizes!.height * 0.35: sizes!.height * 0.26,
                                         viewportFraction: 1,
                                         onPageChanged: (index, reason) {
                                           setState(() {
