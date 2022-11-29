@@ -47,38 +47,26 @@ class ReadScreen extends StatelessWidget {
                    SizedBox(height: getHeight() * 0.04),
           
                   ButtonsTabBar(
-                    contentPadding:  EdgeInsets.all(getHeight()*0.001),
+                    contentPadding: const EdgeInsets.symmetric(vertical: 2,horizontal: 35),
                     unselectedBorderColor: AppColors.greyColor,
                     borderWidth: 1,
                     height: getHeight() * 0.045,
           
                     backgroundColor: AppColors.redColor,
                     unselectedBackgroundColor: AppColors.pureWhiteColor,
+                      labelStyle: const TextStyle(color: AppColors.pureWhiteColor),
+                      unselectedLabelStyle: const TextStyle(color: AppColors.greyColor),
           
                     borderColor: AppColors.greyColor,
                     buttonMargin:
                         EdgeInsets.symmetric(horizontal: getWidth() * 0.02),
           
-                    tabs: [
+                    tabs: const[
                       Tab(
-                        child: SizedBox(
-                            height: getHeight() * 0.04,
-                            width: getWidth() * 0.39,
-                            child: const Center(
-                                child: Text(
-                              'Read',
-                              style: TextStyle(color: AppColors.greyColor),
-                            ))),
+                        text: '        Read         ',
                       ),
                       Tab(
-                        child: SizedBox(
-                            height: getHeight() * 0.04,
-                            width: getWidth() * 0.39,
-                            child: const Center(
-                                child: Text(
-                              'Archived Read',
-                              style: TextStyle(color: AppColors.greyColor),
-                            ))),
+                        text: 'Archived Reads',
                       ),
                     ],
                   ),
@@ -119,6 +107,14 @@ class ReadScreen extends StatelessWidget {
       itemCount: 3,
       itemBuilder: (context, index) {
         return ReadWidgets.myBox(
+          title: 'Title',
+          titletxt: 'Your text here',
+          Desc: 'Description',
+          desctxt: 'your desc here...',
+          Link: 'Link',
+          linktxt: 'Your Link here',
+          action: 'Action',
+          actiontxt: 'Active Status',
          
         );
       },

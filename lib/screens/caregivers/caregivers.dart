@@ -46,35 +46,25 @@ class CaregiversScreen extends StatelessWidget {
                     children: [
                       SizedBox(height: getHeight() * 0.04),
                       ButtonsTabBar(
-                        contentPadding: EdgeInsets.all(getHeight() * 0.001),
+                        contentPadding: const EdgeInsets.symmetric(vertical: 2,horizontal: 20),
                         unselectedBorderColor: AppColors.greyColor,
                         borderWidth: 1,
+                      labelStyle: const TextStyle(color: AppColors.pureWhiteColor),
+                      unselectedLabelStyle: const TextStyle(color: AppColors.greyColor),
                         height: getHeight() * 0.045,
                         backgroundColor: AppColors.redColor,
                         unselectedBackgroundColor: AppColors.pureWhiteColor,
                         borderColor: AppColors.greyColor,
                         buttonMargin:
                             EdgeInsets.symmetric(horizontal: getWidth() * 0.02),
-                        tabs: [
+                        tabs: const[
                           Tab(
-                            child: SizedBox(
-                                height: getHeight() * 0.04,
-                                width: getWidth() * 0.41,
-                                child: const Center(
-                                    child: Text(
-                                  'Assigned Caregivers',
-                                  style: TextStyle(color: AppColors.greyColor),
-                                ))),
+                            text: 'Assigned Caregivers',
+
+                          
                           ),
                           Tab(
-                            child: SizedBox(
-                                height: getHeight() * 0.04,
-                                width: getWidth() * 0.41,
-                                child: const Center(
-                                    child: Text(
-                                  'Manage Caregivers',
-                                  style: TextStyle(color: AppColors.greyColor),
-                                ))),
+                           text: 'Manage Caregivers',
                           ),
                         ],
                       ),
@@ -97,27 +87,23 @@ class CaregiversScreen extends StatelessWidget {
   }
 
   Widget assignedCaregivers() {
-    return ListView.separated(
-      physics: const BouncingScrollPhysics(
-          parent: AlwaysScrollableScrollPhysics()),
-      shrinkWrap: true,
-      scrollDirection: Axis.vertical,
-      itemCount: 1,
-      itemBuilder: (context, index) {
-        return Caregivers.myBox(
-          firstname: 'First Name',
-          lastname: 'Last Name',
-          email: 'Email',
-          lastslide: 'Contact Number',
-          lastslide2: '+123 544 342 00'
+   
+        return Column(
+          children: [
+            Caregivers.myBox(
+              firstname: 'First Name',
+              lastname: 'Last Name',
+              email: 'Email',
+              lastslide: 'Contact Number',
+              lastslidetxt: '+123 544 342 00'
     
     
+            ),
+          ],
         );
-      },
-      separatorBuilder: (BuildContext context, int index) {
-        return const SizedBox();
-      },
-    );
+      }
+     
+    
   }
    Widget manageCaregivers() {
     
@@ -138,7 +124,7 @@ class CaregiversScreen extends StatelessWidget {
                 lastname: 'Last Name',
                 email: 'Email',
                 lastslide: 'Status',
-                lastslide2: 'Your Status'
+                lastslidetxt: 'Your Status'
                 
           
           
@@ -148,15 +134,13 @@ class CaregiversScreen extends StatelessWidget {
             
             },
             separatorBuilder: (BuildContext context, int index) {
-              return Padding(
-                padding:  EdgeInsets.only( top: getHeight()*0.03,bottom: getHeight()*0.03),
-                child: SizedBox(
-                    height: getHeight() * 0.05, child: CommonWidgets.getButton(onPress: (){},text: 'Add New')),
-              );
+              return const SizedBox();
             },
           ),
         ),
+        CommonWidgets.getButton(onPress: (){},text: 'Add New'),
       ],
     );
+    
   }
-}
+

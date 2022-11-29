@@ -45,7 +45,15 @@ class DevelopemntChecklist extends StatelessWidget {
                         height: getHeight() * 0.03,
                       ),
                       DevelepmentCheckComponents.myBox(
-                        height: getHeight() * 0.44,
+                        title: 'Title',
+                        titletxt: 'Your text here',
+                        Desc: 'Description',
+                        desctxt: 'Your text here...',
+                        status: 'Status',
+                        satustxt: 'Active',
+                        Agegroup: 'Age group',
+                        agegrouptxt: '6 months to 12 months',
+                        height: getHeight() * 0.40,
                       ),
                         SizedBox(
                         height: getHeight() * 0.04,

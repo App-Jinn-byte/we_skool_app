@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:we_skool_app/res/res.dart';
 import 'package:we_skool_app/screens/WeSpecials/wespecial.dart';
+import 'package:we_skool_app/screens/classes/classes.dart';
 
 import '../../../../res/assets.dart';
 import '../../../../res/colors.dart';
@@ -174,6 +175,8 @@ class HomeComponents {
                       onPress: () {
                         onPress!.call(0);
                         Navigator.pop(context);
+                         Navigator.push(context,
+                                      MaterialPageRoute(builder: (_) => const Classes()));
                         // Navigator.push(context,AppRoutes.appRoutes(AppRoutes.profileCusPage));
                       }),
                   singleRow(
