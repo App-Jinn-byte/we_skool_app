@@ -9,85 +9,101 @@ import '../../res/assets.dart';
 import '../../widgets/text_views.dart';
 
 class Caregivers {
-  static Widget myBox({double? height,String?firstname,lastname,email,lastslide,lastslide2,}) {
+  static Widget myBox(
+      {String? firstname,
+        lastname,
+        email,
+       lastslide,
+        lastslidetxt,
+        }) {
     return Container(
-      height: height,
+      height: getHeight() * 0.46,
       width: getWidth(),
       decoration: BoxDecoration(
-        boxShadow: const [
+           shape: BoxShape.rectangle,
+         
+          border:
+              Border.all(color: AppColors.borderColor, width: getWidth() * 0.003),
+         boxShadow: const [
           BoxShadow(
-              color: AppColors.shadow, blurRadius: 2, offset: Offset(1, 3))
+              color: AppColors.borderColor, blurRadius: 10, offset: Offset(0, 1))
         ],
         color: AppColors.pureWhiteColor,
         borderRadius: BorderRadius.all(Radius.circular(getHeight() * .014)),
       ),
       child: Padding(
-        padding: EdgeInsets.symmetric(
-            horizontal: getWidth() * 0.05, vertical: getHeight() * 0.02),
+        padding: EdgeInsets.symmetric(horizontal: getWidth() * 0.04),
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            TextView.size14Text(firstname, color: AppColors.textcolr),
-            TextField(
-              decoration: InputDecoration(
-                  enabledBorder: const UnderlineInputBorder(
-                      borderSide: BorderSide(color: AppColors.dividerColor)),
-                  hintText: 'Your first name ',
-                  hintStyle: TextStyle(
-                    fontFamily: Assets.raleWayMedium,
+            ListTile(
+              title: TextView.size14Text('First Name',
+                  color: AppColors.textcolr,
+                  fontFamily: Assets.raleWaySemiBold),
+              subtitle: Padding(
+                padding: EdgeInsets.only(top: getHeight() * 0.02),
+                child: TextView.size14Text(firstname,
                     color: AppColors.greyTextColor,
-                    fontSize: sizes!.fontSize14,
-                  )),
-            ),
-            SizedBox(
-              height: getHeight() * 0.01,
-            ),
-            TextView.size14Text(lastname, color: AppColors.textcolr),
-            TextField(
-              
-              decoration: InputDecoration(
-                  enabledBorder: const UnderlineInputBorder(
-                      borderSide: BorderSide(color: AppColors.dividerColor)),
-                  hintText: 'Your Last Name',
-                  hintStyle: TextStyle(
-                    fontFamily: Assets.raleWayMedium,
-                    color: AppColors.greyTextColor,
-                    fontSize: sizes!.fontSize14,
-                  )),
-            ),
-            SizedBox(
-              height: getHeight() * 0.01,
-            ),
-            TextView.size14Text(email, color: AppColors.textcolr),
-            TextField(
-              decoration: InputDecoration(
-                enabledBorder: const UnderlineInputBorder(
-                    borderSide: BorderSide(color: AppColors.dividerColor)),
-                hintText: 'Your Email here',
-                hintStyle: TextStyle(
-                  fontFamily: Assets.raleWayMedium,
-                  color: AppColors.greyTextColor,
-                  fontSize: sizes!.fontSize14,
-                ),
+                    fontFamily: Assets.raleWayMedium),
               ),
             ),
-            SizedBox(
-              height: getHeight() * 0.01,
+            Caregivers.myDivider(),
+
+            ListTile(
+              title: TextView.size14Text('Last Name',
+                  color: AppColors.textcolr,
+                  fontFamily: Assets.raleWaySemiBold),
+              subtitle: Padding(
+                padding: EdgeInsets.only(top: getHeight() * 0.02),
+                child: TextView.size14Text(lastname,
+                    color: AppColors.greyTextColor,
+                    fontFamily: Assets.raleWayMedium),
+              ),
             ),
-            TextView.size14Text(lastslide, color: AppColors.textcolr),
-            SizedBox(
-              height: getHeight() * 0.012,
+            Caregivers.myDivider(),
+            ListTile(
+              title: TextView.size14Text('Email',
+                  color: AppColors.textcolr,
+                  fontFamily: Assets.raleWaySemiBold),
+              subtitle: Padding(
+                padding: EdgeInsets.only(top: getHeight() * 0.02),
+                child: TextView.size14Text(email,
+                    color: AppColors.greyTextColor,
+                    fontFamily: Assets.raleWayMedium),
+              ),
             ),
-            TextView.size14Text(lastslide2, color: AppColors.greyTextColor),
-           
+            Caregivers.myDivider(),
+            ListTile(
+              title: TextView.size14Text(lastslide,
+                  color: AppColors.textcolr,
+                  fontFamily: Assets.raleWaySemiBold),
+              subtitle: Padding(
+                padding: EdgeInsets.only(top: getHeight() * 0.02),
+                child: TextView.size14Text(lastslidetxt,
+                    color: AppColors.greyTextColor,
+                    fontFamily: Assets.raleWayMedium),
+              ),
+            ),
           ],
         ),
-        
       ),
-      
-      
     );
-    
+  }
+
+
+
+
+
+
+  static Widget myDivider() {
+    return Padding(
+      padding: EdgeInsets.symmetric(horizontal: getWidth() * 0.02),
+      child: Divider(
+          height: getHeight() * 0.01,
+          thickness: getHeight() * 0.001,
+          color: AppColors.dividerColor),
+    );
   }
   
 }

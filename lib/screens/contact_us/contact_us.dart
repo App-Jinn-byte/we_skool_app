@@ -32,7 +32,7 @@ class ContactUs extends StatelessWidget {
                           Navigator.pop(context);
                         }),
                     Container(
-                     height:  sizes!.height*0.70,
+                     height:  sizes!.height*0.80,
                       margin: EdgeInsets.symmetric(horizontal: getWidth() * 0.05),
                       decoration: const BoxDecoration(
                         image: DecorationImage(
@@ -98,7 +98,7 @@ class ContactUs extends StatelessWidget {
                               padding: EdgeInsets.only(left: getWidth() * 0.02),
                               child: SizedBox(
                                 height: getHeight() * 0.05,
-                                width: getWidth() * 0.34,
+                                width: getWidth() * 0.36,
                                 child: Row(
                                   children: [
                                     TextView.size16Text(

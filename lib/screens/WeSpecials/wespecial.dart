@@ -82,7 +82,11 @@ class WeSpecialScreen extends StatelessWidget {
                             color: AppColors.greyColor,
                             colortext: AppColors.greyTextColor,
                             text1: 'Music Class',
-                            textprice: 'Price/50'),
+                            textprice: 'Price/50',
+
+                            
+                            ),
+                             SizedBox(height: getHeight() * 0.02),
                       ],
                     ),
                   ),
