@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:we_skool_app/res/res.dart';
 import 'package:we_skool_app/screens/WeSpecials/wespecial.dart';
+import 'package:we_skool_app/screens/consultation_request/consultation_request.dart';
 import 'package:we_skool_app/screens/classes/classes.dart';
 import 'package:we_skool_app/screens/payments/payments.dart';
 
@@ -214,7 +215,8 @@ class HomeComponents {
                       onPress: () {
                         onPress!.call(3);
                         Navigator.pop(context);
-
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (_) => const ConsultationRequest()));
                         // Navigator.push(context, AppRoutes.appRoutes(AppRoutes.inboxPage));
                       }),
                   singleRow(

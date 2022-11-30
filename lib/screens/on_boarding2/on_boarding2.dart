@@ -47,6 +47,8 @@ class _OnBoarding2State extends State<OnBoarding2> {
                     heading: "Designed For You",
                     description: Strings.onBoarding2Text,
                     buttonText: "Get Started",
+                    circle1Color: AppColors.pureWhiteColor,
+                    circle2Color: AppColors.pinkColor,
                     onPressButton: () {
                       Navigator.pushReplacement(context,
                           MaterialPageRoute(builder: (_) => const SignIn()));

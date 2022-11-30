@@ -132,7 +132,7 @@ class TextView {
   static Text size18Text(
       final text,
       {@required final color,
-        final TextAlign textAlign = TextAlign.start,
+        final TextAlign textAlign = TextAlign.start, final fontSize,
         final fontFamily, final fontWeight,
         final lines}) {
     return Text(
@@ -142,7 +142,7 @@ class TextView {
       maxLines: lines,
       overflow: TextOverflow.ellipsis,
       style: TextStyle(
-        fontSize: sizes!.fontSize18,
+        fontSize: fontSize ?? sizes!.fontSize18,
         fontWeight: fontWeight?? FontWeight.w400,
         fontFamily: fontFamily?? Assets.raleWayBold,
         color: color,
