@@ -42,11 +42,15 @@ class BlocarticleWidgets {
       height: getHeight() * 0.33,
       width: getWidth(),
       decoration: BoxDecoration(
+           shape: BoxShape.rectangle,
+          color: AppColors.pureWhiteColor,
+          border:
+              Border.all(color: AppColors.borderColor, width: getWidth() * 0.005),
         boxShadow: const [
           BoxShadow(
               color: AppColors.shadow, blurRadius: 2, offset: Offset(1, 3))
         ],
-        color: AppColors.pureWhiteColor,
+      
         borderRadius: BorderRadius.all(Radius.circular(getHeight() * .014)),
       ),
       child: Padding(

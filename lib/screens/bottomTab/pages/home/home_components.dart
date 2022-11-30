@@ -3,6 +3,8 @@
 import 'package:flutter/material.dart';
 import 'package:we_skool_app/res/res.dart';
 import 'package:we_skool_app/screens/WeSpecials/wespecial.dart';
+import 'package:we_skool_app/screens/classes/classes.dart';
+import 'package:we_skool_app/screens/payments/payments.dart';
 
 import '../../../../res/assets.dart';
 import '../../../../res/colors.dart';
@@ -174,6 +176,8 @@ class HomeComponents {
                       onPress: () {
                         onPress!.call(0);
                         Navigator.pop(context);
+                         Navigator.push(context,
+                                      MaterialPageRoute(builder: (_) => const Classes()));
                         // Navigator.push(context,AppRoutes.appRoutes(AppRoutes.profileCusPage));
                       }),
                   singleRow(
@@ -230,6 +234,8 @@ class HomeComponents {
                       onPress: () async {
                         onPress!.call(5);
                         Navigator.pop(context);
+                        Navigator.push(context,
+                                      MaterialPageRoute(builder: (_) => const WePayments()));
                         // await logoutUser(context: context);
                       }),
                   singleRow(

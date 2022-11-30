@@ -7,7 +7,7 @@ import 'package:we_skool_app/widgets/common_widgets.dart';
 import '../../widgets/text_views.dart';
 
 class DevelepmentCheckComponents {
-  static Widget myBox({double? height}) {
+  static Widget myBox({double? height,String? title,Desc,status,Agegroup,titletxt,desctxt,agegrouptxt,satustxt}) {
     return Container(
       height: height,
       width: getWidth(),
@@ -21,62 +21,40 @@ class DevelepmentCheckComponents {
       ),
       child: Padding(
         padding: EdgeInsets.symmetric(
-            horizontal: getWidth() * 0.05, vertical: getHeight() * 0.02),
+            horizontal: getWidth() * 0.04, vertical: getHeight() * 0.02),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            TextView.size14Text('Title', color: AppColors.textcolr),
-            TextField(
-              decoration: InputDecoration(
-                  enabledBorder: const UnderlineInputBorder(
-                      borderSide: BorderSide(color: AppColors.dividerColor)),
-                  hintText: 'Your text here',
-                  hintStyle: TextStyle(
-                    fontFamily: Assets.raleWayMedium,
-                    color: AppColors.greyTextColor,
-                    fontSize: sizes!.fontSize14,
-                  )),
-            ),
+            TextView.size14Text(title, color: AppColors.textcolr),
+            SizedBox(height: getHeight()*0.02,),
+            TextView.size14Text(titletxt,color: AppColors.greyTextColor,fontFamily: Assets.raleWayMedium),
+            DevelepmentCheckComponents.myDivider(),
+
             SizedBox(
               height: getHeight() * 0.01,
             ),
-            TextView.size14Text('Description', color: AppColors.textcolr),
-            TextField(
-              maxLines: 4,
-              decoration: InputDecoration(
-                  enabledBorder: const UnderlineInputBorder(
-                      borderSide: BorderSide(color: AppColors.dividerColor)),
-                  hintText: 'Your text here...',
-                  hintStyle: TextStyle(
-                    fontFamily: Assets.raleWayMedium,
-                    color: AppColors.greyTextColor,
-                    fontSize: sizes!.fontSize14,
-                  )),
+            TextView.size14Text(Desc, color: AppColors.textcolr),
+            SizedBox(height: getHeight()*0.02,),
+            TextView.size14Text(desctxt,color: AppColors.greyTextColor,fontFamily: Assets.raleWayMedium),
+            SizedBox(
+              height: getHeight() * 0.05,
             ),
+            DevelepmentCheckComponents.myDivider(),
             SizedBox(
               height: getHeight() * 0.01,
             ),
-            TextView.size14Text('Age group', color: AppColors.textcolr),
-            TextField(
-              decoration: InputDecoration(
-                enabledBorder: const UnderlineInputBorder(
-                    borderSide: BorderSide(color: AppColors.dividerColor)),
-                hintText: '6 months to 12 months',
-                hintStyle: TextStyle(
-                  fontFamily: Assets.raleWayMedium,
-                  color: AppColors.greyTextColor,
-                  fontSize: sizes!.fontSize14,
-                ),
-              ),
-            ),
+            TextView.size14Text(Agegroup, color: AppColors.textcolr),
+            SizedBox(height: getHeight()*0.02,),
+            TextView.size14Text(agegrouptxt,color: AppColors.greyTextColor,fontFamily: Assets.raleWayMedium),
+            DevelepmentCheckComponents.myDivider(),
             SizedBox(
               height: getHeight() * 0.01,
             ),
-            TextView.size14Text('Status', color: AppColors.textcolr),
+            TextView.size14Text(status, color: AppColors.textcolr),
             SizedBox(
               height: getHeight() * 0.012,
             ),
-            TextView.size14Text('Active', color: AppColors.greyTextColor),
+            TextView.size14Text(satustxt, color: AppColors.greyTextColor),
           ],
         ),
       ),
@@ -85,7 +63,7 @@ class DevelepmentCheckComponents {
 
   static Widget myDivider() {
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: getWidth() * 0.02),
+      padding: EdgeInsets.symmetric(horizontal: getWidth() * 0.01),
       child: Divider(
           height: getHeight() * 0.01,
           thickness: getHeight() * 0.001,
