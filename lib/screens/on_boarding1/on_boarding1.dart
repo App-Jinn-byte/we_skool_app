@@ -47,6 +47,8 @@ class _OnBoarding1State extends State<OnBoarding1> {
                     heading: "Made For Children",
                     description: Strings.onBoarding1Text,
                     buttonText: "Next",
+                    circle1Color: AppColors.pinkColor,
+                    circle2Color: AppColors.pureWhiteColor,
                     onPressButton: () {
                       Navigator.pushReplacement(context,
                           MaterialPageRoute(builder: (_) => const OnBoarding2()));

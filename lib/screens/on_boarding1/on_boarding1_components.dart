@@ -13,7 +13,9 @@ class OnBoarding1Components {
     @required String? heading,
     @required String? description,
     @required String? buttonText,
-    @required Function? onPressButton
+    @required Function? onPressButton,
+    final circle1Color,
+    final circle2Color,
   }) {
     return Container(
       padding: EdgeInsets.symmetric(horizontal: getWidth() * 0.05),
@@ -33,7 +35,7 @@ class OnBoarding1Components {
                 width: getWidth() * 0.03,
                 decoration: BoxDecoration(
                     shape: BoxShape.circle,
-                    color: AppColors.pinkColor,
+                    color: circle1Color ?? AppColors.pinkColor,
                     border: Border.all(color: AppColors.pinkColor, width: 1)
                 ),
               ),
@@ -43,6 +45,7 @@ class OnBoarding1Components {
                 width: getWidth() * 0.03,
                 decoration: BoxDecoration(
                     shape: BoxShape.circle,
+                    color: circle2Color ?? AppColors.pinkColor,
                     border: Border.all(color: AppColors.pinkColor, width: 1)
                 ),
               ),

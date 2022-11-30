@@ -16,6 +16,7 @@ class CommonWidgets {
     Color? borderColor,
     final fontFamily,
     final fontWeight,
+    final fontSize
   }) {
     return GestureDetector(
       onTap: () {
@@ -34,6 +35,7 @@ class CommonWidgets {
         child: Center(
             child: TextView.size18Text(
           text ?? "SUBMIT",
+          fontSize: fontSize,
           fontFamily: fontFamily ?? Assets.raleWayBold,
           fontWeight: fontWeight,
           color: textColor ?? AppColors.pureWhiteColor,
@@ -299,7 +301,7 @@ class CommonWidgets {
           value: selectedCategory,
           isExpanded: true,
           icon: Icon(Icons.keyboard_arrow_down,color: AppColors.hintTextGreyColor,size: getHeight()*.035,),
-          underline:SizedBox() ,
+          underline:const SizedBox(),
           onChanged: (newValue) {
             if(updateSelectedCategory != null){
               updateSelectedCategory(newValue);
@@ -318,6 +320,43 @@ class CommonWidgets {
             }).toList()
         ),
       ),
+    );
+  }
+
+  static Widget dropDownNew({
+    @required String ?selectedCategory,
+    @required Function ?updateSelectedCategory,
+    @required List<String> ?categories,
+    @required String ?hint,
+  }){
+    return DropdownButton <String>(
+        hint: Text(hint ?? '',
+          style: TextStyle(
+            color: AppColors.hintTextGreyColor,
+            fontSize: sizes!.fontSize14,
+            fontFamily:Assets.raleWayRegular,
+          ),
+        ),
+        value: selectedCategory,
+        isExpanded: true,
+        icon: Icon(Icons.keyboard_arrow_down,color: AppColors.hintTextGreyColor,size: getHeight()*.035,),
+        underline:SizedBox() ,
+        onChanged: (newValue) {
+          if(updateSelectedCategory != null){
+            updateSelectedCategory(newValue);
+          }
+        },
+        items: categories?.map<DropdownMenuItem<String>> ((String value) {
+          return DropdownMenuItem<String> (
+            value: value,
+            child: Text(value,style: TextStyle(
+              color: AppColors.blackTextColor,
+              fontFamily: Assets.raleWayRegular,
+              fontSize: sizes!.fontSize14,
+            ),
+            ),
+          );
+        }).toList()
     );
   }
 
@@ -435,23 +474,10 @@ class CommonWidgets {
         ),
       child: Row(
           children: [
-            SizedBox(width: getWidth() * 0.04,),
-            SizedBox(
-              width: getWidth() * 0.08,
-              child: const Icon(
-                Icons.search,
-                color: AppColors.greyTextColor,
-              ),
-            ),
-            SizedBox(width: getWidth() * 0.04),
-            Container(
-              height: getHeight() * 0.025,
-              width: getWidth() * 0.002,
-              color: AppColors.greyTextColor,
-            ),
             SizedBox(width: getWidth() * 0.02),
+
             SizedBox(
-              width: getWidth() * 0.6,
+              width: getWidth() * 0.71,
               child: Center(
                 child: TextField(
                   controller: textEditingController,
@@ -478,6 +504,21 @@ class CommonWidgets {
                 ),
               ),
             ),
+            Container(
+              height: getHeight() * 0.025,
+              width: getWidth() * 0.002,
+              color: AppColors.greyTextColor,
+            ),
+            SizedBox(width: getWidth() * 0.04),
+            SizedBox(
+              width: getWidth() * 0.08,
+              child: const Icon(
+                Icons.search,
+                color: AppColors.greyTextColor,
+              ),
+            ),
+
+            SizedBox(width: getWidth() * 0.02),
           ],
         ),
     );
