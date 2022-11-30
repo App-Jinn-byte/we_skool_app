@@ -46,7 +46,7 @@ class CaregiversScreen extends StatelessWidget {
                     children: [
                       SizedBox(height: getHeight() * 0.04),
                       ButtonsTabBar(
-                        contentPadding: const EdgeInsets.symmetric(vertical: 2,horizontal: 20),
+                        contentPadding: EdgeInsets.symmetric(horizontal: getWidth()*0.03),
                         unselectedBorderColor: AppColors.greyColor,
                         borderWidth: 1,
                       labelStyle: const TextStyle(color: AppColors.pureWhiteColor),

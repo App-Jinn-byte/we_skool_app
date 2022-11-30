@@ -17,12 +17,16 @@ class Caregivers {
         lastslidetxt,
         }) {
     return Container(
-      height: getHeight() * 0.43,
+      height: getHeight() * 0.46,
       width: getWidth(),
       decoration: BoxDecoration(
-        boxShadow: const [
+           shape: BoxShape.rectangle,
+         
+          border:
+              Border.all(color: AppColors.borderColor, width: getWidth() * 0.003),
+         boxShadow: const [
           BoxShadow(
-              color: AppColors.shadow, blurRadius: 2, offset: Offset(1, 3))
+              color: AppColors.borderColor, blurRadius: 10, offset: Offset(0, 1))
         ],
         color: AppColors.pureWhiteColor,
         borderRadius: BorderRadius.all(Radius.circular(getHeight() * .014)),

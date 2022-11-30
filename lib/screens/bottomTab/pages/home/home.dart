@@ -5,6 +5,7 @@ import 'package:we_skool_app/res/colors.dart';
 import 'package:we_skool_app/screens/bottomTab/pages/home/home_components.dart';
 import 'package:we_skool_app/screens/daily_schedule/daily_schedule.dart';
 import 'package:we_skool_app/screens/monthly_framework/monthly_framework.dart';
+import 'package:we_skool_app/screens/we_monthly_schedule/we_monthly_schedule.dart';
 import 'package:we_skool_app/widgets/text_views.dart';
 
 import 'package:we_skool_app/screens/development_checklist/development_checklist.dart';
@@ -96,7 +97,10 @@ class _HomeState extends State<Home> {
                             _homeComponents.homeCategoryContainer(
                                 text: "Monthly Schedule",
                                 image: Assets.homeSearchIcon,
-                                onPress: () {}
+                                onPress: () {
+                                   Navigator.push(context,
+                                      MaterialPageRoute(builder: (_) => const WeMonthlySchedule()));
+                                }
                             ),
                             _homeComponents.homeCategoryContainer(
                                 text: "Development Checklist",

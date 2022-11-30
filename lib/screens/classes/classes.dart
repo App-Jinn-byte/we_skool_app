@@ -48,8 +48,8 @@ class _ClassesState extends State<Classes> {
                     children: [
                       SizedBox(height: getHeight() * 0.04),
                       ButtonsTabBar(
-                        contentPadding: const EdgeInsets.symmetric(
-                            vertical: 2, horizontal: 35),
+                        contentPadding: EdgeInsets.symmetric(horizontal: getWidth()*0.06),
+
                         unselectedBorderColor: AppColors.greyColor,
                         borderWidth: 1,
                         height: getHeight() * 0.045,
@@ -64,7 +64,7 @@ class _ClassesState extends State<Classes> {
                             EdgeInsets.symmetric(horizontal: getWidth() * 0.02),
                         tabs: const [
                           Tab(
-                            text: '     Classes     ',
+                            text: '     Classes      ',
                           ),
                           Tab(
                             text: 'Special Classes',
