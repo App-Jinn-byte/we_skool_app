@@ -15,7 +15,7 @@ class DailySchedule extends StatefulWidget {
 }
 
 class _DailyScheduleState extends State<DailySchedule> {
-  DailyScheduleComponents _dailyScheduleComponents = DailyScheduleComponents();
+  final DailyScheduleComponents _dailyScheduleComponents = DailyScheduleComponents();
 
   @override
   void initState() {
