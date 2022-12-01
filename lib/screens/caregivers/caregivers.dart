@@ -134,7 +134,9 @@ class CaregiversScreen extends StatelessWidget {
             
             },
             separatorBuilder: (BuildContext context, int index) {
-              return const SizedBox();
+              return  SizedBox(
+                height: getHeight()*0.02,
+              );
             },
           ),
         ),

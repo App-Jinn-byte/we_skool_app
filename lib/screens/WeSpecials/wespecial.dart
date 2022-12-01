@@ -28,7 +28,9 @@ class WeSpecialScreen extends StatelessWidget {
                   text: 'We Specials',
                   image: '',
                   isDataFetched: false,
-                  onPressMenu: () {}),
+                  onPressMenu: () {
+                    Navigator.pop(context);
+                  }),
               Padding(
                 padding: EdgeInsets.symmetric(
                     vertical: getHeight() * 0.001,
@@ -41,7 +43,7 @@ class WeSpecialScreen extends StatelessWidget {
             Column(
               children: [
                 Container(
-                  height: getHeight() * 0.25,
+                  height: getHeight() * 0.28,
                   width: getWidth(),
                   decoration: BoxDecoration(
                     boxShadow: const [
@@ -84,7 +86,7 @@ class WeSpecialScreen extends StatelessWidget {
                             text1: 'Music Class',
                             textprice: 'Price/50',
 
-                            
+
                             ),
                              SizedBox(height: getHeight() * 0.02),
                       ],

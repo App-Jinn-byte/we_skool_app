@@ -30,7 +30,9 @@ class DevelopemntChecklist extends StatelessWidget {
                     text: 'Developmental Check...',
                     image: '',
                     isDataFetched: false,
-                    onPressMenu: () {}),
+                    onPressMenu: () {
+                      Navigator.pop(context);
+                    }),
                 Padding(
                   padding: EdgeInsets.symmetric(
                       vertical: getHeight() * 0.001,
@@ -53,7 +55,7 @@ class DevelopemntChecklist extends StatelessWidget {
                         satustxt: 'Active',
                         Agegroup: 'Age group',
                         agegrouptxt: '6 months to 12 months',
-                        height: getHeight() * 0.40,
+                        height: getHeight() * 0.44,
                       ),
                         SizedBox(
                         height: getHeight() * 0.04,

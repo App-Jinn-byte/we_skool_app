@@ -41,7 +41,11 @@ class WeSpecialWidgets {
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
             TextView.size14Text(text1, color: colortext),
-            Text('|',style: TextStyle(color: colortext),),
+             Container(
+           height: getHeight() * 0.025,
+           width: getWidth() * 0.002,
+           color: AppColors.greyTextColor,
+         ),
     
             TextView.size14Text(textprice, color: colortext),
     

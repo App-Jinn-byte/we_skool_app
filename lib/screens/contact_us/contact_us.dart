@@ -1,11 +1,12 @@
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
+
+import 'package:flutter_animated_dialog/flutter_animated_dialog.dart';
 import 'package:we_skool_app/res/assets.dart';
 import 'package:we_skool_app/res/colors.dart';
 import 'package:we_skool_app/res/res.dart';
 import 'package:we_skool_app/screens/contact_us/contact_us_components.dart';
+import 'package:we_skool_app/utilities/Dailogbox.dart';
 import 'package:we_skool_app/widgets/common_widgets.dart';
 import 'package:we_skool_app/widgets/text_views.dart';
 
@@ -32,14 +33,14 @@ class ContactUs extends StatelessWidget {
                           Navigator.pop(context);
                         }),
                     Container(
-                     height:  sizes!.height*0.80,
-                      margin: EdgeInsets.symmetric(horizontal: getWidth() * 0.05),
+                      height: sizes!.height * 0.80,
+                      margin:
+                          EdgeInsets.symmetric(horizontal: getWidth() * 0.05),
                       decoration: const BoxDecoration(
                         image: DecorationImage(
                             image: AssetImage(Assets.lightBackground),
                             fit: BoxFit.fill),
                       ),
-            
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -127,7 +128,19 @@ class ContactUs extends StatelessWidget {
                           SizedBox(
                             height: getHeight() * 0.03,
                           ),
-                          CommonWidgets.getButton(onPress: () {}, text: 'Send'),
+                          CommonWidgets.getButton(
+                              onPress: () {
+                                showAnimatedDialog(
+                                  context: context,
+
+                                  builder: (_) {
+                                    return const AlertDilog();
+                                  },
+                                  animationType: DialogTransitionType.none,
+                                  duration: const Duration(seconds: 1),
+                                );
+                              },
+                              text: 'Send'),
                         ],
                       ),
                     )

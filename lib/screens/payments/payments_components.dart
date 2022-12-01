@@ -153,10 +153,8 @@ class PaymentsComponents {
               SizedBox(
                 width: getWidth() * 0.04,
               ),
-              const Icon(
-                Icons.file_download_outlined,
-                color: AppColors.pureWhiteColor,
-              ),
+              Image.asset(Assets.download),
+             
             ],
           )),
     );

@@ -58,7 +58,7 @@ class CommonWidgets {
         decoration: BoxDecoration(
           border: Border.all(
             color: AppColors.lightBorderColor,
-            width: 1,
+            width: 2,
           ),
           borderRadius: BorderRadius.all(
               Radius.circular(
@@ -157,10 +157,12 @@ class CommonWidgets {
             contentPadding: EdgeInsets.only(left: getWidth() * .04),
             hintText: hint ?? "",
             alignLabelWithHint: false,
+
             hintStyle: TextStyle(
               color: AppColors.hintTextGreyColor,
               fontSize: sizes!.fontSize14,
               fontFamily: Assets.raleWayRegular,
+
             )),
       ),
     );
