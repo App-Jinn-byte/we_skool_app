@@ -196,14 +196,14 @@ class HomeComponents {
                       context: context,
                       onPress: () {
                         onPress!.call(2);
-                        PopupMenuButton<int>(
-                          color: Colors.amber,
-                          itemBuilder: (context)=> [
-                            PopupMenuItem<int>(child: Text('blog'),value: 0,),
-                            PopupMenuItem<int>(child: Text('Read'),value: 1,)
-
-                          ]
-                        );
+                        // PopupMenuButton<int>(
+                        //   color: Colors.amber,
+                        //   itemBuilder: (context)=> [
+                        //     PopupMenuItem<int>(child: Text('blog'),value: 0,),
+                        //     PopupMenuItem<int>(child: Text('Read'),value: 1,)
+                        //
+                        //   ]
+                        // );
 
 
                         // Navigator.push(context, AppRoutes.appRoutes(AppRoutes.queriesPage));

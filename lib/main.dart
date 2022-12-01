@@ -5,6 +5,8 @@ import 'package:we_skool_app/providers/multi_providers.dart';
 import 'package:we_skool_app/routes/routes.dart';
 
 
+
+
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
   SystemChrome.setPreferredOrientations([
@@ -24,15 +26,16 @@ class MyApp extends StatelessWidget {
 
     return MultiProvider(
       providers: multiProviders,
-      child: MaterialApp(
+      child:  MaterialApp(
         debugShowCheckedModeBanner: false,
         initialRoute: Routes.splash,
         routes: Routes.routes,
         title: 'We Skool',
-       
-     
-      
-       
+
+
+
+
+
       ),
     );
   }

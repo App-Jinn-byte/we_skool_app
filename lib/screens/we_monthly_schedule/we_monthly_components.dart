@@ -85,13 +85,11 @@ class WeMonthlyComponents {
           const Spacer(),
           TextView.size14Text(timetext1, color: colortext),
           const Spacer(),
-          Padding(
-            padding: EdgeInsets.all(getHeight() * 0.01),
-            child: const VerticalDivider(
-              color: AppColors.greyColor,
-              thickness: 1,
-            ),
-          ),
+          Container(
+           height: getHeight() * 0.025,
+           width: getWidth() * 0.002,
+           color: AppColors.greyTextColor,
+         ),
           const Spacer(),
           TextView.size12Text(timetextdetail,
               color: colortext,
