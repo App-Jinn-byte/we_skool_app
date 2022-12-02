@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:we_skool_app/res/assets.dart';
 import 'package:we_skool_app/res/res.dart';
 import 'package:we_skool_app/res/colors.dart';
+import 'package:we_skool_app/screens/bottomTab/pages/daily_observation/daily_observation.dart';
 import 'package:we_skool_app/screens/bottomTab/pages/home/home_components.dart';
 import 'package:we_skool_app/screens/daily_schedule/daily_schedule.dart';
 import 'package:we_skool_app/screens/monthly_framework/monthly_framework.dart';
@@ -80,7 +81,10 @@ class _HomeState extends State<Home> {
                               _homeComponents.homeCategoryContainer(
                                   text: "Daily Observation",
                                   image: Assets.homeCalendarIcon,
-                                  onPress: () {}
+                                  onPress: () {
+                                    Navigator.push(context,
+                                        MaterialPageRoute(builder: (_) => DailyObservation(from: "home")));
+                                  }
                               ),
                             ],
                           ),

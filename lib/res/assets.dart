@@ -28,5 +28,7 @@ class Assets {
   static const String imagePlaceHolder = "assets/png/img.png";
   static const String lightBackground = "assets/png/lightBackGround.png";
   static const String socialIcon = "assets/png/social_icon.png";
+  static const String chatIcon2 = "assets/png/chat_icon2.png";
+  static const String calendarBg = "assets/png/calendar_background.png";
 
 }

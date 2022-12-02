@@ -91,7 +91,7 @@ class _BottomTabState extends State<BottomTab> with WidgetsBindingObserver {
                     ),
                   ),
                   child: Image.asset(
-                    Assets.chatIcon,
+                    Assets.chatIcon2,
                     height: 22,
                     width: 22,
                     color: _bottomTabProvider.selectedIndex == 1
@@ -160,7 +160,7 @@ class _BottomTabState extends State<BottomTab> with WidgetsBindingObserver {
                     ),
                   ),
                   child: Image.asset(
-                    Assets.profileIcon,
+                    Assets.chatIcon,
                     height: 22,
                     width: 22,
                     color: _bottomTabProvider.selectedIndex == 4

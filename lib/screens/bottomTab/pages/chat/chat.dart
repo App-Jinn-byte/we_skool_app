@@ -29,13 +29,12 @@ class _ChatState extends State<Chat> {
             width: sizes!.width,
             decoration: const BoxDecoration(
                 image: DecorationImage(
-                    image: AssetImage(Assets.backGroundImage), fit: BoxFit.fill
+                    image: AssetImage(Assets.lightBackground), fit: BoxFit.fill
                 )),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
 
-                TextView.size20Text("Dummy Screen", color: AppColors.blackTextColor)
               ],
             )),
       ),

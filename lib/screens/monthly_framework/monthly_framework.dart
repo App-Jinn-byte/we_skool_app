@@ -155,11 +155,12 @@ class _MonthlyFrameworkState extends State<MonthlyFramework> {
                                         );
                                       }).toList(),
                                     ),
+                                    SizedBox(height: getHeight() * 0.01),
                                     Row(
                                       mainAxisAlignment: MainAxisAlignment.center,
                                       children: map<Widget>(list, (index, url) {
                                         return Container(
-                                          width: getWidth() * 0.03,
+                                          width: getWidth() * 0.02,
                                           height: getHeight() * 0.02,
                                           margin: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 2.0),
                                           decoration: BoxDecoration(
@@ -176,6 +177,7 @@ class _MonthlyFrameworkState extends State<MonthlyFramework> {
                               else {
                                 return Column(
                                   children: [
+                                    SizedBox(height: getHeight() * 0.01),
                                     _monthlyFrameworkComponents.frameWorkTiles(
                                         text: "How children learn; Initiative, curiosity, persistence, problem solving, and attentiveness",
                                         image: "",

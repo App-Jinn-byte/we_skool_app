@@ -10,7 +10,9 @@ import 'package:we_skool_app/widgets/text_views.dart';
 
 
 class DailyObservation extends StatefulWidget {
-  const DailyObservation({Key? key}) : super(key: key);
+  String? from;
+
+  DailyObservation({super.key, @required this.from});
 
   @override
   _DailyObservationState createState() => _DailyObservationState();
@@ -52,17 +54,29 @@ class _DailyObservationState extends State<DailyObservation> with SingleTickerPr
             height: sizes!.height,
             width: sizes!.width,
             color: AppColors.pureWhiteColor,
-            padding: EdgeInsets.symmetric(horizontal: getWidth() * 0.05),
+            // padding: EdgeInsets.symmetric(horizontal: getWidth() * 0.05),
             child: SingleChildScrollView(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  CommonWidgets.appBarTextImage(
+                  widget.from == "home" ?
+                  CommonWidgets.appBarIconImageText(
                       text: "Daily Observation",
                       image: "",
-                      isDataFetched: false),
+                      onPressMenu: () {
+                        Navigator.pop(context);
+                      },
+                      isDataFetched: false):
+                  Padding(
+                    padding: EdgeInsets.symmetric(horizontal: getWidth() * 0.05),
+                    child: CommonWidgets.appBarTextImage(
+                        text: "Daily Observation",
+                        image: "",
+                        isDataFetched: false),
+                  ),
                   Container(
                     height: sizes!.height * 0.8,
+                    padding: EdgeInsets.symmetric(horizontal: getWidth() * 0.05),
                     decoration: const BoxDecoration(
                         image: DecorationImage(
                             image: AssetImage(Assets.lightBackground), fit: BoxFit.fill
