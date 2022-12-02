@@ -26,7 +26,7 @@ class BottomTabProvider extends ChangeNotifier {
     const Chat(),
     const Calendar(),
     const NotificationScreen(),
-    const DailyObservation()
+    DailyObservation()
   ];
 }
 

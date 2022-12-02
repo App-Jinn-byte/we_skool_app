@@ -24,39 +24,37 @@ class _OnBoarding1State extends State<OnBoarding1> {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        body: Container(
-            height: sizes!.height,
-            width: sizes!.width,
-            decoration: const BoxDecoration(
-              color: AppColors.pureWhiteColor
-            ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Container(
-                  height: getHeight() * 0.6,
-                  width: getWidth(),
-                  decoration: const BoxDecoration(
-                      image: DecorationImage(
-                          image: AssetImage(Assets.onBoarding1), fit: BoxFit.fill
-                      )),
-                ),
-                _onBoarding1Components.onBoardingContainer(
-                    heading: "Made For Children",
-                    description: Strings.onBoarding1Text,
-                    buttonText: "Next",
-                    circle1Color: AppColors.pinkColor,
-                    circle2Color: AppColors.pureWhiteColor,
-                    onPressButton: () {
-                      Navigator.pushReplacement(context,
-                          MaterialPageRoute(builder: (_) => const OnBoarding2()));
-                    }
-                ),
-              ],
-            )),
-      ),
+    return Scaffold(
+      body: Container(
+          height: sizes!.height,
+          width: sizes!.width,
+          decoration: const BoxDecoration(
+            color: AppColors.pureWhiteColor
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Container(
+                height: getHeight() * 0.6,
+                width: getWidth(),
+                decoration: const BoxDecoration(
+                    image: DecorationImage(
+                        image: AssetImage(Assets.onBoarding1), fit: BoxFit.fill
+                    )),
+              ),
+              _onBoarding1Components.onBoardingContainer(
+                  heading: "Made For Children",
+                  description: Strings.onBoarding1Text,
+                  buttonText: "Next",
+                  circle1Color: AppColors.pinkColor,
+                  circle2Color: AppColors.pureWhiteColor,
+                  onPressButton: () {
+                    Navigator.pushReplacement(context,
+                        MaterialPageRoute(builder: (_) => const OnBoarding2()));
+                  }
+              ),
+            ],
+          )),
     );
   }
 }

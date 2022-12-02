@@ -68,9 +68,12 @@ class _CalendarState extends State<Calendar> {
                                       SizedBox(height: getHeight() * 0.03),
                                       Container(
                                         decoration: BoxDecoration(
-                                            borderRadius: BorderRadius.circular(getWidth() * 0.04),
+                                            borderRadius: BorderRadius.circular(getWidth() * 0.02),
                                             border: Border.all(color: AppColors.borderColor),
-                                            color: Colors.white),
+                                            image: const DecorationImage(
+                                                image: AssetImage(Assets.calendarBg), fit: BoxFit.fill
+                                            )
+                                        ),
                                         child: TableCalendar(
                                           rowHeight: getHeight() * 0.05,
                                           firstDay: DateTime.now(),

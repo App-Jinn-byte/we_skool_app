@@ -24,39 +24,37 @@ class _OnBoarding2State extends State<OnBoarding2> {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        body: Container(
-            height: sizes!.height,
-            width: sizes!.width,
-            decoration: const BoxDecoration(
-                color: AppColors.pureWhiteColor
-            ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Container(
-                  height: getHeight() * 0.6,
-                  width: getWidth(),
-                  decoration: const BoxDecoration(
-                      image: DecorationImage(
-                          image: AssetImage(Assets.onBoarding2), fit: BoxFit.fill
-                      )),
-                ),
-                _onBoarding1Components.onBoardingContainer(
-                    heading: "Designed For You",
-                    description: Strings.onBoarding2Text,
-                    buttonText: "Get Started",
-                    circle1Color: AppColors.pureWhiteColor,
-                    circle2Color: AppColors.pinkColor,
-                    onPressButton: () {
-                      Navigator.pushReplacement(context,
-                          MaterialPageRoute(builder: (_) => const SignIn()));
-                    }
-                ),
-              ],
-            )),
-      ),
+    return Scaffold(
+      body: Container(
+          height: sizes!.height,
+          width: sizes!.width,
+          decoration: const BoxDecoration(
+              color: AppColors.pureWhiteColor
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Container(
+                height: getHeight() * 0.6,
+                width: getWidth(),
+                decoration: const BoxDecoration(
+                    image: DecorationImage(
+                        image: AssetImage(Assets.onBoarding2), fit: BoxFit.fill
+                    )),
+              ),
+              _onBoarding1Components.onBoardingContainer(
+                  heading: "Designed For You",
+                  description: Strings.onBoarding2Text,
+                  buttonText: "Get Started",
+                  circle1Color: AppColors.pureWhiteColor,
+                  circle2Color: AppColors.pinkColor,
+                  onPressButton: () {
+                    Navigator.pushReplacement(context,
+                        MaterialPageRoute(builder: (_) => const SignIn()));
+                  }
+              ),
+            ],
+          )),
     );
   }
 }
