@@ -74,7 +74,7 @@ class ReadWidgets {
               height: getHeight() * 0.01,
             ),
             TextView.size14Text(Desc, color: AppColors.textcolr),
-            SizedBox(height: getHeight()*0.02,),
+            SizedBox(height: getHeight()*0.01,),
             TextView.size14Text(desctxt,color: AppColors.greyTextColor,fontFamily: Assets.raleWayMedium),
             SizedBox(
               height: getHeight() * 0.05,

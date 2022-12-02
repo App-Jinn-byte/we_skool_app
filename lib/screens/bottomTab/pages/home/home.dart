@@ -42,14 +42,7 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        drawer: Container(
-          width: sizes!.width * 0.64,
-          color: Colors.white,
-          child: _homeComponents.buildDrawerMenu(
-              context: context,
-              selectedPage: selectedPage,
-              onPress: updateSelectedPage),
-        ),
+        drawer: Builddrawers(context: context,onPress: updateSelectedPage,selectedPage: selectedPage,),
         body: Container(
             height: sizes!.height,
             width: sizes!.width,
