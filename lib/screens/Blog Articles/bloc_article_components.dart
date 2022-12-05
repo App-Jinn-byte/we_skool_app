@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:we_skool_app/res/assets.dart';
 import 'package:we_skool_app/res/colors.dart';
 import 'package:we_skool_app/res/res.dart';
+import 'package:we_skool_app/widgets/common_widgets.dart';
 import 'package:we_skool_app/widgets/text_views.dart';
 
 class BlocarticleWidgets {
@@ -71,6 +72,8 @@ class BlocarticleWidgets {
               ),
             ),
             BlocarticleWidgets.myDivider(),
+          
+         
             ListTile(
               title: TextView.size14Text(titlefile,
                   color: AppColors.textcolr,
@@ -81,6 +84,7 @@ class BlocarticleWidgets {
                     color: AppColors.greyTextColor,
                     fontFamily: Assets.raleWayMedium),
               ),
+              
             ),
             BlocarticleWidgets.myDivider(),
             ListTile(
@@ -95,6 +99,50 @@ class BlocarticleWidgets {
               ),
             ),
           ],
+        ),
+      ),
+    );
+  }
+
+ static Widget dropDown({
+    @required String ?selectedCategory,
+    @required Function ?updateSelectedCategory,
+    @required List<String> ?categories,
+    @required String ?hint,
+  }){
+    return Container(
+       height: sizes!.height * 0.07,
+       
+
+      child: ButtonTheme(
+        child: DropdownButton <String>(
+            hint: Text(hint ?? '',
+              style: TextStyle(
+                color: AppColors.hintTextGreyColor,
+                fontSize: sizes!.fontSize14,
+                fontFamily:Assets.raleWayRegular,
+              ),
+            ),
+            value: '1',
+            isExpanded: true,
+            icon: Icon(Icons.keyboard_arrow_down,color: AppColors.hintTextGreyColor,size: getHeight()*.035,),
+            underline: const SizedBox() ,
+            onChanged: (newValue) {
+              if(updateSelectedCategory != null){
+                updateSelectedCategory(newValue);
+              }
+            },
+            items: categories?.map<DropdownMenuItem<String>> ((String value) {
+              return DropdownMenuItem<String> (
+                value: value,
+                child: Text(value,style: TextStyle(
+                  color: AppColors.blackTextColor,
+                  fontFamily: Assets.raleWayRegular,
+                  fontSize: sizes!.fontSize14,
+                ),
+                ),
+              );
+            }).toList()
         ),
       ),
     );

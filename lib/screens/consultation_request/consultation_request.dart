@@ -152,6 +152,7 @@ class _ConsultationRequestState extends State<ConsultationRequest> {
                         ),
                         SizedBox(height: getHeight() * 0.08),
                         CommonWidgets.getButton(
+                          height: getHeight()*0.06,
                             text: "Book Consultation",
                             fontSize: sizes!.fontSize14,
                             fontFamily: Assets.raleWaySemiBold,

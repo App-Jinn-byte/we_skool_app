@@ -10,6 +10,24 @@ class Assets {
   static const String apiLoading = "assets/json/blueSimple.json";
   // images
   static const String backGroundImage = "assets/png/backGroundImage.png";
+  static const String weClasses = "assets/png/icon_classes.png";
+  static const String weAssessment = "assets/png/icon_assessment.png";
+  static const String weCalender = "assets/png/icon_calender.png";
+  static const String weCaregivers = "assets/png/icon_caregivers.png";
+  static const String weConsultation = "assets/png/icon_consultation.png";
+  static const String weParents = "assets/png/icon_parents.png";
+  static const String weContact = "assets/png/icon_contact.png";
+  static const String wePayments = "assets/png/icon_payment.png";
+  static const String weSpecial = "assets/png/icon_special.png";
+  static const String logout = "assets/png/logout.png";
+
+
+
+
+
+
+
+
   static const String download = "assets/png/Group.png";
   static const String splashLogo = "assets/png/splashLogo.png";
   static const String logo = "assets/png/logo.png";

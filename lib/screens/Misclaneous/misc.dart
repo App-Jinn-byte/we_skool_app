@@ -23,7 +23,7 @@ class MiscScreen extends StatelessWidget {
           child: Column(
               children: [
           CommonWidgets.appBarIconImageText(
-          text: "Misc",
+          text: "Miscellaneous",
               image: "",
               isDataFetched: false,
               onPressMenu: () {
