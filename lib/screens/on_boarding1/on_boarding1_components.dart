@@ -22,6 +22,7 @@ class OnBoarding1Components {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          SizedBox(height: getHeight() * 0.02),
           TextView.size24Text(heading, Assets.raleWayBold, color: AppColors.blackColor, fontWeight: FontWeight.w700, lines: 1),
           SizedBox(height: getHeight() * 0.02),
           TextView.size14Text(description, fontFamily: Assets.raleWayRegular,
@@ -52,7 +53,7 @@ class OnBoarding1Components {
 
             ],
           ),
-          SizedBox(height: getHeight() * 0.04),
+          SizedBox(height: getHeight() * 0.05),
           CommonWidgets.getButton(
               btnColor: AppColors.pinkColor,
               text: buttonText,

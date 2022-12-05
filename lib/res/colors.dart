@@ -25,6 +25,7 @@ class AppColors{
   static const lightblackcolr = Color.fromRGBO(50, 50, 50, 1);
   
   static const greycontainer = Color.fromRGBO(241, 241, 241, 1);
+  static const greySideMenuText = Color.fromRGBO(193, 193, 193, 1);
 
 
 

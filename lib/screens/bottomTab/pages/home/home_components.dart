@@ -8,6 +8,7 @@ import 'package:we_skool_app/screens/bottomTab/pages/calendar/calendar.dart';
 import 'package:we_skool_app/screens/consultation_request/consultation_request.dart';
 import 'package:we_skool_app/screens/classes/classes.dart';
 import 'package:we_skool_app/screens/payments/payments.dart';
+import 'package:we_skool_app/screens/sign_in/sign_in.dart';
 
 import '../../../../res/assets.dart';
 import '../../../../res/colors.dart';
@@ -15,6 +16,7 @@ import '../../../../widgets/common_widgets.dart';
 import '../../../../widgets/text_views.dart';
 import 'package:we_skool_app/screens/caregivers/caregivers.dart';
 import '../../../contact_us/contact_us.dart';
+import '../../bottom_tab.dart';
 
 class HomeComponents {
   Widget appBar(
@@ -175,6 +177,36 @@ class HomeComponents {
     );
   }
 
+  Widget drawerListWidget({
+    @required int? index,
+    @required int? selectedPage,
+    required BuildContext context,
+    @required Function? onPress}) {
+    return GestureDetector(
+      onTap: () {
+        onPress!.call();
+      },
+      child: Container(
+        height: sizes!.height * 0.07,
+        width: sizes!.width * 0.57,
+        color: selectedPage == index ? AppColors.yellowColor : Colors.white,
+        child: Padding(
+          padding: EdgeInsets.only(
+            // top: (sizes.width ?? 0) * 0.04,
+            // bottom: (sizes.width ?? 0) * 0.04,
+              left: sizes!.width * 0.06),
+          child:  Align(
+            alignment: Alignment.centerLeft,
+            child: Text(
+              menuNameList[index!],
+              style: const TextStyle(fontFamily: Assets.raleWayRegular),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
   List<String> menuNameList = [
     "We Classes",
     "We Assessment",
@@ -208,6 +240,17 @@ class Builddrawers extends StatefulWidget {
 
 class _BuilddrawersState extends State<Builddrawers> {
   bool istrue = false;
+  List<String> menuNameList = [
+    "We Classes",
+    "We Assessment",
+    "We Parents Resource",
+    "We Consultation",
+    "We Specials",
+    "We Payments",
+    "We Calendar",
+    "We Caregiver",
+    "Contact Us"
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -215,13 +258,12 @@ class _BuilddrawersState extends State<Builddrawers> {
       children: [
         Container(
           color: AppColors.pureWhiteColor,
-          width: getWidth() * 0.66,
+          width: getWidth() * 0.57,
           height: getHeight(),
           child: Row(
             children: [
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   Padding(
                     padding: EdgeInsets.only(
@@ -231,26 +273,35 @@ class _BuilddrawersState extends State<Builddrawers> {
                     child: Column(
                       children: [
                         Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          // mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             CommonWidgets.buildProfileContainer(
-                                imagePath: Assets.imagePlaceHolder),
+                                imagePath: Assets.imagePlaceHolder,
+                                isDataFetched: false
+                            ),
                             GestureDetector(
                                 onTap: () {
                                   Navigator.pop(context);
                                 },
                                 child: Padding(
                                   padding: EdgeInsets.only(
-                                      left: getWidth() * 0.2,
+                                      left: getWidth() * 0.26,
                                       bottom: getHeight() * 0.02),
-                                  child: Icon(Icons.cancel_outlined,
-                                      size: getHeight() * 0.04,
-                                      color: AppColors.pinkColor),
+                                  child: Container(
+                                    height: getHeight() * 0.02,
+                                    width: getWidth() * 0.035,
+                                    decoration: const BoxDecoration(
+                                      image: DecorationImage(
+                                        image: AssetImage(Assets.crossIcon),
+                                        fit: BoxFit.fill
+                                      ),
+                                    ),
+                                  )
                                 )),
                           ],
                         ),
                         SizedBox(
-                          height: getHeight() * 0.03,
+                          height: getHeight() * 0.02,
                         ),
                         Padding(
                           padding: EdgeInsets.only(right: getWidth() * 0.09),
@@ -260,237 +311,171 @@ class _BuilddrawersState extends State<Builddrawers> {
                               fontWeight: FontWeight.w600),
                         ),
                         SizedBox(
-                          height: getHeight() * 0.02,
+                          height: getHeight() * 0.03,
                         ),
                         Container(
                             height: getHeight() * 0.00078,
-                            width: getWidth() * 0.52,
+                            width: getWidth() * 0.46,
                             color: AppColors.greyColor),
                       ],
                     ),
                   ),
                   SizedBox(
-                    width: getWidth() * 0.02,
+                    height: getHeight() * 0.02,
                   ),
-                  InkWell(
-                    onTap: () {
-                      Navigator.pop(context);
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (_) => const Classes()));
-                    },
-                    child: Row(
-
-                      children: [
-
-                        Padding(
-                          padding:  EdgeInsets.only(left: getWidth()*0.03),
-                          child: Image.asset(Assets.weClasses),
+                  drawerListWidget(
+                      index: 0,
+                      selectedPage: widget.selectedPage,
+                      context: context,
+                      onPress: () {
+                        widget.onPress!.call(0);
+                        Navigator.pop(context);
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (_) => const Classes()));
+                      }
+                  ),
+                  drawerListWidget(
+                      index: 1,
+                      selectedPage: widget.selectedPage,
+                      context: context,
+                      onPress: () {
+                        widget.onPress!.call(1);
+                        Navigator.pop(context);
+                        // Navigator.push(context,
+                        //     MaterialPageRoute(builder: (_) => const Classes()));
+                      }
+                  ),
+                  drawerListWidget(
+                      index: 2,
+                      selectedPage: widget.selectedPage,
+                      context: context,
+                      onPress: () {
+                        widget.onPress!.call(2);
+                        // Navigator.pop(context);
+                        setState(() {
+                          istrue = !istrue;
+                        });
+                      }
+                  ),
+                  drawerListWidget(
+                      index: 3,
+                      selectedPage: widget.selectedPage,
+                      context: context,
+                      onPress: () {
+                        widget.onPress!.call(3);
+                        Navigator.pop(context);
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (_) => const ConsultationRequest()));
+                      }
+                  ),
+                  drawerListWidget(
+                      index: 4,
+                      selectedPage: widget.selectedPage,
+                      context: context,
+                      onPress: () {
+                        widget.onPress!.call(4);
+                        Navigator.pop(context);
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (_) => const WeSpecialScreen()));
+                      }
+                  ),
+                  drawerListWidget(
+                      index: 5,
+                      selectedPage: widget.selectedPage,
+                      context: context,
+                      onPress: () {
+                        widget.onPress!.call(5);
+                        Navigator.pop(context);
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (_) => const WePayments()));
+                      }
+                  ),
+                  drawerListWidget(
+                      index: 6,
+                      selectedPage: widget.selectedPage,
+                      context: context,
+                      onPress: () {
+                        widget.onPress!.call(6);
+                        Navigator.pop(context);
+                        Navigator.pushAndRemoveUntil(context,
+                            MaterialPageRoute(builder: (_) => const BottomTab(pageIndex: 2)), (route) => false);
+                      }
+                  ),
+                  drawerListWidget(
+                      index: 7,
+                      selectedPage: widget.selectedPage,
+                      context: context,
+                      onPress: () {
+                        widget.onPress!.call(7);
+                        Navigator.pop(context);
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (_) => const CaregiversScreen()));
+                      }
+                  ),
+                  drawerListWidget(
+                      index: 8,
+                      selectedPage: widget.selectedPage,
+                      context: context,
+                      onPress: () {
+                        widget.onPress!.call(8);
+                        Navigator.pop(context);
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (_) => const ContactUs()));
+                      }
+                  ),
+                  SizedBox(height: getHeight() * 0.03),
+                  Padding(
+                    padding: EdgeInsets.only(left: getWidth() * 0.05),
+                    child: GestureDetector(
+                      onTap: () {
+                        Navigator.pushAndRemoveUntil(context,
+                            MaterialPageRoute(builder: (_) => const SignIn()), (route) => false);
+                      },
+                      child: Container(
+                        height: getHeight() * 0.035,
+                        width: getWidth() * 0.28,
+                        decoration: BoxDecoration(
+                          color: AppColors.pinkColor,
+                          border: Border.all(color: Colors.transparent),
+                          borderRadius: BorderRadius.circular(
+                            getWidth() * .012,
+                          ),
                         ),
-
-                        Container(
-                          height: sizes!.height * 0.07,
-                          width: sizes!.width * 0.57,
-                          color: Colors.white,
-                          child: Padding(
-                            padding: EdgeInsets.only(
-                                // top: (sizes.width ?? 0) * 0.04,
-                                // bottom: (sizes.width ?? 0) * 0.04,
-                                left: sizes!.width * 0.06),
-                            child: const Align(
-                              alignment: Alignment.centerLeft,
-                              child: Text(
-                                'We Classes',
-                                style:
-                                    TextStyle(fontFamily: Assets.raleWayRegular),
-                              ),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            // Container(
+                            //   height: getHeight() * 0.015,
+                            //   width: getWidth() * 0.04,
+                            //   decoration: const BoxDecoration(
+                            //       image: DecorationImage(
+                            //           image: AssetImage(Assets.download), fit: BoxFit.fill
+                            //       )),
+                            // ),
+                            // SizedBox(width: getWidth() * 0.02),
+                            TextView.size18Text(
+                              "Log out",
+                              fontSize: sizes!.fontSize14,
+                              fontFamily: Assets.raleWaySemiBold,
+                              fontWeight: FontWeight.w600,
+                              color: AppColors.pureWhiteColor,
                             ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  Container(
-                    height: sizes!.height * 0.07,
-                    width: sizes!.width * 0.57,
-                    color: Colors.white,
-                    child: Padding(
-                      padding: EdgeInsets.only(left: sizes!.width * 0.06),
-                      child: const Align(
-                        alignment: Alignment.centerLeft,
-                        child: Text(
-                          'We Assessment',
-                          style: TextStyle(fontFamily: Assets.raleWayRegular),
+                          ],
                         ),
                       ),
-                    ),
-                  ),
-                  GestureDetector(
-                    onTap: () {
-                      setState(() {
-                        istrue = !istrue;
-                      });
-                    },
-                    child: Container(
-                      height: sizes!.height * 0.07,
-                      width: sizes!.width * 0.66,
-                      color: AppColors.yellowColor,
-                      child: Padding(
-                        padding: EdgeInsets.only(left: sizes!.width * 0.06),
-                        child: const Align(
-                          alignment: Alignment.centerLeft,
-                          child: Text(
-                            'We Parents Resource',
-                            style:
-                                TextStyle(fontFamily: Assets.raleWayRegular),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                  InkWell(
-                    onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (_) => const ConsultationRequest()));
-                    },
-                    child: Container(
-                      height: sizes!.height * 0.07,
-                      width: sizes!.width * 0.57,
-                      color: Colors.white,
-                      child: Padding(
-                        padding: EdgeInsets.only(left: sizes!.width * 0.06),
-                        child: const Align(
-                          alignment: Alignment.centerLeft,
-                          child: Text(
-                            'We Consultation',
-                            style:
-                                TextStyle(fontFamily: Assets.raleWayRegular),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                  InkWell(
-                    onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (_) => const WeSpecialScreen()));
-                    },
-                    child: Container(
-                      height: sizes!.height * 0.07,
-                      width: sizes!.width * 0.57,
-                      color: Colors.white,
-                      child: Padding(
-                        padding: EdgeInsets.only(left: sizes!.width * 0.06),
-                        child: const Align(
-                          alignment: Alignment.centerLeft,
-                          child: Text(
-                            'We Specials',
-                            style:
-                                TextStyle(fontFamily: Assets.raleWayRegular),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                  InkWell(
-                    onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (_) => const WePayments()));
-                    },
-                    child: Container(
-                      height: sizes!.height * 0.07,
-                      width: sizes!.width * 0.57,
-                      color: Colors.white,
-                      child: Padding(
-                        padding: EdgeInsets.only(left: sizes!.width * 0.06),
-                        child: const Align(
-                          alignment: Alignment.centerLeft,
-                          child: Text(
-                            'We payments',
-                            style:
-                                TextStyle(fontFamily: Assets.raleWayRegular),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                  InkWell(
-                    onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (_) => const Calendar()));
-                    },
-                    child: Container(
-                      height: sizes!.height * 0.07,
-                      width: sizes!.width * 0.57,
-                      color: Colors.white,
-                      child: Padding(
-                        padding: EdgeInsets.only(left: sizes!.width * 0.06),
-                        child: const Align(
-                          alignment: Alignment.centerLeft,
-                          child: Text(
-                            'We Calender',
-                            style:
-                                TextStyle(fontFamily: Assets.raleWayRegular),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                  InkWell(
-                    onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (_) => const CaregiversScreen()));
-                    },
-                    child: Container(
-                      height: sizes!.height * 0.07,
-                      width: sizes!.width * 0.57,
-                      color: Colors.white,
-                      child: Padding(
-                        padding: EdgeInsets.only(left: sizes!.width * 0.06),
-                        child: const Align(
-                          alignment: Alignment.centerLeft,
-                          child: Text(
-                            'We Caregivers',
-                            style:
-                                TextStyle(fontFamily: Assets.raleWayRegular),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                  InkWell(
-                    onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (_) => const ContactUs()));
-                    },
-                    child: Container(
-                      height: sizes!.height * 0.07,
-                      width: sizes!.width * 0.57,
-                      color: Colors.white,
-                      child: Padding(
-                        padding: EdgeInsets.only(left: sizes!.width * 0.06),
-                        child: const Align(
-                          alignment: Alignment.centerLeft,
-                          child: Text(
-                            'Contact Us',
-                            style:
-                                TextStyle(fontFamily: Assets.raleWayRegular),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
+                    ))
+                  //   CommonWidgets.getButton(
+                  //       onPress: () {
+                  //
+                  //       },
+                  //       text: "Log out",
+                  //       height: getHeight() * 0.035,
+                  //       width: getWidth() * 0.28,
+                  //       fontFamily: Assets.raleWaySemiBold,
+                  //       fontSize: sizes!.fontSize14,
+                  //       fontWeight: FontWeight.w600
+                  //   ),
+                  // )
                 ],
               ),
             ],
@@ -507,8 +492,8 @@ class _BuilddrawersState extends State<Builddrawers> {
                   ),
                 ),
                 margin: EdgeInsets.only(
-                    top: getHeight() * 0.0, bottom: getHeight() * 0.048),
-                height: getHeight() * 0.14,
+                    top: getHeight() * 0.0, bottom: getHeight() * 0.010),
+                height: getHeight() * 0.15,
                 width: getWidth() * 0.33,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -516,6 +501,7 @@ class _BuilddrawersState extends State<Builddrawers> {
                   children: [
                     InkWell(
                       onTap: () {
+                        Navigator.pop(context);
                         Navigator.push(
                             context,
                             MaterialPageRoute(
@@ -523,31 +509,26 @@ class _BuilddrawersState extends State<Builddrawers> {
                       },
                       child: Row(
                         children: [
-                          SizedBox(
-                            width: getWidth() * 0.02,
-                          ),
+                          SizedBox(width: getWidth() * 0.02),
                           Container(
-                            height: getHeight() * 0.016,
-                            width: getWidth() * 0.016,
+                            height: getHeight() * 0.01,
+                            width: getWidth() * 0.015,
                             decoration: const BoxDecoration(
-                              color: Colors.white,
                               shape: BoxShape.circle,
+                              color: AppColors.pureWhiteColor
                             ),
                           ),
-                          SizedBox(
-                            width: getWidth() * 0.02,
-                          ),
-                          Text(
-                            'Blog',
-                            style: TextStyle(
-                                color: AppColors.pureWhiteColor,
-                                fontSize: getFontRatio() * 15.0),
-                          ),
+                          SizedBox(width: getWidth() * 0.02),
+                          TextView.size14Text("Blog",
+                              color: AppColors.pureWhiteColor,
+                              fontFamily: Assets.raleWayMedium,
+                              fontWeight: FontWeight.w500),
                         ],
-                      ),
+                      )
                     ),
                     InkWell(
                       onTap: () {
+                        Navigator.pop(context);
                         Navigator.push(
                             context,
                             MaterialPageRoute(
@@ -555,63 +536,57 @@ class _BuilddrawersState extends State<Builddrawers> {
                       },
                       child: Row(
                         children: [
-                          SizedBox(
-                            width: getWidth() * 0.02,
-                          ),
+                          SizedBox(width: getWidth() * 0.02),
                           Container(
-                            height: getHeight() * 0.016,
-                            width: getWidth() * 0.016,
+                            height: getHeight() * 0.01,
+                            width: getWidth() * 0.015,
                             decoration: const BoxDecoration(
-                              color: Colors.white,
-                              shape: BoxShape.circle,
+                                shape: BoxShape.circle,
+                                color: AppColors.pureWhiteColor
                             ),
                           ),
-                          SizedBox(
-                            width: getWidth() * 0.02,
-                          ),
-                           Text(
-                            'Read',
-                            style: TextStyle(color: AppColors.pureWhiteColor,fontSize: getFontRatio() * 15.0),
-                          ),
+                          SizedBox(width: getWidth() * 0.02),
+                          TextView.size14Text("Read",
+                              color: AppColors.pureWhiteColor,
+                              fontFamily: Assets.raleWayMedium,
+                              fontWeight: FontWeight.w500),
                         ],
-                      ),
+                      )
                     ),
                     InkWell(
                       onTap: () {
-                        Navigator.push(
+                        Navigator.pop(context);
+                          Navigator.push(
                             context,
                             MaterialPageRoute(
                                 builder: (_) => const MiscScreen()));
+
                       },
                       child: Row(
                         children: [
-                          SizedBox(
-                            width: getWidth() * 0.02,
-                          ),
+                          SizedBox(width: getWidth() * 0.02),
                           Container(
-                            height: getHeight() * 0.016,
-                            width: getWidth() * 0.016,
+                            height: getHeight() * 0.01,
+                            width: getWidth() * 0.015,
                             decoration: const BoxDecoration(
-                              color: Colors.white,
-                              shape: BoxShape.circle,
+                                shape: BoxShape.circle,
+                                color: AppColors.pureWhiteColor
                             ),
                           ),
-                          SizedBox(
-                            width: getWidth() * 0.02,
-                          ),
-                          Text(
-                            'Miscellaneous',
-                            style: TextStyle(color: AppColors.pureWhiteColor,fontSize: getFontRatio() * 15.0),
-                          ),
+                          SizedBox(width: getWidth() * 0.02),
+                          TextView.size14Text("Miscellaneous",
+                              color: AppColors.pureWhiteColor,
+                              fontFamily: Assets.raleWayMedium,
+                              fontWeight: FontWeight.w500),
                         ],
-                      ),
+                      )
                     )
                   ],
                 ))
             : Container(),
       ],
     );
-    // afra bhai code.........
+         // afra bhai code.........
     // return Drawer(
     //   child: Container(
     //     decoration: const BoxDecoration(
@@ -759,5 +734,36 @@ class _BuilddrawersState extends State<Builddrawers> {
     //     ),
     //   ),
     // );
+  }
+  Widget drawerListWidget({
+    @required int? index,
+    @required int? selectedPage,
+    required BuildContext context,
+    @required Function? onPress}) {
+    return GestureDetector(
+      onTap: () {
+        onPress!.call();
+      },
+      child: Container(
+        height: sizes!.height * 0.065,
+        width: sizes!.width * 0.57,
+        color: selectedPage == index ? AppColors.yellowColor : AppColors.pureWhiteColor,
+        child: Padding(
+          padding: EdgeInsets.only(
+            // top: (sizes.width ?? 0) * 0.04,
+            // bottom: (sizes.width ?? 0) * 0.04,
+              left: sizes!.width * 0.06),
+          child:  Align(
+            alignment: Alignment.centerLeft,
+            child: TextView.size16Text(menuNameList[index!],
+                Assets.raleWayMedium, color: selectedPage == index ? AppColors.pureWhiteColor: AppColors.greySideMenuText, lines: 1, fontWeight: FontWeight.w500)
+            // Text(
+            //   menuNameList[index!],
+            //   style: const TextStyle(fontFamily: Assets.raleWayRegular),
+            // ),
+          ),
+        ),
+      ),
+    );
   }
 }

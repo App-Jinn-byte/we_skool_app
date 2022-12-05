@@ -31,5 +31,6 @@ class Assets {
   static const String socialIcon = "assets/png/social_icon.png";
   static const String chatIcon2 = "assets/png/chat_icon2.png";
   static const String calendarBg = "assets/png/calendar_background.png";
+  static const String crossIcon = "assets/png/cross_icon.png";
 
 }
