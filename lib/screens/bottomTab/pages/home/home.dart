@@ -21,9 +21,9 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   final HomeComponents _homeComponents = HomeComponents();
-  final GlobalKey<ScaffoldState>? _scaffoldKey = new GlobalKey<ScaffoldState>();
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
-  int selectedPage = 0;
+  int selectedPage = -1;
 
   @override
   void initState() {
@@ -36,13 +36,14 @@ class _HomeState extends State<Home> {
     });
   }
   void openDrawer(BuildContext context) {
-    _scaffoldKey?.currentState?.openDrawer();
+    _scaffoldKey.currentState?.openDrawer();
   }
 
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        key: _scaffoldKey,
         drawer: Builddrawers(context: context,onPress: updateSelectedPage,selectedPage: selectedPage,),
         body: Container(
             height: sizes!.height,
