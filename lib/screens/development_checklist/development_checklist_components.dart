@@ -7,7 +7,7 @@ import 'package:we_skool_app/widgets/common_widgets.dart';
 import '../../widgets/text_views.dart';
 
 class DevelepmentCheckComponents {
-  static Widget myBox({double? height,String? title,Desc,status,Agegroup,titletxt,desctxt,agegrouptxt,satustxt}) {
+  static Widget myBox({double? height,String? titletxt,desctxt,agegrouptxt,satustxt}) {
     return Container(
       height: height,
       width: getWidth(),
@@ -25,7 +25,7 @@ class DevelepmentCheckComponents {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            TextView.size14Text(title, color: AppColors.textcolr),
+            TextView.size14Text('Title', color: AppColors.textcolr),
             SizedBox(height: getHeight()*0.02,),
             TextView.size14Text(titletxt,color: AppColors.greyTextColor,fontFamily: Assets.raleWayMedium),
             DevelepmentCheckComponents.myDivider(),
@@ -33,8 +33,8 @@ class DevelepmentCheckComponents {
             SizedBox(
               height: getHeight() * 0.01,
             ),
-            TextView.size14Text(Desc, color: AppColors.textcolr),
-            SizedBox(height: getHeight()*0.02,),
+            TextView.size14Text('Description', color: AppColors.textcolr),
+            SizedBox(height: getHeight()*0.01,),
             TextView.size14Text(desctxt,color: AppColors.greyTextColor,fontFamily: Assets.raleWayMedium),
             SizedBox(
               height: getHeight() * 0.05,
@@ -43,14 +43,14 @@ class DevelepmentCheckComponents {
             SizedBox(
               height: getHeight() * 0.01,
             ),
-            TextView.size14Text(Agegroup, color: AppColors.textcolr),
+            TextView.size14Text('Age group', color: AppColors.textcolr),
             SizedBox(height: getHeight()*0.02,),
             TextView.size14Text(agegrouptxt,color: AppColors.greyTextColor,fontFamily: Assets.raleWayMedium),
             DevelepmentCheckComponents.myDivider(),
             SizedBox(
               height: getHeight() * 0.01,
             ),
-            TextView.size14Text(status, color: AppColors.textcolr),
+            TextView.size14Text('Status', color: AppColors.textcolr),
             SizedBox(
               height: getHeight() * 0.012,
             ),
@@ -62,12 +62,9 @@ class DevelepmentCheckComponents {
   }
 
   static Widget myDivider() {
-    return Padding(
-      padding: EdgeInsets.symmetric(horizontal: getWidth() * 0.01),
-      child: Divider(
-          height: getHeight() * 0.01,
-          thickness: getHeight() * 0.001,
-          color: AppColors.dividerColor),
-    );
+    return Divider(
+        height: getHeight() * 0.01,
+        thickness: getHeight() * 0.001,
+        color: AppColors.dividerColor);
   }
 }

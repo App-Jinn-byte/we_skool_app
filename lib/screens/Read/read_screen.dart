@@ -47,7 +47,7 @@ class ReadScreen extends StatelessWidget {
                    SizedBox(height: getHeight() * 0.04),
           
                   ButtonsTabBar(
-                    contentPadding: const EdgeInsets.symmetric(vertical: 2,horizontal: 35),
+                    contentPadding:  EdgeInsets.symmetric(vertical: 2,horizontal: getWidth()*0.08),
                     unselectedBorderColor: AppColors.greyColor,
                     borderWidth: 1,
                     height: getHeight() * 0.045,
@@ -63,7 +63,7 @@ class ReadScreen extends StatelessWidget {
           
                     tabs: const[
                       Tab(
-                        text: '        Read         ',
+                        text: '        Read        ',
                       ),
                       Tab(
                         text: 'Archived Reads',

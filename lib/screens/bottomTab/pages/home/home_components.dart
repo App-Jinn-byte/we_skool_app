@@ -147,77 +147,67 @@ class HomeComponents {
     );
   }
 
-  Widget singleRow(
-      {@required int? index,
-      @required int? selectedPage,
-      required BuildContext context,
-      @required Function? onPress}) {
-    return GestureDetector(
-      onTap: () {
-        onPress!.call();
-      },
-      child: Container(
-        height: sizes!.height * 0.07,
-        width: sizes!.width * 0.75,
-        color: selectedPage == index ? AppColors.yellowColor : Colors.white,
-        child: Padding(
-          padding: EdgeInsets.only(
-              // top: (sizes.width ?? 0) * 0.04,
-              // bottom: (sizes.width ?? 0) * 0.04,
-              left: sizes!.width * 0.06),
-          child: Align(
-            alignment: Alignment.centerLeft,
-            child: Text(
-              menuNameList[index!],
-              style: const TextStyle(fontFamily: Assets.raleWayRegular),
-            ),
-          ),
-        ),
-      ),
-    );
-  }
+  // Widget singleRow(
+  //     {@required int? index,
+  //     @required int? selectedPage,
+  //     required BuildContext context,
+  //     @required Function? onPress}) {
+  //   return GestureDetector(
+  //     onTap: () {
+  //       onPress!.call();
+  //     },
+  //     child: Container(
+  //       height: sizes!.height * 0.07,
+  //       width: sizes!.width * 0.75,
+  //       color: selectedPage == index ? AppColors.yellowColor : Colors.white,
+  //       child: Padding(
+  //         padding: EdgeInsets.only(
+  //             // top: (sizes.width ?? 0) * 0.04,
+  //             // bottom: (sizes.width ?? 0) * 0.04,
+  //             left: sizes!.width * 0.06),
+  //         child: Align(
+  //           alignment: Alignment.centerLeft,
+  //           child: Text(
+  //             menuNameList[index!],
+  //             style: const TextStyle(fontFamily: Assets.raleWayRegular),
+  //           ),
+  //         ),
+  //       ),
+  //     ),
+  //   );
+  // }
 
-  Widget drawerListWidget({
-    @required int? index,
-    @required int? selectedPage,
-    required BuildContext context,
-    @required Function? onPress}) {
-    return GestureDetector(
-      onTap: () {
-        onPress!.call();
-      },
-      child: Container(
-        height: sizes!.height * 0.07,
-        width: sizes!.width * 0.57,
-        color: selectedPage == index ? AppColors.yellowColor : Colors.white,
-        child: Padding(
-          padding: EdgeInsets.only(
-            // top: (sizes.width ?? 0) * 0.04,
-            // bottom: (sizes.width ?? 0) * 0.04,
-              left: sizes!.width * 0.06),
-          child:  Align(
-            alignment: Alignment.centerLeft,
-            child: Text(
-              menuNameList[index!],
-              style: const TextStyle(fontFamily: Assets.raleWayRegular),
-            ),
-          ),
-        ),
-      ),
-    );
-  }
+  // Widget drawerListWidget({
+  //   @required int? index,
+  //   @required int? selectedPage,
+  //   required BuildContext context,
+  //   @required Function? onPress}) {
+  //   return GestureDetector(
+  //     onTap: () {
+  //       onPress!.call();
+  //     },
+  //     child: Container(
+  //       height: sizes!.height * 0.07,
+  //       width: sizes!.width * 0.57,
+  //       color: selectedPage == index ? AppColors.yellowColor : Colors.white,
+  //       child: Padding(
+  //         padding: EdgeInsets.only(
+           
+  //             left: sizes!.width * 0.06),
+  //         child:  Align(
+  //           alignment: Alignment.centerLeft,
+  //           child: Text(
+  //             menuNameList[index!],
+  //             style: const TextStyle(fontFamily: Assets.raleWayRegular),
+  //           ),
+  //         ),
+  //       ),
+  //     ),
+  //   );
+  // }
 
-  List<String> menuNameList = [
-    "We Classes",
-    "We Assessment",
-    "We Parents Resource",
-    "We Consultation",
-    "We Specials",
-    "We Payments",
-    "We Calendar",
-    "We Caregiver",
-    "Contact Us"
-  ];
+
+
 }
 
 class Builddrawers extends StatefulWidget {
@@ -251,6 +241,17 @@ class _BuilddrawersState extends State<Builddrawers> {
     "We Caregiver",
     "Contact Us"
   ];
+  List<String> menuIconList = [
+    Assets.weClasses,
+    Assets.weAssessment,
+    Assets.weContact,
+    Assets.weConsultation,
+    Assets.weSpecial,
+    Assets.wePayments,
+    Assets.weCalender,
+   Assets.weCaregivers,
+   Assets.weContact,
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -258,12 +259,13 @@ class _BuilddrawersState extends State<Builddrawers> {
       children: [
         Container(
           color: AppColors.pureWhiteColor,
-          width: getWidth() * 0.57,
+          width: getWidth() * 0.60,
           height: getHeight(),
           child: Row(
             children: [
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
+                
                 children: [
                   Padding(
                     padding: EdgeInsets.only(
@@ -311,7 +313,7 @@ class _BuilddrawersState extends State<Builddrawers> {
                               fontWeight: FontWeight.w600),
                         ),
                         SizedBox(
-                          height: getHeight() * 0.03,
+                          height: getHeight() * 0.02,
                         ),
                         Container(
                             height: getHeight() * 0.00078,
@@ -320,9 +322,7 @@ class _BuilddrawersState extends State<Builddrawers> {
                       ],
                     ),
                   ),
-                  SizedBox(
-                    height: getHeight() * 0.02,
-                  ),
+                  
                   drawerListWidget(
                       index: 0,
                       selectedPage: widget.selectedPage,
@@ -333,7 +333,7 @@ class _BuilddrawersState extends State<Builddrawers> {
                         Navigator.push(context,
                             MaterialPageRoute(builder: (_) => const Classes()));
                       }
-                  ),
+                  ),  
                   drawerListWidget(
                       index: 1,
                       selectedPage: widget.selectedPage,
@@ -433,7 +433,7 @@ class _BuilddrawersState extends State<Builddrawers> {
                       },
                       child: Container(
                         height: getHeight() * 0.035,
-                        width: getWidth() * 0.28,
+                        width: getWidth() * 0.26,
                         decoration: BoxDecoration(
                           color: AppColors.pinkColor,
                           border: Border.all(color: Colors.transparent),
@@ -442,17 +442,10 @@ class _BuilddrawersState extends State<Builddrawers> {
                           ),
                         ),
                         child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: [
-                            // Container(
-                            //   height: getHeight() * 0.015,
-                            //   width: getWidth() * 0.04,
-                            //   decoration: const BoxDecoration(
-                            //       image: DecorationImage(
-                            //           image: AssetImage(Assets.download), fit: BoxFit.fill
-                            //       )),
-                            // ),
-                            // SizedBox(width: getWidth() * 0.02),
+                            Image.asset(Assets.logout,height: getHeight()*0.02),
+                       
                             TextView.size18Text(
                               "Log out",
                               fontSize: sizes!.fontSize14,
@@ -464,18 +457,7 @@ class _BuilddrawersState extends State<Builddrawers> {
                         ),
                       ),
                     ))
-                  //   CommonWidgets.getButton(
-                  //       onPress: () {
-                  //
-                  //       },
-                  //       text: "Log out",
-                  //       height: getHeight() * 0.035,
-                  //       width: getWidth() * 0.28,
-                  //       fontFamily: Assets.raleWaySemiBold,
-                  //       fontSize: sizes!.fontSize14,
-                  //       fontWeight: FontWeight.w600
-                  //   ),
-                  // )
+                
                 ],
               ),
             ],
@@ -492,7 +474,7 @@ class _BuilddrawersState extends State<Builddrawers> {
                   ),
                 ),
                 margin: EdgeInsets.only(
-                    top: getHeight() * 0.0, bottom: getHeight() * 0.010),
+                    top: getHeight() * 0.0, bottom: getHeight() * 0.117),
                 height: getHeight() * 0.15,
                 width: getWidth() * 0.33,
                 child: Column(
@@ -586,155 +568,9 @@ class _BuilddrawersState extends State<Builddrawers> {
             : Container(),
       ],
     );
-         // afra bhai code.........
-    // return Drawer(
-    //   child: Container(
-    //     decoration: const BoxDecoration(
-    //       color: AppColors.pureWhiteColor
-    //     ),
-    //     child: Column(
-    //       crossAxisAlignment: CrossAxisAlignment.start,
-    //       children: [
-    //         Padding(
-    //           padding: EdgeInsets.only(
-    //               left: getWidth() * 0.05, right: getWidth() * 0.02, top: getHeight() * 0.02),
-    //           child: Column(
-    //             crossAxisAlignment: CrossAxisAlignment.start,
-    //             children: [
-    //               Row(
-    //                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
-    //                 children: [
-    //                   CommonWidgets.buildProfileContainer(imagePath: Assets.imagePlaceHolder),
-    //                   GestureDetector(
-    //                       onTap: () {
 
-    //                         //Navigator.pop(context);
-    //                       },
-    //                       child: Icon(Icons.cancel_outlined, size: getHeight() * 0.04, color: AppColors.pinkColor))
-    //                 ],
-    //               ),
-    //               SizedBox(height: getHeight() * 0.02,),
-    //               TextView.size18Text("Angela Williams",
-    //                   color: AppColors.pureBlack, fontFamily: Assets.raleWaySemiBold, fontWeight: FontWeight.w600),
-    //               SizedBox(height: getHeight() * 0.02,),
-    //               Divider(height: getHeight() * 0.01, thickness: getHeight() * 0.001, color: AppColors.dividerColor),
-    //             ],
-    //           ),
-    //         ),
-    //         SizedBox(
-    //           height: sizes!.regularPadding,
-    //         ),
-    //         Expanded(
-    //           child: ListView(
-    //             children: [
-    //               singleRow(
-    //                   index: 0,
-    //                   selectedPage: selectedPage,
-    //                   context: context,
-    //                   onPress: () {
-    //                     onPress!.call(0);
-    //                     Navigator.pop(context);
-    //                      Navigator.push(context,
-    //                                   MaterialPageRoute(builder: (_) => const Classes()));
-    //                     // Navigator.push(context,AppRoutes.appRoutes(AppRoutes.profileCusPage));
-    //                   }),
-    //               singleRow(
-    //                   index: 1,
-    //                   selectedPage: selectedPage,
-    //                   context: context,
-    //                   onPress: () {
-    //                     onPress!.call(1);
-    //                     Navigator.pop(context);
-    //                     // Navigator.push(context,AppRoutes.appRoutes(AppRoutes.notificationsPage));
-    //                   }),
-    //               singleRow(
-    //                   index: 2,
-    //                   selectedPage: selectedPage,
-    //                   context: context,
-    //                   onPress: () {
-    //                     onPress!.call(2);
-    //                     // PopupMenuButton<int>(
-    //                     //   color: Colors.amber,
-    //                     //   itemBuilder: (context)=> [
-    //                     //     PopupMenuItem<int>(child: Text('blog'),value: 0,),
-    //                     //     PopupMenuItem<int>(child: Text('Read'),value: 1,)
-    //                     //
-    //                     //   ]
-    //                     // );
-
-    //                     // Navigator.push(context, AppRoutes.appRoutes(AppRoutes.queriesPage));
-    //                   }),
-    //               singleRow(
-    //                   index: 3,
-    //                   selectedPage: selectedPage,
-    //                   context: context,
-    //                   onPress: () {
-    //                     onPress!.call(3);
-    //                     Navigator.pop(context);
-    //                     Navigator.push(context,
-    //                         MaterialPageRoute(builder: (_) => const ConsultationRequest()));
-    //                     // Navigator.push(context, AppRoutes.appRoutes(AppRoutes.inboxPage));
-    //                   }),
-    //               singleRow(
-    //                   index: 4,
-    //                   selectedPage: selectedPage,
-    //                   context: context,
-    //                   onPress: () {
-    //                     onPress!.call(4);
-    //                     Navigator.pop(context);
-    //                     Navigator.push(context,
-    //                         MaterialPageRoute(builder: (_) => const WeSpecialScreen()));
-    //                   }),
-    //               singleRow(
-    //                   index: 5,
-    //                   selectedPage: selectedPage,
-    //                   context: context,
-    //                   onPress: () async {
-    //                     onPress!.call(5);
-    //                     Navigator.pop(context);
-    //                     Navigator.push(context,
-    //                                   MaterialPageRoute(builder: (_) => const WePayments()));
-    //                     // await logoutUser(context: context);
-    //                   }),
-    //               singleRow(
-    //                   index: 6,
-    //                   selectedPage: selectedPage,
-    //                   context: context,
-    //                   onPress: () async {
-    //                     onPress!.call(6);
-    //                     Navigator.pop(context);
-    //                     // await logoutUser(context: context);
-    //                   }),
-    //               singleRow(
-    //                   index: 7,
-    //                   selectedPage: selectedPage,
-    //                   context: context,
-    //                   onPress: () async {
-    //                     onPress!.call(7);
-    //                     Navigator.pop(context);
-    //                     Navigator.push(context,
-    //                         MaterialPageRoute(builder: (_) => const CaregiversScreen()));
-    //                     // await logoutUser(context: context);
-    //                   }),
-    //               singleRow(
-    //                   index: 8,
-    //                   selectedPage: selectedPage,
-    //                   context: context,
-    //                   onPress: () async {
-    //                     onPress!.call(8);
-    //                      Navigator.push(context,
-    //                             MaterialPageRoute(builder: (_) => const ContactUs()));
-
-    //                     // await logoutUser(context: context);
-    //                   }),
-    //             ],
-    //           ),
-    //         )
-    //       ],
-    //     ),
-    //   ),
-    // );
   }
+
   Widget drawerListWidget({
     @required int? index,
     @required int? selectedPage,
@@ -746,21 +582,20 @@ class _BuilddrawersState extends State<Builddrawers> {
       },
       child: Container(
         height: sizes!.height * 0.065,
-        width: sizes!.width * 0.57,
+        width: sizes!.width * 0.60,
         color: selectedPage == index ? AppColors.yellowColor : AppColors.pureWhiteColor,
         child: Padding(
           padding: EdgeInsets.only(
-            // top: (sizes.width ?? 0) * 0.04,
-            // bottom: (sizes.width ?? 0) * 0.04,
+          
               left: sizes!.width * 0.06),
-          child:  Align(
-            alignment: Alignment.centerLeft,
-            child: TextView.size16Text(menuNameList[index!],
-                Assets.raleWayMedium, color: selectedPage == index ? AppColors.pureWhiteColor: AppColors.greySideMenuText, lines: 1, fontWeight: FontWeight.w500)
-            // Text(
-            //   menuNameList[index!],
-            //   style: const TextStyle(fontFamily: Assets.raleWayRegular),
-            // ),
+          child:  Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              Image.asset(menuIconList[index!],height: getHeight()*0.02,color: selectedPage == index ? AppColors.pureWhiteColor: AppColors.greySideMenuText),
+               SizedBox(width: getWidth()*0.045,),
+              TextView.size16Text(menuNameList[index],
+                  Assets.raleWayMedium, color: selectedPage == index ? AppColors.pureWhiteColor: AppColors.greySideMenuText, lines: 1, fontWeight: FontWeight.w500),
+            ],
           ),
         ),
       ),

@@ -129,6 +129,7 @@ class ContactUs extends StatelessWidget {
                             height: getHeight() * 0.03,
                           ),
                           CommonWidgets.getButton(
+                            height: getHeight()*0.06,
                               onPress: () {
                                 showAnimatedDialog(
                                   context: context,
