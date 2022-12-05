@@ -1,7 +1,5 @@
 import 'package:buttons_tabbar/buttons_tabbar.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:we_skool_app/res/colors.dart';
 import 'package:we_skool_app/screens/Read/read_components.dart';
 import 'package:we_skool_app/screens/caregivers/caregivers_components.dart';
@@ -10,13 +8,18 @@ import '../../res/assets.dart';
 import '../../res/res.dart';
 import '../../widgets/common_widgets.dart';
 
-class CaregiversScreen extends StatelessWidget {
+class CaregiversScreen extends StatefulWidget {
   const CaregiversScreen({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    initializeResources(context: context);
+  State<CaregiversScreen> createState() => _CaregiversScreenState();
+}
 
+class _CaregiversScreenState extends State<CaregiversScreen> {
+  final CareGiversComponents _careGiversComponents = CareGiversComponents();
+
+  @override
+  Widget build(BuildContext context) {
     return SafeArea(
         child: Scaffold(
       body: DefaultTabController(
@@ -35,7 +38,7 @@ class CaregiversScreen extends StatelessWidget {
                     Navigator.pop(context);
                   }),
               Container(
-                  height:   sizes!.height * 0.80,
+                  height:   sizes!.height * 0.85,
                   margin: EdgeInsets.symmetric(horizontal: getWidth() * 0.05),
                   decoration: const BoxDecoration(
                     image: DecorationImage(
@@ -54,14 +57,14 @@ class CaregiversScreen extends StatelessWidget {
                         height: getHeight() * 0.045,
                         backgroundColor: AppColors.redColor,
                         unselectedBackgroundColor: AppColors.pureWhiteColor,
-                        borderColor: AppColors.greyColor,
+                        borderColor: AppColors.pinkColor,
                         buttonMargin:
                             EdgeInsets.symmetric(horizontal: getWidth() * 0.02),
                         tabs: const[
                           Tab(
                             text: 'Assigned Caregivers',
 
-                          
+
                           ),
                           Tab(
                            text: 'Manage Caregivers',
@@ -77,6 +80,7 @@ class CaregiversScreen extends StatelessWidget {
                           ],
                         ),
                       ),
+                      SizedBox(height: getHeight() * 0.04),
                     ],
                   )),
             ]),
@@ -87,50 +91,42 @@ class CaregiversScreen extends StatelessWidget {
   }
 
   Widget assignedCaregivers() {
-   
         return Column(
           children: [
-            Caregivers.myBox(
-              firstname: 'First Name',
-              lastname: 'Last Name',
-              email: 'Email',
-              lastslide: 'Contact Number',
-              lastslidetxt: '+123 544 342 00'
-    
-    
+            _careGiversComponents.myBox(
+              firstname: 'Your First Name',
+              lastname: 'Your Last Name',
+              email: 'johanemail@email.com',
+              status: 'Active'
+
+
             ),
           ],
         );
-      }
-     
-    
   }
-   Widget manageCaregivers() {
-    
+
+  Widget manageCaregivers() {
+
     return Column(
       children: [
         CommonWidgets.searchField(),
         SizedBox(height: getHeight()*0.02),
         Expanded(
           child: ListView.separated(
-            physics: const BouncingScrollPhysics(
-                parent: AlwaysScrollableScrollPhysics()),
             shrinkWrap: true,
-            scrollDirection: Axis.vertical,
             itemCount: 3,
             itemBuilder: (context, index) {
-              return Caregivers.myBox(
-                firstname: 'First Name',
-                lastname: 'Last Name',
-                email: 'Email',
-                lastslide: 'Status',
-                lastslidetxt: 'Your Status'
-                
-          
+              return _careGiversComponents.myBox(
+                  firstname: 'John',
+                  lastname: 'Caregivers',
+                  email: 'johanemail@email.com',
+                  status: 'Active'
+
+
               );
-              
-              
-            
+
+
+
             },
             separatorBuilder: (BuildContext context, int index) {
               return  SizedBox(
@@ -142,6 +138,8 @@ class CaregiversScreen extends StatelessWidget {
         CommonWidgets.getButton(onPress: (){},text: 'Add New',height: getHeight()*0.06),
       ],
     );
-    
+
   }
+}
+
 

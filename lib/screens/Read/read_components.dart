@@ -4,45 +4,15 @@ import 'package:we_skool_app/res/colors.dart';
 import 'package:we_skool_app/res/res.dart';
 import 'package:we_skool_app/widgets/text_views.dart';
 
-class ReadWidgets {
+class ReadComponents {
 
-  static Widget myGetButton({
-    double? width,
-    String? text,
-    double? height,
-    required Function? onPress,
-    Color? btnColor,
-    Color? textColor,
-    Color? borderColor,
-    final fontFamily,
-    final fontWeight,
-  }) {
-    return GestureDetector(
-      onTap: () {
-        onPress!.call();
-      },
-      child: Container(
-        height: height ?? sizes!.height,
-        width: width ?? sizes!.width,
-        decoration: BoxDecoration(
-          color: btnColor ?? AppColors.pinkColor,
-          border: Border.all(color: borderColor ?? Colors.transparent),
-          borderRadius: BorderRadius.circular(
-            getWidth() * .02,
-          ),
-        ),
-        child: Center(
-            child: TextView.size14Text(
-          text ?? "SUBMIT",
-          fontFamily: fontFamily ?? Assets.raleWaySemiBold,
-          fontWeight: fontWeight ?? FontWeight.w600,
-          color: textColor ?? AppColors.pureWhiteColor,
-        )),
-      ),
-    );
-  }
-
-   static Widget myBox({double? height,String? title,Desc,Link,action,titletxt,desctxt,linktxt,actiontxt}) {
+   Widget myBox({
+     double? height,
+     @required String? titleText,
+     @required String? descriptionText,
+     @required String? linkText,
+     @required String? actionText
+   }) {
     return Container(
       height: height,
       width: getWidth(),
@@ -55,7 +25,6 @@ class ReadWidgets {
           BoxShadow(
               color: AppColors.shadow, blurRadius: 2, offset: Offset(1, 3))
         ],
-
         borderRadius: BorderRadius.all(Radius.circular(getHeight() * .014)),
       ),
       child: Padding(
@@ -64,38 +33,23 @@ class ReadWidgets {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            TextView.size14Text(title, color: AppColors.textcolr),
-            SizedBox(height: getHeight()*0.02,),
-            TextView.size14Text(titletxt,color: AppColors.greyTextColor,fontFamily: Assets.raleWayMedium),
-            ReadWidgets.myDividers(),
-
-
+            TextView.size14Text('Title', color: AppColors.textcolr, fontFamily: Assets.raleWaySemiBold, fontWeight: FontWeight.w600),
+            SizedBox(height: getHeight()*0.015),
+            TextView.size14Text(titleText, color: AppColors.grey2colrtext,fontFamily: Assets.raleWayMedium, fontWeight: FontWeight.w500),
+            ReadComponents.myDividers(),
+            TextView.size14Text('Description', color: AppColors.textcolr, fontFamily: Assets.raleWaySemiBold, fontWeight: FontWeight.w600),
+            SizedBox(height: getHeight()*0.015),
+            TextView.size14Text(descriptionText,color: AppColors.grey2colrtext,fontFamily: Assets.raleWayMedium, fontWeight: FontWeight.w500, lines: 3),
+            ReadComponents.myDividers(),
+            TextView.size14Text('Link', color: AppColors.textcolr, fontFamily: Assets.raleWaySemiBold, fontWeight: FontWeight.w600),
+            SizedBox(height: getHeight()*0.015),
+            TextView.size14Text(linkText,color: AppColors.grey2colrtext,fontFamily: Assets.raleWayMedium, fontWeight: FontWeight.w500),
+            ReadComponents.myDividers(),
+            TextView.size14Text('Action', color: AppColors.textcolr, fontFamily: Assets.raleWaySemiBold, fontWeight: FontWeight.w600),
             SizedBox(
-              height: getHeight() * 0.01,
+              height: getHeight() * 0.015,
             ),
-            TextView.size14Text(Desc, color: AppColors.textcolr),
-            SizedBox(height: getHeight()*0.01,),
-            TextView.size14Text(desctxt,color: AppColors.greyTextColor,fontFamily: Assets.raleWayMedium),
-            SizedBox(
-              height: getHeight() * 0.05,
-            ),
-            ReadWidgets.myDividers(),
-
-            SizedBox(
-              height: getHeight() * 0.01,
-            ),
-            TextView.size14Text(Link, color: AppColors.textcolr),
-            SizedBox(height: getHeight()*0.02,),
-            TextView.size14Text(linktxt,color: AppColors.greyTextColor,fontFamily: Assets.raleWayMedium),
-            ReadWidgets.myDividers(),
-            SizedBox(
-              height: getHeight() * 0.01,
-            ),
-            TextView.size14Text(action, color: AppColors.textcolr),
-            SizedBox(
-              height: getHeight() * 0.012,
-            ),
-            TextView.size14Text(actiontxt, color: AppColors.greyTextColor),
+            TextView.size14Text(actionText, color: AppColors.grey2colrtext, fontFamily: Assets.raleWayMedium, fontWeight: FontWeight.w500),
           ],
         ),
       ),
@@ -103,12 +57,9 @@ class ReadWidgets {
   }
 
   static Widget myDividers() {
-    return Padding(
-      padding: EdgeInsets.symmetric(horizontal: getWidth() * 0.01),
-      child: Divider(
-          height: getHeight() * 0.01,
-          thickness: getHeight() * 0.001,
-          color: AppColors.dividerColor),
-    );
+    return Divider(
+        height: getHeight() * 0.035,
+        thickness: getHeight() * 0.001,
+        color: AppColors.dividerColor);
   }
 }

@@ -110,7 +110,7 @@ class AlertDilog extends StatelessWidget {
                                 Navigator.pop(context);
                               },
                               text: 'Cancel',
-                              textColor: AppColors.btntextcolr,
+                              textColor: AppColors.grey2colrtext,
                               btnColor: AppColors.pureWhiteColor,
                               height: getHeight() * 0.06,
                               fontFamily: Assets.raleWaySemiBold,
