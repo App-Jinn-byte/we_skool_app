@@ -90,7 +90,7 @@ class WeSpecialScreen extends StatelessWidget {
                         SizedBox(height: getHeight() * 0.01),
                         WeSpecialWidgets.myDividers(),
                         SizedBox(height: getHeight() * 0.03),
-                        CommonWidgets.getButton(onPress: () {}, text: 'Enroll'),
+                        CommonWidgets.getButton(onPress: () {}, text: 'Enroll',height: getHeight()*0.06),
                       ],
                     ),
                   ),

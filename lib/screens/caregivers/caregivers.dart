@@ -127,7 +127,6 @@ class CaregiversScreen extends StatelessWidget {
                 lastslidetxt: 'Your Status'
                 
           
-          
               );
               
               
@@ -140,7 +139,7 @@ class CaregiversScreen extends StatelessWidget {
             },
           ),
         ),
-        CommonWidgets.getButton(onPress: (){},text: 'Add New'),
+        CommonWidgets.getButton(onPress: (){},text: 'Add New',height: getHeight()*0.06),
       ],
     );
     
