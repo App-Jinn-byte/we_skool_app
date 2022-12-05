@@ -213,91 +213,148 @@ class _BuilddrawersState extends State<Builddrawers> {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        SingleChildScrollView(
-          child: Container(
-            color: AppColors.pureWhiteColor,
-            width: getWidth() * 0.57,
-            child: Row(
-              children: [
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Padding(
-                      padding: EdgeInsets.only(
-                          left: getWidth() * 0.05,
-                          right: getWidth() * 0.02,
-                          top: getHeight() * 0.02),
-                      child: Column(
-                        children: [
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              CommonWidgets.buildProfileContainer(
-                                  imagePath: Assets.imagePlaceHolder),
-                              GestureDetector(
-                                  onTap: () {
-                                    Navigator.pop(context);
-                                  },
-                                  child: Padding(
-                                    padding: EdgeInsets.only(
-                                        left: getWidth() * 0.2,
-                                        bottom: getHeight() * 0.02),
-                                    child: Icon(Icons.cancel_outlined,
-                                        size: getHeight() * 0.04,
-                                        color: AppColors.pinkColor),
-                                  )),
-                            ],
+        Container(
+          color: AppColors.pureWhiteColor,
+          width: getWidth() * 0.66,
+          height: getHeight(),
+          child: Row(
+            children: [
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Padding(
+                    padding: EdgeInsets.only(
+                        left: getWidth() * 0.05,
+                        right: getWidth() * 0.02,
+                        top: getHeight() * 0.02),
+                    child: Column(
+                      children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            CommonWidgets.buildProfileContainer(
+                                imagePath: Assets.imagePlaceHolder),
+                            GestureDetector(
+                                onTap: () {
+                                  Navigator.pop(context);
+                                },
+                                child: Padding(
+                                  padding: EdgeInsets.only(
+                                      left: getWidth() * 0.2,
+                                      bottom: getHeight() * 0.02),
+                                  child: Icon(Icons.cancel_outlined,
+                                      size: getHeight() * 0.04,
+                                      color: AppColors.pinkColor),
+                                )),
+                          ],
+                        ),
+                        SizedBox(
+                          height: getHeight() * 0.03,
+                        ),
+                        Padding(
+                          padding: EdgeInsets.only(right: getWidth() * 0.09),
+                          child: TextView.size18Text("Angela Williams",
+                              color: AppColors.pureBlack,
+                              fontFamily: Assets.raleWaySemiBold,
+                              fontWeight: FontWeight.w600),
+                        ),
+                        SizedBox(
+                          height: getHeight() * 0.02,
+                        ),
+                        Container(
+                            height: getHeight() * 0.00078,
+                            width: getWidth() * 0.52,
+                            color: AppColors.greyColor),
+                      ],
+                    ),
+                  ),
+                  SizedBox(
+                    width: getWidth() * 0.02,
+                  ),
+                  InkWell(
+                    onTap: () {
+                      Navigator.pop(context);
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (_) => const Classes()));
+                    },
+                    child: Row(
+
+                      children: [
+
+                        Padding(
+                          padding:  EdgeInsets.only(left: getWidth()*0.03),
+                          child: Image.asset(Assets.weClasses),
+                        ),
+
+                        Container(
+                          height: sizes!.height * 0.07,
+                          width: sizes!.width * 0.57,
+                          color: Colors.white,
+                          child: Padding(
+                            padding: EdgeInsets.only(
+                                // top: (sizes.width ?? 0) * 0.04,
+                                // bottom: (sizes.width ?? 0) * 0.04,
+                                left: sizes!.width * 0.06),
+                            child: const Align(
+                              alignment: Alignment.centerLeft,
+                              child: Text(
+                                'We Classes',
+                                style:
+                                    TextStyle(fontFamily: Assets.raleWayRegular),
+                              ),
+                            ),
                           ),
-                          SizedBox(
-                            height: getHeight() * 0.03,
-                          ),
-                          Padding(
-                            padding: EdgeInsets.only(right: getWidth() * 0.09),
-                            child: TextView.size18Text("Angela Williams",
-                                color: AppColors.pureBlack,
-                                fontFamily: Assets.raleWaySemiBold,
-                                fontWeight: FontWeight.w600),
-                          ),
-                          SizedBox(
-                            height: getHeight() * 0.02,
-                          ),
-                          Container(
-                              height: getHeight() * 0.00078,
-                              width: getWidth() * 0.46,
-                              color: AppColors.greyColor),
-                        ],
+                        ),
+                      ],
+                    ),
+                  ),
+                  Container(
+                    height: sizes!.height * 0.07,
+                    width: sizes!.width * 0.57,
+                    color: Colors.white,
+                    child: Padding(
+                      padding: EdgeInsets.only(left: sizes!.width * 0.06),
+                      child: const Align(
+                        alignment: Alignment.centerLeft,
+                        child: Text(
+                          'We Assessment',
+                          style: TextStyle(fontFamily: Assets.raleWayRegular),
+                        ),
                       ),
                     ),
-                    SizedBox(
-                      height: getHeight() * 0.02,
-                    ),
-                    InkWell(
-                      onTap: () {
-                        Navigator.pop(context);
-                        Navigator.push(context,
-                            MaterialPageRoute(builder: (_) => const Classes()));
-                      },
-                      child: Container(
-                        height: sizes!.height * 0.07,
-                        width: sizes!.width * 0.57,
-                        color: Colors.white,
-                        child: Padding(
-                          padding: EdgeInsets.only(
-                              // top: (sizes.width ?? 0) * 0.04,
-                              // bottom: (sizes.width ?? 0) * 0.04,
-                              left: sizes!.width * 0.06),
-                          child: const Align(
-                            alignment: Alignment.centerLeft,
-                            child: Text(
-                              'We Classes',
-                              style:
-                                  TextStyle(fontFamily: Assets.raleWayRegular),
-                            ),
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      setState(() {
+                        istrue = !istrue;
+                      });
+                    },
+                    child: Container(
+                      height: sizes!.height * 0.07,
+                      width: sizes!.width * 0.66,
+                      color: AppColors.yellowColor,
+                      child: Padding(
+                        padding: EdgeInsets.only(left: sizes!.width * 0.06),
+                        child: const Align(
+                          alignment: Alignment.centerLeft,
+                          child: Text(
+                            'We Parents Resource',
+                            style:
+                                TextStyle(fontFamily: Assets.raleWayRegular),
                           ),
                         ),
                       ),
                     ),
-                    Container(
+                  ),
+                  InkWell(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (_) => const ConsultationRequest()));
+                    },
+                    child: Container(
                       height: sizes!.height * 0.07,
                       width: sizes!.width * 0.57,
                       color: Colors.white,
@@ -306,177 +363,137 @@ class _BuilddrawersState extends State<Builddrawers> {
                         child: const Align(
                           alignment: Alignment.centerLeft,
                           child: Text(
-                            'We Assessment',
-                            style: TextStyle(fontFamily: Assets.raleWayRegular),
+                            'We Consultation',
+                            style:
+                                TextStyle(fontFamily: Assets.raleWayRegular),
                           ),
                         ),
                       ),
                     ),
-                    GestureDetector(
-                      onTap: () {
-                        setState(() {
-                          istrue = !istrue;
-                        });
-                      },
-                      child: Container(
-                        height: sizes!.height * 0.07,
-                        width: sizes!.width * 0.57,
-                        color: AppColors.yellowColor,
-                        child: Padding(
-                          padding: EdgeInsets.only(left: sizes!.width * 0.06),
-                          child: const Align(
-                            alignment: Alignment.centerLeft,
-                            child: Text(
-                              'We Parents Resource',
-                              style:
-                                  TextStyle(fontFamily: Assets.raleWayRegular),
-                            ),
+                  ),
+                  InkWell(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (_) => const WeSpecialScreen()));
+                    },
+                    child: Container(
+                      height: sizes!.height * 0.07,
+                      width: sizes!.width * 0.57,
+                      color: Colors.white,
+                      child: Padding(
+                        padding: EdgeInsets.only(left: sizes!.width * 0.06),
+                        child: const Align(
+                          alignment: Alignment.centerLeft,
+                          child: Text(
+                            'We Specials',
+                            style:
+                                TextStyle(fontFamily: Assets.raleWayRegular),
                           ),
                         ),
                       ),
                     ),
-                    InkWell(
-                      onTap: (){
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (_) => const ConsultationRequest()));
-                      },
-                      child: Container(
-                        height: sizes!.height * 0.07,
-                        width: sizes!.width * 0.57,
-                        color: Colors.white,
-                        child: Padding(
-                          padding: EdgeInsets.only(left: sizes!.width * 0.06),
-                          child: const Align(
-                            alignment: Alignment.centerLeft,
-                            child: Text(
-                              'We Consultation',
-                              style: TextStyle(fontFamily: Assets.raleWayRegular),
-                            ),
+                  ),
+                  InkWell(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (_) => const WePayments()));
+                    },
+                    child: Container(
+                      height: sizes!.height * 0.07,
+                      width: sizes!.width * 0.57,
+                      color: Colors.white,
+                      child: Padding(
+                        padding: EdgeInsets.only(left: sizes!.width * 0.06),
+                        child: const Align(
+                          alignment: Alignment.centerLeft,
+                          child: Text(
+                            'We payments',
+                            style:
+                                TextStyle(fontFamily: Assets.raleWayRegular),
                           ),
                         ),
                       ),
                     ),
-                    InkWell(
-                      onTap: (){
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (_) => const WeSpecialScreen()));
-                      },
-                      child: Container(
-                        height: sizes!.height * 0.07,
-                        width: sizes!.width * 0.57,
-                        color: Colors.white,
-                        child: Padding(
-                          padding: EdgeInsets.only(left: sizes!.width * 0.06),
-                          child: const Align(
-                            alignment: Alignment.centerLeft,
-                            child: Text(
-                              'We Specials',
-                              style: TextStyle(fontFamily: Assets.raleWayRegular),
-                            ),
+                  ),
+                  InkWell(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (_) => const Calendar()));
+                    },
+                    child: Container(
+                      height: sizes!.height * 0.07,
+                      width: sizes!.width * 0.57,
+                      color: Colors.white,
+                      child: Padding(
+                        padding: EdgeInsets.only(left: sizes!.width * 0.06),
+                        child: const Align(
+                          alignment: Alignment.centerLeft,
+                          child: Text(
+                            'We Calender',
+                            style:
+                                TextStyle(fontFamily: Assets.raleWayRegular),
                           ),
                         ),
                       ),
                     ),
-                    InkWell(
-                      onTap: (){
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (_) => const WePayments()));
-                      },
-                      child: Container(
-                        height: sizes!.height * 0.07,
-                        width: sizes!.width * 0.57,
-                        color: Colors.white,
-                        child: Padding(
-                          padding: EdgeInsets.only(left: sizes!.width * 0.06),
-                          child: const Align(
-                            alignment: Alignment.centerLeft,
-                            child: Text(
-                              'We payments',
-                              style: TextStyle(fontFamily: Assets.raleWayRegular),
-                            ),
+                  ),
+                  InkWell(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (_) => const CaregiversScreen()));
+                    },
+                    child: Container(
+                      height: sizes!.height * 0.07,
+                      width: sizes!.width * 0.57,
+                      color: Colors.white,
+                      child: Padding(
+                        padding: EdgeInsets.only(left: sizes!.width * 0.06),
+                        child: const Align(
+                          alignment: Alignment.centerLeft,
+                          child: Text(
+                            'We Caregivers',
+                            style:
+                                TextStyle(fontFamily: Assets.raleWayRegular),
                           ),
                         ),
                       ),
                     ),
-                    InkWell(
-                      onTap: (){
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (_) => const Calendar()));
-                      },
-                      child: Container(
-                        height: sizes!.height * 0.07,
-                        width: sizes!.width * 0.57,
-                        color: Colors.white,
-                        child: Padding(
-                          padding: EdgeInsets.only(left: sizes!.width * 0.06),
-                          child: const Align(
-                            alignment: Alignment.centerLeft,
-                            child: Text(
-                              'We Calender',
-                              style: TextStyle(fontFamily: Assets.raleWayRegular),
-                            ),
+                  ),
+                  InkWell(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (_) => const ContactUs()));
+                    },
+                    child: Container(
+                      height: sizes!.height * 0.07,
+                      width: sizes!.width * 0.57,
+                      color: Colors.white,
+                      child: Padding(
+                        padding: EdgeInsets.only(left: sizes!.width * 0.06),
+                        child: const Align(
+                          alignment: Alignment.centerLeft,
+                          child: Text(
+                            'Contact Us',
+                            style:
+                                TextStyle(fontFamily: Assets.raleWayRegular),
                           ),
                         ),
                       ),
                     ),
-                    InkWell(
-                      onTap: (){
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (_) => const CaregiversScreen()));
-                      },
-                      child: Container(
-                        height: sizes!.height * 0.07,
-                        width: sizes!.width * 0.57,
-                        color: Colors.white,
-                        child: Padding(
-                          padding: EdgeInsets.only(left: sizes!.width * 0.06),
-                          child: const Align(
-                            alignment: Alignment.centerLeft,
-                            child: Text(
-                              'We Caregivers',
-                              style: TextStyle(fontFamily: Assets.raleWayRegular),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                    InkWell(
-                      onTap: (){
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (_) => const ContactUs()));
-                      },
-                      child: Container(
-                        height: sizes!.height * 0.07,
-                        width: sizes!.width * 0.57,
-                        color: Colors.white,
-                        child: Padding(
-                          padding: EdgeInsets.only(left: sizes!.width * 0.06),
-                          child: const Align(
-                            alignment: Alignment.centerLeft,
-                            child: Text(
-                              'Contact Us',
-                              style: TextStyle(fontFamily: Assets.raleWayRegular),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ],
-            ),
+                  ),
+                ],
+              ),
+            ],
           ),
         ),
         //this is drawer open..............
@@ -490,7 +507,7 @@ class _BuilddrawersState extends State<Builddrawers> {
                   ),
                 ),
                 margin: EdgeInsets.only(
-                    top: getHeight() * 0.0, bottom: getHeight() * 0.010),
+                    top: getHeight() * 0.0, bottom: getHeight() * 0.048),
                 height: getHeight() * 0.14,
                 width: getWidth() * 0.33,
                 child: Column(
@@ -504,9 +521,29 @@ class _BuilddrawersState extends State<Builddrawers> {
                             MaterialPageRoute(
                                 builder: (_) => const BlocArticleScreen()));
                       },
-                      child: const Text(
-                        '. blog',
-                        style: TextStyle(color: AppColors.pureWhiteColor),
+                      child: Row(
+                        children: [
+                          SizedBox(
+                            width: getWidth() * 0.02,
+                          ),
+                          Container(
+                            height: getHeight() * 0.016,
+                            width: getWidth() * 0.016,
+                            decoration: const BoxDecoration(
+                              color: Colors.white,
+                              shape: BoxShape.circle,
+                            ),
+                          ),
+                          SizedBox(
+                            width: getWidth() * 0.02,
+                          ),
+                          Text(
+                            'Blog',
+                            style: TextStyle(
+                                color: AppColors.pureWhiteColor,
+                                fontSize: getFontRatio() * 15.0),
+                          ),
+                        ],
                       ),
                     ),
                     InkWell(
@@ -516,22 +553,57 @@ class _BuilddrawersState extends State<Builddrawers> {
                             MaterialPageRoute(
                                 builder: (_) => const ReadScreen()));
                       },
-                      child: const Text(
-                        '. Read',
-                        style: TextStyle(color: AppColors.pureWhiteColor),
+                      child: Row(
+                        children: [
+                          SizedBox(
+                            width: getWidth() * 0.02,
+                          ),
+                          Container(
+                            height: getHeight() * 0.016,
+                            width: getWidth() * 0.016,
+                            decoration: const BoxDecoration(
+                              color: Colors.white,
+                              shape: BoxShape.circle,
+                            ),
+                          ),
+                          SizedBox(
+                            width: getWidth() * 0.02,
+                          ),
+                           Text(
+                            'Read',
+                            style: TextStyle(color: AppColors.pureWhiteColor,fontSize: getFontRatio() * 15.0),
+                          ),
+                        ],
                       ),
                     ),
                     InkWell(
                       onTap: () {
-                          Navigator.push(
+                        Navigator.push(
                             context,
                             MaterialPageRoute(
                                 builder: (_) => const MiscScreen()));
-
                       },
-                      child: const Text(
-                        '. Miscelleneous',
-                        style: TextStyle(color: AppColors.pureWhiteColor),
+                      child: Row(
+                        children: [
+                          SizedBox(
+                            width: getWidth() * 0.02,
+                          ),
+                          Container(
+                            height: getHeight() * 0.016,
+                            width: getWidth() * 0.016,
+                            decoration: const BoxDecoration(
+                              color: Colors.white,
+                              shape: BoxShape.circle,
+                            ),
+                          ),
+                          SizedBox(
+                            width: getWidth() * 0.02,
+                          ),
+                          Text(
+                            'Miscellaneous',
+                            style: TextStyle(color: AppColors.pureWhiteColor,fontSize: getFontRatio() * 15.0),
+                          ),
+                        ],
                       ),
                     )
                   ],
@@ -539,7 +611,7 @@ class _BuilddrawersState extends State<Builddrawers> {
             : Container(),
       ],
     );
-         // afra bhai code.........
+    // afra bhai code.........
     // return Drawer(
     //   child: Container(
     //     decoration: const BoxDecoration(
