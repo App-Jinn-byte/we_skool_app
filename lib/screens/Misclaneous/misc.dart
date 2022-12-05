@@ -6,10 +6,15 @@ import 'package:we_skool_app/screens/Blog%20Articles/bloc_article_components.dar
 import 'package:we_skool_app/widgets/common_widgets.dart';
 import 'package:we_skool_app/widgets/text_views.dart';
 
-class MiscScreen extends StatelessWidget {
+class MiscScreen extends StatefulWidget {
   const MiscScreen({super.key});
 
+  @override
+  State<MiscScreen> createState() => _MiscScreenState();
+}
 
+class _MiscScreenState extends State<MiscScreen> {
+  final BlogArticleComponents _blogArticleComponents = BlogArticleComponents();
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +35,7 @@ class MiscScreen extends StatelessWidget {
                 Navigator.pop(context);
               }),
           Container(
-            height: sizes!.height * 0.76,
+            height: sizes!.height * 0.85,
             margin: EdgeInsets.symmetric(horizontal: getWidth() * 0.05),
             decoration: const BoxDecoration(
               image: DecorationImage(
@@ -46,13 +51,12 @@ class MiscScreen extends StatelessWidget {
 
               Expanded(
                 child: ListView.separated(
-                  physics: const BouncingScrollPhysics(
-                      parent: AlwaysScrollableScrollPhysics()),
+                  // physics: const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
                   shrinkWrap: true,
                   scrollDirection: Axis.vertical,
                   itemCount: 3,
                   itemBuilder: (context, index) {
-                    return BlocarticleWidgets.myBox(
+                    return _blogArticleComponents.myBox(
                         title: 'Title',
                         subtitle:
                         'Early Learning Unraveled, Fascinating Brain',
@@ -64,10 +68,11 @@ class MiscScreen extends StatelessWidget {
                   separatorBuilder: (BuildContext context, int index) {
                     return SizedBox(
                         height: getHeight() * 0.05,
-                        child: BlocarticleWidgets.myDivider());
+                        child: BlogArticleComponents.myDivider());
                   },
                 ),
               ),
+              SizedBox(height: getHeight() * 0.01)
             ],
           ),
         ),

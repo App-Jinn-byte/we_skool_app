@@ -19,7 +19,6 @@ class AppColors{
   static const dividercolr = Color.fromRGBO(210, 210, 210, 1);
   static const shadow = Color.fromRGBO(0, 0, 0, 0.08);
   static const textcolr = Color.fromRGBO(46, 46, 46, 1);
-  static const btntextcolr = Color.fromRGBO(165, 165, 165, 1);
   static const redColor = Color.fromRGBO(193, 2, 48, 1);
   static const grey2colrtext = Color.fromRGBO(165, 165, 165, 1);
   static const lightblackcolr = Color.fromRGBO(50, 50, 50, 1);

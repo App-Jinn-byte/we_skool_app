@@ -23,7 +23,7 @@ class WeSpecialScreen extends StatelessWidget {
             child: Column(
               children: [
                 CommonWidgets.appBarIconImageText(
-                    text: "Contact Us",
+                    text: "We Specials",
                     image: "",
                     isDataFetched: false,
                     onPressMenu: () {

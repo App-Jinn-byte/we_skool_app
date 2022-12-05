@@ -259,7 +259,7 @@ class _BuilddrawersState extends State<Builddrawers> {
       children: [
         Container(
           color: AppColors.pureWhiteColor,
-          width: getWidth() * 0.60,
+          width: getWidth() * 0.62,
           height: getHeight(),
           child: Row(
             children: [
@@ -273,6 +273,7 @@ class _BuilddrawersState extends State<Builddrawers> {
                         right: getWidth() * 0.02,
                         top: getHeight() * 0.02),
                     child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Row(
                           // mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -287,7 +288,7 @@ class _BuilddrawersState extends State<Builddrawers> {
                                 },
                                 child: Padding(
                                   padding: EdgeInsets.only(
-                                      left: getWidth() * 0.26,
+                                      left: getWidth() * 0.3,
                                       bottom: getHeight() * 0.02),
                                   child: Container(
                                     height: getHeight() * 0.02,
@@ -305,24 +306,23 @@ class _BuilddrawersState extends State<Builddrawers> {
                         SizedBox(
                           height: getHeight() * 0.02,
                         ),
-                        Padding(
-                          padding: EdgeInsets.only(right: getWidth() * 0.09),
-                          child: TextView.size18Text("Angela Williams",
-                              color: AppColors.pureBlack,
-                              fontFamily: Assets.raleWaySemiBold,
-                              fontWeight: FontWeight.w600),
-                        ),
+                        TextView.size18Text("Angela Williams",
+                            color: AppColors.pureBlack,
+                            fontFamily: Assets.raleWaySemiBold,
+                            fontWeight: FontWeight.w600),
                         SizedBox(
                           height: getHeight() * 0.02,
                         ),
                         Container(
                             height: getHeight() * 0.00078,
-                            width: getWidth() * 0.46,
+                            width: getWidth() * 0.5,
                             color: AppColors.greyColor),
                       ],
                     ),
                   ),
-                  
+                  SizedBox(
+                    height: getHeight() * 0.01,
+                  ),
                   drawerListWidget(
                       index: 0,
                       selectedPage: widget.selectedPage,
@@ -582,17 +582,18 @@ class _BuilddrawersState extends State<Builddrawers> {
       },
       child: Container(
         height: sizes!.height * 0.065,
-        width: sizes!.width * 0.60,
+        width: sizes!.width * 0.62,
         color: selectedPage == index ? AppColors.yellowColor : AppColors.pureWhiteColor,
         child: Padding(
-          padding: EdgeInsets.only(
-          
-              left: sizes!.width * 0.06),
+          padding: EdgeInsets.only(left: sizes!.width * 0.06),
           child:  Row(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              Image.asset(menuIconList[index!],height: getHeight()*0.02,color: selectedPage == index ? AppColors.pureWhiteColor: AppColors.greySideMenuText),
-               SizedBox(width: getWidth()*0.045,),
+              Image.asset(menuIconList[index!],
+                  height: getHeight()*0.02,
+                  width: getWidth() * 0.06,
+                  color: selectedPage == index ? AppColors.pureWhiteColor: AppColors.greySideMenuText),
+               SizedBox(width: getWidth()*0.04),
               TextView.size16Text(menuNameList[index],
                   Assets.raleWayMedium, color: selectedPage == index ? AppColors.pureWhiteColor: AppColors.greySideMenuText, lines: 1, fontWeight: FontWeight.w500),
             ],

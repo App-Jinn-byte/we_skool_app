@@ -37,7 +37,7 @@ class _ClassesState extends State<Classes> {
                     Navigator.pop(context);
                   }),
               Container(
-                  height: sizes!.height * 0.80,
+                  height: sizes!.height * 0.85,
                   margin: EdgeInsets.symmetric(horizontal: getWidth() * 0.05),
                   decoration: const BoxDecoration(
                     image: DecorationImage(
@@ -59,7 +59,7 @@ class _ClassesState extends State<Classes> {
                             const TextStyle(color: AppColors.greyColor),
                         backgroundColor: AppColors.redColor,
                         unselectedBackgroundColor: AppColors.pureWhiteColor,
-                        borderColor: AppColors.greyColor,
+                        borderColor: AppColors.pinkColor,
                         buttonMargin:
                             EdgeInsets.symmetric(horizontal: getWidth() * 0.02),
                         tabs: const [
@@ -82,6 +82,7 @@ class _ClassesState extends State<Classes> {
                           ],
                         ),
                       ),
+                      SizedBox(height: getHeight() * 0.01),
                     ],
                   )),
             ]),
@@ -93,11 +94,10 @@ class _ClassesState extends State<Classes> {
 
   Widget Myclass() {
     return ListView.separated(
-      physics:
-          const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
+      // physics: const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
       shrinkWrap: true,
       scrollDirection: Axis.vertical,
-      itemCount: 2,
+      itemCount: 3,
       itemBuilder: (context, index) {
         return SpClassComponents.myBoxcls(
           classname: 'Carrefour',
@@ -116,11 +116,10 @@ class _ClassesState extends State<Classes> {
 
   Widget specialClass() {
     return ListView.separated(
-      physics:
-          const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
+      // physics: const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
       shrinkWrap: true,
       scrollDirection: Axis.vertical,
-      itemCount: 2,
+      itemCount: 4,
       itemBuilder: (context, index) {
         return SpClassComponents.myBoxspecialcls(
           classname: 'Carrefour',

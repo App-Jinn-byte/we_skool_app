@@ -203,14 +203,13 @@ class _ParentGuardianState extends State<ParentGuardian> {
             //margin: EdgeInsets.only(top: sizes!.heightRatio * 58.74),
             padding: EdgeInsets.symmetric(horizontal: getWidth() * 0.05),
             height: sizes!.height * 0.85,
-            decoration:  BoxDecoration(
-              // color: AppColors.whiteColor,
-              image: const DecorationImage(
+            decoration:  const BoxDecoration(
+              image: DecorationImage(
                   image: AssetImage(Assets.backGroundImage), fit: BoxFit.fill),
-              borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(getHeight() * 0.02),
-                topRight: Radius.circular(getHeight() * 0.02),
-              ),
+              // borderRadius: BorderRadius.only(
+              //   topLeft: Radius.circular(getHeight() * 0.02),
+              //   topRight: Radius.circular(getHeight() * 0.02),
+              // ),
             ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -225,8 +224,17 @@ class _ParentGuardianState extends State<ParentGuardian> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
-                        Icon(
-                            Icons.cancel_outlined, size: getHeight() * 0.05, color: AppColors.pinkColor),
+                        Container(
+                          height: getHeight() * 0.019,
+                          width: getWidth() * 0.035,
+                          padding: EdgeInsets.only(top: getHeight() * 0.06),
+                          decoration: const BoxDecoration(
+                            image: DecorationImage(
+                                image: AssetImage(Assets.crossIcon),
+                                fit: BoxFit.fill
+                            ),
+                          ),
+                        )
                       ],
                     )),
                 SizedBox(
