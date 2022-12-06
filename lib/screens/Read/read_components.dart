@@ -33,19 +33,19 @@ class ReadComponents {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            TextView.size14Text('Title', color: AppColors.textcolr, fontFamily: Assets.raleWaySemiBold, fontWeight: FontWeight.w600),
+            TextView.size14Text('Title', color: AppColors.textColor, fontFamily: Assets.raleWaySemiBold, fontWeight: FontWeight.w600),
             SizedBox(height: getHeight()*0.015),
             TextView.size14Text(titleText, color: AppColors.grey2colrtext,fontFamily: Assets.raleWayMedium, fontWeight: FontWeight.w500),
             ReadComponents.myDividers(),
-            TextView.size14Text('Description', color: AppColors.textcolr, fontFamily: Assets.raleWaySemiBold, fontWeight: FontWeight.w600),
+            TextView.size14Text('Description', color: AppColors.textColor, fontFamily: Assets.raleWaySemiBold, fontWeight: FontWeight.w600),
             SizedBox(height: getHeight()*0.015),
             TextView.size14Text(descriptionText,color: AppColors.grey2colrtext,fontFamily: Assets.raleWayMedium, fontWeight: FontWeight.w500, lines: 3),
             ReadComponents.myDividers(),
-            TextView.size14Text('Link', color: AppColors.textcolr, fontFamily: Assets.raleWaySemiBold, fontWeight: FontWeight.w600),
+            TextView.size14Text('Link', color: AppColors.textColor, fontFamily: Assets.raleWaySemiBold, fontWeight: FontWeight.w600),
             SizedBox(height: getHeight()*0.015),
             TextView.size14Text(linkText,color: AppColors.grey2colrtext,fontFamily: Assets.raleWayMedium, fontWeight: FontWeight.w500),
             ReadComponents.myDividers(),
-            TextView.size14Text('Action', color: AppColors.textcolr, fontFamily: Assets.raleWaySemiBold, fontWeight: FontWeight.w600),
+            TextView.size14Text('Action', color: AppColors.textColor, fontFamily: Assets.raleWaySemiBold, fontWeight: FontWeight.w600),
             SizedBox(
               height: getHeight() * 0.015,
             ),

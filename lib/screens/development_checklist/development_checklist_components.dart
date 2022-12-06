@@ -25,7 +25,7 @@ class DevelepmentCheckComponents {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            TextView.size14Text('Title', color: AppColors.textcolr),
+            TextView.size14Text('Title', color: AppColors.textColor),
             SizedBox(height: getHeight()*0.02,),
             TextView.size14Text(titletxt,color: AppColors.greyTextColor,fontFamily: Assets.raleWayMedium),
             DevelepmentCheckComponents.myDivider(),
@@ -33,7 +33,7 @@ class DevelepmentCheckComponents {
             SizedBox(
               height: getHeight() * 0.01,
             ),
-            TextView.size14Text('Description', color: AppColors.textcolr),
+            TextView.size14Text('Description', color: AppColors.textColor),
             SizedBox(height: getHeight()*0.01,),
             TextView.size14Text(desctxt,color: AppColors.greyTextColor,fontFamily: Assets.raleWayMedium),
             SizedBox(
@@ -43,14 +43,14 @@ class DevelepmentCheckComponents {
             SizedBox(
               height: getHeight() * 0.01,
             ),
-            TextView.size14Text('Age group', color: AppColors.textcolr),
+            TextView.size14Text('Age group', color: AppColors.textColor),
             SizedBox(height: getHeight()*0.02,),
             TextView.size14Text(agegrouptxt,color: AppColors.greyTextColor,fontFamily: Assets.raleWayMedium),
             DevelepmentCheckComponents.myDivider(),
             SizedBox(
               height: getHeight() * 0.01,
             ),
-            TextView.size14Text('Status', color: AppColors.textcolr),
+            TextView.size14Text('Status', color: AppColors.textColor),
             SizedBox(
               height: getHeight() * 0.012,
             ),

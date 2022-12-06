@@ -17,25 +17,25 @@ class BlogArticleComponents {
 
   Widget myBox(
       {String? title,
-        subtitle,
-        titlefile,
-        subtitlefile,
-        titleaction,
-        subtitleaction}) {
+      subtitle,
+      titlefile,
+      subtitlefile,
+      titleaction,
+      subtitleaction}) {
     return Container(
       height: getHeight() * 0.31,
       width: getWidth(),
       padding: EdgeInsets.symmetric(horizontal: getWidth() * 0.04, vertical: getHeight() * 0.02),
       decoration: BoxDecoration(
-        shape: BoxShape.rectangle,
-        color: AppColors.pureWhiteColor,
-        border:
-        Border.all(color: AppColors.borderColor, width: getWidth() * 0.005),
+           shape: BoxShape.rectangle,
+          color: AppColors.pureWhiteColor,
+          border:
+              Border.all(color: AppColors.borderColor, width: getWidth() * 0.005),
         boxShadow: const [
           BoxShadow(
               color: AppColors.shadow, blurRadius: 2, offset: Offset(1, 3))
         ],
-
+      
         borderRadius: BorderRadius.all(Radius.circular(getHeight() * .014)),
       ),
       child: Column(
@@ -43,7 +43,7 @@ class BlogArticleComponents {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           TextView.size14Text(title,
-              color: AppColors.blackLight, fontWeight: FontWeight.w600,
+              color: AppColors.textColor, fontWeight: FontWeight.w600,
               fontFamily: Assets.raleWaySemiBold),
           SizedBox(height: getHeight() * 0.015),
           TextView.size14Text(subtitle, fontWeight: FontWeight.w500,
@@ -51,7 +51,7 @@ class BlogArticleComponents {
               fontFamily: Assets.raleWayMedium),
           myDivider(),
           TextView.size14Text(titlefile, fontWeight: FontWeight.w600,
-              color: AppColors.blackLight,
+              color: AppColors.textColor,
               fontFamily: Assets.raleWaySemiBold),
           SizedBox(height: getHeight() * 0.015),
           TextView.size14Text(subtitlefile, fontWeight: FontWeight.w500,
@@ -59,7 +59,7 @@ class BlogArticleComponents {
               fontFamily: Assets.raleWayMedium),
           myDivider(),
           TextView.size14Text(titleaction, fontWeight: FontWeight.w600,
-              color: AppColors.blackLight,
+              color: AppColors.textColor,
               fontFamily: Assets.raleWaySemiBold),
           SizedBox(height: getHeight() * 0.015),
           TextView.size14Text(subtitleaction, fontWeight: FontWeight.w500,
