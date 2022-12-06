@@ -5,37 +5,54 @@ import 'package:flutter_animated_dialog/flutter_animated_dialog.dart';
 import 'package:we_skool_app/res/assets.dart';
 import 'package:we_skool_app/res/colors.dart';
 import 'package:we_skool_app/res/res.dart';
-import 'package:we_skool_app/screens/contact_us/contact_us_components.dart';
+import 'package:we_skool_app/screens/bottomTab/pages/daily_observation/daily_observation_components.dart';
 import 'package:we_skool_app/utilities/Dailogbox.dart';
 import 'package:we_skool_app/widgets/common_widgets.dart';
 import 'package:we_skool_app/widgets/text_views.dart';
 
-class ContactUs extends StatelessWidget {
+class ContactUs extends StatefulWidget {
   const ContactUs({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    initializeResources(context: context);
+  State<ContactUs> createState() => _ContactUsState();
+}
 
+class _ContactUsState extends State<ContactUs> {
+  TextEditingController? subjectController;
+  TextEditingController? messageController;
+  DailyObservationComponents _dailyObservationComponents = DailyObservationComponents();
+
+  @override
+  void initState() {
+    super.initState();
+    subjectController = TextEditingController();
+    messageController = TextEditingController();
+
+  }
+
+  @override
+  Widget build(BuildContext context) {
     return SafeArea(
         child: Scaffold(
             body: Container(
                 height: sizes!.height,
                 width: sizes!.width,
                 color: AppColors.pureWhiteColor,
+                // padding: EdgeInsets.symmetric(horizontal: getWidth() * 0.05),
                 child: SingleChildScrollView(
                   child: Column(children: [
-                    CommonWidgets.appBarIconImageText(
-                        text: "Contact Us",
-                        image: "",
-                        isDataFetched: false,
-                        onPressMenu: () {
-                          Navigator.pop(context);
-                        }),
+                    Padding(
+                      padding: EdgeInsets.symmetric(horizontal: getWidth() * 0.05),
+                      child: CommonWidgets.appBarTextImage(
+                          text: "Contact Us",
+                          image: "",
+                          isDataFetched: false),
+                    ),
                     Container(
                       height: sizes!.height * 0.80,
-                      margin:
-                          EdgeInsets.symmetric(horizontal: getWidth() * 0.05),
+                      width: getWidth(),
+                      padding: EdgeInsets.symmetric(horizontal: getWidth() * 0.05),
+                      // margin: EdgeInsets.symmetric(horizontal: getWidth() * 0.05),
                       decoration: const BoxDecoration(
                         image: DecorationImage(
                             image: AssetImage(Assets.lightBackground),
@@ -54,13 +71,18 @@ class ContactUs extends StatelessWidget {
                             fontWeight: FontWeight.w600,
                           ),
                           SizedBox(
-                            height: getHeight() * 0.01,
+                            height: getHeight() * 0.02,
                           ),
-                          ContactUsComponents.mytextField(
-                            height: getHeight() * 0.054,
-                            width: getWidth(),
-                            hint: 'Your Subject',
+                          CommonWidgets.textField(
+                            textEditingController: subjectController,
+                            hint: "Your Subject",
+                            textInputType: TextInputType.emailAddress,
                           ),
+                          // ContactUsComponents.mytextField(
+                          //   height: getHeight() * 0.054,
+                          //   width: getWidth(),
+                          //   hint: 'Your Subject',
+                          // ),
                           SizedBox(
                             height: getHeight() * 0.02,
                           ),
@@ -71,14 +93,13 @@ class ContactUs extends StatelessWidget {
                             fontWeight: FontWeight.w600,
                           ),
                           SizedBox(
-                            height: getHeight() * 0.01,
+                            height: getHeight() * 0.02,
                           ),
-                          ContactUsComponents.mytextField(
-                              height: getHeight() * 0.14,
-                              maxline: 5,
-                              width: getWidth(),
-                              hint:
-                                  'Lorem ipsum dolor sit amet consectetur asds dasd sdcfasd cszxcxczx czdcvzx dcvzxvxc  vdzcvzxv '),
+                          _dailyObservationComponents.textField(
+                              textEditingController: messageController,
+                            fieldColor: AppColors.pureWhiteColor,
+                            borderColor: AppColors.hintTextGreyColor
+                          ),
                           SizedBox(
                             height: getHeight() * 0.04,
                           ),
@@ -89,7 +110,7 @@ class ContactUs extends StatelessWidget {
                             fontWeight: FontWeight.w600,
                           ),
                           SizedBox(
-                            height: getHeight() * 0.02,
+                            height: getHeight() * 0.03,
                           ),
                           DottedBorder(
                               color: AppColors.greyColor,
@@ -124,12 +145,18 @@ class ContactUs extends StatelessWidget {
                               color: AppColors.pinkColor,
                               fontWeight: FontWeight.w300,
                               fontFamily: Assets.raleWayLight),
-                          ContactUsComponents.myDivider(),
+                          Divider(
+                              height: getHeight() * 0.01,
+                              thickness: getHeight() * 0.001,
+                              color: AppColors.dividerColor),
                           SizedBox(
                             height: getHeight() * 0.03,
                           ),
                           CommonWidgets.getButton(
                             height: getHeight()*0.06,
+                              fontFamily: Assets.raleWaySemiBold,
+                              fontSize: sizes!.fontSize18,
+                              fontWeight: FontWeight.w600,
                               onPress: () {
                                 showAnimatedDialog(
                                   context: context,

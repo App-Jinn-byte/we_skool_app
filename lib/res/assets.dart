@@ -12,7 +12,7 @@ class Assets {
   static const String backGroundImage = "assets/png/backGroundImage.png";
   static const String weClasses = "assets/png/icon_classes.png";
   static const String weAssessment = "assets/png/icon_assessment.png";
-  static const String weCalender = "assets/png/icon_calender.png";
+  static const String weCalender = "assets/png/calendar_icon.png";
   static const String weCaregivers = "assets/png/icon_caregivers.png";
   static const String weConsultation = "assets/png/icon_consultation.png";
   static const String weParents = "assets/png/icon_parents.png";

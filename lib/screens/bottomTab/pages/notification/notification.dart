@@ -17,7 +17,7 @@ class NotificationScreen extends StatefulWidget {
 
 class _NotificationScreenState extends State<NotificationScreen> {
   TextEditingController? searchController;
-  NotificationComponents _notificationComponents = NotificationComponents();
+  final NotificationComponents _notificationComponents = NotificationComponents();
 
   @override
   void initState() {

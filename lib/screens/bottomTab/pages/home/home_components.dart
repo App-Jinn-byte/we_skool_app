@@ -244,7 +244,7 @@ class _BuilddrawersState extends State<Builddrawers> {
   List<String> menuIconList = [
     Assets.weClasses,
     Assets.weAssessment,
-    Assets.weContact,
+    Assets.weParents,
     Assets.weConsultation,
     Assets.weSpecial,
     Assets.wePayments,
@@ -259,7 +259,7 @@ class _BuilddrawersState extends State<Builddrawers> {
       children: [
         Container(
           color: AppColors.pureWhiteColor,
-          width: getWidth() * 0.62,
+          width: getWidth() * 0.64,
           height: getHeight(),
           child: Row(
             children: [
@@ -288,7 +288,7 @@ class _BuilddrawersState extends State<Builddrawers> {
                                 },
                                 child: Padding(
                                   padding: EdgeInsets.only(
-                                      left: getWidth() * 0.3,
+                                      left: getWidth() * 0.35,
                                       bottom: getHeight() * 0.02),
                                   child: Container(
                                     height: getHeight() * 0.02,
@@ -317,6 +317,9 @@ class _BuilddrawersState extends State<Builddrawers> {
                             height: getHeight() * 0.00078,
                             width: getWidth() * 0.5,
                             color: AppColors.greyColor),
+                        SizedBox(
+                          height: getHeight() * 0.01,
+                        ),
                       ],
                     ),
                   ),
@@ -580,10 +583,10 @@ class _BuilddrawersState extends State<Builddrawers> {
       },
       child: Container(
         height: sizes!.height * 0.065,
-        width: sizes!.width * 0.62,
+        width: sizes!.width * 0.64,
         color: selectedPage == index ? AppColors.yellowColor : AppColors.pureWhiteColor,
         child: Padding(
-          padding: EdgeInsets.only(left: sizes!.width * 0.06),
+          padding: EdgeInsets.only(left: sizes!.width * 0.05),
           child:  Row(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
@@ -591,7 +594,7 @@ class _BuilddrawersState extends State<Builddrawers> {
                   height: getHeight()*0.02,
                   width: getWidth() * 0.06,
                   color: selectedPage == index ? AppColors.pureWhiteColor: AppColors.greySideMenuText),
-               SizedBox(width: getWidth()*0.04),
+               SizedBox(width: getWidth()*0.03),
               TextView.size16Text(menuNameList[index],
                   Assets.raleWayMedium, color: selectedPage == index ? AppColors.pureWhiteColor: AppColors.greySideMenuText, lines: 1, fontWeight: FontWeight.w500),
             ],
