@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:we_skool_app/res/res.dart';
-import 'package:we_skool_app/screens/Blog%20Articles/blog_article_screen.dart';
+import 'package:we_skool_app/screens/blog_articles/blog_article_screen.dart';
 import 'package:we_skool_app/screens/Misclaneous/misc.dart';
 import 'package:we_skool_app/screens/Read/read_screen.dart';
 import 'package:we_skool_app/screens/WeSpecials/wespecial.dart';
@@ -320,9 +320,7 @@ class _BuilddrawersState extends State<Builddrawers> {
                       ],
                     ),
                   ),
-                  SizedBox(
-                    height: getHeight() * 0.01,
-                  ),
+
                   drawerListWidget(
                       index: 0,
                       selectedPage: widget.selectedPage,
@@ -474,7 +472,7 @@ class _BuilddrawersState extends State<Builddrawers> {
                   ),
                 ),
                 margin: EdgeInsets.only(
-                    top: getHeight() * 0.0, bottom: getHeight() * 0.117),
+                    top: getHeight() * 0.0, bottom: getHeight() * 0.08),
                 height: getHeight() * 0.15,
                 width: getWidth() * 0.33,
                 child: Column(
