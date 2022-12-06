@@ -149,7 +149,7 @@ class WeMonthlySchedule extends StatelessWidget {
                                     timetext1: '8:00 am-8:30am',
                                     timetextdetail: 'Breakfast',
                                     color: AppColors.pureBlack,
-                                    colortext: AppColors.textcolr,
+                                    colortext: AppColors.textColor,
                                   ),
                                   SizedBox(
                                     height: getHeight() * 0.02,
@@ -158,7 +158,7 @@ class WeMonthlySchedule extends StatelessWidget {
                                     timetext1: '8:00 am-8:30am',
                                     timetextdetail: 'Musicsss',
                                     color: AppColors.pureBlack,
-                                    colortext: AppColors.textcolr,
+                                    colortext: AppColors.textColor,
                                   ),
                                   SizedBox(
                                     height: getHeight() * 0.02,
@@ -167,7 +167,7 @@ class WeMonthlySchedule extends StatelessWidget {
                                     timetext1: '8:00 am-8:30am',
                                     timetextdetail: 'Breakfast',
                                     color: AppColors.pureBlack,
-                                    colortext: AppColors.textcolr,
+                                    colortext: AppColors.textColor,
                                   ),
                                   SizedBox(
                                     height: getHeight() * 0.02,
@@ -176,7 +176,7 @@ class WeMonthlySchedule extends StatelessWidget {
                                     timetext1: '8:00 am-8:30am',
                                     timetextdetail: 'Musicsss',
                                     color: AppColors.pureBlack,
-                                    colortext: AppColors.textcolr,
+                                    colortext: AppColors.textColor,
                                   ),
                                   SizedBox(
                                     height: getHeight() * 0.02,
@@ -185,7 +185,7 @@ class WeMonthlySchedule extends StatelessWidget {
                                     timetext1: '8:00 am-8:30am',
                                     timetextdetail: 'Breakfast',
                                     color: AppColors.pureBlack,
-                                    colortext: AppColors.textcolr,
+                                    colortext: AppColors.textColor,
                                   ),
                                   SizedBox(
                                     height: getHeight() * 0.02,
@@ -194,7 +194,7 @@ class WeMonthlySchedule extends StatelessWidget {
                                     timetext1: '8:00 am-8:30am',
                                     timetextdetail: 'Musicsss',
                                     color: AppColors.pureBlack,
-                                    colortext: AppColors.textcolr,
+                                    colortext: AppColors.textColor,
                                   ),
                                 ],
                               )

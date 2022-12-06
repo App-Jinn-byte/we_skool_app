@@ -7,7 +7,7 @@ import 'package:we_skool_app/widgets/text_views.dart';
 
 class BlogArticleComponents {
 
-  static Widget myDivider() {
+  Widget myDivider() {
     return Divider(
         height: getHeight() * 0.04,
         thickness: getHeight() * 0.001,
@@ -43,23 +43,23 @@ class BlogArticleComponents {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           TextView.size14Text(title,
-              color: AppColors.textcolr, fontWeight: FontWeight.w600,
+              color: AppColors.textColor, fontWeight: FontWeight.w600,
               fontFamily: Assets.raleWaySemiBold),
           SizedBox(height: getHeight() * 0.015),
           TextView.size14Text(subtitle, fontWeight: FontWeight.w500,
               color: AppColors.greyTextColor,
               fontFamily: Assets.raleWayMedium),
-          BlogArticleComponents.myDivider(),
+          myDivider(),
           TextView.size14Text(titlefile, fontWeight: FontWeight.w600,
-              color: AppColors.textcolr,
+              color: AppColors.textColor,
               fontFamily: Assets.raleWaySemiBold),
           SizedBox(height: getHeight() * 0.015),
           TextView.size14Text(subtitlefile, fontWeight: FontWeight.w500,
               color: AppColors.greyTextColor,
               fontFamily: Assets.raleWayMedium),
-          BlogArticleComponents.myDivider(),
+          myDivider(),
           TextView.size14Text(titleaction, fontWeight: FontWeight.w600,
-              color: AppColors.textcolr,
+              color: AppColors.textColor,
               fontFamily: Assets.raleWaySemiBold),
           SizedBox(height: getHeight() * 0.015),
           TextView.size14Text(subtitleaction, fontWeight: FontWeight.w500,
@@ -77,50 +77,6 @@ class BlogArticleComponents {
           //   ),
           // ),
         ],
-      ),
-    );
-  }
-
- static Widget dropDown({
-    @required String ?selectedCategory,
-    @required Function ?updateSelectedCategory,
-    @required List<String> ?categories,
-    @required String ?hint,
-  }){
-    return Container(
-       height: sizes!.height * 0.07,
-       
-
-      child: ButtonTheme(
-        child: DropdownButton <String>(
-            hint: Text(hint ?? '',
-              style: TextStyle(
-                color: AppColors.hintTextGreyColor,
-                fontSize: sizes!.fontSize14,
-                fontFamily:Assets.raleWayRegular,
-              ),
-            ),
-            value: '1',
-            isExpanded: true,
-            icon: Icon(Icons.keyboard_arrow_down,color: AppColors.hintTextGreyColor,size: getHeight()*.035,),
-            underline: const SizedBox() ,
-            onChanged: (newValue) {
-              if(updateSelectedCategory != null){
-                updateSelectedCategory(newValue);
-              }
-            },
-            items: categories?.map<DropdownMenuItem<String>> ((String value) {
-              return DropdownMenuItem<String> (
-                value: value,
-                child: Text(value,style: TextStyle(
-                  color: AppColors.blackTextColor,
-                  fontFamily: Assets.raleWayRegular,
-                  fontSize: sizes!.fontSize14,
-                ),
-                ),
-              );
-            }).toList()
-        ),
       ),
     );
   }

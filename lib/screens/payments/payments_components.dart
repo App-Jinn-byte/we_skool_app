@@ -35,7 +35,7 @@ class PaymentsComponents {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            TextView.size14Text('Package Title', color: AppColors.textcolr),
+            TextView.size14Text('Package Title', color: AppColors.textColor),
             SizedBox(
               height: getHeight() * 0.02,
             ),
@@ -49,7 +49,7 @@ class PaymentsComponents {
             SizedBox(
               height: getHeight() * 0.01,
             ),
-            TextView.size14Text('Email', color: AppColors.textcolr),
+            TextView.size14Text('Email', color: AppColors.textColor),
             SizedBox(
               height: getHeight() * 0.02,
             ),
@@ -63,7 +63,7 @@ class PaymentsComponents {
             SizedBox(
               height: getHeight() * 0.01,
             ),
-            TextView.size14Text('Package Date', color: AppColors.textcolr),
+            TextView.size14Text('Package Date', color: AppColors.textColor),
             SizedBox(
               height: getHeight() * 0.02,
             ),
@@ -77,7 +77,7 @@ class PaymentsComponents {
             SizedBox(
               height: getHeight() * 0.01,
             ),
-            TextView.size14Text('Status', color: AppColors.textcolr),
+            TextView.size14Text('Status', color: AppColors.textColor),
             SizedBox(
               height: getHeight() * 0.012,
             ),
@@ -89,7 +89,7 @@ class PaymentsComponents {
             SizedBox(
               height: getHeight() * 0.01,
             ),
-            TextView.size14Text('Expiry Date', color: AppColors.textcolr),
+            TextView.size14Text('Expiry Date', color: AppColors.textColor),
             SizedBox(
               height: getHeight() * 0.02,
             ),
@@ -100,7 +100,7 @@ class PaymentsComponents {
             SizedBox(
               height: getHeight() * 0.01,
             ),
-            TextView.size14Text('Action', color: AppColors.textcolr),
+            TextView.size14Text('Action', color: AppColors.textColor),
             SizedBox(
               height: getHeight() * 0.02,
             ),

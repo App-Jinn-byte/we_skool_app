@@ -49,7 +49,7 @@ class ContactUs extends StatelessWidget {
                           ),
                           TextView.size18Text(
                             'Subject',
-                            color: AppColors.textcolr,
+                            color: AppColors.textColor,
                             fontFamily: Assets.raleWaySemiBold,
                             fontWeight: FontWeight.w600,
                           ),
@@ -66,7 +66,7 @@ class ContactUs extends StatelessWidget {
                           ),
                           TextView.size18Text(
                             'Message',
-                            color: AppColors.textcolr,
+                            color: AppColors.textColor,
                             fontFamily: Assets.raleWaySemiBold,
                             fontWeight: FontWeight.w600,
                           ),
@@ -84,7 +84,7 @@ class ContactUs extends StatelessWidget {
                           ),
                           TextView.size18Text(
                             'File (Attach if applicable)',
-                            color: AppColors.textcolr,
+                            color: AppColors.textColor,
                             fontFamily: Assets.raleWaySemiBold,
                             fontWeight: FontWeight.w600,
                           ),
