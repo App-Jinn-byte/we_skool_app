@@ -239,7 +239,6 @@ class _BuilddrawersState extends State<Builddrawers> {
     "We Payments",
     "We Calendar",
     "We Caregiver",
-    "Contact Us"
   ];
   List<String> menuIconList = [
     Assets.weClasses,
@@ -250,7 +249,6 @@ class _BuilddrawersState extends State<Builddrawers> {
     Assets.wePayments,
     Assets.weCalender,
    Assets.weCaregivers,
-   Assets.weContact,
   ];
 
   @override
@@ -315,10 +313,10 @@ class _BuilddrawersState extends State<Builddrawers> {
                         ),
                         Container(
                             height: getHeight() * 0.00078,
-                            width: getWidth() * 0.5,
-                            color: AppColors.greyColor),
+                            width: getWidth() * 0.54,
+                            color: AppColors.dividerColor),
                         SizedBox(
-                          height: getHeight() * 0.01,
+                          height: getHeight() * 0.02,
                         ),
                       ],
                     ),
@@ -413,18 +411,18 @@ class _BuilddrawersState extends State<Builddrawers> {
                             MaterialPageRoute(builder: (_) => const CaregiversScreen()));
                       }
                   ),
-                  drawerListWidget(
-                      index: 8,
-                      selectedPage: widget.selectedPage,
-                      context: context,
-                      onPress: () {
-                        widget.onPress!.call(8);
-                        Navigator.pop(context);
-                        Navigator.push(context,
-                            MaterialPageRoute(builder: (_) => const ContactUs()));
-                      }
-                  ),
-                  SizedBox(height: getHeight() * 0.03),
+                  // drawerListWidget(
+                  //     index: 8,
+                  //     selectedPage: widget.selectedPage,
+                  //     context: context,
+                  //     onPress: () {
+                  //       widget.onPress!.call(8);
+                  //       Navigator.pop(context);
+                  //       Navigator.push(context,
+                  //           MaterialPageRoute(builder: (_) => const ContactUs()));
+                  //     }
+                  // ),
+                  SizedBox(height: getHeight() * 0.05),
                   Padding(
                     padding: EdgeInsets.only(left: getWidth() * 0.05),
                     child: GestureDetector(
@@ -582,7 +580,7 @@ class _BuilddrawersState extends State<Builddrawers> {
         onPress!.call();
       },
       child: Container(
-        height: sizes!.height * 0.065,
+        height: sizes!.height * 0.07,
         width: sizes!.width * 0.64,
         color: selectedPage == index ? AppColors.yellowColor : AppColors.pureWhiteColor,
         child: Padding(

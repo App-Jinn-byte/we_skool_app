@@ -20,7 +20,7 @@ class ContactUs extends StatefulWidget {
 class _ContactUsState extends State<ContactUs> {
   TextEditingController? subjectController;
   TextEditingController? messageController;
-  DailyObservationComponents _dailyObservationComponents = DailyObservationComponents();
+  final DailyObservationComponents _dailyObservationComponents = DailyObservationComponents();
 
   @override
   void initState() {
@@ -98,7 +98,8 @@ class _ContactUsState extends State<ContactUs> {
                           _dailyObservationComponents.textField(
                               textEditingController: messageController,
                             fieldColor: AppColors.pureWhiteColor,
-                            borderColor: AppColors.hintTextGreyColor
+                            borderColor: AppColors.hintTextGreyColor,
+                            height: getHeight() * 0.15
                           ),
                           SizedBox(
                             height: getHeight() * 0.04,
@@ -158,15 +159,15 @@ class _ContactUsState extends State<ContactUs> {
                               fontSize: sizes!.fontSize18,
                               fontWeight: FontWeight.w600,
                               onPress: () {
-                                showAnimatedDialog(
-                                  context: context,
-
-                                  builder: (_) {
-                                    return const AlertDilog();
-                                  },
-                                  animationType: DialogTransitionType.none,
-                                  duration: const Duration(seconds: 1),
-                                );
+                                // showAnimatedDialog(
+                                //   context: context,
+                                //
+                                //   builder: (_) {
+                                //     return const AlertDilog();
+                                //   },
+                                //   animationType: DialogTransitionType.none,
+                                //   duration: const Duration(seconds: 1),
+                                // );
                               },
                               text: 'Send'),
                         ],
