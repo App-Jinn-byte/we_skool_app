@@ -74,7 +74,7 @@ class _BlocArticleScreenState extends State<BlocArticleScreen> {
                       separatorBuilder: (BuildContext context, int index) {
                         return SizedBox(
                             height: getHeight() * 0.05,
-                            child: BlogArticleComponents.myDivider());
+                            child: _blogArticleComponents.myDivider());
                       },
                     ),
                   ),

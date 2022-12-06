@@ -48,7 +48,7 @@ class AlertDilog extends StatelessWidget {
                               fontFamily: Assets.raleWaySemiBold,
                               fontWeight: FontWeight.w600),
                           TextView.size14Text('Credit/Debit Card Number',
-                              color: AppColors.textcolr,
+                              color: AppColors.textColor,
                               fontWeight: FontWeight.w600,
                               fontFamily: Assets.raleWaySemiBold),
                           textField(
@@ -61,7 +61,7 @@ class AlertDilog extends StatelessWidget {
                             textInputType: TextInputType.number,
                           ),
                           TextView.size14Text('Exeprie Date',
-                              color: AppColors.textcolr,
+                              color: AppColors.textColor,
                               fontWeight: FontWeight.w600,
                               fontFamily: Assets.raleWaySemiBold),
                           textField(
@@ -72,7 +72,7 @@ class AlertDilog extends StatelessWidget {
                             ),
                           ),
                           TextView.size14Text('CVC',
-                              color: AppColors.textcolr,
+                              color: AppColors.textColor,
                               fontWeight: FontWeight.w600,
                               fontFamily: Assets.raleWaySemiBold),
                           textField(
@@ -84,7 +84,7 @@ class AlertDilog extends StatelessWidget {
                             ),
                           ),
                           TextView.size14Text('Amount to Pay',
-                              color: AppColors.textcolr,
+                              color: AppColors.textColor,
                               fontWeight: FontWeight.w600,
                               fontFamily: Assets.raleWaySemiBold),
                           textField(
