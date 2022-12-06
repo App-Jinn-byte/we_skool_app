@@ -13,6 +13,7 @@ class PaymentsComponents {
       packagedate,
       status,
       expirydate,
+        @required Function? onPressButton
     }) {
     return Container(
       height: height ?? getHeight() * 0.62,
@@ -104,7 +105,9 @@ class PaymentsComponents {
             SizedBox(
               height: getHeight() * 0.02,
             ),
-            getPdfButton(onPress: () {}, text: 'Invoice Download PDF'),
+            getPdfButton(onPress: () {
+              onPressButton!.call();
+            }, text: 'Invoice Download PDF'),
           ],
         ),
       ),

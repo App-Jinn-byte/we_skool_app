@@ -1,12 +1,14 @@
 
 
 import 'package:flutter/material.dart';
+import 'package:flutter_animated_dialog/flutter_animated_dialog.dart';
 import 'package:we_skool_app/res/assets.dart';
 import 'package:we_skool_app/res/res.dart';
 import 'package:we_skool_app/screens/payments/payments_components.dart';
 import 'package:we_skool_app/widgets/common_widgets.dart';
 
 import '../../res/colors.dart';
+import '../../utilities/Dailogbox.dart';
 
 class WePayments extends StatelessWidget {
   const WePayments({super.key});
@@ -50,8 +52,16 @@ class WePayments extends StatelessWidget {
                     packagedate: '11-01-2022',
                     status: 'Active',
                     expirydate: '11-01-2023',
-                   
+                    onPressButton: () {
+                      showAnimatedDialog(
+                          context: context,
 
+                          builder: (_) {
+                        return const AlertDilog();
+                      },
+                      animationType: DialogTransitionType.none,
+                      duration: const Duration(seconds: 1));
+                    }
                   ),
 
           

@@ -28,10 +28,10 @@ class DailyObservationComponents {
   //   );
   // }
 
-  Widget textField({@required TextEditingController? textEditingController, Color? fieldColor, Color? borderColor}) {
+  Widget textField({@required TextEditingController? textEditingController, Color? fieldColor, Color? borderColor, double? height}) {
     return Container(
       width: sizes!.widthRatio * 325,
-      height: getHeight() * 0.12,
+      height: height ?? getHeight() * 0.12,
       decoration: BoxDecoration(
         border: Border.all(
           color: AppColors.textFieldBigBorder,
