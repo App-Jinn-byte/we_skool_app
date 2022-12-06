@@ -8,6 +8,7 @@ import '../res/res.dart';
 class CommonWidgets {
   static Widget getButton({
     double? width,
+    double? height,
     String? text,
     required Function? onPress,
     Color? btnColor,
@@ -15,13 +16,14 @@ class CommonWidgets {
     Color? borderColor,
     final fontFamily,
     final fontWeight,
+    final fontSize
   }) {
     return GestureDetector(
       onTap: () {
         onPress!.call();
       },
       child: Container(
-        height: getHeight() * 0.07,
+        height: height ?? getHeight() * 0.07,
         width: width ?? sizes!.width,
         decoration: BoxDecoration(
           color: btnColor ?? AppColors.pinkColor,
@@ -33,6 +35,7 @@ class CommonWidgets {
         child: Center(
             child: TextView.size18Text(
           text ?? "SUBMIT",
+          fontSize: fontSize,
           fontFamily: fontFamily ?? Assets.raleWayBold,
           fontWeight: fontWeight,
           color: textColor ?? AppColors.pureWhiteColor,
@@ -54,14 +57,18 @@ class CommonWidgets {
         height: sizes!.heightRatio * 40,
         decoration: BoxDecoration(
           border: Border.all(
-            color: AppColors.pureWhiteColor,
-            width: 0.25,
+            color: AppColors.lightBorderColor,
+            width: 2,
           ),
           borderRadius: BorderRadius.all(
               Radius.circular(
                   getHeight() * 0.015
               )),
           color: AppColors.pureWhiteColor,
+          boxShadow: const [
+            BoxShadow(
+                color: AppColors.shadow, blurRadius: 5, offset: Offset(0, 4))
+          ],
         ),
         child: Image.asset(
           Assets.backIcon,
@@ -150,10 +157,12 @@ class CommonWidgets {
             contentPadding: EdgeInsets.only(left: getWidth() * .04),
             hintText: hint ?? "",
             alignLabelWithHint: false,
+
             hintStyle: TextStyle(
               color: AppColors.hintTextGreyColor,
               fontSize: sizes!.fontSize14,
               fontFamily: Assets.raleWayRegular,
+
             )),
       ),
     );
@@ -294,7 +303,7 @@ class CommonWidgets {
           value: selectedCategory,
           isExpanded: true,
           icon: Icon(Icons.keyboard_arrow_down,color: AppColors.hintTextGreyColor,size: getHeight()*.035,),
-          underline:SizedBox() ,
+          underline:const SizedBox(),
           onChanged: (newValue) {
             if(updateSelectedCategory != null){
               updateSelectedCategory(newValue);
@@ -316,19 +325,200 @@ class CommonWidgets {
     );
   }
 
-  static Widget  buildProfileContainer({required String imagePath,double? height, double? width}){
-    return  Container(
-      height: height?? sizes!.height* 0.08,
-      width: width?? sizes!.width * 0.15,
-      decoration: BoxDecoration(
-        border: Border.all(color: Colors.grey[300]!),
-        borderRadius: BorderRadius.all(Radius.circular(100)),
-      ),
-      child: ClipRRect(
-        borderRadius: BorderRadius.all(Radius.circular(100)),
-        child: Image.asset(imagePath,fit: BoxFit.fill,)
-      ),
+  static Widget dropDownNew({
+    @required String ?selectedCategory,
+    @required Function ?updateSelectedCategory,
+    @required List<String> ?categories,
+    @required String ?hint,
+  }){
+    return DropdownButton <String>(
+        hint: Text(hint ?? '',
+          style: TextStyle(
+            color: AppColors.hintTextGreyColor,
+            fontSize: sizes!.fontSize14,
+            fontFamily:Assets.raleWayRegular,
+          ),
+        ),
+        value: selectedCategory,
+        isExpanded: true,
+        icon: Icon(Icons.keyboard_arrow_down,color: AppColors.hintTextGreyColor,size: getHeight()*.035,),
+        underline:SizedBox() ,
+        onChanged: (newValue) {
+          if(updateSelectedCategory != null){
+            updateSelectedCategory(newValue);
+          }
+        },
+        items: categories?.map<DropdownMenuItem<String>> ((String value) {
+          return DropdownMenuItem<String> (
+            value: value,
+            child: Text(value,style: TextStyle(
+              color: AppColors.blackTextColor,
+              fontFamily: Assets.raleWayRegular,
+              fontSize: sizes!.fontSize14,
+            ),
+            ),
+          );
+        }).toList()
     );
   }
 
+  static Widget  buildProfileContainer({required String imagePath, required bool isDataFetched}){
+    return  CircleAvatar(
+      backgroundImage: isDataFetched
+          ? NetworkImage(imagePath)
+          : const AssetImage(Assets.imagePlaceHolder)
+      as ImageProvider,
+      radius: getHeight() * 0.04, // 50.0
+      backgroundColor: AppColors.transparentColor,
+    );
+  }
+
+ static Widget appBarIconImageText(
+     {required String text,
+       required String image,
+       required bool? isDataFetched,
+       required Function? onPressMenu
+     }) {
+   isDataFetched ??= false;
+   return Container(
+     decoration: const BoxDecoration(color: AppColors.pureWhiteColor),
+     child: Column(
+       children: [
+         Padding(
+           padding: EdgeInsets.symmetric(
+               vertical: getHeight() * 0.02, horizontal: getWidth() * 0.05),
+           child: Row(
+             children: [
+               CommonWidgets.customBackButton(onPress: onPressMenu),
+               SizedBox(width: getWidth() * 0.04),
+               SizedBox(
+                 width: getWidth() * 0.65,
+                 child: TextView.size20Text(text,
+                     fontFamily: Assets.raleWaySemiBold,
+                     fontWeight: FontWeight.w600,
+                     color: AppColors.pinkColor),
+               ),
+               CircleAvatar(
+                 backgroundImage: isDataFetched
+                     ? NetworkImage(image)
+                     : const AssetImage(Assets.imagePlaceHolder)
+                 as ImageProvider,
+                 radius: getHeight() * 0.02, // 50.0
+                 backgroundColor: AppColors.transparentColor,
+               ),
+             ],
+           ),
+         ),
+         Padding(
+           padding: EdgeInsets.symmetric(horizontal: getWidth() * 0.05),
+           child: Divider(height: getHeight() * 0.01, thickness: getHeight() * 0.001, color: AppColors.dividerColor),
+         ),
+       ],
+     ),
+   );
+ }
+
+  static Widget appBarTextImage(
+      {required String text,
+        required String image,
+        required bool? isDataFetched,
+      }) {
+    isDataFetched ??= false;
+    return Container(
+      decoration: const BoxDecoration(color: AppColors.pureWhiteColor),
+      child: Column(
+        children: [
+          Padding(
+            padding: EdgeInsets.symmetric(vertical: getHeight() * 0.02),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                SizedBox(
+                  child: TextView.size20Text(text,
+                      fontFamily: Assets.raleWaySemiBold,
+                      fontWeight: FontWeight.w600,
+                      color: AppColors.pinkColor),
+                ),
+                CircleAvatar(
+                  backgroundImage: isDataFetched
+                      ? NetworkImage(image)
+                      : const AssetImage(Assets.imagePlaceHolder)
+                  as ImageProvider,
+                  radius: getHeight() * 0.02, // 50.0
+                  backgroundColor: AppColors.transparentColor,
+                ),
+              ],
+            ),
+          ),
+          Divider(height: getHeight() * 0.01, thickness: getHeight() * 0.001, color: AppColors.dividerColor),
+        ],
+      ),
+    );
+  }
+  static Widget searchField({
+    TextEditingController? textEditingController,
+  }) {
+    return Container(
+        height: getHeight() * 0.061,
+        width: getWidth(),
+        decoration: BoxDecoration(
+          boxShadow: const [
+            BoxShadow(
+                color: AppColors.borderColor, blurRadius: 10, offset: Offset(0, 1))
+          ],
+          color: AppColors.pureWhiteColor,
+          border: Border.all(color: AppColors.borderColor),
+          borderRadius: BorderRadius.all(Radius.circular(getHeight() * .014)),
+        ),
+      child: Row(
+          children: [
+            SizedBox(width: getWidth() * 0.02),
+
+            SizedBox(
+              width: getWidth() * 0.71,
+              child: Center(
+                child: TextField(
+                  controller: textEditingController,
+                  obscureText: false,
+                  cursorHeight: getHeight() * .025,
+                  keyboardType: TextInputType.text,
+                  cursorColor: AppColors.blackTextColor,
+                  style: TextStyle(
+                    color: AppColors.blackTextColor,
+                    fontSize: sizes!.fontSize14,
+                    fontFamily: Assets.raleWayRegular,
+                  ),
+                  textInputAction: TextInputAction.next,
+                  decoration: InputDecoration(
+                      border: InputBorder.none,
+                      contentPadding: EdgeInsets.only(left: getWidth() * .04, bottom: getHeight() * 0.01),
+                      hintText: "Search",
+                      alignLabelWithHint: false,
+                      hintStyle: TextStyle(
+                        color: AppColors.hintTextGreyColor,
+                        fontSize: sizes!.fontSize14,
+                        fontFamily: Assets.raleWayRegular,
+                      )),
+                ),
+              ),
+            ),
+            Container(
+              height: getHeight() * 0.025,
+              width: getWidth() * 0.002,
+              color: AppColors.greyTextColor,
+            ),
+            SizedBox(width: getWidth() * 0.04),
+            SizedBox(
+              width: getWidth() * 0.08,
+              child: const Icon(
+                Icons.search,
+                color: AppColors.greyTextColor,
+              ),
+            ),
+
+            SizedBox(width: getWidth() * 0.02),
+          ],
+        ),
+    );
+  }
 }
