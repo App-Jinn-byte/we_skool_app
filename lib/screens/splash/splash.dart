@@ -24,7 +24,7 @@ class _SplashState extends State<Splash> with TickerProviderStateMixin {
   @override
   void initState() {
     _controller = AnimationController(
-      duration: const Duration(seconds: 3),
+      duration: const Duration(seconds: 2),
       vsync: this,
       value: 0.1,
     );
@@ -72,7 +72,7 @@ class _SplashState extends State<Splash> with TickerProviderStateMixin {
   }
 
   void nextScreenAutoMove() async {
-    await Future.delayed(const Duration(seconds: 5));
+    await Future.delayed(const Duration(seconds: 6));
     if (PreferenceUtils.getString(Strings.fullName)!.isNotEmpty &&
         PreferenceUtils.getString(Strings.password)!.isNotEmpty) {
       Navigator.pushReplacement(

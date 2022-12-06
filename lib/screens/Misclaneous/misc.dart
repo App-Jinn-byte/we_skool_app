@@ -27,59 +27,61 @@ class _MiscScreenState extends State<MiscScreen> {
           height: sizes!.height,
           width: sizes!.width,
           color: AppColors.pureWhiteColor,
-          child: Column(
+          child: SingleChildScrollView(
+            child: Column(
+                children: [
+            CommonWidgets.appBarIconImageText(
+            text: "Miscellaneous",
+                image: "",
+                isDataFetched: false,
+                onPressMenu: () {
+                  Navigator.pop(context);
+                }),
+            Container(
+              height: sizes!.height * 0.85,
+              margin: EdgeInsets.symmetric(horizontal: getWidth() * 0.05),
+              decoration: const BoxDecoration(
+                image: DecorationImage(
+                    image: AssetImage(Assets.lightBackground),
+                    fit: BoxFit.fill),
+              ),
+            child: Column(
               children: [
-          CommonWidgets.appBarIconImageText(
-          text: "Miscellaneous",
-              image: "",
-              isDataFetched: false,
-              onPressMenu: () {
-                Navigator.pop(context);
-              }),
-          Container(
-            height: sizes!.height * 0.85,
-            margin: EdgeInsets.symmetric(horizontal: getWidth() * 0.05),
-            decoration: const BoxDecoration(
-              image: DecorationImage(
-                  image: AssetImage(Assets.lightBackground),
-                  fit: BoxFit.fill),
-            ),
-          child: Column(
-            children: [
-            SizedBox(height: getHeight() * 0.01),
+              SizedBox(height: getHeight() * 0.01),
 
-             CommonWidgets.searchField(),
+               CommonWidgets.searchField(),
         SizedBox(height: getHeight() * 0.04),
 
-              Expanded(
-                child: ListView.separated(
-                  // physics: const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
-                  shrinkWrap: true,
-                  scrollDirection: Axis.vertical,
-                  itemCount: 3,
-                  itemBuilder: (context, index) {
-                    return _blogArticleComponents.myBox(
-                        title: 'Title',
-                        subtitle:
-                        'Early Learning Unraveled, Fascinating Brain',
-                        titlefile: 'Files',
-                        subtitlefile: '1',
-                        titleaction: 'Action',
-                        subtitleaction: 'Action Details');
-                  },
-                  separatorBuilder: (BuildContext context, int index) {
-                    return SizedBox(
-                        height: getHeight() * 0.05,
-                        child: _blogArticleComponents.myDivider());
-                  },
+                Expanded(
+                  child: ListView.separated(
+                    // physics: const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
+                    shrinkWrap: true,
+                    scrollDirection: Axis.vertical,
+                    itemCount: 3,
+                    itemBuilder: (context, index) {
+                      return _blogArticleComponents.myBox(
+                          title: 'Title',
+                          subtitle:
+                          'Early Learning Unraveled, Fascinating Brain',
+                          titlefile: 'Files',
+                          subtitlefile: '1',
+                          titleaction: 'Action',
+                          subtitleaction: 'Action Details');
+                    },
+                    separatorBuilder: (BuildContext context, int index) {
+                      return SizedBox(
+                          height: getHeight() * 0.05,
+                          child: _blogArticleComponents.myDivider());
+                    },
+                  ),
                 ),
-              ),
-              SizedBox(height: getHeight() * 0.01)
-            ],
-          ),
-        ),
+                SizedBox(height: getHeight() * 0.01)
               ],
+            ),
+        ),
+                ],
       ),
+          ),
         )
       )
     );
