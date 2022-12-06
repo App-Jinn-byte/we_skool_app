@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:we_skool_app/res/assets.dart';
 import 'package:we_skool_app/res/colors.dart';
 import 'package:we_skool_app/res/res.dart';
-import 'package:we_skool_app/screens/Blog%20Articles/bloc_article_components.dart';
+
 import 'package:we_skool_app/widgets/common_widgets.dart';
 import 'package:we_skool_app/widgets/text_views.dart';
+
+import '../blog_articles/bloc_article_components.dart';
 
 class MiscScreen extends StatefulWidget {
   const MiscScreen({super.key});
