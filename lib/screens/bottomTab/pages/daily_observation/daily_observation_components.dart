@@ -9,26 +9,26 @@ import '../../../../res/sizes.dart';
 import '../../../../widgets/common_widgets.dart';
 
 class DailyObservationComponents {
-  Widget getTab({
-    @required String? text,
-  }){
-    return Container(
-      width: getWidth() * 0.4,
-      height: getHeight() * 0.05,
-      decoration: BoxDecoration(
-        border: Border.all(
-          color: AppColors.grey2colrtext,
-        ),
-        borderRadius: BorderRadius.circular(05),
-      ),
-      child: Tab(
-        // child: count == 0? Text(text+' (0)'): Text(text+' ($count)'),
-        child: TextView.size14Text(text,)
-      ),
-    );
-  }
+  // Widget getTab({
+  //   @required String? text,
+  // }){
+  //   return Container(
+  //     width: getWidth() * 0.4,
+  //     height: getHeight() * 0.05,
+  //     decoration: BoxDecoration(
+  //       border: Border.all(
+  //         color: AppColors.grey2colrtext,
+  //       ),
+  //       borderRadius: BorderRadius.circular(05),
+  //     ),
+  //     child: Tab(
+  //       // child: count == 0? Text(text+' (0)'): Text(text+' ($count)'),
+  //       child: TextView.size14Text(text,)
+  //     ),
+  //   );
+  // }
 
-  Widget textField({@required TextEditingController? textEditingController,}) {
+  Widget textField({@required TextEditingController? textEditingController, Color? fieldColor, Color? borderColor}) {
     return Container(
       width: sizes!.widthRatio * 325,
       height: getHeight() * 0.12,
@@ -38,10 +38,10 @@ class DailyObservationComponents {
           width: 0.25,
         ),
         borderRadius: BorderRadius.all(Radius.circular(getWidth() * 0.02)),
-        color: AppColors.textFieldBigBorder,
-        boxShadow: const [
+        color: fieldColor ?? AppColors.textFieldBigBorder,
+        boxShadow: [
           BoxShadow(
-            color: AppColors.borderColor,
+            color: borderColor ?? AppColors.borderColor,
             blurRadius: 2,
             offset: Offset(0, 0),
           ),
@@ -50,10 +50,12 @@ class DailyObservationComponents {
       child: TextField(
         maxLines: 8,
         controller: textEditingController,
+        cursorHeight: getHeight() * .025,
         style: TextStyle(
           color: AppColors.blackTextColor,
-          fontFamily: Assets.raleWayRegular,
-          fontSize: sizes!.fontSize14
+          fontFamily: Assets.raleWayMedium,
+          fontSize: sizes!.fontSize14,
+          fontWeight: FontWeight.w500
         ),
         decoration: InputDecoration(
           contentPadding: EdgeInsets.only(
@@ -126,9 +128,9 @@ class DailyObservationComponents {
         }
       },
       child: Container(
-        height: sizes!.height * 0.05,
+        height: sizes!.height * 0.04,
         width: sizes!.width * 0.4,
-        margin: EdgeInsets.symmetric(horizontal: getWidth() * 0.03),
+        margin: EdgeInsets.symmetric(horizontal: getWidth() * 0.02),
         padding: EdgeInsets.symmetric(horizontal: sizes!.width * 0.05),
         decoration: BoxDecoration(
             color: bgColor ?? AppColors.pureWhiteColor,

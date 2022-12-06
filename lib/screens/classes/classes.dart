@@ -48,7 +48,7 @@ class _ClassesState extends State<Classes> {
                     children: [
                       SizedBox(height: getHeight() * 0.04),
                       ButtonsTabBar(
-                        contentPadding: EdgeInsets.symmetric(horizontal: getWidth()*0.06),
+                        contentPadding: EdgeInsets.symmetric(horizontal: getWidth()*0.08),
 
                         unselectedBorderColor: AppColors.greyColor,
                         borderWidth: 1,
