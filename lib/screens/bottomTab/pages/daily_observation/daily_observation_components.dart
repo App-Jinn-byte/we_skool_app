@@ -43,7 +43,7 @@ class DailyObservationComponents {
           BoxShadow(
             color: borderColor ?? AppColors.borderColor,
             blurRadius: 2,
-            offset: Offset(0, 0),
+            offset: const Offset(0, 0),
           ),
         ],
       ),
