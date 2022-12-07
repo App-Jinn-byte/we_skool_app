@@ -3,16 +3,22 @@ import 'package:we_skool_app/res/assets.dart';
 import 'package:we_skool_app/res/res.dart';
 import 'package:we_skool_app/screens/development_checklist/development_checklist_components.dart';
 import 'package:we_skool_app/widgets/common_widgets.dart';
-import 'package:we_skool_app/widgets/text_views.dart';
 
 import '../../res/colors.dart';
 
-class DevelopemntChecklist extends StatelessWidget {
-  const DevelopemntChecklist({super.key});
+class DevelopemntChecklist extends StatefulWidget {
+   const DevelopemntChecklist({super.key});
+
+  @override
+  State<DevelopemntChecklist> createState() => _DevelopemntChecklistState();
+}
+
+class _DevelopemntChecklistState extends State<DevelopemntChecklist> {
+   final DevelepmentCheckComponents _develepmentCheckComponents = DevelepmentCheckComponents();
 
   @override
   Widget build(BuildContext context) {
-    initializeResources(context: context);
+    
 
     return SafeArea(
       child: Scaffold(
@@ -46,7 +52,7 @@ class DevelopemntChecklist extends StatelessWidget {
                     SizedBox(
                       height: getHeight() * 0.03,
                     ),
-                    DevelepmentCheckComponents.myBox(
+                    _develepmentCheckComponents.myBox(
                     
                       titletxt: 'Your text here',
                   

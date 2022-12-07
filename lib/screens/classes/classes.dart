@@ -15,10 +15,9 @@ class Classes extends StatefulWidget {
 }
 
 class _ClassesState extends State<Classes> {
+  final SpClassComponents _spClassComponents = SpClassComponents();
   @override
   Widget build(BuildContext context) {
-    initializeResources(context: context);
-
     return SafeArea(
         child: Scaffold(
       body: DefaultTabController(
@@ -48,8 +47,8 @@ class _ClassesState extends State<Classes> {
                     children: [
                       SizedBox(height: getHeight() * 0.04),
                       ButtonsTabBar(
-                        contentPadding: EdgeInsets.symmetric(horizontal: getWidth()*0.08),
-
+                        contentPadding:
+                            EdgeInsets.symmetric(horizontal: getWidth() * 0.08),
                         unselectedBorderColor: AppColors.greyColor,
                         borderWidth: 1,
                         height: getHeight() * 0.045,
@@ -77,8 +76,47 @@ class _ClassesState extends State<Classes> {
                       Expanded(
                         child: TabBarView(
                           children: [
-                            Myclass(),
-                            specialClass(),
+                            ListView.separated(
+                              
+                              shrinkWrap: true,
+                              scrollDirection: Axis.vertical,
+                              itemCount: 3,
+                              itemBuilder: (context, index) {
+                                return _spClassComponents.myBoxcls(
+                                  classname: 'Carrefour',
+                                  students: '50 Students',
+                                  agegroup: '12 to 18 mon',
+                                  teacher: 'Alan Hawkr',
+                                );
+                              },
+                              separatorBuilder:
+                                  (BuildContext context, int index) {
+                                return SizedBox(
+                                  height: getHeight() * 0.04,
+                                );
+                              },
+                            ),
+                            ListView.separated(
+                              
+                              shrinkWrap: true,
+                              scrollDirection: Axis.vertical,
+                              itemCount: 4,
+                              itemBuilder: (context, index) {
+                                return _spClassComponents.myBoxspecialcls(
+                                  classname: 'Carrefour',
+                                  status: 'Enrolled',
+                                  date: '12/11/2022',
+                                  starttime: '11:00AM',
+                                  teacher: 'adnan Hawkr',
+                                );
+                              },
+                              separatorBuilder:
+                                  (BuildContext context, int index) {
+                                return SizedBox(
+                                  height: getHeight() * 0.04,
+                                );
+                              },
+                            ),
                           ],
                         ),
                       ),
@@ -90,50 +128,5 @@ class _ClassesState extends State<Classes> {
         ),
       ),
     ));
-  }
-
-  Widget Myclass() {
-    return ListView.separated(
-      // physics: const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
-      shrinkWrap: true,
-      scrollDirection: Axis.vertical,
-      itemCount: 3,
-      itemBuilder: (context, index) {
-        return SpClassComponents.myBoxcls(
-          classname: 'Carrefour',
-          students: '50 Students',
-          agegroup: '12 to 18 mon',
-          teacher: 'Alan Hawkr',
-        );
-      },
-      separatorBuilder: (BuildContext context, int index) {
-        return SizedBox(
-          height: getHeight() * 0.04,
-        );
-      },
-    );
-  }
-
-  Widget specialClass() {
-    return ListView.separated(
-      // physics: const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
-      shrinkWrap: true,
-      scrollDirection: Axis.vertical,
-      itemCount: 4,
-      itemBuilder: (context, index) {
-        return SpClassComponents.myBoxspecialcls(
-          classname: 'Carrefour',
-          status: 'Enrolled',
-          date: '12/11/2022',
-          starttime: '11:00AM',
-          teacher: 'adnan Hawkr',
-        );
-      },
-      separatorBuilder: (BuildContext context, int index) {
-        return SizedBox(
-          height: getHeight() * 0.04,
-        );
-      },
-    );
   }
 }

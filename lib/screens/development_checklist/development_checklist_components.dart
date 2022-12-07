@@ -7,7 +7,7 @@ import 'package:we_skool_app/widgets/common_widgets.dart';
 import '../../widgets/text_views.dart';
 
 class DevelepmentCheckComponents {
-  static Widget myBox({double? height,String? titletxt,desctxt,agegrouptxt,satustxt}) {
+   Widget myBox({double? height,String? titletxt,desctxt,agegrouptxt,satustxt}) {
     return Container(
       height: height,
       width: getWidth(),
@@ -28,7 +28,7 @@ class DevelepmentCheckComponents {
             TextView.size14Text('Title', color: AppColors.textColor),
             SizedBox(height: getHeight()*0.02,),
             TextView.size14Text(titletxt,color: AppColors.greyTextColor,fontFamily: Assets.raleWayMedium),
-            DevelepmentCheckComponents.myDivider(),
+           myDivider(),
 
             SizedBox(
               height: getHeight() * 0.01,
@@ -39,14 +39,14 @@ class DevelepmentCheckComponents {
             SizedBox(
               height: getHeight() * 0.05,
             ),
-            DevelepmentCheckComponents.myDivider(),
+            myDivider(),
             SizedBox(
               height: getHeight() * 0.01,
             ),
             TextView.size14Text('Age group', color: AppColors.textColor),
             SizedBox(height: getHeight()*0.02,),
             TextView.size14Text(agegrouptxt,color: AppColors.greyTextColor,fontFamily: Assets.raleWayMedium),
-            DevelepmentCheckComponents.myDivider(),
+           myDivider(),
             SizedBox(
               height: getHeight() * 0.01,
             ),
@@ -61,7 +61,7 @@ class DevelepmentCheckComponents {
     );
   }
 
-  static Widget myDivider() {
+ Widget myDivider() {
     return Divider(
         height: getHeight() * 0.01,
         thickness: getHeight() * 0.001,

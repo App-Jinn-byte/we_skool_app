@@ -7,12 +7,17 @@ import '../../widgets/common_widgets.dart';
 import '../../widgets/text_views.dart';
 import 'wespecial_components.dart';
 
-class WeSpecialScreen extends StatelessWidget {
+class WeSpecialScreen extends StatefulWidget {
   const WeSpecialScreen({Key? key}) : super(key: key);
 
   @override
+  State<WeSpecialScreen> createState() => _WeSpecialScreenState();
+}
+
+class _WeSpecialScreenState extends State<WeSpecialScreen> {
+  final WeSpecialComponents _weSpecialComponents = WeSpecialComponents();
+  @override
   Widget build(BuildContext context) {
-    initializeResources(context: context);
     return SafeArea(
       child: Scaffold(
         body: Container(
@@ -38,7 +43,7 @@ class WeSpecialScreen extends StatelessWidget {
                         fit: BoxFit.fill),
                   ),
                   child: Padding(
-                    padding:  EdgeInsets.only( top: getHeight()*0.04),
+                    padding: EdgeInsets.only(top: getHeight() * 0.04),
                     child: Column(
                       children: [
                         Container(
@@ -64,19 +69,19 @@ class WeSpecialScreen extends StatelessWidget {
                                     color: AppColors.blackTextColor,
                                     fontFamily: Assets.raleWaySemiBold),
                                 SizedBox(height: getHeight() * 0.02),
-                                WeSpecialWidgets.miniContainer(
+                                _weSpecialComponents.miniContainer(
                                     color: AppColors.redColor,
                                     colortext: AppColors.redColor,
                                     text1: 'Yoga Class',
                                     textprice: 'Price/50'),
                                 SizedBox(height: getHeight() * 0.02),
-                                WeSpecialWidgets.miniContainer(
+                                _weSpecialComponents.miniContainer(
                                     color: AppColors.greyColor,
                                     colortext: AppColors.greyTextColor,
                                     text1: 'Dance Class',
                                     textprice: 'Price/50'),
                                 SizedBox(height: getHeight() * 0.02),
-                                WeSpecialWidgets.miniContainer(
+                                _weSpecialComponents.miniContainer(
                                   color: AppColors.greyColor,
                                   colortext: AppColors.greyTextColor,
                                   text1: 'Music Class',
@@ -88,9 +93,12 @@ class WeSpecialScreen extends StatelessWidget {
                           ),
                         ),
                         SizedBox(height: getHeight() * 0.01),
-                        WeSpecialWidgets.myDividers(),
+                       _weSpecialComponents.myDividers(),
                         SizedBox(height: getHeight() * 0.03),
-                        CommonWidgets.getButton(onPress: () {}, text: 'Enroll',height: getHeight()*0.06),
+                        CommonWidgets.getButton(
+                            onPress: () {},
+                            text: 'Enroll',
+                            height: getHeight() * 0.06),
                       ],
                     ),
                   ),

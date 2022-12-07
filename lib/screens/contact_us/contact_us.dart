@@ -78,11 +78,7 @@ class _ContactUsState extends State<ContactUs> {
                             hint: "Your Subject",
                             textInputType: TextInputType.emailAddress,
                           ),
-                          // ContactUsComponents.mytextField(
-                          //   height: getHeight() * 0.054,
-                          //   width: getWidth(),
-                          //   hint: 'Your Subject',
-                          // ),
+                        
                           SizedBox(
                             height: getHeight() * 0.02,
                           ),
