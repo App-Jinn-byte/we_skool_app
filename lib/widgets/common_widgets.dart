@@ -131,9 +131,10 @@ class CommonWidgets {
       decoration: BoxDecoration(
           boxShadow:  const [
             BoxShadow(
-                color: AppColors.hintTextGreyColor,
-                blurRadius: 1,
-                offset: Offset(0,0)
+                color: AppColors.shadow,
+                blurRadius: 0,
+                offset: Offset(0,3),
+                
             )
           ],
           color: bgColor ?? AppColors.pureWhiteColor,
@@ -154,7 +155,7 @@ class CommonWidgets {
         textInputAction: TextInputAction.next,
         decoration: InputDecoration(
             border: InputBorder.none,
-            contentPadding: EdgeInsets.only(left: getWidth() * .04),
+            contentPadding: EdgeInsets.only(left: getWidth() * .04,top:getHeight()* 0.006),
             hintText: hint ?? "",
             alignLabelWithHint: false,
 
@@ -184,9 +185,9 @@ class CommonWidgets {
       decoration: BoxDecoration(
           boxShadow:  const [
             BoxShadow(
-                color: AppColors.hintTextGreyColor,
-                blurRadius: 1,
-                offset: Offset(0,0)
+               color: AppColors.shadow,
+                blurRadius: 0,
+                offset: Offset(0,3),
             )
           ],
           color: bgColor ?? AppColors.pureWhiteColor,
@@ -250,9 +251,9 @@ class CommonWidgets {
         decoration: BoxDecoration(
             boxShadow:  const [
               BoxShadow(
-                  color: AppColors.hintTextGreyColor,
-                  blurRadius: 1,
-                  offset: Offset(0,0)
+                 color: AppColors.shadow,
+                blurRadius: 0,
+                offset: Offset(0,3),
               )
             ],
             color: bgColor ?? AppColors.pureWhiteColor,
@@ -283,9 +284,9 @@ class CommonWidgets {
       decoration: BoxDecoration(
           boxShadow:  const [
             BoxShadow(
-                color: AppColors.hintTextGreyColor,
-                blurRadius: 1,
-                offset: Offset(0,0)
+                color: AppColors.shadow,
+                blurRadius: 0,
+                offset: Offset(0,3),
             )
           ],
           color: AppColors.pureWhiteColor,
