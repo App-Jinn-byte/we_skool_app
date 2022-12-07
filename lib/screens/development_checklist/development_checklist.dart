@@ -1,3 +1,4 @@
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:we_skool_app/res/assets.dart';
 import 'package:we_skool_app/res/res.dart';
@@ -5,21 +6,33 @@ import 'package:we_skool_app/screens/development_checklist/development_checklist
 import 'package:we_skool_app/widgets/common_widgets.dart';
 
 import '../../res/colors.dart';
+import '../../widgets/text_views.dart';
 
-class DevelopemntChecklist extends StatefulWidget {
-   const DevelopemntChecklist({super.key});
+class DevelopmentChecklist extends StatefulWidget {
+   const DevelopmentChecklist({super.key});
 
   @override
-  State<DevelopemntChecklist> createState() => _DevelopemntChecklistState();
+  State<DevelopmentChecklist> createState() => _DevelopmentChecklistState();
 }
 
-class _DevelopemntChecklistState extends State<DevelopemntChecklist> {
-   final DevelepmentCheckComponents _develepmentCheckComponents = DevelepmentCheckComponents();
+class _DevelopmentChecklistState extends State<DevelopmentChecklist> {
+   final DevelopmentCheckComponents _developmentCheckComponents = DevelopmentCheckComponents();
+   DateTime? observationDate;
+   int _currentIndex=0;
+   List<String> list = ["(How children learn; Initiative, curiosity, persistence, problem-solving, and attentiveness)",
+     "(How children learn; Initiative, curiosity, persistence, problem-solving, and attentiveness)",
+     "(How children learn; Initiative, curiosity, persistence, problem-solving, and attentiveness)"];
+
+   List<T> map<T>(List list, Function handler) {
+     List<T> result = [];
+     for (var i = 0; i < list.length; i++) {
+       result.add(handler(i, list[i]));
+     }
+     return result;
+   }
 
   @override
   Widget build(BuildContext context) {
-    
-
     return SafeArea(
       child: Scaffold(
         body: Container(
@@ -44,29 +57,133 @@ class _DevelopemntChecklistState extends State<DevelopemntChecklist> {
                       fit: BoxFit.fill),
                 ),
                 child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     SizedBox(
                       height: getHeight() * 0.04,
                     ),
                     CommonWidgets.searchField(),
                     SizedBox(
-                      height: getHeight() * 0.03,
+                      height: getHeight() * 0.02,
                     ),
-                    _develepmentCheckComponents.myBox(
-                    
-                      titletxt: 'Your text here',
-                  
-                      desctxt: 'Your text here...',
-                      
-                      satustxt: 'Active',
-                    
-                      agegrouptxt: '6 months to 12 months',
-                      height: getHeight() * 0.42,
-                    ),
+                    _developmentCheckComponents.getDateField(
+                        date: observationDate != null
+                            ? "${observationDate!.day}/${observationDate!.month}/${observationDate!.year}"
+                            : "Select Date",
+                        onPressDate: () {
+                          _selectObservationDate(context);
+                        }),
                     SizedBox(
                       height: getHeight() * 0.04,
                     ),
-                    CommonWidgets.getButton(onPress: () {}, text: 'Add New',height: getHeight()*0.06),
+                    CarouselSlider(
+                      options: CarouselOptions(
+                        height: sizes!.height * 0.45,
+                        viewportFraction: 1,
+                        onPageChanged: (index, reason) {
+                          setState(() {
+                            _currentIndex = index;
+                          });
+                        },
+                      ),
+                      items: list.map((i) {
+                        return Builder(
+                          builder: (BuildContext context) {
+                            return Container(
+                              width: MediaQuery.of(context).size.width,
+                              margin: EdgeInsets.symmetric(horizontal: getWidth() * 0.02),
+                              decoration: const BoxDecoration(
+                                // color: Colors.white,
+                                shape: BoxShape.rectangle,
+                              ),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  TextView.size20Text("Approaches to Learning", color: AppColors.blackLight, fontFamily: Assets.raleWaySemiBold, fontWeight: FontWeight.w600, lines: 1),
+                                  SizedBox(height: getHeight() * 0.02),
+                                  Container(
+                                    height: getHeight() * 0.35,
+                                      width: getWidth(),
+                                      padding: EdgeInsets.symmetric(horizontal: getWidth() * 0.04, vertical: getHeight() * 0.02),
+                                      decoration: BoxDecoration(
+                                        shape: BoxShape.rectangle,
+                                        color: AppColors.pureWhiteColor,
+                                        border: Border.all(color: AppColors.blackLight, width: getWidth() * 0.00005),
+                                        borderRadius: BorderRadius.circular(
+                                          getWidth() * .035,
+                                        ),
+                                        boxShadow:  const [
+                                          BoxShadow(
+                                              color: AppColors.borderColor,
+                                              blurRadius: 4,
+                                              offset: Offset(0,0)
+                                          )
+                                        ],
+                                      ),
+                                      child: Column(
+                                        children: [
+                                          Text(
+                                            i.toString(),
+                                            // textAlign: TextAlign.justify,
+                                            softWrap: true,
+                                            maxLines: 8,
+                                            overflow: TextOverflow.ellipsis,
+                                            style: TextStyle(
+                                              fontSize: sizes!.fontSize16,
+                                              fontWeight: FontWeight.w600,
+                                              fontFamily: Assets.raleWaySemiBold,
+                                              height: 1.4,
+                                              color: AppColors.darkGreyColor,
+                                            ),
+                                          ),
+                                        ],
+                                      )),
+                                ],
+                              ),
+                            );
+                          },
+                        );
+                      }).toList(),
+                    ),
+                    SizedBox(height: getHeight() * 0.01),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: map<Widget>(list, (index, url) {
+                        return Container(
+                          width: getWidth() * 0.02,
+                          height: getHeight() * 0.02,
+                          margin: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 2.0),
+                          decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              color: _currentIndex == index ? AppColors.pinkColor : AppColors.pureWhiteColor,
+                              border: Border.all(color: AppColors.blackBorderColor, width: getWidth() * 0.002)
+                          ),
+                        );
+                      }),
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        CommonWidgets.getButton(onPress: () {},
+                            text: 'Cancel',
+                            btnColor: AppColors.pureWhiteColor,
+                            borderColor: AppColors.yellowColor,
+                            textColor: AppColors.yellowColor,
+                            fontFamily: Assets.raleWaySemiBold,
+                            fontWeight: FontWeight.w600,
+                            fontSize: sizes!.fontSize14,
+                            width: getWidth() * 0.41,
+                            height: getHeight()*0.06),
+                        CommonWidgets.getButton(onPress: () {},
+                            text: 'Submit',
+                            width: getWidth() * 0.41,
+                            height: getHeight()*0.06,
+                          fontFamily: Assets.raleWaySemiBold,
+                          fontWeight: FontWeight.w600,
+                          fontSize: sizes!.fontSize14,
+                        ),
+                      ],
+                    ),
                   ],
                 ),
               ),
@@ -76,4 +193,32 @@ class _DevelopemntChecklistState extends State<DevelopemntChecklist> {
       ),
     );
   }
+
+   Future<void> _selectObservationDate(BuildContext context) async {
+     final DateTime? picked = await showDatePicker(
+       context: context,
+       initialDate: DateTime.now(),
+       firstDate: DateTime(
+           DateTime.now().year, DateTime.now().month, DateTime.now().day),
+       lastDate: DateTime(DateTime.now().year + 20),
+       helpText: 'Select date',
+       builder: (context, child) {
+         return Theme(
+           data: ThemeData(
+             dialogBackgroundColor: Colors.white,
+             colorScheme: const ColorScheme.light(primary: AppColors.pinkColor),
+             buttonTheme:
+             const ButtonThemeData(textTheme: ButtonTextTheme.primary),
+             highlightColor: Colors.grey[400],
+           ), // This will change to light theme.
+           child: child!,
+         );
+       },
+     );
+     if (picked != null && picked != observationDate) {
+       setState(() {
+         observationDate = picked;
+       });
+     }
+   }
 }

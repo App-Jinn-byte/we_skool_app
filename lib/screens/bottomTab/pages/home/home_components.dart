@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:we_skool_app/res/res.dart';
+import 'package:we_skool_app/screens/assessment_report/assessment_report.dart';
 import 'package:we_skool_app/screens/blog_articles/blog_article_screen.dart';
 import 'package:we_skool_app/screens/Misclaneous/misc.dart';
 import 'package:we_skool_app/screens/Read/read_screen.dart';
@@ -340,8 +341,8 @@ class _BuilddrawersState extends State<Builddrawers> {
                       onPress: () {
                         widget.onPress!.call(1);
                         Navigator.pop(context);
-                        // Navigator.push(context,
-                        //     MaterialPageRoute(builder: (_) => const Classes()));
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (_) => const AssessmentReport()));
                       }
                   ),
                   drawerListWidget(

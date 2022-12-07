@@ -39,5 +39,7 @@ class AppColors{
   static const darkGreyColor = Color.fromRGBO(91, 91, 91, 1);
   static const textFieldBigBorder = Color.fromRGBO(250, 250, 250, 0.8);
   static const calendarBorder = Color.fromRGBO(198, 198, 198, 1);
+  static const greyFieldBorderColor = Color.fromRGBO(172, 172, 172, 1);
+  static const greyFieldColor = Color.fromRGBO(250, 250, 250, 1);
 
 }
