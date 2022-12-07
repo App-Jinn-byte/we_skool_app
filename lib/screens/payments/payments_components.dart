@@ -6,7 +6,7 @@ import 'package:we_skool_app/widgets/text_views.dart';
 import '../../res/colors.dart';
 
 class PaymentsComponents {
-  static Widget mypaymentBox(
+   Widget mypaymentBox(
       {double? height,
       String? packagetitle,
       email,
@@ -46,7 +46,7 @@ class PaymentsComponents {
             SizedBox(
               height: getHeight() * 0.01,
             ),
-            PaymentsComponents.myDivider(),
+          myDivider(),
             SizedBox(
               height: getHeight() * 0.01,
             ),
@@ -60,7 +60,7 @@ class PaymentsComponents {
             SizedBox(
               height: getHeight() * 0.01,
             ),
-            PaymentsComponents.myDivider(),
+            myDivider(),
             SizedBox(
               height: getHeight() * 0.01,
             ),
@@ -74,7 +74,7 @@ class PaymentsComponents {
             SizedBox(
               height: getHeight() * 0.01,
             ),
-            PaymentsComponents.myDivider(),
+             myDivider(),
             SizedBox(
               height: getHeight() * 0.01,
             ),
@@ -86,7 +86,7 @@ class PaymentsComponents {
             SizedBox(
               height: getHeight() * 0.01,
             ),
-            PaymentsComponents.myDivider(),
+          myDivider(),
             SizedBox(
               height: getHeight() * 0.01,
             ),
@@ -97,7 +97,7 @@ class PaymentsComponents {
             TextView.size14Text(expirydate,
                 color: AppColors.greyTextColor,
                 fontFamily: Assets.raleWayMedium),
-            PaymentsComponents.myDivider(),
+            myDivider(),
             SizedBox(
               height: getHeight() * 0.01,
             ),
@@ -114,14 +114,14 @@ class PaymentsComponents {
     );
   }
 
-  static Widget myDivider() {
+  Widget myDivider() {
     return Divider(
         height: getHeight() * 0.01,
         thickness: getHeight() * 0.001,
         color: AppColors.dividerColor);
   }
 
-  static Widget getPdfButton({
+   Widget getPdfButton({
     double? width,
     double? height,
     String? text,

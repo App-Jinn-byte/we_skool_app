@@ -7,7 +7,7 @@ import 'package:we_skool_app/widgets/text_views.dart';
 import '../../res/assets.dart';
 
 class WeMonthlyComponents {
-  static Widget weekwidget(
+   Widget weekwidget(
       {double? height,
       width,
       Color? color,
@@ -32,7 +32,7 @@ class WeMonthlyComponents {
     );
   }
 
-  static Widget daywidget(
+   Widget daywidget(
       {double? height,
       width,
       Color? color,
@@ -59,7 +59,7 @@ class WeMonthlyComponents {
     );
   }
 
-  static Widget miniContainer({
+   Widget miniContainer({
     String? timetext1,
     timetextdetail,
     required Color color,
@@ -101,7 +101,7 @@ class WeMonthlyComponents {
     );
   }
 
-  static Widget myDivider() {
+   Widget myDivider() {
     return Divider(
         height: getHeight() * 0.01,
         thickness: getHeight() * 0.001,

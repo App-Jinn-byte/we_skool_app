@@ -5,10 +5,10 @@ import 'package:we_skool_app/res/colors.dart';
 import 'package:we_skool_app/res/res.dart';
 import 'package:we_skool_app/widgets/text_views.dart';
 
-class WeSpecialWidgets {
+class WeSpecialComponents {
 
 
- static Widget myDividers() {
+ Widget myDividers() {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: getWidth() * 0.02),
       child: Divider(
@@ -17,10 +17,8 @@ class WeSpecialWidgets {
           color: AppColors.dividerColor),
     );
   }
-  static Widget miniContainer({String? text1,textprice, required Color color,colortext,
+  Widget miniContainer({String? text1,textprice, required Color color,colortext,
   }) {
-
-
 
     return   Expanded(
       child: Container(

@@ -422,9 +422,9 @@ class _BuilddrawersState extends State<Builddrawers> {
                   //           MaterialPageRoute(builder: (_) => const ContactUs()));
                   //     }
                   // ),
-                  SizedBox(height: getHeight() * 0.05),
+                 // SizedBox(height: getHeight() * 0.05),
                   Padding(
-                    padding: EdgeInsets.only(left: getWidth() * 0.05),
+                    padding: EdgeInsets.only(left: getWidth() * 0.04,top: getHeight()*0.01),
                     child: GestureDetector(
                       onTap: () {
                         Navigator.pushAndRemoveUntil(context,
@@ -462,7 +462,7 @@ class _BuilddrawersState extends State<Builddrawers> {
             ],
           ),
         ),
-        //this is drawer open..............
+        //this is drawer side open..............
         istrue
             ? Container(
                 decoration: const BoxDecoration(
@@ -473,7 +473,7 @@ class _BuilddrawersState extends State<Builddrawers> {
                   ),
                 ),
                 margin: EdgeInsets.only(
-                    top: getHeight() * 0.0, bottom: getHeight() * 0.08),
+                    top: getHeight() * 0.0, bottom: getHeight() * 0.022),
                 height: getHeight() * 0.15,
                 width: getWidth() * 0.33,
                 child: Column(
