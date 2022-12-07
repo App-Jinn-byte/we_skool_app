@@ -45,8 +45,9 @@ class _SignInState extends State<SignIn> {
               child: SingleChildScrollView(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
+                 
                   children: [
-                    // CommonWidgets.customBackButton(onPress: () {}),
+                   
                     SizedBox(height: getHeight() * 0.2),
                     TextView.size24Text("Sign In", Assets.raleWayBold,
                         fontWeight: FontWeight.w700,
