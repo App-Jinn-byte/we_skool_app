@@ -43,6 +43,7 @@ class _OtpScreenState extends State<OtpScreen> {
               padding: EdgeInsets.symmetric(horizontal: getWidth() * 0.05),
               child: SingleChildScrollView(
                 child: Column(
+                  
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     SizedBox(height: getHeight() * 0.04),

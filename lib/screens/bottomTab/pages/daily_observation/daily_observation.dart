@@ -88,23 +88,7 @@ class _DailyObservationState extends State<DailyObservation> with SingleTickerPr
                         children: [
                           SizedBox(height: getHeight() * 0.02),
                           ButtonsTabBar(
-                            // controller: _tabController,
-                            // indicator: BoxDecoration(
-                            //   borderRadius: BorderRadius.circular(5),
-                            //   // border: Border.all(color: AppColors.grey2colrtext, width: getWidth() * 0.008),
-                            //   color: AppColors.pinkColor,
-                            // ),
-                            // indicatorColor: AppColors.pinkColor,
-                            // indicatorSize: TabBarIndicatorSize.label,
-                            // indicatorPadding:
-                            // EdgeInsets.symmetric(vertical: sizes!.heightRatio * 5),
-                            // labelColor: AppColors.pureWhiteColor,
-                            // labelStyle: TextStyle(
-                            //     fontSize: sizes!.fontRatio * 14,
-                            //     fontWeight: FontWeight.w600,
-                            //     fontFamily: Assets.raleWaySemiBold),
-                            // unselectedLabelColor: AppColors.grey2colrtext,
-                            // labelPadding: EdgeInsets.all(sizes!.smallPadding),
+                           
                             contentPadding: EdgeInsets.symmetric(horizontal: getWidth()*0.09),
 
                             unselectedBorderColor: AppColors.greyColor,
@@ -142,7 +126,7 @@ class _DailyObservationState extends State<DailyObservation> with SingleTickerPr
                                       _dailyObservationComponents.getDateField(
                                           date: observationDate != null
                                               ? "${observationDate!.day}/${observationDate!.month}/${observationDate!.year}"
-                                              : "Select Date",
+                                              : "DD/MM/YY",
                                           onPressDate: () {
                                             _selectObservationDate(context);
                                           }

@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'package:we_skool_app/providers/multi_providers.dart';
 import 'package:we_skool_app/routes/routes.dart';
+import 'package:we_skool_app/screens/bottomTab/pages/home/home.dart';
 
 
 
@@ -34,6 +35,7 @@ class MyApp extends StatelessWidget {
         initialRoute: Routes.splash,
         routes: Routes.routes,
         title: 'We Skool',
+       
 
 
       ),

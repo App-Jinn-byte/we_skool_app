@@ -96,7 +96,7 @@ class _ReadScreenState extends State<ReadScreen> {
                                   (BuildContext context, int index) {
                                 return SizedBox(
                                     height: getHeight() * 0.05,
-                                    child: ReadComponents.myDividers());
+                                    child: _readComponents.myDividers());
                               },
                             ),
                             ListView.separated(
@@ -118,7 +118,7 @@ class _ReadScreenState extends State<ReadScreen> {
                                   (BuildContext context, int index) {
                                 return SizedBox(
                                     height: getHeight() * 0.05,
-                                    child: ReadComponents.myDividers());
+                                    child: _readComponents.myDividers());
                               },
                             ),
                           ],

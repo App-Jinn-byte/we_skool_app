@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:we_skool_app/res/assets.dart';
 import 'package:we_skool_app/res/res.dart';
+import 'package:we_skool_app/screens/bottomTab/pages/home/home.dart';
 import 'package:we_skool_app/screens/forgot_password/forgot_password.dart';
 import 'package:we_skool_app/screens/registration/register_as.dart';
 import 'package:we_skool_app/widgets/common_widgets.dart';
@@ -80,6 +81,7 @@ class _SignInState extends State<SignIn> {
                     SizedBox(height: getHeight() * 0.05),
                     CommonWidgets.getButton(
                         onPress: () {
+                         
                           Navigator.pushAndRemoveUntil(context,
                               MaterialPageRoute(builder: (_) => const BottomTab(pageIndex: 0)), (route) => false);
                         },

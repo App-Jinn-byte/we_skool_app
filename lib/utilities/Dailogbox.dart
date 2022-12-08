@@ -53,11 +53,7 @@ class AlertDilog extends StatelessWidget {
                               fontFamily: Assets.raleWaySemiBold),
                           textField(
                             hint: '1234-1234-1234-1234',
-                            icon: const Icon(
-                              Icons.payment,
-                              color: AppColors.greyColor,
-                      
-                            ),
+                           
                             textInputType: TextInputType.number,
                           ),
                           TextView.size14Text('Exeprie Date',
@@ -66,10 +62,7 @@ class AlertDilog extends StatelessWidget {
                               fontFamily: Assets.raleWaySemiBold),
                           textField(
                             hint: '12/2022',
-                            icon: const Icon(
-                              Icons.payment,
-                              color: AppColors.greyColor,
-                            ),
+                            
                           ),
                           TextView.size14Text('CVC',
                               color: AppColors.textColor,
@@ -78,10 +71,7 @@ class AlertDilog extends StatelessWidget {
                           textField(
                             textInputType: TextInputType.number,
                             hint: '1234',
-                            icon: const Icon(
-                              Icons.payment,
-                              color: AppColors.greyColor,
-                            ),
+                           
                           ),
                           TextView.size14Text('Amount to Pay',
                               color: AppColors.textColor,
@@ -89,7 +79,7 @@ class AlertDilog extends StatelessWidget {
                               fontFamily: Assets.raleWaySemiBold),
                           textField(
                             hint: 'Yoga Class',
-                            icon: const Icon(Icons.monetization_on_outlined),
+                            
                       
                           ),
                           Divider(
@@ -163,7 +153,7 @@ class AlertDilog extends StatelessWidget {
         ),
         textInputAction: TextInputAction.next,
         decoration: InputDecoration(
-            suffixIcon: icon,
+            suffixIcon: Image.asset(Assets.paymenticon,width: getWidth()*0.03,),
             border: InputBorder.none,
             contentPadding: EdgeInsets.only(
                 left: getWidth() * .04, top: getHeight() * 0.0049),

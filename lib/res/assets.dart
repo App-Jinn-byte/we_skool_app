@@ -10,6 +10,8 @@ class Assets {
   static const String apiLoading = "assets/json/blueSimple.json";
   // images
   static const String backGroundImage = "assets/png/backGroundImage.png";
+  static const String paymenticon = "assets/png/paymenticon.png";
+
   static const String weClasses = "assets/png/icon_classes.png";
   static const String weAssessment = "assets/png/icon_assessment.png";
   static const String weCalender = "assets/png/calendar_icon.png";

@@ -148,64 +148,6 @@ class HomeComponents {
     );
   }
 
-  // Widget singleRow(
-  //     {@required int? index,
-  //     @required int? selectedPage,
-  //     required BuildContext context,
-  //     @required Function? onPress}) {
-  //   return GestureDetector(
-  //     onTap: () {
-  //       onPress!.call();
-  //     },
-  //     child: Container(
-  //       height: sizes!.height * 0.07,
-  //       width: sizes!.width * 0.75,
-  //       color: selectedPage == index ? AppColors.yellowColor : Colors.white,
-  //       child: Padding(
-  //         padding: EdgeInsets.only(
-  //             // top: (sizes.width ?? 0) * 0.04,
-  //             // bottom: (sizes.width ?? 0) * 0.04,
-  //             left: sizes!.width * 0.06),
-  //         child: Align(
-  //           alignment: Alignment.centerLeft,
-  //           child: Text(
-  //             menuNameList[index!],
-  //             style: const TextStyle(fontFamily: Assets.raleWayRegular),
-  //           ),
-  //         ),
-  //       ),
-  //     ),
-  //   );
-  // }
-
-  // Widget drawerListWidget({
-  //   @required int? index,
-  //   @required int? selectedPage,
-  //   required BuildContext context,
-  //   @required Function? onPress}) {
-  //   return GestureDetector(
-  //     onTap: () {
-  //       onPress!.call();
-  //     },
-  //     child: Container(
-  //       height: sizes!.height * 0.07,
-  //       width: sizes!.width * 0.57,
-  //       color: selectedPage == index ? AppColors.yellowColor : Colors.white,
-  //       child: Padding(
-  //         padding: EdgeInsets.only(
-           
-  //             left: sizes!.width * 0.06),
-  //         child:  Align(
-  //           alignment: Alignment.centerLeft,
-  //           child: Text(
-  //             menuNameList[index!],
-  //             style: const TextStyle(fontFamily: Assets.raleWayRegular),
-  //           ),
-  //         ),
-  //       ),
-  //     ),
-  //   );
-  // }
 
 
 
@@ -251,6 +193,7 @@ class _BuilddrawersState extends State<Builddrawers> {
     Assets.weCalender,
    Assets.weCaregivers,
   ];
+  //bool visible = true;
 
   @override
   Widget build(BuildContext context) {
