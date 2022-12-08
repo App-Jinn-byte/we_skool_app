@@ -37,19 +37,16 @@ class DevelopmentCheckComponents {
   Widget getQuizContainer({
     @required String? headingText,
     @required String? question,
-    @required String? option1,
-    @required String? option2,
-    @required String? option3,
-    @required String? option4,
+    @required bool? isSelected,
+    @required List? pointsList,
   }) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        TextView.size20Text(headingText, color: AppColors.blackLight,
-            fontFamily: Assets.raleWaySemiBold, fontWeight: FontWeight.w600, lines: 1),
+        TextView.size20Text(headingText, color: AppColors.blackLight, fontFamily: Assets.raleWaySemiBold, fontWeight: FontWeight.w600, lines: 1),
         SizedBox(height: getHeight() * 0.02),
         Container(
-            height: getHeight() * 0.35,
+            height: getHeight() * 0.42,
             width: getWidth(),
             padding: EdgeInsets.symmetric(horizontal: getWidth() * 0.04, vertical: getHeight() * 0.02),
             decoration: BoxDecoration(
@@ -71,6 +68,7 @@ class DevelopmentCheckComponents {
               children: [
                 Text(
                   question!,
+                  // i.toString(),
                   // textAlign: TextAlign.justify,
                   softWrap: true,
                   maxLines: 8,
@@ -82,7 +80,57 @@ class DevelopmentCheckComponents {
                     height: 1.4,
                     color: AppColors.darkGreyColor,
                   ),
+                ),
+                SizedBox(height: getHeight() * 0.02),
 
+                Expanded(
+                  child: ScrollConfiguration(
+                    behavior: const MaterialScrollBehavior().copyWith(overscroll: false),
+                    child: ListView.builder(
+                      itemCount: pointsList!.length,
+                        itemBuilder: (context, index) {
+                          return Column(
+                            children: [
+                              Row(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Container(
+                                    margin: EdgeInsets.only(top: getHeight() * 0.003),
+                                      decoration: BoxDecoration(
+                                        shape: BoxShape.rectangle,
+                                        color: (isSelected ?? false) ? AppColors.pinkColor : AppColors.pureWhiteColor,
+                                        border: (isSelected ?? false)
+                                            ? Border.all(color: AppColors.pureWhiteColor)
+                                            : Border.all(width: getWidth() * 0.005,
+                                            color: AppColors.darkGreyColor),
+                                      ),
+                                      child: (isSelected ?? false)
+                                          ? Icon(
+                                        Icons.check,
+                                        size: getWidth() * 0.03,
+                                        color: Colors.white,
+                                      )
+                                          : Icon(
+                                        Icons.check,
+                                        size: getWidth() * 0.03,
+                                        color: Colors.white,
+                                      )),
+                                  SizedBox(width: getWidth() * 0.02),
+                                  SizedBox(
+                                      width: getWidth() * 0.7,
+                                      child: TextView.size14Text(
+                                          pointsList[index],
+                                          fontFamily: Assets.raleWayRegular,
+                                          color: AppColors.blackLight,
+                                          lines: 3))
+                                ],
+                              ),
+                              SizedBox(height: getHeight() * 0.02)
+                            ],
+                          );
+                        }
+                    ),
+                  ),
                 ),
               ],
             )),
