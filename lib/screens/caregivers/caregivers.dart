@@ -2,6 +2,7 @@ import 'package:buttons_tabbar/buttons_tabbar.dart';
 import 'package:flutter/material.dart';
 import 'package:we_skool_app/res/colors.dart';
 import 'package:we_skool_app/screens/Read/read_components.dart';
+import 'package:we_skool_app/screens/add_caregivers/add_caregivers.dart';
 import 'package:we_skool_app/screens/caregivers/caregivers_components.dart';
 
 import '../../res/assets.dart';
@@ -118,7 +119,10 @@ class _CaregiversScreenState extends State<CaregiversScreen> {
                                   ),
                                 ),
                                 CommonWidgets.getButton(
-                                    onPress: () {},
+                                    onPress: () {
+                            Navigator.push(context,
+                            MaterialPageRoute(builder: (_) => const AddCaregivers()));
+                                    },
                                     text: 'Add New',
                                     height: getHeight() * 0.06),
                               ],
