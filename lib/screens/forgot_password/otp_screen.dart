@@ -50,7 +50,7 @@ class _OtpScreenState extends State<OtpScreen> {
                     CommonWidgets.customBackButton(onPress: () {
                       Navigator.pop(context);
                     }),
-                    SizedBox(height: getHeight() * 0.1),
+                    SizedBox(height: getHeight() * 0.06),
                     _forgotPasswordComponents.otpContainer(
                         userEmail: "charlie-foodly.com",
                         otpTextEditingController: emailController!,

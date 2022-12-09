@@ -49,7 +49,7 @@ class _SignInState extends State<SignIn> {
                  
                   children: [
                    
-                    SizedBox(height: getHeight() * 0.2),
+                    SizedBox(height: getHeight() * 0.18),
                     TextView.size24Text("Sign In", Assets.raleWayBold,
                         fontWeight: FontWeight.w700,
                         color: AppColors.blackTextColor, lines: 1),
@@ -90,7 +90,7 @@ class _SignInState extends State<SignIn> {
                         fontWeight: FontWeight.w500,
                         textColor: AppColors.pureWhiteColor,
                         fontFamily: Assets.raleWayMedium),
-                    SizedBox(height: getHeight() * 0.22),
+                    SizedBox(height: getHeight() * 0.24),
                     GestureDetector(
                       onTap: () {
                         Navigator.push(context,

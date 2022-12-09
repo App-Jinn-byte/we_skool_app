@@ -61,7 +61,6 @@ class _HomeState extends State<Home> {
                 children: [
                   _homeComponents.appBar(
                       onPressMenu: () {
-                     
                         openDrawer(context);
                       },
                       text: "Home",
