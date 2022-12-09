@@ -19,7 +19,7 @@ class ForgotPasswordComponents {
 
   }) {
     return Container(
-      height: getHeight() * 0.58,
+      height: getHeight() * 0.56,
       width: sizes!.width,
       padding:
       EdgeInsets.symmetric(horizontal: getWidth() * 0.05),
@@ -82,7 +82,7 @@ class ForgotPasswordComponents {
               ),
             ),
           ),
-          SizedBox(height: getHeight() * 0.06),
+          SizedBox(height: getHeight() * 0.05),
           CommonWidgets.getButton(
               onPress: () {
                 onPressVerify!.call();

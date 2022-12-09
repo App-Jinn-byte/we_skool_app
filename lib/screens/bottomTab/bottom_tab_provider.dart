@@ -11,10 +11,12 @@ import 'package:we_skool_app/screens/contact_us/contact_us.dart';
 class BottomTabProvider extends ChangeNotifier {
   int selectedIndex = 0;
   BuildContext? context;
+  bool hideBottomTab = false;
 
   init({@required BuildContext? context, @required int? index}) {
-    this.context = context;
     selectedIndex = index!;
+    // hideBottomTab = false;
+    this.context = context;
   }
 
   set setCurrentIndex(int index) {
@@ -23,7 +25,7 @@ class BottomTabProvider extends ChangeNotifier {
   }
 
   List screens = [
-     Home(),
+    const Home(),
     DailyObservation(),
     const Calendar(),
     const NotificationScreen(),
