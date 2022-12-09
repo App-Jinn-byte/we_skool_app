@@ -36,7 +36,7 @@ class _AddCaregiversState extends State<AddCaregivers> {
                     Navigator.pop(context);
                   }),
               Container(
-                height: sizes!.height * 0.80,
+                height: sizes!.height * 0.85,
                 margin: EdgeInsets.symmetric(horizontal: getWidth() * 0.05),
                 decoration: const BoxDecoration(
                   image: DecorationImage(
@@ -47,7 +47,7 @@ class _AddCaregiversState extends State<AddCaregivers> {
                   
                   children: [
                     SizedBox(height: getHeight()*0.03,),
-                    _addcaregiverscomponents.myAddCaregiver(height: getHeight()*0.58),
+                    _addcaregiverscomponents.myAddCaregiver(height: getHeight()*0.6),
 
 
                   ],

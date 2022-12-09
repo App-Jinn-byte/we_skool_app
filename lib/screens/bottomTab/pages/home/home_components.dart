@@ -175,7 +175,7 @@ class _BuilddrawersState extends State<Builddrawers> {
   bool istrue = false;
   List<String> menuNameList = [
     "We Classes",
-    "We Assessment",
+    "Assessment Report",
     "We Parents Resource",
     "We Consultation",
     "We Specials",
