@@ -10,6 +10,7 @@ import 'package:we_skool_app/routes/routes.dart';
 
 
 
+
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
   SystemChrome.setPreferredOrientations([
@@ -34,6 +35,7 @@ class MyApp extends StatelessWidget {
         initialRoute: Routes.splash,
         routes: Routes.routes,
         title: 'We Skool',
+       
 
 
       ),

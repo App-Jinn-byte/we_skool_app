@@ -23,7 +23,7 @@ class BottomTabProvider extends ChangeNotifier {
   }
 
   List screens = [
-    const Home(),
+     Home(),
     DailyObservation(),
     const Calendar(),
     const NotificationScreen(),

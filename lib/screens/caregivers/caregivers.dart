@@ -18,6 +18,13 @@ class CaregiversScreen extends StatefulWidget {
 class _CaregiversScreenState extends State<CaregiversScreen> {
   final CareGiversComponents _careGiversComponents = CareGiversComponents();
 
+  int index = 0;
+  void ontaaab(int intdx) {
+    setState(() {
+      index = intdx;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -31,7 +38,8 @@ class _CaregiversScreenState extends State<CaregiversScreen> {
           child: SingleChildScrollView(
             child: Column(children: [
               CommonWidgets.appBarIconImageText(
-                  text: "Caregivers",
+                  text:
+                      index == 0 ? "Assigned Caregivers" : 'Manage Caregivers',
                   image: "",
                   isDataFetched: false,
                   onPressMenu: () {
@@ -49,6 +57,7 @@ class _CaregiversScreenState extends State<CaregiversScreen> {
                     children: [
                       SizedBox(height: getHeight() * 0.04),
                       ButtonsTabBar(
+                       onTap: ontaaab,
                         contentPadding:
                             EdgeInsets.symmetric(horizontal: getWidth() * 0.03),
                         unselectedBorderColor: AppColors.greyColor,
@@ -126,5 +135,4 @@ class _CaregiversScreenState extends State<CaregiversScreen> {
       ),
     ));
   }
-
 }

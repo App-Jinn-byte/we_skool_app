@@ -88,23 +88,7 @@ class _DailyObservationState extends State<DailyObservation> with SingleTickerPr
                         children: [
                           SizedBox(height: getHeight() * 0.02),
                           ButtonsTabBar(
-                            // controller: _tabController,
-                            // indicator: BoxDecoration(
-                            //   borderRadius: BorderRadius.circular(5),
-                            //   // border: Border.all(color: AppColors.grey2colrtext, width: getWidth() * 0.008),
-                            //   color: AppColors.pinkColor,
-                            // ),
-                            // indicatorColor: AppColors.pinkColor,
-                            // indicatorSize: TabBarIndicatorSize.label,
-                            // indicatorPadding:
-                            // EdgeInsets.symmetric(vertical: sizes!.heightRatio * 5),
-                            // labelColor: AppColors.pureWhiteColor,
-                            // labelStyle: TextStyle(
-                            //     fontSize: sizes!.fontRatio * 14,
-                            //     fontWeight: FontWeight.w600,
-                            //     fontFamily: Assets.raleWaySemiBold),
-                            // unselectedLabelColor: AppColors.grey2colrtext,
-                            // labelPadding: EdgeInsets.all(sizes!.smallPadding),
+                           
                             contentPadding: EdgeInsets.symmetric(horizontal: getWidth()*0.09),
 
                             unselectedBorderColor: AppColors.greyColor,
@@ -126,8 +110,7 @@ class _DailyObservationState extends State<DailyObservation> with SingleTickerPr
                               Tab(
                                 text: '      Notes      ',
                               ),
-                              // _dailyObservationComponents.getTab(text: "Observations"),
-                              // _dailyObservationComponents.getTab(text: "Notes"),
+                              
                             ],
                           ),
                           Expanded(child: TabBarView(
@@ -135,91 +118,117 @@ class _DailyObservationState extends State<DailyObservation> with SingleTickerPr
                             children: [
                               ListView(
                                 children: [
-                                  Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                    children: [
-                                      SizedBox(height: getHeight() * 0.02),
-                                      _dailyObservationComponents.getDateField(
-                                          date: observationDate != null
-                                              ? "${observationDate!.day}/${observationDate!.month}/${observationDate!.year}"
-                                              : "Select Date",
-                                          onPressDate: () {
-                                            _selectObservationDate(context);
-                                          }
-                                      ),
-                                      SizedBox(height: getHeight() * 0.02),
-                                      TextView.size14Text("Name of activity",
-                                          color: AppColors.blackLight, fontWeight: FontWeight.w600,fontFamily: Assets.raleWaySemiBold),
-                                      SizedBox(height: getHeight() * 0.02),
-                                      _dailyObservationComponents.textField(textEditingController: activityName),
-                                      SizedBox(height: getHeight() * 0.02),
-                                      TextView.size14Text("Materials presented by",
-                                          color: AppColors.blackLight, fontWeight: FontWeight.w600,fontFamily: Assets.raleWaySemiBold),
-                                      SizedBox(height: getHeight() * 0.02),
-                                      _dailyObservationComponents.textField(textEditingController: materialPresentedController),
-                                      SizedBox(height: getHeight() * 0.02),
-                                      TextView.size14Text("Child's quotes & questions (if applicable)",
-                                          color: AppColors.blackLight, fontWeight: FontWeight.w600,fontFamily: Assets.raleWaySemiBold),
-                                      SizedBox(height: getHeight() * 0.02),
-                                      _dailyObservationComponents.textField(textEditingController: childQuoteController),
-                                      SizedBox(height: getHeight() * 0.02),
-                                      TextView.size14Text("Additional notes",
-                                          color: AppColors.blackLight, fontWeight: FontWeight.w600,fontFamily: Assets.raleWaySemiBold),
-                                      SizedBox(height: getHeight() * 0.02),
-                                      _dailyObservationComponents.textField(textEditingController: additionalNotesController),
-                                      SizedBox(height: getHeight() * 0.02),
-                                      _dailyObservationComponents.buttonRow(
-                                          onPressCancel: () {},
-                                          onPressSave: () {},
-                                          onPressSubmit: () {}
-                                      ),
-                                      SizedBox(height: getHeight() * 0.04),
-                                    ],
+                                  Padding(
+                                    padding: const EdgeInsets.all(6),
+                                    child: Column(
+                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      children: [
+                                        SizedBox(height: getHeight() * 0.02),
+                                        _dailyObservationComponents.getDateField(
+                                            date: observationDate != null
+                                                ? "${observationDate!.day}/${observationDate!.month}/${observationDate!.year}"
+                                                : "DD/MM/YY",
+                                            onPressDate: () {
+                                              _selectObservationDate(context);
+                                            }
+                                        ),
+                                        Padding(
+                                          padding:  EdgeInsets.only(left: getWidth()*0.023),
+                                          child: Column(
+                                            crossAxisAlignment: CrossAxisAlignment.start,
+                                            children: [
+                                               SizedBox(height: getHeight() * 0.02),
+                                          TextView.size14Text("Name of activity",
+                                              color: AppColors.blackLight, fontWeight: FontWeight.w600,fontFamily: Assets.raleWaySemiBold),
+                                          SizedBox(height: getHeight() * 0.02),
+                                          _dailyObservationComponents.textField(textEditingController: activityName),
+                                          SizedBox(height: getHeight() * 0.02),
+                                          TextView.size14Text("Materials presented by",
+                                              color: AppColors.blackLight, fontWeight: FontWeight.w600,fontFamily: Assets.raleWaySemiBold),
+                                          SizedBox(height: getHeight() * 0.02),
+                                          _dailyObservationComponents.textField(textEditingController: materialPresentedController),
+                                          SizedBox(height: getHeight() * 0.02),
+                                          TextView.size14Text("Child's quotes & questions (if applicable)",
+                                              color: AppColors.blackLight, fontWeight: FontWeight.w600,fontFamily: Assets.raleWaySemiBold),
+                                          SizedBox(height: getHeight() * 0.02),
+                                          _dailyObservationComponents.textField(textEditingController: childQuoteController),
+                                          SizedBox(height: getHeight() * 0.02),
+                                          TextView.size14Text("Additional notes",
+                                              color: AppColors.blackLight, fontWeight: FontWeight.w600,fontFamily: Assets.raleWaySemiBold),
+                                          SizedBox(height: getHeight() * 0.02),
+                                          _dailyObservationComponents.textField(textEditingController: additionalNotesController),
+                                          SizedBox(height: getHeight() * 0.02),
+                                          _dailyObservationComponents.buttonRow(
+                                              onPressCancel: () {},
+                                              onPressSave: () {},
+                                              onPressSubmit: () {}
+                                          ),
+                                          SizedBox(height: getHeight() * 0.09),
+
+                                            ],
+                                          ),
+                                        ),
+                                       
+                                      ],
+                                    ),
                                   ),
                                 ],
                               ),
                               ListView(
                                 children: [
-                                  Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                    children: [
-                                      SizedBox(height: getHeight() * 0.02),
-                                      _dailyObservationComponents.getDateField(
-                                          date: notesDate != null
-                                              ? "${notesDate!.day}/${notesDate!.month}/${notesDate!.year}"
-                                              : "Select Date",
-                                          onPressDate: () {
-                                            _selectNotesDate(context);
-                                          }
-                                      ),
-                                      SizedBox(height: getHeight() * 0.02),
-                                      TextView.size14Text("Sleep Sessions",
-                                          color: AppColors.blackLight, fontWeight: FontWeight.w600,fontFamily: Assets.raleWaySemiBold),
-                                      SizedBox(height: getHeight() * 0.02),
-                                      _dailyObservationComponents.textField(textEditingController: sleepSessionsController),
-                                      SizedBox(height: getHeight() * 0.02),
-                                      TextView.size14Text("Meals/Snacks",
-                                          color: AppColors.blackLight, fontWeight: FontWeight.w600,fontFamily: Assets.raleWaySemiBold),
-                                      SizedBox(height: getHeight() * 0.02),
-                                      _dailyObservationComponents.textField(textEditingController: snacksController),
-                                      SizedBox(height: getHeight() * 0.02),
-                                      TextView.size14Text("Diapering/Toileting",
-                                          color: AppColors.blackLight, fontWeight: FontWeight.w600,fontFamily: Assets.raleWaySemiBold),
-                                      SizedBox(height: getHeight() * 0.02),
-                                      _dailyObservationComponents.textField(textEditingController: diaperingController),
-                                      SizedBox(height: getHeight() * 0.02),
-                                      TextView.size14Text("Medications",
-                                          color: AppColors.blackLight, fontWeight: FontWeight.w600,fontFamily: Assets.raleWaySemiBold),
-                                      SizedBox(height: getHeight() * 0.02),
-                                      _dailyObservationComponents.textField(textEditingController: medicationController),
-                                      SizedBox(height: getHeight() * 0.02),
-                                      _dailyObservationComponents.buttonRow(
-                                          onPressCancel: () {},
-                                          onPressSave: () {},
-                                          onPressSubmit: () {}
-                                      ),
-                                      SizedBox(height: getHeight() * 0.04),
-                                    ],
+                                  Padding(
+                                    padding: const EdgeInsets.all(6),
+                                    child: Column(
+                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      children: [
+                                        SizedBox(height: getHeight() * 0.02),
+                                        _dailyObservationComponents.getDateField(
+                                            date: notesDate != null
+                                                ? "${notesDate!.day}/${notesDate!.month}/${notesDate!.year}"
+                                                : "DD/MM/YY",
+                                            onPressDate: () {
+                                              _selectNotesDate(context);
+                                            }
+                                        ),
+                                        Padding(
+                                           padding:  EdgeInsets.only(left: getWidth()*0.023),
+                                          child: Column(
+                                            crossAxisAlignment: CrossAxisAlignment.start,
+                                            children: [
+                                               SizedBox(height: getHeight() * 0.02),
+                                          TextView.size14Text("Sleep Sessions",
+                                              color: AppColors.blackLight, fontWeight: FontWeight.w600,fontFamily: Assets.raleWaySemiBold),
+                                          SizedBox(height: getHeight() * 0.02),
+                                          _dailyObservationComponents.textField(textEditingController: sleepSessionsController),
+                                          SizedBox(height: getHeight() * 0.02),
+                                          TextView.size14Text("Meals/Snacks",
+                                              color: AppColors.blackLight, fontWeight: FontWeight.w600,fontFamily: Assets.raleWaySemiBold),
+                                          SizedBox(height: getHeight() * 0.02),
+                                          _dailyObservationComponents.textField(textEditingController: snacksController),
+                                          SizedBox(height: getHeight() * 0.02),
+                                          TextView.size14Text("Diapering/Toileting",
+                                              color: AppColors.blackLight, fontWeight: FontWeight.w600,fontFamily: Assets.raleWaySemiBold),
+                                          SizedBox(height: getHeight() * 0.02),
+                                          _dailyObservationComponents.textField(textEditingController: diaperingController),
+                                          SizedBox(height: getHeight() * 0.02),
+                                          TextView.size14Text("Medications",
+                                              color: AppColors.blackLight, fontWeight: FontWeight.w600,fontFamily: Assets.raleWaySemiBold),
+                                          SizedBox(height: getHeight() * 0.02),
+                                          _dailyObservationComponents.textField(textEditingController: medicationController),
+                                          SizedBox(height: getHeight() * 0.02),
+                                          _dailyObservationComponents.buttonRow(
+                                              onPressCancel: () {},
+                                              onPressSave: () {},
+                                              onPressSubmit: () {}
+                                          ),
+                                          SizedBox(height: getHeight() * 0.09),
+
+                                            ],
+                                          ),
+                                        ),
+                                       
+                                      ],
+                                    ),
                                   ),
                                 ],
                               ),

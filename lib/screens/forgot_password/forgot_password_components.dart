@@ -61,7 +61,7 @@ class ForgotPasswordComponents {
               decoration: BoxLooseDecoration(
                 strokeColorBuilder: PinListenColorBuilder(
                     AppColors.pinkColor,
-                    AppColors.pinkColor.withOpacity(0.2)),
+                    AppColors.creamColor),
                 textStyle: TextStyle(
                     fontSize: sizes!.fontSize32,
                     fontWeight: FontWeight.w400,

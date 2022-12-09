@@ -10,8 +10,6 @@ class AlertDilog extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    
-
     return Scaffold(
       backgroundColor: Colors.transparent,
       body: SafeArea(
@@ -53,12 +51,8 @@ class AlertDilog extends StatelessWidget {
                               fontFamily: Assets.raleWaySemiBold),
                           textField(
                             hint: '1234-1234-1234-1234',
-                            icon: const Icon(
-                              Icons.payment,
-                              color: AppColors.greyColor,
-                      
-                            ),
                             textInputType: TextInputType.number,
+
                           ),
                           TextView.size14Text('Exeprie Date',
                               color: AppColors.textColor,
@@ -66,10 +60,7 @@ class AlertDilog extends StatelessWidget {
                               fontFamily: Assets.raleWaySemiBold),
                           textField(
                             hint: '12/2022',
-                            icon: const Icon(
-                              Icons.payment,
-                              color: AppColors.greyColor,
-                            ),
+                            textInputType: TextInputType.number,
                           ),
                           TextView.size14Text('CVC',
                               color: AppColors.textColor,
@@ -78,19 +69,39 @@ class AlertDilog extends StatelessWidget {
                           textField(
                             textInputType: TextInputType.number,
                             hint: '1234',
-                            icon: const Icon(
-                              Icons.payment,
-                              color: AppColors.greyColor,
-                            ),
+                            
                           ),
                           TextView.size14Text('Amount to Pay',
                               color: AppColors.textColor,
                               fontWeight: FontWeight.w600,
                               fontFamily: Assets.raleWaySemiBold),
-                          textField(
-                            hint: 'Yoga Class',
-                            icon: const Icon(Icons.monetization_on_outlined),
-                      
+                          Container(
+                            height: getHeight() * 0.05,
+                            width: sizes!.width,
+                            decoration: BoxDecoration(
+                              boxShadow: const [
+                                BoxShadow(
+                                    color: AppColors.hintTextGreyColor,
+                                    blurRadius: 2,
+                                    offset: Offset(1, 0))
+                              ],
+                              color: AppColors.pureWhiteColor,
+                              
+                              borderRadius: BorderRadius.all(
+                                  Radius.circular(getHeight() * .01)),
+                            ),
+                            child: Padding(
+                              padding:  EdgeInsets.all(getHeight()*0.014),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                children: [
+                                  TextView.size14Text('Yoga Classs', color: AppColors.textColor,fontFamily: Assets.raleWayMedium,fontWeight: FontWeight.w500),
+                                  TextView.size14Text('50\$', color: AppColors.textColor,fontFamily: Assets.raleWayMedium,fontWeight: FontWeight.w500),
+
+
+                                ],
+                              ),
+                            ),
                           ),
                           Divider(
                               height: getHeight() * 0.01,
@@ -100,7 +111,7 @@ class AlertDilog extends StatelessWidget {
                               onPress: () {
                                 Navigator.pop(context);
                               },
-                              text: 'Pay Amount ',
+                              text: 'Pay Amount',
                               textColor: AppColors.pureWhiteColor,
                               btnColor: AppColors.pinkColor,
                               height: getHeight() * 0.06,
@@ -148,7 +159,7 @@ class AlertDilog extends StatelessWidget {
                 offset: Offset(1, 0))
           ],
           color: bgColor ?? AppColors.pureWhiteColor,
-          // border: Border.all(color: borderColor ?? AppColors.blackColor),
+          
           borderRadius: BorderRadius.all(Radius.circular(getHeight() * .01))),
       child: TextField(
         controller: textEditingController,
@@ -163,10 +174,17 @@ class AlertDilog extends StatelessWidget {
         ),
         textInputAction: TextInputAction.next,
         decoration: InputDecoration(
-            suffixIcon: icon,
+            suffixIcon: Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: Image.asset(
+                Assets.paymenticon,
+                cacheHeight: 13,
+                
+              ),
+            ),
             border: InputBorder.none,
             contentPadding: EdgeInsets.only(
-                left: getWidth() * .04, top: getHeight() * 0.0049),
+                left: getWidth() * .04, top: getHeight() * 0.01),
             hintText: hint ?? "",
             alignLabelWithHint: false,
             hintStyle: TextStyle(

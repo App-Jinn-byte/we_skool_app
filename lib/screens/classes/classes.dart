@@ -16,6 +16,13 @@ class Classes extends StatefulWidget {
 
 class _ClassesState extends State<Classes> {
   final SpClassComponents _spClassComponents = SpClassComponents();
+   int index = 0;
+  void ontaaab(int intdx) {
+    setState(() {
+      index = intdx;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -29,7 +36,7 @@ class _ClassesState extends State<Classes> {
           child: SingleChildScrollView(
             child: Column(children: [
               CommonWidgets.appBarIconImageText(
-                  text: "Classes",
+                  text:index==0? "Classes":"Special Classes",
                   image: "",
                   isDataFetched: false,
                   onPressMenu: () {
@@ -47,6 +54,7 @@ class _ClassesState extends State<Classes> {
                     children: [
                       SizedBox(height: getHeight() * 0.04),
                       ButtonsTabBar(
+                        onTap: ontaaab,
                         contentPadding:
                             EdgeInsets.symmetric(horizontal: getWidth() * 0.08),
                         unselectedBorderColor: AppColors.greyColor,
