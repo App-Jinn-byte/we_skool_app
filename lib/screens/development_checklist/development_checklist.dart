@@ -19,9 +19,11 @@ class _DevelopmentChecklistState extends State<DevelopmentChecklist> {
    final DevelopmentCheckComponents _developmentCheckComponents = DevelopmentCheckComponents();
    DateTime? observationDate;
    int _currentIndex=0;
-   List<String> list = ["(How children learn; Initiative, curiosity, persistence, problem-solving, and attentiveness)",
-     "(How children learn; Initiative, curiosity, persistence, problem-solving, and attentiveness)",
-     "(How children learn; Initiative, curiosity, persistence, problem-solving, and attentiveness)"];
+   List<String> list = ["Creates and follow through with multi step plans",
+     "Identifies and experiments with different strategies to solve an academic and social challenge",
+     "Able to return to an activity after feeling frustrated or disappointed",
+     "Sticks with a project until it is complete"
+   ];
 
    List<T> map<T>(List list, Function handler) {
      List<T> result = [];
@@ -49,7 +51,7 @@ class _DevelopmentChecklistState extends State<DevelopmentChecklist> {
                     Navigator.pop(context);
                   }),
               Container(
-                height: sizes!.height * 0.80,
+                height: sizes!.height * 0.85,
                 margin: EdgeInsets.symmetric(horizontal: getWidth() * 0.05),
                 decoration: const BoxDecoration(
                   image: DecorationImage(
@@ -74,11 +76,11 @@ class _DevelopmentChecklistState extends State<DevelopmentChecklist> {
                           _selectObservationDate(context);
                         }),
                     SizedBox(
-                      height: getHeight() * 0.04,
+                      height: getHeight() * 0.03,
                     ),
                     CarouselSlider(
                       options: CarouselOptions(
-                        height: sizes!.height * 0.45,
+                        height: sizes!.height * 0.48,
                         viewportFraction: 1,
                         onPageChanged: (index, reason) {
                           setState(() {
@@ -96,56 +98,18 @@ class _DevelopmentChecklistState extends State<DevelopmentChecklist> {
                                 // color: Colors.white,
                                 shape: BoxShape.rectangle,
                               ),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  TextView.size20Text("Approaches to Learning", color: AppColors.blackLight, fontFamily: Assets.raleWaySemiBold, fontWeight: FontWeight.w600, lines: 1),
-                                  SizedBox(height: getHeight() * 0.02),
-                                  Container(
-                                    height: getHeight() * 0.35,
-                                      width: getWidth(),
-                                      padding: EdgeInsets.symmetric(horizontal: getWidth() * 0.04, vertical: getHeight() * 0.02),
-                                      decoration: BoxDecoration(
-                                        shape: BoxShape.rectangle,
-                                        color: AppColors.pureWhiteColor,
-                                        border: Border.all(color: AppColors.blackLight, width: getWidth() * 0.00005),
-                                        borderRadius: BorderRadius.circular(
-                                          getWidth() * .035,
-                                        ),
-                                        boxShadow:  const [
-                                          BoxShadow(
-                                              color: AppColors.borderColor,
-                                              blurRadius: 4,
-                                              offset: Offset(0,0)
-                                          )
-                                        ],
-                                      ),
-                                      child: Column(
-                                        children: [
-                                          Text(
-                                            i.toString(),
-                                            // textAlign: TextAlign.justify,
-                                            softWrap: true,
-                                            maxLines: 8,
-                                            overflow: TextOverflow.ellipsis,
-                                            style: TextStyle(
-                                              fontSize: sizes!.fontSize16,
-                                              fontWeight: FontWeight.w600,
-                                              fontFamily: Assets.raleWaySemiBold,
-                                              height: 1.4,
-                                              color: AppColors.darkGreyColor,
-                                            ),
-                                          ),
-                                        ],
-                                      )),
-                                ],
+                              child: _developmentCheckComponents.getQuizContainer(
+                                  headingText: "Approaches to Learning",
+                                  question: "(How children learn; Initiative, curiosity, persistence, problem-solving, and attentiveness)",
+                                  isSelected: false,
+                                  pointsList: list
                               ),
                             );
                           },
                         );
                       }).toList(),
                     ),
-                    SizedBox(height: getHeight() * 0.01),
+                    // SizedBox(height: getHeight() * 0.02),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: map<Widget>(list, (index, url) {
@@ -161,6 +125,7 @@ class _DevelopmentChecklistState extends State<DevelopmentChecklist> {
                         );
                       }),
                     ),
+                    SizedBox(height: getHeight() * 0.02),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
