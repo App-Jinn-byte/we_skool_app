@@ -3,6 +3,7 @@ import 'package:we_skool_app/res/assets.dart';
 import 'package:we_skool_app/res/colors.dart';
 import 'package:we_skool_app/res/res.dart';
 import 'package:we_skool_app/screens/add_caregivers/add_caregivers_components.dart';
+import 'package:we_skool_app/widgets/text_views.dart';
 
 import '../../widgets/common_widgets.dart';
 
@@ -44,12 +45,85 @@ class _AddCaregiversState extends State<AddCaregivers> {
                       fit: BoxFit.fill),
                 ),
                 child: Column(
-                  
                   children: [
-                    SizedBox(height: getHeight()*0.03,),
-                    _addcaregiverscomponents.myAddCaregiver(height: getHeight()*0.6),
-
-
+                    SizedBox(
+                      height: getHeight() * 0.03,
+                    ),
+                    _addcaregiverscomponents.myAddCaregiver(
+                      height: getHeight() * 0.6,
+                      child: Padding(
+                        padding: EdgeInsets.all(getHeight() * 0.02),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            TextView.size14Text('First Name',
+                                color: AppColors.textColor,
+                                fontFamily: Assets.raleWaySemiBold,
+                                fontWeight: FontWeight.w600),
+                            SizedBox(
+                              height: getHeight() * 0.01,
+                            ),
+                            _addcaregiverscomponents.mytextField(
+                              hint: 'First Name',
+                            ),
+                            SizedBox(
+                              height: getHeight() * 0.03,
+                            ),
+                            TextView.size14Text('Last Name',
+                                color: AppColors.textColor,
+                                fontFamily: Assets.raleWaySemiBold,
+                                fontWeight: FontWeight.w600),
+                            SizedBox(
+                              height: getHeight() * 0.01,
+                            ),
+                            _addcaregiverscomponents.mytextField(
+                              hint: 'Last Name',
+                            ),
+                            SizedBox(
+                              height: getHeight() * 0.03,
+                            ),
+                            TextView.size14Text('Email',
+                                color: AppColors.textColor,
+                                fontFamily: Assets.raleWaySemiBold,
+                                fontWeight: FontWeight.w600),
+                            SizedBox(
+                              height: getHeight() * 0.01,
+                            ),
+                            _addcaregiverscomponents.mytextField(
+                              hint: 'Messi10@gmail.com',
+                            ),
+                            SizedBox(
+                              height: getHeight() * 0.03,
+                            ),
+                            TextView.size14Text('Contact Number',
+                                color: AppColors.textColor,
+                                fontFamily: Assets.raleWaySemiBold,
+                                fontWeight: FontWeight.w600),
+                            SizedBox(
+                              height: getHeight() * 0.01,
+                            ),
+                            _addcaregiverscomponents.mytextField(
+                              hint: '+123 456 789 00',
+                            ),
+                            SizedBox(
+                              height: getHeight() * 0.02,
+                            ),
+                            _addcaregiverscomponents.myDivider(),
+                            SizedBox(
+                              height: getHeight() * 0.02,
+                            ),
+                            CommonWidgets.getButton(
+                              onPress: () {},
+                              text: 'Add Now',
+                              height: getHeight() * 0.06,
+                              fontFamily: Assets.raleWaySemiBold,
+                              fontWeight: FontWeight.w600,
+                              fontSize: sizes!.fontSize14,
+                            )
+                          ],
+                        ),
+                      ),
+                    ),
                   ],
                 ),
               ),

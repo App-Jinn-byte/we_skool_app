@@ -5,9 +5,9 @@ import 'package:we_skool_app/res/colors.dart';
 import 'package:we_skool_app/res/res.dart';
 
 import 'package:we_skool_app/widgets/common_widgets.dart';
+import 'package:we_skool_app/widgets/text_views.dart';
 
 import 'bloc_article_components.dart';
-
 
 class BlocArticleScreen extends StatefulWidget {
   const BlocArticleScreen({super.key});
@@ -22,6 +22,14 @@ class _BlocArticleScreenState extends State<BlocArticleScreen> {
   @override
   void initState() {
     super.initState();
+  }
+    List<String> genderList = ['1', '2'];
+  String? _genderSelection;
+
+  void updateTypeGender(String value) {
+    setState(() {
+      _genderSelection = value;
+    });
   }
 
   @override
@@ -52,26 +60,58 @@ class _BlocArticleScreenState extends State<BlocArticleScreen> {
                   ),
                   child: Column(
                     children: [
-
                       SizedBox(height: getHeight() * 0.03),
                       CommonWidgets.searchField(),
                       SizedBox(height: getHeight() * 0.03),
                       Expanded(
                         child: ListView.separated(
-                          // physics: const BouncingScrollPhysics(
-                          //     parent: AlwaysScrollableScrollPhysics()),
+                         
                           shrinkWrap: true,
                           scrollDirection: Axis.vertical,
                           itemCount: 3,
                           itemBuilder: (context, index) {
                             return _blogArticleComponents.myBox(
-                                title: 'Title',
-                                subtitle:
-                                'Early Learning Unraveled, Fascinating Brain',
-                                titlefile: 'Files',
-                                subtitlefile: '1',
-                                titleaction: 'Action',
-                                subtitleaction: 'Action Details');
+                             child: Column(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              TextView.size14Text('Title',
+                                  color: AppColors.textColor,
+                                  fontWeight: FontWeight.w600,
+                                  fontFamily: Assets.raleWaySemiBold),
+                              SizedBox(height: getHeight() * 0.015),
+                              TextView.size14Text(
+                                  'Early Learing Unraveled, Fascinating Brain',
+                                  fontWeight: FontWeight.w500,
+                                  color: AppColors.greyTextColor,
+                                  fontFamily: Assets.raleWayMedium),
+
+                              _blogArticleComponents.myDivider(),
+                              TextView.size14Text('Files',
+                                  fontWeight: FontWeight.w600,
+                                  color: AppColors.textColor,
+                                  fontFamily: Assets.raleWaySemiBold),
+                        
+                              _blogArticleComponents.dropDown(
+                                  selectedCategory: _genderSelection,
+                                  updateSelectedCategory: updateTypeGender,
+                                  categories: genderList,
+                                  hint: '1'),
+                            
+                              _blogArticleComponents.myDivider(),
+                              TextView.size14Text('Action',
+                                  fontWeight: FontWeight.w600,
+                                  color: AppColors.textColor,
+                                  fontFamily: Assets.raleWaySemiBold),
+                              SizedBox(height: getHeight() * 0.015),
+                              TextView.size14Text('Action Details',
+                                  fontWeight: FontWeight.w500,
+                                  color: AppColors.greyTextColor,
+                                  fontFamily: Assets.raleWayMedium),
+                            ],
+                          ),
+                        
+                            );
                           },
                           separatorBuilder: (BuildContext context, int index) {
                             return SizedBox(
@@ -81,18 +121,14 @@ class _BlocArticleScreenState extends State<BlocArticleScreen> {
                         ),
                       ),
                       SizedBox(height: getHeight() * 0.01),
-
                     ],
                   ),
                 ),
-
-
               ],
             ),
           ),
         ),
       ),
-
     );
   }
 }

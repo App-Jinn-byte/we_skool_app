@@ -28,7 +28,11 @@ class DailyObservationComponents {
   //   );
   // }
 
-  Widget textField({@required TextEditingController? textEditingController, Color? fieldColor, Color? borderColor, double? height}) {
+  Widget textField(
+      {@required TextEditingController? textEditingController,
+      Color? fieldColor,
+      Color? borderColor,
+      double? height}) {
     return Container(
       width: sizes!.widthRatio * 325,
       height: height ?? getHeight() * 0.12,
@@ -52,11 +56,10 @@ class DailyObservationComponents {
         controller: textEditingController,
         cursorHeight: getHeight() * .025,
         style: TextStyle(
-          color: AppColors.blackTextColor,
-          fontFamily: Assets.raleWayMedium,
-          fontSize: sizes!.fontSize14,
-          fontWeight: FontWeight.w500
-        ),
+            color: AppColors.blackTextColor,
+            fontFamily: Assets.raleWayMedium,
+            fontSize: sizes!.fontSize14,
+            fontWeight: FontWeight.w500),
         decoration: InputDecoration(
           contentPadding: EdgeInsets.only(
               left: sizes!.widthRatio * 10,
@@ -68,8 +71,7 @@ class DailyObservationComponents {
           hintStyle: TextStyle(
               color: AppColors.hintTextGreyColor,
               fontFamily: Assets.raleWayRegular,
-              fontSize: sizes!.fontSize14
-          ),
+              fontSize: sizes!.fontSize14),
         ),
       ),
     );
@@ -120,7 +122,11 @@ class DailyObservationComponents {
       ],
     );
   }
-  Widget getDateField({@required String? date, @required Function? onPressDate, Color? bgColor}) {
+
+  Widget getDateField(
+      {@required String? date,
+      @required Function? onPressDate,
+      Color? bgColor}) {
     return GestureDetector(
       onTap: () {
         if (onPressDate != null) {
@@ -139,10 +145,35 @@ class DailyObservationComponents {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            TextView.size14Text(date, color: date == "Select Date" ? AppColors.grey2colrtext: AppColors.blackTextColor, fontFamily: Assets.raleWayRegular),
-
+            TextView.size14Text(date,
+                color: date == "Select Date"
+                    ? AppColors.grey2colrtext
+                    : AppColors.blackTextColor,
+                fontFamily: Assets.raleWayRegular),
           ],
         ),
+      ),
+    );
+  }
+
+  Widget timefield({@required child,@required Function? onPresstime}) {
+    return GestureDetector(
+       onTap: () {
+        if (onPresstime != null) {
+          onPresstime.call();
+        }
+      },
+      child: Container(
+         height: sizes!.height * 0.031,
+          width: sizes!.width * 0.21,
+          margin: EdgeInsets.symmetric(horizontal: getWidth() * 0.02),
+          padding: EdgeInsets.symmetric(horizontal: sizes!.width * 0.02),
+          decoration: BoxDecoration(
+              color: AppColors.pureWhiteColor,
+              border: Border.all(color: AppColors.grey2colrtext),
+              borderRadius: BorderRadius.all(Radius.circular(getHeight() * .01))),
+      
+              child: child,
       ),
     );
   }
