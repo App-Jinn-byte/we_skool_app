@@ -133,10 +133,13 @@ class CommonWidgets {
             BoxShadow(
                 color: AppColors.shadow,
                 blurRadius: 0,
-                offset: Offset(0,3),
+                offset: Offset(0,2),
                 
-            )
+            ),
+            
           ],
+          border: Border.all(color:AppColors.borderColor ),
+
           color: bgColor ?? AppColors.pureWhiteColor,
           // border: Border.all(color: borderColor ?? AppColors.blackColor),
           borderRadius: BorderRadius.all(Radius.circular(getHeight() * .01))),
@@ -155,7 +158,7 @@ class CommonWidgets {
         textInputAction: TextInputAction.next,
         decoration: InputDecoration(
             border: InputBorder.none,
-            contentPadding: EdgeInsets.only(left: getWidth() * .04,top:getHeight()* 0.006),
+            contentPadding: EdgeInsets.only(left: getWidth() * .04,top: getHeight()*0.006),
             hintText: hint ?? "",
             alignLabelWithHint: false,
 

@@ -2,8 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:we_skool_app/res/assets.dart';
-import 'package:we_skool_app/widgets/common_widgets.dart';
-import 'package:we_skool_app/widgets/text_views.dart';
+
 
 import '../../res/colors.dart';
 import '../../res/res.dart';
@@ -11,7 +10,9 @@ import '../../res/res.dart';
 class Addcaregiverscomponents{
    Widget myAddCaregiver(
       {
-        @required double? height
+        @required double? height,
+        @required Widget? child,
+       
     }) {
     return Container(
       height: height ?? getHeight() * 0.58,
@@ -28,47 +29,7 @@ class Addcaregiverscomponents{
        
         borderRadius: BorderRadius.all(Radius.circular(getHeight() * .014)),
       ),
-      child: Padding(
-        padding: EdgeInsets.all(getHeight()*0.02),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            TextView.size14Text('First Name', color: AppColors.textColor,fontFamily: Assets.raleWaySemiBold,fontWeight: FontWeight.w600),
-            SizedBox(height: getHeight()*0.01,),
-            mytextField(
-              hint: 'First Name',
-            ),
-            SizedBox(height: getHeight()*0.03,),
-
-            TextView.size14Text('Last Name', color: AppColors.textColor,fontFamily: Assets.raleWaySemiBold,fontWeight: FontWeight.w600),
-            SizedBox(height: getHeight()*0.01,),
-            mytextField(
-              hint: 'Last Name',
-            ),
-               SizedBox(height: getHeight()*0.03,),
-
-            TextView.size14Text('Email', color: AppColors.textColor,fontFamily: Assets.raleWaySemiBold,fontWeight: FontWeight.w600),
-            SizedBox(height: getHeight()*0.01,),
-            mytextField(
-              hint: 'Messi10@gmail.com',
-            ),
-                 SizedBox(height: getHeight()*0.03,),
-
-            TextView.size14Text('Contact Number', color: AppColors.textColor,fontFamily: Assets.raleWaySemiBold,fontWeight: FontWeight.w600),
-            SizedBox(height: getHeight()*0.01,),
-            mytextField(
-              hint: '+123 456 789 00',
-            ),
-            SizedBox(height: getHeight()*0.02,),
-
-            myDivider(),
-            SizedBox(height: getHeight()*0.02,),
-
-            CommonWidgets.getButton(onPress: (){},text: 'Add Now',height: getHeight()*0.06,fontFamily: Assets.raleWaySemiBold,fontWeight: FontWeight.w600,fontSize: sizes!.fontSize14,)
-          ],
-
-        ),
-      ),
+      child: child,
     );
     
 
@@ -119,7 +80,7 @@ Widget myDivider() {
             
             border: InputBorder.none,
             contentPadding: EdgeInsets.only(
-                left: getWidth() * .04, bottom: getHeight() * 0.008),
+                left: getWidth() * .04, bottom: getHeight() * 0.017),
             hintText: hint ?? "",
             alignLabelWithHint: false,
             hintStyle: TextStyle(

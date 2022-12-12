@@ -18,20 +18,29 @@ class MiscScreen extends StatefulWidget {
 class _MiscScreenState extends State<MiscScreen> {
   final BlogArticleComponents _blogArticleComponents = BlogArticleComponents();
 
+  List<String> genderList = ['1', '2'];
+  String? _genderSelection;
+
+  void updateTypeGender(String value) {
+    setState(() {
+      _genderSelection = value;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     initializeResources(context: context);
     return SafeArea(
-      child: Scaffold(
-        body:  Container(
-          height: sizes!.height,
-          width: sizes!.width,
-          color: AppColors.pureWhiteColor,
-          child: SingleChildScrollView(
-            child: Column(
-                children: [
+        child: Scaffold(
+            body: Container(
+      height: sizes!.height,
+      width: sizes!.width,
+      color: AppColors.pureWhiteColor,
+      child: SingleChildScrollView(
+        child: Column(
+          children: [
             CommonWidgets.appBarIconImageText(
-            text: "Miscellaneous",
+                text: "Miscellaneous",
                 image: "",
                 isDataFetched: false,
                 onPressMenu: () {
@@ -45,45 +54,74 @@ class _MiscScreenState extends State<MiscScreen> {
                     image: AssetImage(Assets.lightBackground),
                     fit: BoxFit.fill),
               ),
-            child: Column(
-              children: [
-              SizedBox(height: getHeight() * 0.01),
+              child: Column(
+                children: [
+                  SizedBox(height: getHeight() * 0.01),
+                  CommonWidgets.searchField(),
+                  SizedBox(height: getHeight() * 0.04),
+                  Expanded(
+                    child: ListView.separated(
+                      shrinkWrap: true,
+                      scrollDirection: Axis.vertical,
+                      itemCount: 3,
+                      itemBuilder: (context, index) {
+                        return _blogArticleComponents.myBox(
+                         
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              TextView.size14Text('Title',
+                                  color: AppColors.textColor,
+                                  fontWeight: FontWeight.w600,
+                                  fontFamily: Assets.raleWaySemiBold),
+                              SizedBox(height: getHeight() * 0.015),
+                              TextView.size14Text(
+                                  'Early Learing Unraveled, Fascinating Brain',
+                                  fontWeight: FontWeight.w500,
+                                  color: AppColors.greyTextColor,
+                                  fontFamily: Assets.raleWayMedium),
 
-               CommonWidgets.searchField(),
-        SizedBox(height: getHeight() * 0.04),
-
-                Expanded(
-                  child: ListView.separated(
-                    // physics: const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
-                    shrinkWrap: true,
-                    scrollDirection: Axis.vertical,
-                    itemCount: 3,
-                    itemBuilder: (context, index) {
-                      return _blogArticleComponents.myBox(
-                          title: 'Title',
-                          subtitle:
-                          'Early Learning Unraveled, Fascinating Brain',
-                          titlefile: 'Files',
-                          subtitlefile: '1',
-                          titleaction: 'Action',
-                          subtitleaction: 'Action Details');
-                    },
-                    separatorBuilder: (BuildContext context, int index) {
-                      return SizedBox(
-                          height: getHeight() * 0.05,
-                          child: _blogArticleComponents.myDivider());
-                    },
+                              _blogArticleComponents.myDivider(),
+                              TextView.size14Text('Files',
+                                  fontWeight: FontWeight.w600,
+                                  color: AppColors.textColor,
+                                  fontFamily: Assets.raleWaySemiBold),
+                        
+                              _blogArticleComponents.dropDown(
+                                  selectedCategory: _genderSelection,
+                                  updateSelectedCategory: updateTypeGender,
+                                  categories: genderList,
+                                  hint: '1'),
+                            
+                              _blogArticleComponents.myDivider(),
+                              TextView.size14Text('Action',
+                                  fontWeight: FontWeight.w600,
+                                  color: AppColors.textColor,
+                                  fontFamily: Assets.raleWaySemiBold),
+                              SizedBox(height: getHeight() * 0.015),
+                              TextView.size14Text('Action Details',
+                                  fontWeight: FontWeight.w500,
+                                  color: AppColors.greyTextColor,
+                                  fontFamily: Assets.raleWayMedium),
+                            ],
+                          ),
+                        );
+                      },
+                      separatorBuilder: (BuildContext context, int index) {
+                        return SizedBox(
+                            height: getHeight() * 0.05,
+                            child: _blogArticleComponents.myDivider());
+                      },
+                    ),
                   ),
-                ),
-                SizedBox(height: getHeight() * 0.01)
-              ],
-            ),
-        ),
+                  SizedBox(height: getHeight() * 0.01)
                 ],
+              ),
+            ),
+          ],
+        ),
       ),
-          ),
-        )
-      )
-    );
+    )));
   }
 }
