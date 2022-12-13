@@ -147,8 +147,8 @@ class DailyObservationComponents {
           children: [
             TextView.size14Text(date,
                 color: date == "Select Date"
-                    ? AppColors.grey2colrtext
-                    : AppColors.blackTextColor,
+                    ? AppColors.greyColor
+                    : AppColors.greyColor,
                 fontFamily: Assets.raleWayRegular),
           ],
         ),

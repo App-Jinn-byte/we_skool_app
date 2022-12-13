@@ -1,7 +1,6 @@
 import 'package:buttons_tabbar/buttons_tabbar.dart';
 import 'package:flutter/material.dart';
 import 'package:we_skool_app/res/colors.dart';
-import 'package:we_skool_app/screens/Read/read_components.dart';
 import 'package:we_skool_app/screens/add_caregivers/add_caregivers.dart';
 import 'package:we_skool_app/screens/caregivers/caregivers_components.dart';
 
@@ -93,6 +92,8 @@ class _CaregiversScreenState extends State<CaregiversScreen> {
                                     lastname: 'Your Last Name',
                                     email: 'johanemail@email.com',
                                     status: 'Active'),
+
+                              
                               ],
                             ),
                             Column(
@@ -102,7 +103,7 @@ class _CaregiversScreenState extends State<CaregiversScreen> {
                                 Expanded(
                                   child: ListView.separated(
                                     shrinkWrap: true,
-                                    itemCount: 3,
+                                    itemCount: 1,
                                     itemBuilder: (context, index) {
                                       return _careGiversComponents.myBox(
                                           firstname: 'John',
