@@ -109,12 +109,12 @@ class DevelopmentCheckComponents {
                                       child: (isSelected ?? false)
                                           ? Icon(
                                         Icons.check,
-                                        size: getWidth() * 0.03,
+                                        size: getWidth() * 0.025,
                                         color: Colors.white,
                                       )
                                           : Icon(
                                         Icons.check,
-                                        size: getWidth() * 0.03,
+                                        size: getWidth() * 0.025,
                                         color: Colors.white,
                                       )),
                                   SizedBox(width: getWidth() * 0.02),
