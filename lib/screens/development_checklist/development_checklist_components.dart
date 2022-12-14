@@ -26,7 +26,7 @@ class DevelopmentCheckComponents {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            TextView.size14Text(date, color: date == "Select Date" ? AppColors.grey2colrtext: AppColors.blackTextColor, fontFamily: Assets.raleWayRegular),
+            TextView.size14Text(date, color: date == "Select Date" ? AppColors.greyColor: AppColors.greyColor, fontFamily: Assets.raleWayRegular),
 
           ],
         ),
@@ -42,6 +42,7 @@ class DevelopmentCheckComponents {
   }) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
+
       children: [
         TextView.size20Text(headingText, color: AppColors.blackLight, fontFamily: Assets.raleWaySemiBold, fontWeight: FontWeight.w600, lines: 1),
         SizedBox(height: getHeight() * 0.02),
@@ -93,9 +94,10 @@ class DevelopmentCheckComponents {
                             children: [
                               Row(
                                 crossAxisAlignment: CrossAxisAlignment.start,
+                              
                                 children: [
                                   Container(
-                                    margin: EdgeInsets.only(top: getHeight() * 0.003),
+                                    margin: EdgeInsets.only(top: getHeight() * 0.0015),
                                       decoration: BoxDecoration(
                                         shape: BoxShape.rectangle,
                                         color: (isSelected ?? false) ? AppColors.pinkColor : AppColors.pureWhiteColor,

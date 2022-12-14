@@ -7,8 +7,6 @@ import 'package:we_skool_app/screens/consultation_request/consultation_request_c
 import 'package:we_skool_app/widgets/common_widgets.dart';
 import 'package:we_skool_app/widgets/text_views.dart';
 
-
-
 class ConsultationRequest extends StatefulWidget {
   const ConsultationRequest({Key? key}) : super(key: key);
 
@@ -17,11 +15,16 @@ class ConsultationRequest extends StatefulWidget {
 }
 
 class _ConsultationRequestState extends State<ConsultationRequest> {
-  final ConsultationRequestComponents _consultationRequestComponents = ConsultationRequestComponents();
+  final ConsultationRequestComponents _consultationRequestComponents =
+      ConsultationRequestComponents();
   TextEditingController? searchController;
   DateTime? slot1Date;
   DateTime? slot2Date;
   DateTime? slot3Date;
+  final TimeOfDay _timeOfDay = TimeOfDay.now();
+  String? _selectedtimes = '00:00:00 PM';
+  String? _selectedtimes2 = '00:00:00 PM';
+  String? _selectedtimes3 = '00:00:00 PM';
 
   @override
   void initState() {
@@ -29,10 +32,10 @@ class _ConsultationRequestState extends State<ConsultationRequest> {
     searchController = TextEditingController();
   }
 
-  List <String> genderList = ['Male','Female'];
+  List<String> genderList = ['Male', 'Female'];
   String? _genderSelection;
 
-  void updateTypeGender(String value){
+  void updateTypeGender(String value) {
     setState(() {
       _genderSelection = value;
     });
@@ -62,24 +65,30 @@ class _ConsultationRequestState extends State<ConsultationRequest> {
                     margin: EdgeInsets.symmetric(horizontal: getWidth() * 0.05),
                     decoration: const BoxDecoration(
                         image: DecorationImage(
-                            image: AssetImage(Assets.lightBackground), fit: BoxFit.fill
-                        )),
+                            image: AssetImage(Assets.lightBackground),
+                            fit: BoxFit.fill)),
                     child: Column(
                       children: [
                         SizedBox(height: getHeight() * 0.03),
-                        CommonWidgets.searchField(textEditingController: searchController),
+                        CommonWidgets.searchField(
+                            textEditingController: searchController),
                         SizedBox(height: getHeight() * 0.03),
                         Container(
                           height: getHeight() * 0.41,
                           width: getWidth(),
-                          padding: EdgeInsets.symmetric(horizontal: getWidth() * 0.04, vertical: getHeight() * 0.02),
+                          padding: EdgeInsets.symmetric(
+                              horizontal: getWidth() * 0.04,
+                              vertical: getHeight() * 0.02),
                           decoration: BoxDecoration(
                             boxShadow: const [
                               BoxShadow(
-                                  color: AppColors.shadow, blurRadius: 2, offset: Offset(0, 0))
+                                  color: AppColors.shadow,
+                                  blurRadius: 2,
+                                  offset: Offset(0, 0))
                             ],
                             color: AppColors.pureWhiteColor,
-                            borderRadius: BorderRadius.all(Radius.circular(getHeight() * .02)),
+                            borderRadius: BorderRadius.all(
+                                Radius.circular(getHeight() * .02)),
                           ),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
@@ -93,58 +102,66 @@ class _ConsultationRequestState extends State<ConsultationRequest> {
                                   selectedCategory: _genderSelection,
                                   updateSelectedCategory: updateTypeGender,
                                   categories: genderList,
-                                  hint: "Select Consultation Type"
-                              ),
-                              Divider(height: getHeight() * 0.001, thickness: getHeight() * 0.001, color: AppColors.dividerColor),
+                                  hint: "Select Consultation Type"),
+                              Divider(
+                                  height: getHeight() * 0.001,
+                                  thickness: getHeight() * 0.001,
+                                  color: AppColors.dividerColor),
                               SizedBox(height: getHeight() * 0.015),
-                              TextView.size14Text("Time Slot 1",
+                              TextView.size14Text("Time Slot 1*",
                                   color: AppColors.blackLight,
                                   fontFamily: Assets.raleWaySemiBold,
-                                  fontWeight: FontWeight.w600
-                              ),
+                                  fontWeight: FontWeight.w600),
                               SizedBox(height: getHeight() * 0.015),
                               _consultationRequestComponents.getDateField(
+                                  timeselct: _selectedtimes,
                                   date: slot1Date != null
                                       ? "${slot1Date!.day}/${slot1Date!.month}/${slot1Date!.year}"
-                                      : "Select Date",
+                                      : "DD/MM/YYYY",
                                   onPressDate: () {
                                     _selectDateSlot1(context);
-                                  }
-                              ),
+                                    selecttime1();
+                                  }),
                               SizedBox(height: getHeight() * 0.01),
-                              Divider(height: getHeight() * 0.01, thickness: getHeight() * 0.001, color: AppColors.dividerColor),
+                              Divider(
+                                  height: getHeight() * 0.01,
+                                  thickness: getHeight() * 0.001,
+                                  color: AppColors.dividerColor),
                               SizedBox(height: getHeight() * 0.01),
-                              TextView.size14Text("Time Slot 2",
+                              TextView.size14Text("Time Slot 2*",
                                   color: AppColors.blackLight,
                                   fontFamily: Assets.raleWaySemiBold,
-                                  fontWeight: FontWeight.w600
-                              ),
+                                  fontWeight: FontWeight.w600),
                               SizedBox(height: getHeight() * 0.015),
                               _consultationRequestComponents.getDateField(
+                                  timeselct: _selectedtimes2,
                                   date: slot2Date != null
                                       ? "${slot2Date!.day}/${slot2Date!.month}/${slot2Date!.year}"
-                                      : "Select Date",
+                                      : "DD/MM/YYYY",
                                   onPressDate: () {
-                                    _selectDateSlot1(context);
-                                  }
-                              ),
+                                    _selectDateSlot2(context);
+                                    selecttime2();
+                                  }),
                               SizedBox(height: getHeight() * 0.01),
-                              Divider(height: getHeight() * 0.01, thickness: getHeight() * 0.001, color: AppColors.dividerColor),
+                              Divider(
+                                  height: getHeight() * 0.01,
+                                  thickness: getHeight() * 0.001,
+                                  color: AppColors.dividerColor),
                               SizedBox(height: getHeight() * 0.01),
-                              TextView.size14Text("Time Slot 3",
+                              TextView.size14Text("Time Slot 3*",
                                   color: AppColors.blackLight,
                                   fontFamily: Assets.raleWaySemiBold,
-                                  fontWeight: FontWeight.w600
-                              ),
+                                  fontWeight: FontWeight.w600),
                               SizedBox(height: getHeight() * 0.015),
                               _consultationRequestComponents.getDateField(
+                                  timeselct: _selectedtimes3,
                                   date: slot3Date != null
                                       ? "${slot3Date!.day}/${slot3Date!.month}/${slot3Date!.year}"
-                                      : "Select Date",
+                                      : "DD/MM/YYYY",
                                   onPressDate: () {
-                                    _selectDateSlot1(context);
-                                  }
-                              ),
+                                    _selectDateSlot3(context);
+                                    selecttime3();
+                                  }),
                               SizedBox(height: getHeight() * 0.01),
                               // Divider(height: getHeight() * 0.01, thickness: getHeight() * 0.001, color: AppColors.dividerColor),
                             ],
@@ -152,14 +169,12 @@ class _ConsultationRequestState extends State<ConsultationRequest> {
                         ),
                         SizedBox(height: getHeight() * 0.08),
                         CommonWidgets.getButton(
-                          height: getHeight()*0.06,
+                            height: getHeight() * 0.06,
                             text: "Book Consultation",
                             fontSize: sizes!.fontSize14,
                             fontFamily: Assets.raleWaySemiBold,
                             fontWeight: FontWeight.w600,
-                            onPress: () {
-
-                        })
+                            onPress: () {})
                       ],
                     ),
                   ),
@@ -169,6 +184,7 @@ class _ConsultationRequestState extends State<ConsultationRequest> {
       ),
     );
   }
+
   Future<void> _selectDateSlot1(BuildContext context) async {
     final DateTime? picked = await showDatePicker(
       context: context,
@@ -183,7 +199,7 @@ class _ConsultationRequestState extends State<ConsultationRequest> {
             dialogBackgroundColor: Colors.white,
             colorScheme: const ColorScheme.light(primary: AppColors.pinkColor),
             buttonTheme:
-            const ButtonThemeData(textTheme: ButtonTextTheme.primary),
+                const ButtonThemeData(textTheme: ButtonTextTheme.primary),
             highlightColor: Colors.grey[400],
           ), // This will change to light theme.
           child: child!,
@@ -211,7 +227,7 @@ class _ConsultationRequestState extends State<ConsultationRequest> {
             dialogBackgroundColor: Colors.white,
             colorScheme: const ColorScheme.light(primary: AppColors.pinkColor),
             buttonTheme:
-            const ButtonThemeData(textTheme: ButtonTextTheme.primary),
+                const ButtonThemeData(textTheme: ButtonTextTheme.primary),
             highlightColor: Colors.grey[400],
           ), // This will change to light theme.
           child: child!,
@@ -239,7 +255,7 @@ class _ConsultationRequestState extends State<ConsultationRequest> {
             dialogBackgroundColor: Colors.white,
             colorScheme: const ColorScheme.light(primary: AppColors.pinkColor),
             buttonTheme:
-            const ButtonThemeData(textTheme: ButtonTextTheme.primary),
+                const ButtonThemeData(textTheme: ButtonTextTheme.primary),
             highlightColor: Colors.grey[400],
           ), // This will change to light theme.
           child: child!,
@@ -249,6 +265,81 @@ class _ConsultationRequestState extends State<ConsultationRequest> {
     if (picked != null && picked != slot3Date) {
       setState(() {
         slot3Date = picked;
+      });
+    }
+  }
+
+  Future<void> selecttime1() async {
+    final TimeOfDay? picked = await showTimePicker(
+      context: context,
+      initialTime: _timeOfDay,
+      builder: (context, child) {
+        return Theme(
+          data: ThemeData(
+            dialogBackgroundColor: Colors.white,
+            colorScheme: const ColorScheme.light(primary: AppColors.pinkColor),
+            buttonTheme:
+                const ButtonThemeData(textTheme: ButtonTextTheme.primary),
+            highlightColor: Colors.grey[400],
+          ), // This will change to light theme.
+          child: child!,
+        );
+      },
+    );
+    if (picked != null) {
+      setState(() {
+        //  _timeOfDay = _picked;
+        _selectedtimes = picked.format(context);
+      });
+    }
+  }
+
+  Future<void> selecttime2() async {
+    final TimeOfDay? picked = await showTimePicker(
+      context: context,
+      initialTime: _timeOfDay,
+      builder: (context, child) {
+        return Theme(
+          data: ThemeData(
+            dialogBackgroundColor: Colors.white,
+            colorScheme: const ColorScheme.light(primary: AppColors.pinkColor),
+            buttonTheme:
+                const ButtonThemeData(textTheme: ButtonTextTheme.primary),
+            highlightColor: Colors.grey[400],
+          ), // This will change to light theme.
+          child: child!,
+        );
+      },
+    );
+    if (picked != null) {
+      setState(() {
+        //  _timeOfDay = _picked;
+        _selectedtimes2 = picked.format(context);
+      });
+    }
+  }
+
+  Future<void> selecttime3() async {
+    final TimeOfDay? picked = await showTimePicker(
+      context: context,
+      initialTime: _timeOfDay,
+      builder: (context, child) {
+        return Theme(
+          data: ThemeData(
+            dialogBackgroundColor: Colors.white,
+            colorScheme: const ColorScheme.light(primary: AppColors.pinkColor),
+            buttonTheme:
+                const ButtonThemeData(textTheme: ButtonTextTheme.primary),
+            highlightColor: Colors.grey[400],
+          ), // This will change to light theme.
+          child: child!,
+        );
+      },
+    );
+    if (picked != null) {
+      setState(() {
+        //  _timeOfDay = _picked;
+        _selectedtimes3 = picked.format(context);
       });
     }
   }

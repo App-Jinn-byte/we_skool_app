@@ -49,7 +49,7 @@ class ConsultationRequestComponents {
       ),
     );
   }
-  Widget getDateField({@required String? date, @required Function? onPressDate, Color? bgColor}) {
+  Widget getDateField({@required String? date,timeselct, @required Function? onPressDate, Color? bgColor}) {
     return GestureDetector(
       onTap: () {
         if (onPressDate != null) {
@@ -71,7 +71,12 @@ class ConsultationRequestComponents {
             TextView.size14Text(
                 date, color: date == "Select Date" ? AppColors.grey2colrtext: AppColors.blackTextColor,
                 fontFamily: Assets.raleWayRegular),
-            Icon(Icons.calendar_today_outlined, size: getHeight() * 0.025, color: AppColors.hintTextGreyColor,),
+                Padding(
+                  padding:  EdgeInsets.only(right: getWidth()*0.2),
+                  child: TextView.size14Text(timeselct, color: AppColors.grey2colrtext,fontWeight: FontWeight.w500,fontFamily: Assets.raleWayMedium),
+                ),
+                Image.asset(Assets.calendericon,height:  getHeight()*0.021),
+         
 
           ],
         ),

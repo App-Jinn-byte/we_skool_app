@@ -87,7 +87,7 @@ class _ReadScreenState extends State<ReadScreen> {
                             ListView.separated(
                               shrinkWrap: true,
                               scrollDirection: Axis.vertical,
-                              itemCount: 3,
+                              itemCount: 1,
                               itemBuilder: (context, index) {
                                 return _readComponents.myReadBox(
                                   titleText: 'Your text here',
@@ -105,11 +105,12 @@ class _ReadScreenState extends State<ReadScreen> {
                                     child: _readComponents.myDividers());
                               },
                             ),
+                            
                             ListView.separated(
                             
                               shrinkWrap: true,
                               scrollDirection: Axis.vertical,
-                              itemCount: 3,
+                              itemCount: 1,
                               itemBuilder: (context, index) {
                                 return _readComponents.myArchievedBox(
                                   titleText: 'Your text here',
@@ -126,6 +127,8 @@ class _ReadScreenState extends State<ReadScreen> {
                                     child: _readComponents.myDividers());
                               },
                             ),
+                            
+                            
                           ],
                         ),
                       ),

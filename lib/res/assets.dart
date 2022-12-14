@@ -11,6 +11,8 @@ class Assets {
   // images
   static const String backGroundImage = "assets/png/backGroundImage.png";
   static const String paymenticon = "assets/png/paymenticon.png";
+  static const String calendericon = "assets/png/calendericon.png";
+
 
   static const String weClasses = "assets/png/icon_classes.png";
   static const String weAssessment = "assets/png/icon_assessment.png";
@@ -31,6 +33,8 @@ class Assets {
 
 
   static const String download = "assets/png/Group.png";
+  static const String timeicon = "assets/png/time.png";
+
   static const String splashLogo = "assets/png/splashLogo.png";
   static const String logo = "assets/png/logo.png";
   static const String onBoarding1 = "assets/png/onBoarding1.png";

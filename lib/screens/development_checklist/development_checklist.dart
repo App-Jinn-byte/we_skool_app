@@ -44,7 +44,7 @@ class _DevelopmentChecklistState extends State<DevelopmentChecklist> {
           child: SingleChildScrollView(
             child: Column(children: [
               CommonWidgets.appBarIconImageText(
-                  text: "Development Check",
+                  text: "Development Checklist",
                   image: "",
                   isDataFetched: false,
                   onPressMenu: () {
@@ -71,7 +71,7 @@ class _DevelopmentChecklistState extends State<DevelopmentChecklist> {
                     _developmentCheckComponents.getDateField(
                         date: observationDate != null
                             ? "${observationDate!.day}/${observationDate!.month}/${observationDate!.year}"
-                            : "Select Date",
+                            : "DD/MM/YY",
                         onPressDate: () {
                           _selectObservationDate(context);
                         }),
