@@ -44,7 +44,7 @@ class _DevelopmentChecklistState extends State<DevelopmentChecklist> {
           child: SingleChildScrollView(
             child: Column(children: [
               CommonWidgets.appBarIconImageText(
-                  text: "Development Checklist",
+                  text: "Development Check...",
                   image: "",
                   isDataFetched: false,
                   onPressMenu: () {

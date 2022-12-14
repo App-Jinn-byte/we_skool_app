@@ -30,7 +30,7 @@ class NotificationComponents {
           CircleAvatar(
             backgroundImage: isDataFetched
                 ? NetworkImage(image!)
-                : const AssetImage(Assets.imagePlaceHolder)
+                : const AssetImage(Assets.notificationUnRead)
             as ImageProvider,
             radius: getHeight() * 0.02, // 50.0
             backgroundColor: AppColors.transparentColor,

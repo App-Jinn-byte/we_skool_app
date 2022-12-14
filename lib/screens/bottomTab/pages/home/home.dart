@@ -165,19 +165,22 @@ class _HomeState extends State<Home> {
                                 vertical: getHeight() * 0.015),
                             decoration: BoxDecoration(
                               shape: BoxShape.rectangle,
-                              color: AppColors.pureWhiteColor,
+                              image: const DecorationImage(
+                                  image: AssetImage(Assets.scheduleBackGround),
+                                  fit: BoxFit.cover
+                              ),
                               border: Border.all(
                                   color: AppColors.borderColor,
                                   width: getWidth() * 0.005),
                               borderRadius: BorderRadius.circular(
                                 getWidth() * .04,
                               ),
-                              boxShadow: const [
-                                BoxShadow(
-                                    color: AppColors.borderColor,
-                                    blurRadius: 10,
-                                    offset: Offset(0, 0))
-                              ],
+                              // boxShadow: const [
+                              //   BoxShadow(
+                              //       color: AppColors.borderColor,
+                              //       blurRadius: 5,
+                              //       offset: Offset(0, 0))
+                              // ],
                             ),
                             child: ListView.separated(
                               itemCount: 4,

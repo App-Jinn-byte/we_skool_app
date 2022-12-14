@@ -24,6 +24,9 @@ class Assets {
   static const String wePayments = "assets/png/icon_payment.png";
   static const String weSpecial = "assets/png/icon_special.png";
   static const String logout = "assets/png/logout.png";
+  static const String notificationRead = "assets/png/notificationRead.png";
+  static const String notificationUnRead = "assets/png/notificationUnRead.png";
+  static const String scheduleBackGround = "assets/png/scheduleBackGround.png";
 
 
 
