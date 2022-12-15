@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-
 import 'package:we_skool_app/res/assets.dart';
 import 'package:we_skool_app/res/colors.dart';
 import 'package:we_skool_app/res/res.dart';
-
 import 'package:we_skool_app/widgets/common_widgets.dart';
 import 'package:we_skool_app/widgets/text_views.dart';
 
@@ -81,7 +79,7 @@ class _BlocArticleScreenState extends State<BlocArticleScreen> {
                                   fontFamily: Assets.raleWaySemiBold),
                               SizedBox(height: getHeight() * 0.015),
                               TextView.size14Text(
-                                  'Early Learing Unraveled, Fascinating Brain',
+                                  'Early Learning Unraveled, Fascinating Brain',
                                   fontWeight: FontWeight.w500,
                                   color: AppColors.greyTextColor,
                                   fontFamily: Assets.raleWayMedium),
