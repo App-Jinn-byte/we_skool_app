@@ -14,4 +14,6 @@ class Strings {
   static const String onBoarding1Text = "Our Reggio-Emilia inspired program has been thoughtfully designed for all parents and to caregivers implement at home with confidence and ease.";
   static const String onBoarding2Text = "Our Reggio-Emilia inspired program has been thoughtfully designed for all parents and to caregivers implement at home with confidence and ease.";
 
+  static const String badHappenedError="Something bad happened,Try again.";
+  static const String noInternetError="No Internet Connection";
 }
