@@ -40,6 +40,7 @@ class _HomeState extends State<Home> {
   }
 
  
+ 
 
   @override
   Widget build(BuildContext context) {
@@ -175,12 +176,7 @@ class _HomeState extends State<Home> {
                               borderRadius: BorderRadius.circular(
                                 getWidth() * .04,
                               ),
-                              // boxShadow: const [
-                              //   BoxShadow(
-                              //       color: AppColors.borderColor,
-                              //       blurRadius: 5,
-                              //       offset: Offset(0, 0))
-                              // ],
+                             
                             ),
                             child: ListView.separated(
                               itemCount: 4,
@@ -207,7 +203,10 @@ class _HomeState extends State<Home> {
                 ],
               ),
             )),
-      ),
+          
+            )
+      
+      
     );
   }
 }

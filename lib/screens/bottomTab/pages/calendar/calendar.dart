@@ -9,8 +9,6 @@ import 'package:we_skool_app/screens/bottomTab/pages/notification/notification_c
 import 'package:we_skool_app/widgets/common_widgets.dart';
 import 'package:we_skool_app/widgets/text_views.dart';
 
-
-
 class Calendar extends StatefulWidget {
   const Calendar({Key? key}) : super(key: key);
 
@@ -19,7 +17,7 @@ class Calendar extends StatefulWidget {
 }
 
 class _CalendarState extends State<Calendar> {
-  CalendarComponents _calendarComponents =CalendarComponents();
+  CalendarComponents _calendarComponents = CalendarComponents();
   TextEditingController? searchController;
   DateTime? bookingDate;
 
@@ -44,15 +42,13 @@ class _CalendarState extends State<Calendar> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   CommonWidgets.appBarTextImage(
-                      text: "Calendar",
-                      image: "",
-                      isDataFetched: false),
+                      text: "Calendar", image: "", isDataFetched: false),
                   Container(
                     height: sizes!.height * 0.8,
                     decoration: const BoxDecoration(
                         image: DecorationImage(
-                            image: AssetImage(Assets.lightBackground), fit: BoxFit.fill
-                        )),
+                            image: AssetImage(Assets.lightBackground),
+                            fit: BoxFit.fill)),
                     child: Column(
                       children: [
                         Expanded(
@@ -61,90 +57,101 @@ class _CalendarState extends State<Calendar> {
                               itemBuilder: (context, index) {
                                 if (index == 0) {
                                   return Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
                                     children: [
                                       SizedBox(height: getHeight() * 0.03),
-                                      CommonWidgets.searchField(textEditingController: searchController),
+                                      CommonWidgets.searchField(
+                                          textEditingController:
+                                              searchController),
                                       SizedBox(height: getHeight() * 0.03),
                                       Container(
                                         decoration: BoxDecoration(
-                                            borderRadius: BorderRadius.circular(getWidth() * 0.02),
-                                            border: Border.all(color: AppColors.borderColor),
+                                            borderRadius: BorderRadius.circular(
+                                                getWidth() * 0.02),
+                                            border: Border.all(
+                                                color: AppColors.borderColor),
                                             image: const DecorationImage(
-                                                image: AssetImage(Assets.calendarBg), fit: BoxFit.fill
-                                            )
-                                        ),
+                                                image: AssetImage(
+                                                    Assets.calendarBg),
+                                                fit: BoxFit.fill)),
                                         child: TableCalendar(
-                                          rowHeight: getHeight() * 0.05,
-                                          firstDay: DateTime.now(),
-                                          lastDay:
-                                          DateTime.utc(2030, 3, 14),
-                                          focusedDay: bookingDate ??
-                                              DateTime.now(),
-                                          selectedDayPredicate: (day) =>
-                                              isSameDay(day, bookingDate),
-                                          onDaySelected:
-                                              (selectedDay, focusedDay) {
-                                            setState(() {
-                                              bookingDate = selectedDay;
-                                            });
-                                          },
-                                          calendarStyle: const CalendarStyle(
-                                            isTodayHighlighted: false,
-                                            todayDecoration:
-                                            BoxDecoration(
-                                              color:
-                                              AppColors.pureWhiteColor,
-                                              shape: BoxShape.circle,
+                                            rowHeight: getHeight() * 0.05,
+                                            firstDay: DateTime.now(),
+                                            lastDay: DateTime.utc(2030, 3, 14),
+                                            focusedDay:
+                                                bookingDate ?? DateTime.now(),
+                                            selectedDayPredicate: (day) =>
+                                                isSameDay(day, bookingDate),
+                                            onDaySelected:
+                                                (selectedDay, focusedDay) {
+                                              setState(() {
+                                                bookingDate = selectedDay;
+                                              });
+                                            },
+                                            calendarStyle: const CalendarStyle(
+                                              weekendTextStyle: TextStyle(
+                                                  color: AppColors.yellowColor),
+                                              isTodayHighlighted: false,
+                                              todayDecoration: BoxDecoration(
+                                                color: AppColors.pureWhiteColor,
+                                                shape: BoxShape.circle,
+                                              ),
+                                              selectedDecoration: BoxDecoration(
+                                                color: AppColors.pinkColor,
+                                                shape: BoxShape.circle,
+                                              ),
                                             ),
-                                            selectedDecoration:
-                                            BoxDecoration(
-                                              color: AppColors.pinkColor,
-                                              shape: BoxShape.circle,
+                                            headerStyle: HeaderStyle(
+                                              titleCentered: true,
+                                              formatButtonVisible: false,
+                                              headerPadding:
+                                                  EdgeInsets.symmetric(
+                                                      horizontal:
+                                                          sizes!.heightRatio *
+                                                              10),
+                                              titleTextStyle: TextStyle(
+                                                  fontFamily:
+                                                      Assets.raleWaySemiBold,
+                                                  fontSize: sizes!.fontSize18,
+                                                  fontWeight: FontWeight.w600,
+                                                  color: AppColors.blackLight),
                                             ),
-                                          ),
-                                          headerStyle: HeaderStyle(
-                                            titleCentered: true,
-                                            formatButtonVisible: false,
-                                            headerPadding:
-                                            EdgeInsets.symmetric(
-                                                horizontal: sizes!
-                                                    .heightRatio *
-                                                    10),
-                                            titleTextStyle: TextStyle(
-                                                fontFamily:
-                                                Assets.raleWaySemiBold,
-                                                fontSize: sizes!.fontSize18,
-                                                fontWeight: FontWeight.w600,
-                                                color: AppColors.blackLight),
-                                          ),
-                                        ),
+                                            daysOfWeekStyle:
+                                                const DaysOfWeekStyle(
+                                                    weekendStyle: TextStyle(
+                                                        color: AppColors
+                                                            .yellowColor))),
                                       ),
                                       SizedBox(height: getHeight() * 0.03),
-                                      Divider(height: getHeight() * 0.01, thickness: getHeight() * 0.001, color: AppColors.dividerColor),
+                                      Divider(
+                                          height: getHeight() * 0.01,
+                                          thickness: getHeight() * 0.001,
+                                          color: AppColors.dividerColor),
                                       SizedBox(height: getHeight() * 0.03),
-                                      TextView.size16Text("Activity Details", Assets.raleWaySemiBold,
-                                          color: AppColors.blackLight, lines: 1, fontWeight: FontWeight.w600),
+                                      TextView.size16Text("Activity Details",
+                                          Assets.raleWaySemiBold,
+                                          color: AppColors.blackLight,
+                                          lines: 1,
+                                          fontWeight: FontWeight.w600),
                                       SizedBox(height: getHeight() * 0.02),
                                     ],
                                   );
-                                }
-                                else {
+                                } else {
                                   return Column(
                                     children: [
                                       _calendarComponents.getDateText(
                                           date: bookingDate.toString(),
-                                          text: "Your text here"
-                                      ),
+                                          text: "Your text here"),
                                       SizedBox(height: getHeight() * 0.02)
                                     ],
                                   );
                                 }
-                              }
-                          ),
+                              }),
                         ),
-                        SizedBox(height: getHeight() * 0.04,)
-
+                        SizedBox(
+                          height: getHeight() * 0.04,
+                        )
                       ],
                     ),
                   ),
