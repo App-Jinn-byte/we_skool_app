@@ -69,7 +69,7 @@ class ConsultationRequestComponents {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             TextView.size14Text(
-                date, color: date == "Select Date" ? AppColors.grey2colrtext: AppColors.blackTextColor,
+                date, color: date == "Select Date" ? AppColors.grey2colrtext: AppColors.grey2colrtext,
                 fontFamily: Assets.raleWayRegular),
                 Padding(
                   padding:  EdgeInsets.only(right: getWidth()*0.2),

@@ -51,7 +51,7 @@ class _ClassesState extends State<Classes> {
                         fit: BoxFit.fill),
                   ),
                   child: Padding(
-                    padding: const EdgeInsets.all(2),
+                    padding: const EdgeInsets.all(0),
                     child: Column(
                       children: [
                         SizedBox(height: getHeight() * 0.04),
@@ -73,7 +73,7 @@ class _ClassesState extends State<Classes> {
                               EdgeInsets.symmetric(horizontal: getWidth() * 0.017),
                           tabs: const [
                             Tab(
-                              text: '    Classes      ',
+                              text: '     Classes       ',
                             ),
                             Tab(
                               
