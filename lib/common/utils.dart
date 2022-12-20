@@ -1,6 +1,6 @@
 import 'dart:async' show Future;
 import 'package:shared_preferences/shared_preferences.dart';
-
+import 'package:we_skool_app/models/login_model.dart';
 import '../res/strings.dart';
 
 class PreferenceUtils {
@@ -61,9 +61,16 @@ class PreferenceUtils {
     return userImage;
   }
 
-  // static Future setLoginResponse(LoginResponse loginResponse) async{
-  //
-  // }
+  static Future setLoginResponse(LoginResponse loginResponse) async{
+
+    PreferenceUtils.setInt(Strings.userId, loginResponse.data!.user!.userId ?? 0);
+    PreferenceUtils.setString(Strings.fullName, loginResponse.data!.user!.name ?? "");
+    PreferenceUtils.setString(Strings.email, loginResponse.data!.user!.email ?? "");
+    PreferenceUtils.setString(Strings.password, loginResponse.data!.user!.password ?? "");
+    PreferenceUtils.setString(Strings.userType, loginResponse.data!.user!.userType ?? "");
+    PreferenceUtils.setString(Strings.profilePicture, loginResponse.data!.user!.profilePicture ?? "");
+
+  }
 
   static clearPreferences() {
     _prefsInstance?.clear();

@@ -20,7 +20,7 @@ class _OtpScreenState extends State<OtpScreen> {
   TextEditingController? emailController;
   final bool _enable = true;
   final bool _cursorEnable = true;
-  ForgotPasswordComponents _forgotPasswordComponents = ForgotPasswordComponents();
+  final ForgotPasswordComponents _forgotPasswordComponents = ForgotPasswordComponents();
 
   @override
   void initState() {

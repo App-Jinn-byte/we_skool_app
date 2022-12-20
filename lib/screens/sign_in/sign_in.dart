@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:we_skool_app/res/assets.dart';
 import 'package:we_skool_app/res/res.dart';
-import 'package:we_skool_app/screens/bottomTab/pages/home/home.dart';
 import 'package:we_skool_app/screens/forgot_password/forgot_password.dart';
 import 'package:we_skool_app/screens/registration/register_as.dart';
+import 'package:we_skool_app/screens/sign_in/sign_in_provider.dart';
 import 'package:we_skool_app/widgets/common_widgets.dart';
 import 'package:we_skool_app/widgets/text_views.dart';
-import 'package:we_skool_app/screens/bottomTab/bottom_tab.dart';
 import '../../res/colors.dart';
-import '../../res/strings.dart';
+import '../../res/toasts.dart';
 
 class SignIn extends StatefulWidget {
   const SignIn({Key? key}) : super(key: key);
@@ -18,6 +18,7 @@ class SignIn extends StatefulWidget {
 }
 
 class _SignInState extends State<SignIn> {
+  SignInProvider _signInProvider = SignInProvider();
   TextEditingController? emailController;
   TextEditingController? passwordController;
   late bool hiddenPassword;
@@ -25,6 +26,8 @@ class _SignInState extends State<SignIn> {
   @override
   void initState() {
     super.initState();
+    _signInProvider = Provider.of<SignInProvider>(context, listen: false);
+    _signInProvider.init(context: context);
     emailController = TextEditingController();
     passwordController = TextEditingController();
     hiddenPassword = true;
@@ -32,6 +35,7 @@ class _SignInState extends State<SignIn> {
 
   @override
   Widget build(BuildContext context) {
+    Provider.of<SignInProvider>(context, listen: true);
     return SafeArea(
       child: Scaffold(
         body: Container(
@@ -81,9 +85,7 @@ class _SignInState extends State<SignIn> {
                     SizedBox(height: getHeight() * 0.05),
                     CommonWidgets.getButton(
                         onPress: () {
-                         
-                          Navigator.pushAndRemoveUntil(context,
-                              MaterialPageRoute(builder: (_) => const BottomTab(pageIndex: 0)), (route) => false);
+                          clickOnButton(context);
                         },
                         btnColor: AppColors.pinkColor,
                         text: "LOGIN",
@@ -115,6 +117,30 @@ class _SignInState extends State<SignIn> {
       ),
     );
   }
+  void clickOnButton(BuildContext context) async {
+    await callLoginApi(
+        email: emailController?.text.trim(),
+        password: passwordController?.text.trim());
+
+  }
+
+  Future<void> callLoginApi(
+      {@required String? email, @required String? password}) async {
+    if (email != null && password != null) {
+      if (email.isNotEmpty && password.isNotEmpty) {
+        _signInProvider.loginApi(email: email, password: password);
+      } else if (email.isEmpty && password.isEmpty) {
+        Toasts.getErrorToast(text: "Email and Password Missing");
+      } else if (email.isEmpty) {
+        Toasts.getErrorToast(text: "Email Missing");
+      } else if (password.isEmpty) {
+        Toasts.getErrorToast(text: "Password  missing");
+      }
+    } else {
+      Toasts.getErrorToast(text: "Invalid email or password");
+    }
+  }
+
 
   void clickIcon() {
     setState(() {

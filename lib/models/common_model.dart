@@ -1,11 +1,11 @@
-class ErrorResponse {
+class CommonResponse {
   String? message;
   int? code;
   Data? data;
 
-  ErrorResponse({this.message, this.code, this.data});
+  CommonResponse({this.message, this.code, this.data});
 
-  ErrorResponse.fromJson(Map<String, dynamic> json) {
+  CommonResponse.fromJson(Map<String, dynamic> json) {
     message = json['Message'];
     code = json['Code'];
     data = json['Data'] != null ? Data.fromJson(json['Data']) : null;
@@ -32,7 +32,7 @@ class Data {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = Map<String, dynamic>();
+    final Map<String, dynamic> data = <String, dynamic>{};
     data['Message'] = message;
     return data;
   }

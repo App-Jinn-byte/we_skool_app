@@ -6,7 +6,7 @@ import 'package:we_skool_app/common/utils.dart';
 import 'package:we_skool_app/res/res.dart';
 import 'package:we_skool_app/res/assets.dart';
 import 'package:we_skool_app/res/strings.dart';
-
+import 'package:we_skool_app/screens/bottomTab/bottom_tab.dart';
 import '../../animations/slide_right.dart';
 import '../on_boarding1/on_boarding1.dart';
 
@@ -75,8 +75,10 @@ class _SplashState extends State<Splash> with TickerProviderStateMixin {
     await Future.delayed(const Duration(seconds: 6));
     if (PreferenceUtils.getString(Strings.fullName)!.isNotEmpty &&
         PreferenceUtils.getString(Strings.password)!.isNotEmpty) {
-      Navigator.pushReplacement(
-          context, SlideRightRoute(page: const OnBoarding1()));
+      Navigator.pushAndRemoveUntil(
+          context,
+          SlideRightRoute(page: const BottomTab(pageIndex: 0)),
+              (Route<dynamic> route) => false);
     } else {
       Navigator.pushReplacement(
           context, SlideRightRoute(page: const OnBoarding1()));
