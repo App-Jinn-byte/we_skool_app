@@ -63,7 +63,7 @@ class _MiscScreenState extends State<MiscScreen> {
                     child: ListView.separated(
                       shrinkWrap: true,
                       scrollDirection: Axis.vertical,
-                      itemCount: 3,
+                      itemCount: 1,
                       itemBuilder: (context, index) {
                         return _blogArticleComponents.myBox(
                          

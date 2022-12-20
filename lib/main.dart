@@ -24,8 +24,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
-    return MultiProvider(
+      return MultiProvider(
       providers: multiProviders,
       child:  MaterialApp(
         debugShowCheckedModeBanner: false,
