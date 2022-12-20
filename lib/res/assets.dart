@@ -8,6 +8,7 @@ class Assets {
   static const String raleWayRegular = "Raleway-Regular";
   static const String raleWaySemiBold = "Raleway-SemiBold";
   static const String apiLoading = "assets/json/blueSimple.json";
+  static const String apiLoading1 = "assets/json/redSimple.json";
   // images
   static const String backGroundImage = "assets/png/backGroundImage.png";
   static const String paymenticon = "assets/png/paymenticon.png";
@@ -58,5 +59,6 @@ class Assets {
   static const String chatIcon2 = "assets/png/chat_icon2.png";
   static const String calendarBg = "assets/png/calendar_background.png";
   static const String crossIcon = "assets/png/cross_icon.png";
+  static const String changePasswordIcon = "assets/png/icon_changePassword.png";
 
 }

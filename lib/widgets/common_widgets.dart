@@ -151,9 +151,10 @@ class CommonWidgets {
         keyboardType: textInputType ?? TextInputType.text,
         cursorColor: AppColors.blackTextColor,
         style: TextStyle(
-          color: AppColors.blackTextColor,
+          color: AppColors.blackBorderColor,
           fontSize: sizes!.fontSize14,
-          fontFamily: Assets.raleWayRegular,
+          fontFamily: Assets.raleWayMedium,
+          fontWeight: FontWeight.w500
         ),
         textInputAction: TextInputAction.next,
         decoration: InputDecoration(

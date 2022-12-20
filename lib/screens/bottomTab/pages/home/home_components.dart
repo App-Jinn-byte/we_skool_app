@@ -8,9 +8,10 @@ import 'package:we_skool_app/screens/WeSpecials/wespecial.dart';
 import 'package:we_skool_app/screens/bottomTab/pages/calendar/calendar.dart';
 import 'package:we_skool_app/screens/consultation_request/consultation_request.dart';
 import 'package:we_skool_app/screens/classes/classes.dart';
+import 'package:we_skool_app/screens/forgot_password/change_password.dart';
 import 'package:we_skool_app/screens/payments/payments.dart';
 import 'package:we_skool_app/screens/sign_in/sign_in.dart';
-
+import 'package:we_skool_app/common/utils.dart';
 import '../../../../res/assets.dart';
 import '../../../../res/colors.dart';
 import '../../../../widgets/common_widgets.dart';
@@ -182,6 +183,7 @@ class _BuilddrawersState extends State<Builddrawers> {
     "We Payments",
     "We Calendar",
     "We Caregiver",
+    "Change Password"
   ];
   List<String> menuIconList = [
     Assets.weClasses,
@@ -192,6 +194,7 @@ class _BuilddrawersState extends State<Builddrawers> {
     Assets.wePayments,
     Assets.weCalender,
    Assets.weCaregivers,
+    Assets.changePasswordIcon
   ];
   //bool visible = true;
 
@@ -355,22 +358,23 @@ class _BuilddrawersState extends State<Builddrawers> {
                             MaterialPageRoute(builder: (_) => const CaregiversScreen()));
                       }
                   ),
-                  // drawerListWidget(
-                  //     index: 8,
-                  //     selectedPage: widget.selectedPage,
-                  //     context: context,
-                  //     onPress: () {
-                  //       widget.onPress!.call(8);
-                  //       Navigator.pop(context);
-                  //       Navigator.push(context,
-                  //           MaterialPageRoute(builder: (_) => const ContactUs()));
-                  //     }
-                  // ),
+                  drawerListWidget(
+                      index: 8,
+                      selectedPage: widget.selectedPage,
+                      context: context,
+                      onPress: () {
+                        widget.onPress!.call(8);
+                        Navigator.pop(context);
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (_) => const ChangePassword()));
+                      }
+                  ),
                  SizedBox(height: getHeight() * 0.04),
                   Padding(
                     padding: EdgeInsets.only(left: getWidth() * 0.04,top: getHeight()*0.01),
                     child: GestureDetector(
                       onTap: () {
+                        PreferenceUtils.clearPreferences();
                         Navigator.pushAndRemoveUntil(context,
                             MaterialPageRoute(builder: (_) => const SignIn()), (route) => false);
                       },
@@ -524,7 +528,7 @@ class _BuilddrawersState extends State<Builddrawers> {
         onPress!.call();
       },
       child: Container(
-        height: sizes!.height * 0.07,
+        height: sizes!.height * 0.063,
         width: sizes!.width * 0.64,
         color: selectedPage == index ? AppColors.yellowColor : AppColors.pureWhiteColor,
         child: Padding(

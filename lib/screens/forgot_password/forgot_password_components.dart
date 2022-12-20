@@ -106,4 +106,24 @@ class ForgotPasswordComponents {
       ),
     );
   }
+
+  Widget highlightForgotPasswordText({@required String? text}) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.end,
+      children: [
+        Container(
+          width: getWidth() * 0.015,
+          height: getHeight() * 0.01,
+          decoration: const BoxDecoration(
+            shape: BoxShape.circle,
+            color: AppColors.pinkColor,
+          ),
+        ),
+        SizedBox(width: getWidth() * 0.02),
+        TextView.size14Text(text,
+            color: AppColors.pinkColor,
+            fontFamily: Assets.raleWayRegular)
+      ],
+    );
+  }
 }

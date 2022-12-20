@@ -14,9 +14,9 @@ class BottomTabProvider extends ChangeNotifier {
   bool hideBottomTab = false;
 
   init({@required BuildContext? context, @required int? index}) {
-    selectedIndex = index!;
     // hideBottomTab = false;
     this.context = context;
+    selectedIndex = index!;
   }
 
   set setCurrentIndex(int index) {

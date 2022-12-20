@@ -1,4 +1,7 @@
 
-const String baseUrl = "http://18.218.169.89:81";
-const String getSpeakersApiUrl = "$baseUrl/api/user/speaker/GetSpeakers";
+const String baseUrl = "http://staging.weskoolhouse.com";
+
+const String loginApiUrl = "$baseUrl/api/account/login";
+const String forgotPasswordApiUrl = "$baseUrl/api/account/ForgotPassword?";
+const String changePasswordApiUrl = "$baseUrl/api/account/ChangePassword";
 

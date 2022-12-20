@@ -6,6 +6,7 @@ class Strings {
   static const String profilePicture = "profile_picture";
   static const String filePath = "filePath";
   static const String userImageKey = "UserImageKey";
+  static const String userType = "UserType";
   static const String password = "password";
   static const String monthlyDummyTest = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor inci didunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exerc";
 

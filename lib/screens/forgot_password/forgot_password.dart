@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:we_skool_app/res/assets.dart';
 import 'package:we_skool_app/res/res.dart';
+import 'package:we_skool_app/screens/forgot_password/forgot_password_provider.dart';
 import 'package:we_skool_app/screens/forgot_password/otp_screen.dart';
 import 'package:we_skool_app/widgets/common_widgets.dart';
 import 'package:we_skool_app/widgets/text_views.dart';
-import 'package:we_skool_app/screens/forgot_password/change_password.dart';
 import '../../res/colors.dart';
-import '../../res/strings.dart';
+
 
 class ForgotPassword extends StatefulWidget {
   const ForgotPassword({Key? key}) : super(key: key);
@@ -17,11 +18,14 @@ class ForgotPassword extends StatefulWidget {
 
 class _ForgotPasswordState extends State<ForgotPassword> {
   TextEditingController? emailController;
+  ForgotPasswordProvider _forgotPasswordProvider = ForgotPasswordProvider();
 
   @override
   void initState() {
     super.initState();
     emailController = TextEditingController();
+    _forgotPasswordProvider = Provider.of<ForgotPasswordProvider>(context, listen: false);
+    _forgotPasswordProvider.init(context: context);
   }
 
   @override
@@ -67,8 +71,11 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                     SizedBox(height: getHeight() * 0.06),
                     CommonWidgets.getButton(
                         onPress: () {
-                          Navigator.push(context,
-                              MaterialPageRoute(builder: (_) => const OtpScreen()));
+                          _forgotPasswordProvider.callForgotPasswordApi(
+                              email: emailController!.text.trim()
+                          );
+                          // Navigator.push(context,
+                          //     MaterialPageRoute(builder: (_) => const OtpScreen()));
                         },
                         btnColor: AppColors.pinkColor,
                         text: "Next",
