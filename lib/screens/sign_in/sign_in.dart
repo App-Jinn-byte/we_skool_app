@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:we_skool_app/res/assets.dart';
 import 'package:we_skool_app/res/res.dart';
+import 'package:we_skool_app/screens/bottomTab/pages/home/home.dart';
 import 'package:we_skool_app/screens/forgot_password/forgot_password.dart';
 import 'package:we_skool_app/screens/registration/register_as.dart';
 import 'package:we_skool_app/widgets/common_widgets.dart';
@@ -45,9 +46,10 @@ class _SignInState extends State<SignIn> {
               child: SingleChildScrollView(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
+                 
                   children: [
-                    // CommonWidgets.customBackButton(onPress: () {}),
-                    SizedBox(height: getHeight() * 0.2),
+                   
+                    SizedBox(height: getHeight() * 0.18),
                     TextView.size24Text("Sign In", Assets.raleWayBold,
                         fontWeight: FontWeight.w700,
                         color: AppColors.blackTextColor, lines: 1),
@@ -79,6 +81,7 @@ class _SignInState extends State<SignIn> {
                     SizedBox(height: getHeight() * 0.05),
                     CommonWidgets.getButton(
                         onPress: () {
+                         
                           Navigator.pushAndRemoveUntil(context,
                               MaterialPageRoute(builder: (_) => const BottomTab(pageIndex: 0)), (route) => false);
                         },
@@ -87,7 +90,7 @@ class _SignInState extends State<SignIn> {
                         fontWeight: FontWeight.w500,
                         textColor: AppColors.pureWhiteColor,
                         fontFamily: Assets.raleWayMedium),
-                    SizedBox(height: getHeight() * 0.22),
+                    SizedBox(height: getHeight() * 0.24),
                     GestureDetector(
                       onTap: () {
                         Navigator.push(context,

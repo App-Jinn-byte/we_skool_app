@@ -6,7 +6,7 @@ import 'package:we_skool_app/res/res.dart';
 import 'package:we_skool_app/widgets/text_views.dart';
 
 class SpClassComponents {
-  static Widget myBoxcls({double?height,String?classname,students,agegroup,teacher}) {
+   Widget myBoxcls({double?height,String?classname,students,agegroup,teacher}) {
     return Container(
       height: height ?? getHeight()*0.25,
       width: getWidth(),
@@ -36,7 +36,7 @@ class SpClassComponents {
 
               ],
             ),  
-             SpClassComponents.myDivider(),
+             myDivider(),
               Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -46,7 +46,7 @@ class SpClassComponents {
 
               ],
             ),
-             SpClassComponents.myDivider(),
+           myDivider(),
 
               Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -57,7 +57,7 @@ class SpClassComponents {
 
               ],
             ),
-             SpClassComponents.myDivider(),
+            myDivider(),
 
               Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -75,7 +75,7 @@ class SpClassComponents {
     );
 
 }
- static Widget myBoxspecialcls({double?height,String?classname,starttime,date,teacher,status}) {
+ Widget myBoxspecialcls({double?height,String?classname,starttime,date,teacher,status}) {
     return Container(
       height: height ?? getHeight()*0.29,
       width: getWidth(),
@@ -105,7 +105,7 @@ class SpClassComponents {
 
               ],
             ),  
-             SpClassComponents.myDivider(),
+             myDivider(),
               Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -115,7 +115,7 @@ class SpClassComponents {
 
               ],
             ),
-             SpClassComponents.myDivider(),
+             myDivider(),
 
               Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -126,7 +126,7 @@ class SpClassComponents {
 
               ],
             ),
-             SpClassComponents.myDivider(),
+             myDivider(),
 
               Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -137,7 +137,7 @@ class SpClassComponents {
 
               ],
             ),
-            SpClassComponents.myDivider(),
+            myDivider(),
              Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -154,7 +154,7 @@ class SpClassComponents {
     );
 
 }
-  static Widget myDivider() {
+   Widget myDivider() {
     return Divider(
         height: getHeight() * 0.01,
         thickness: getHeight() * 0.001,

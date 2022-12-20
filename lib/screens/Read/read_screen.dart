@@ -16,10 +16,15 @@ class ReadScreen extends StatefulWidget {
 
 class _ReadScreenState extends State<ReadScreen> {
   final ReadComponents _readComponents = ReadComponents();
+   int index = 0;
+  void ontaaab(int intdx) {
+    setState(() {
+      index = intdx;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
-    initializeResources(context: context);
     return SafeArea(
         child: Scaffold(
       body: DefaultTabController(
@@ -31,7 +36,7 @@ class _ReadScreenState extends State<ReadScreen> {
           child: SingleChildScrollView(
             child: Column(children: [
               CommonWidgets.appBarIconImageText(
-                  text: "Read",
+                  text:index==0? "Read":'Archived Reads',
                   image: "",
                   isDataFetched: false,
                   onPressMenu: () {
@@ -51,6 +56,7 @@ class _ReadScreenState extends State<ReadScreen> {
                       CommonWidgets.searchField(),
                       SizedBox(height: getHeight() * 0.03),
                       ButtonsTabBar(
+                        onTap: ontaaab,
                         contentPadding: EdgeInsets.symmetric(
                             vertical: 2, horizontal: getWidth() * 0.08),
                         unselectedBorderColor: AppColors.greyColor,
@@ -78,52 +84,51 @@ class _ReadScreenState extends State<ReadScreen> {
                       Expanded(
                         child: TabBarView(
                           children: [
-                            Expanded(
-                              child: ListView.separated(
-                                shrinkWrap: true,
-                                scrollDirection: Axis.vertical,
-                                itemCount: 3,
-                                itemBuilder: (context, index) {
-                                  return _readComponents.myBox(
-                                    titleText: 'Your text here',
-                                    descriptionText:
-                                        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor inci didunt ut labore et dolore magna aliqua.',
-                                    linkText: 'Your Link here',
-                                    actionText: 'Active Status',
-                                  );
-                                },
-                                separatorBuilder:
-                                    (BuildContext context, int index) {
-                                  return SizedBox(
-                                      height: getHeight() * 0.05,
-                                      child: ReadComponents.myDividers());
-                                },
-                              ),
+                            ListView.separated(
+                              shrinkWrap: true,
+                              scrollDirection: Axis.vertical,
+                              itemCount: 1,
+                              itemBuilder: (context, index) {
+                                return _readComponents.myReadBox(
+                                  titleText: 'Your text here',
+                                  descriptionText:
+                                      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor inci didunt ut labore et dolore magna aliqua.',
+                                  linkText: 'Your Link here',
+                                  statustext: 'Your Status',
+                                  actionText: 'Active Status',
+                                );
+                              },
+                              separatorBuilder:
+                                  (BuildContext context, int index) {
+                                return SizedBox(
+                                    height: getHeight() * 0.05,
+                                    child: _readComponents.myDividers());
+                              },
                             ),
-                            Expanded(
-                              child: ListView.separated(
-                                // physics:
-                                //     const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
-                                shrinkWrap: true,
-                                scrollDirection: Axis.vertical,
-                                itemCount: 3,
-                                itemBuilder: (context, index) {
-                                  return _readComponents.myBox(
-                                    titleText: 'Your text here',
-                                    descriptionText:
-                                        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor inci didunt ut labore et dolore magna aliqua.',
-                                    linkText: 'Your Link here',
-                                    actionText: 'Active Status',
-                                  );
-                                },
-                                separatorBuilder:
-                                    (BuildContext context, int index) {
-                                  return SizedBox(
-                                      height: getHeight() * 0.05,
-                                      child: ReadComponents.myDividers());
-                                },
-                              ),
+                            
+                            ListView.separated(
+                            
+                              shrinkWrap: true,
+                              scrollDirection: Axis.vertical,
+                              itemCount: 1,
+                              itemBuilder: (context, index) {
+                                return _readComponents.myArchievedBox(
+                                  titleText: 'Your text here',
+                                  descriptionText:
+                                      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor inci didunt ut labore et dolore magna aliqua.',
+                                  linkText: 'Your Link here',
+                                  actionText: 'Active Status',
+                                );
+                              },
+                              separatorBuilder:
+                                  (BuildContext context, int index) {
+                                return SizedBox(
+                                    height: getHeight() * 0.05,
+                                    child: _readComponents.myDividers());
+                              },
                             ),
+                            
+                            
                           ],
                         ),
                       ),

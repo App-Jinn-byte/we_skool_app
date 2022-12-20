@@ -1,13 +1,11 @@
+import 'package:buttons_tabbar/buttons_tabbar.dart';
 import 'package:flutter/material.dart';
 import 'package:we_skool_app/res/assets.dart';
 import 'package:we_skool_app/res/res.dart';
 import 'package:we_skool_app/res/colors.dart';
 import 'package:we_skool_app/screens/bottomTab/pages/daily_observation/daily_observation_components.dart';
-import 'package:we_skool_app/screens/bottomTab/pages/notification/notification_components.dart';
 import 'package:we_skool_app/widgets/common_widgets.dart';
 import 'package:we_skool_app/widgets/text_views.dart';
-
-
 
 class DailyObservation extends StatefulWidget {
   String? from;
@@ -18,19 +16,26 @@ class DailyObservation extends StatefulWidget {
   _DailyObservationState createState() => _DailyObservationState();
 }
 
-class _DailyObservationState extends State<DailyObservation> with SingleTickerProviderStateMixin {
-  final DailyObservationComponents _dailyObservationComponents = DailyObservationComponents();
+class _DailyObservationState extends State<DailyObservation>
+    with SingleTickerProviderStateMixin {
+  final DailyObservationComponents _dailyObservationComponents =
+      DailyObservationComponents();
   TextEditingController? activityName;
   TextEditingController? materialPresentedController;
   TextEditingController? childQuoteController;
   TextEditingController? additionalNotesController;
-  TabController? _tabController;
+  // TabController? _tabController;
   TextEditingController? sleepSessionsController;
   TextEditingController? snacksController;
   TextEditingController? diaperingController;
   TextEditingController? medicationController;
   DateTime? observationDate;
   DateTime? notesDate;
+  final TimeOfDay _timeOfDay = TimeOfDay.now();
+  String? _selectedtime = '5:00 AM';
+  String? _selectedtime2 = '5:00 AM';
+  String? _selectedtime3 = '8:00 AM';
+  String? _selectedtime4 = '8:00 AM';
 
   @override
   void initState() {
@@ -39,7 +44,7 @@ class _DailyObservationState extends State<DailyObservation> with SingleTickerPr
     materialPresentedController = TextEditingController();
     childQuoteController = TextEditingController();
     additionalNotesController = TextEditingController();
-    _tabController = TabController(length: 2, vsync: this);
+    // _tabController = TabController(length: 2, vsync: this);
     sleepSessionsController = TextEditingController();
     snacksController = TextEditingController();
     diaperingController = TextEditingController();
@@ -50,164 +55,395 @@ class _DailyObservationState extends State<DailyObservation> with SingleTickerPr
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        body: Container(
-            height: sizes!.height,
-            width: sizes!.width,
-            color: AppColors.pureWhiteColor,
-            // padding: EdgeInsets.symmetric(horizontal: getWidth() * 0.05),
-            child: SingleChildScrollView(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  widget.from == "home" ?
-                  CommonWidgets.appBarIconImageText(
-                      text: "Daily Observation",
-                      image: "",
-                      onPressMenu: () {
-                        Navigator.pop(context);
-                      },
-                      isDataFetched: false):
-                  Padding(
-                    padding: EdgeInsets.symmetric(horizontal: getWidth() * 0.05),
-                    child: CommonWidgets.appBarTextImage(
-                        text: "Daily Observation",
-                        image: "",
-                        isDataFetched: false),
-                  ),
-                  Container(
-                    height: sizes!.height * 0.8,
-                    padding: EdgeInsets.symmetric(horizontal: getWidth() * 0.05),
-                    decoration: const BoxDecoration(
-                        image: DecorationImage(
-                            image: AssetImage(Assets.lightBackground), fit: BoxFit.fill
-                        )),
-                    child: Column(
-                      children: [
-                        SizedBox(height: getHeight() * 0.02),
-                        TabBar(
-                          controller: _tabController,
-                          indicator: BoxDecoration(
-                            borderRadius: BorderRadius.circular(5),
-                            // border: Border.all(color: AppColors.grey2colrtext, width: getWidth() * 0.008),
-                            color: AppColors.pinkColor,
+        body: DefaultTabController(
+          length: 2,
+          child: Container(
+              height: sizes!.height,
+              width: sizes!.width,
+              color: AppColors.pureWhiteColor,
+              // padding: EdgeInsets.symmetric(horizontal: getWidth() * 0.05),
+              child: SingleChildScrollView(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    widget.from == "home"
+                        ? CommonWidgets.appBarIconImageText(
+                            text: "Daily Observation",
+                            image: "",
+                            onPressMenu: () {
+                              Navigator.pop(context);
+                            },
+                            isDataFetched: false)
+                        : Padding(
+                            padding: EdgeInsets.symmetric(
+                                horizontal: getWidth() * 0.05),
+                            child: CommonWidgets.appBarTextImage(
+                                text: "Daily Observation",
+                                image: "",
+                                isDataFetched: false),
                           ),
-                          indicatorColor: AppColors.pinkColor,
-                          indicatorSize: TabBarIndicatorSize.label,
-                          indicatorPadding:
-                          EdgeInsets.symmetric(vertical: sizes!.heightRatio * 5),
-                          labelColor: AppColors.pureWhiteColor,
-                          labelStyle: TextStyle(
-                              fontSize: sizes!.fontRatio * 14,
-                              fontWeight: FontWeight.w600,
-                              fontFamily: Assets.raleWaySemiBold),
-                          unselectedLabelColor: AppColors.grey2colrtext,
-                          labelPadding: EdgeInsets.all(sizes!.smallPadding),
-                          tabs: [
-                            _dailyObservationComponents.getTab(text: "Observations"),
-                            _dailyObservationComponents.getTab(text: "Notes"),
-                          ],
-                        ),
-                        Expanded(child: TabBarView(
-                          controller: _tabController,
-                          children: [
-                            ListView(
-                              children: [
-                                Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    SizedBox(height: getHeight() * 0.02),
-                                    _dailyObservationComponents.getDateField(
-                                        date: observationDate != null
-                                            ? "${observationDate!.day}/${observationDate!.month}/${observationDate!.year}"
-                                            : "Select Date",
-                                        onPressDate: () {
-                                          _selectObservationDate(context);
-                                        }
-                                    ),
-                                    SizedBox(height: getHeight() * 0.02),
-                                    TextView.size14Text("Name of activity",
-                                        color: AppColors.blackLight, fontWeight: FontWeight.w600,fontFamily: Assets.raleWaySemiBold),
-                                    SizedBox(height: getHeight() * 0.02),
-                                    _dailyObservationComponents.textField(textEditingController: activityName),
-                                    SizedBox(height: getHeight() * 0.02),
-                                    TextView.size14Text("Materials presented by",
-                                        color: AppColors.blackLight, fontWeight: FontWeight.w600,fontFamily: Assets.raleWaySemiBold),
-                                    SizedBox(height: getHeight() * 0.02),
-                                    _dailyObservationComponents.textField(textEditingController: materialPresentedController),
-                                    SizedBox(height: getHeight() * 0.02),
-                                    TextView.size14Text("Child's quotes & questions (if applicable)",
-                                        color: AppColors.blackLight, fontWeight: FontWeight.w600,fontFamily: Assets.raleWaySemiBold),
-                                    SizedBox(height: getHeight() * 0.02),
-                                    _dailyObservationComponents.textField(textEditingController: childQuoteController),
-                                    SizedBox(height: getHeight() * 0.02),
-                                    TextView.size14Text("Additional notes",
-                                        color: AppColors.blackLight, fontWeight: FontWeight.w600,fontFamily: Assets.raleWaySemiBold),
-                                    SizedBox(height: getHeight() * 0.02),
-                                    _dailyObservationComponents.textField(textEditingController: additionalNotesController),
-                                    SizedBox(height: getHeight() * 0.02),
-                                    _dailyObservationComponents.buttonRow(
-                                        onPressCancel: () {},
-                                        onPressSave: () {},
-                                        onPressSubmit: () {}
-                                    ),
-                                    SizedBox(height: getHeight() * 0.04),
-                                  ],
-                                ),
-                              ],
-                            ),
-                            ListView(
-                              children: [
-                                Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    SizedBox(height: getHeight() * 0.02),
-                                    _dailyObservationComponents.getDateField(
-                                        date: notesDate != null
-                                            ? "${notesDate!.day}/${notesDate!.month}/${notesDate!.year}"
-                                            : "Select Date",
-                                        onPressDate: () {
-                                          _selectNotesDate(context);
-                                        }
-                                    ),
-                                    SizedBox(height: getHeight() * 0.02),
-                                    TextView.size14Text("Sleep Sessions",
-                                        color: AppColors.blackLight, fontWeight: FontWeight.w600,fontFamily: Assets.raleWaySemiBold),
-                                    SizedBox(height: getHeight() * 0.02),
-                                    _dailyObservationComponents.textField(textEditingController: sleepSessionsController),
-                                    SizedBox(height: getHeight() * 0.02),
-                                    TextView.size14Text("Meals/Snacks",
-                                        color: AppColors.blackLight, fontWeight: FontWeight.w600,fontFamily: Assets.raleWaySemiBold),
-                                    SizedBox(height: getHeight() * 0.02),
-                                    _dailyObservationComponents.textField(textEditingController: snacksController),
-                                    SizedBox(height: getHeight() * 0.02),
-                                    TextView.size14Text("Diapering/Toileting",
-                                        color: AppColors.blackLight, fontWeight: FontWeight.w600,fontFamily: Assets.raleWaySemiBold),
-                                    SizedBox(height: getHeight() * 0.02),
-                                    _dailyObservationComponents.textField(textEditingController: diaperingController),
-                                    SizedBox(height: getHeight() * 0.02),
-                                    TextView.size14Text("Medications",
-                                        color: AppColors.blackLight, fontWeight: FontWeight.w600,fontFamily: Assets.raleWaySemiBold),
-                                    SizedBox(height: getHeight() * 0.02),
-                                    _dailyObservationComponents.textField(textEditingController: medicationController),
-                                    SizedBox(height: getHeight() * 0.02),
-                                    _dailyObservationComponents.buttonRow(
-                                        onPressCancel: () {},
-                                        onPressSave: () {},
-                                        onPressSubmit: () {}
-                                    ),
-                                    SizedBox(height: getHeight() * 0.04),
-                                  ],
-                                ),
-                              ],
-                            ),
-                          ],
-                        ))
-                      ],
+                    Container(
+                      height: sizes!.height * 0.8,
+                      padding:
+                          EdgeInsets.symmetric(horizontal: getWidth() * 0.05),
+                      decoration: const BoxDecoration(
+                          image: DecorationImage(
+                              image: AssetImage(Assets.lightBackground),
+                              fit: BoxFit.fill)),
+                      child: Column(
+                       // crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          SizedBox(height: getHeight() * 0.02),
+                          ButtonsTabBar(
+                            contentPadding: EdgeInsets.symmetric(
+                                horizontal: getWidth() * 0.090),
+                            unselectedBorderColor: AppColors.greyColor,
+                            borderWidth: 1,
+                            height: getHeight() * 0.045,
+                            labelStyle: const TextStyle(
+                                color: AppColors.pureWhiteColor,
+                                fontFamily: Assets.raleWaySemiBold,
+                                fontWeight: FontWeight.w600),
+                            unselectedLabelStyle: const TextStyle(
+                                color: AppColors.greyColor,
+                                fontFamily: Assets.raleWaySemiBold,
+                                fontWeight: FontWeight.w600),
+                            backgroundColor: AppColors.redColor,
+                            unselectedBackgroundColor: AppColors.pureWhiteColor,
+                            borderColor: AppColors.pinkColor,
+                            buttonMargin: EdgeInsets.symmetric(
+                                horizontal: getWidth() * 0.015),
+                            tabs: const [
+                              Tab(
+                                text: 'Observations',
+                              ),
+                              Tab(
+                                text: '      Notes      ',
+                              ),
+                            ],
+                          ),
+                          Expanded(
+                              child: TabBarView(
+                            children: [
+                              ListView(
+                                children: [
+                                  Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      SizedBox(height: getHeight() * 0.02),
+                                      Padding(
+                                        padding:  EdgeInsets.only(left: getWidth()*0.002),
+                                        child: _dailyObservationComponents
+                                            .getDateField(
+                                                date: observationDate != null
+                                                    ? "${observationDate!.day}/${observationDate!.month}/${observationDate!.year}"
+                                                    : "DD/MM/YY",
+                                                onPressDate: () {
+                                                  _selectObservationDate(
+                                                      context);
+                                                }),
+                                      ),
+                                      Padding(
+                                        padding: EdgeInsets.only(
+                                            left: getWidth() * 0.023),
+                                        child: Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            SizedBox(
+                                                height: getHeight() * 0.02),
+                                            TextView.size14Text(
+                                                "Name of activity",
+                                                color: AppColors.blackLight,
+                                                fontWeight: FontWeight.w600,
+                                                fontFamily:
+                                                    Assets.raleWaySemiBold),
+                                            SizedBox(
+                                                height: getHeight() * 0.02),
+                                            _dailyObservationComponents
+                                                .textField(
+                                                    textEditingController:
+                                                        activityName),
+                                            SizedBox(
+                                                height: getHeight() * 0.02),
+                                            TextView.size14Text(
+                                                "Materials presented by",
+                                                color: AppColors.blackLight,
+                                                fontWeight: FontWeight.w600,
+                                                fontFamily:
+                                                    Assets.raleWaySemiBold),
+                                            SizedBox(
+                                                height: getHeight() * 0.02),
+                                            _dailyObservationComponents.textField(
+                                                textEditingController:
+                                                    materialPresentedController),
+                                            SizedBox(
+                                                height: getHeight() * 0.02),
+                                            TextView.size14Text(
+                                                "Child's quotes & questions (if applicable)",
+                                                color: AppColors.blackLight,
+                                                fontWeight: FontWeight.w600,
+                                                fontFamily:
+                                                    Assets.raleWaySemiBold),
+                                            SizedBox(
+                                                height: getHeight() * 0.02),
+                                            _dailyObservationComponents
+                                                .textField(
+                                                    textEditingController:
+                                                        childQuoteController),
+                                            SizedBox(
+                                                height: getHeight() * 0.02),
+                                            TextView.size14Text(
+                                                "Additional notes",
+                                                color: AppColors.blackLight,
+                                                fontWeight: FontWeight.w600,
+                                                fontFamily:
+                                                    Assets.raleWaySemiBold),
+                                            SizedBox(
+                                                height: getHeight() * 0.02),
+                                            _dailyObservationComponents.textField(
+                                                textEditingController:
+                                                    additionalNotesController),
+                                            SizedBox(
+                                                height: getHeight() * 0.02),
+                                            _dailyObservationComponents
+                                                .buttonRow(
+                                                    onPressCancel: () {},
+                                                    onPressSave: () {},
+                                                    onPressSubmit: () {}),
+                                            SizedBox(
+                                                height: getHeight() * 0.09),
+                                          ],
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              ),
+                              ListView(
+                                children: [
+                                  Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      SizedBox(height: getHeight() * 0.02),
+                                      Padding(
+                                         padding:  EdgeInsets.only(left: getWidth()*0.002),
+                                        child: _dailyObservationComponents
+                                            .getDateField(
+                                                date: notesDate != null
+                                                    ? "${notesDate!.day}/${notesDate!.month}/${notesDate!.year}"
+                                                    : "DD/MM/YY",
+                                                onPressDate: () {
+                                                  _selectNotesDate(context);
+                                                }),
+                                      ),
+                                      Padding(
+                                        padding: EdgeInsets.only(
+                                            left: getWidth() * 0.023),
+                                        child: Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            SizedBox(
+                                                height: getHeight() * 0.02),
+                                            Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment
+                                                      .spaceBetween,
+                                              children: [
+                                                TextView.size14Text(
+                                                    "Sleep Sessions",
+                                                    color:
+                                                        AppColors.blackLight,
+                                                    fontWeight:
+                                                        FontWeight.w600,
+                                                    fontFamily: Assets
+                                                        .raleWaySemiBold),
+                                                _dailyObservationComponents
+                                                    .timefield(
+                                                        onPresstime: () {
+                                                          selecttime();
+                                                        },
+                                                        child: Row(
+                                                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                          children: [
+                                                            TextView.size12Text(
+                                                                _selectedtime,
+                                                                color: AppColors
+                                                                    .greyText,
+                                                                fontFamily: Assets
+                                                                    .raleWayMedium,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w500),
+                                                                        Image.asset(Assets.timeicon,height: getHeight()*0.016,)
+                                                          
+                                                          ],
+                                                        )),
+                                              ],
+                                            ),
+                                            SizedBox(
+                                                height: getHeight() * 0.02),
+                                            _dailyObservationComponents
+                                                .textField(
+                                                    textEditingController:
+                                                        sleepSessionsController),
+                                            SizedBox(
+                                                height: getHeight() * 0.02),
+                                            Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment
+                                                      .spaceBetween,
+                                              children: [
+                                                TextView.size14Text(
+                                                    "Meals/Snacks",
+                                                    color:
+                                                        AppColors.blackLight,
+                                                    fontWeight:
+                                                        FontWeight.w600,
+                                                    fontFamily: Assets
+                                                        .raleWaySemiBold),
+                                                _dailyObservationComponents
+                                                    .timefield(
+                                                        onPresstime: () {
+                                                          selecttime2();
+                                                        },
+                                                        child: Row(
+                                                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                          children: [
+                                                            TextView.size12Text(
+                                                                _selectedtime2,
+                                                                color: AppColors
+                                                                    .greyText,
+                                                                fontFamily: Assets
+                                                                    .raleWayMedium,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w500),
+                                                                         Image.asset(Assets.timeicon,height: getHeight()*0.016,)
+                                                          ],
+                                                        )),
+                                              ],
+                                            ),
+                                            SizedBox(
+                                                height: getHeight() * 0.02),
+                                            _dailyObservationComponents
+                                                .textField(
+                                                    textEditingController:
+                                                        snacksController),
+                                            SizedBox(
+                                                height: getHeight() * 0.02),
+                                            Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment
+                                                      .spaceBetween,
+                                              children: [
+                                                TextView.size14Text(
+                                                    "Diapering/Toileting",
+                                                    color:
+                                                        AppColors.blackLight,
+                                                    fontWeight:
+                                                        FontWeight.w600,
+                                                    fontFamily: Assets
+                                                        .raleWaySemiBold),
+                                                _dailyObservationComponents
+                                                    .timefield(
+                                                        onPresstime: () {
+                                                          selecttime3();
+                                                        },
+                                                        child: Row(
+                                                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                          children: [
+                                                            TextView.size12Text(
+                                                                _selectedtime3,
+                                                                color: AppColors
+                                                                    .greyText,
+                                                                fontFamily: Assets
+                                                                    .raleWayMedium,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w500),
+                                                                         Image.asset(Assets.timeicon,height: getHeight()*0.016,)
+                                                          ],
+                                                        )),
+                                              ],
+                                            ),
+                                            SizedBox(
+                                                height: getHeight() * 0.02),
+                                            _dailyObservationComponents
+                                                .textField(
+                                                    textEditingController:
+                                                        diaperingController),
+                                            SizedBox(
+                                                height: getHeight() * 0.02),
+                                            Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment
+                                                      .spaceBetween,
+                                              children: [
+                                                TextView.size14Text(
+                                                    "Medications",
+                                                    color:
+                                                        AppColors.blackLight,
+                                                    fontWeight:
+                                                        FontWeight.w600,
+                                                    fontFamily: Assets
+                                                        .raleWaySemiBold),
+                                                _dailyObservationComponents
+                                                    .timefield(
+                                                        onPresstime: () {
+                                                          selecttime4();
+                                                        },
+                                                        child: Row(
+                                                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                          children: [
+                                                            TextView.size12Text(
+                                                                _selectedtime4,
+                                                                color: AppColors
+                                                                    .greyText,
+                                                                fontFamily: Assets
+                                                                    .raleWayMedium,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w500),
+                                                                   Image.asset(Assets.timeicon,height: getHeight()*0.016,)
+                                                          ],
+                                                        )),
+                                              ],
+                                            ),
+                                            SizedBox(
+                                                height: getHeight() * 0.02),
+                                            _dailyObservationComponents
+                                                .textField(
+                                                    textEditingController:
+                                                        medicationController),
+                                            SizedBox(
+                                                height: getHeight() * 0.02),
+                                            _dailyObservationComponents
+                                                .buttonRow(
+                                                    onPressCancel: () {},
+                                                    onPressSave: () {},
+                                                    onPressSubmit: () {}),
+                                            SizedBox(
+                                                height: getHeight() * 0.09),
+                                          ],
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ))
+                        ],
+                      ),
                     ),
-                  ),
-                ],
-              ),
-            )),
+                  ],
+                ),
+              )),
+        ),
       ),
     );
   }
@@ -226,7 +462,7 @@ class _DailyObservationState extends State<DailyObservation> with SingleTickerPr
             dialogBackgroundColor: Colors.white,
             colorScheme: const ColorScheme.light(primary: AppColors.pinkColor),
             buttonTheme:
-            const ButtonThemeData(textTheme: ButtonTextTheme.primary),
+                const ButtonThemeData(textTheme: ButtonTextTheme.primary),
             highlightColor: Colors.grey[400],
           ), // This will change to light theme.
           child: child!,
@@ -254,7 +490,7 @@ class _DailyObservationState extends State<DailyObservation> with SingleTickerPr
             dialogBackgroundColor: Colors.white,
             colorScheme: const ColorScheme.light(primary: AppColors.pinkColor),
             buttonTheme:
-            const ButtonThemeData(textTheme: ButtonTextTheme.primary),
+                const ButtonThemeData(textTheme: ButtonTextTheme.primary),
             highlightColor: Colors.grey[400],
           ), // This will change to light theme.
           child: child!,
@@ -268,4 +504,104 @@ class _DailyObservationState extends State<DailyObservation> with SingleTickerPr
     }
   }
 
+  Future<void> selecttime() async {
+   final TimeOfDay? picked = await showTimePicker(
+      context: context,
+      initialTime: _timeOfDay,
+      builder: (context, child) {
+        return Theme(
+          data: ThemeData(
+            dialogBackgroundColor: Colors.white,
+            colorScheme: const ColorScheme.light(primary: AppColors.pinkColor),
+            buttonTheme:
+                const ButtonThemeData(textTheme: ButtonTextTheme.primary),
+            highlightColor: Colors.grey[400],
+          ), // This will change to light theme.
+          child: child!,
+        );
+      },
+    );
+    if (picked != null) {
+      setState(() {
+      //  _timeOfDay = _picked;
+        _selectedtime = picked.format(context);
+        
+      });
+    }
+  }
+  Future<void> selecttime2() async {
+   final TimeOfDay? picked = await showTimePicker(
+      context: context,
+      initialTime: _timeOfDay,
+      builder: (context, child) {
+        return Theme(
+          data: ThemeData(
+            dialogBackgroundColor: Colors.white,
+            colorScheme: const ColorScheme.light(primary: AppColors.pinkColor),
+            buttonTheme:
+                const ButtonThemeData(textTheme: ButtonTextTheme.primary),
+            highlightColor: Colors.grey[400],
+          ), // This will change to light theme.
+          child: child!,
+        );
+      },
+    );
+    if (picked != null) {
+      setState(() {
+      //  _timeOfDay = _picked;
+        _selectedtime2 = picked.format(context);
+        
+      });
+    }
+  }
+  Future<void> selecttime3() async {
+   final TimeOfDay? picked = await showTimePicker(
+      context: context,
+      initialTime: _timeOfDay,
+      builder: (context, child) {
+        return Theme(
+          data: ThemeData(
+            dialogBackgroundColor: Colors.white,
+            colorScheme: const ColorScheme.light(primary: AppColors.pinkColor),
+            buttonTheme:
+                const ButtonThemeData(textTheme: ButtonTextTheme.primary),
+            highlightColor: Colors.grey[400],
+          ), // This will change to light theme.
+          child: child!,
+        );
+      },
+    );
+    if (picked != null) {
+      setState(() {
+      //  _timeOfDay = _picked;
+        _selectedtime3 = picked.format(context);
+        
+      });
+    }
+  }
+   Future<void> selecttime4() async {
+   final TimeOfDay? picked = await showTimePicker(
+      context: context,
+      initialTime: _timeOfDay,
+      builder: (context, child) {
+        return Theme(
+          data: ThemeData(
+            dialogBackgroundColor: Colors.white,
+            colorScheme: const ColorScheme.light(primary: AppColors.pinkColor),
+            buttonTheme:
+                const ButtonThemeData(textTheme: ButtonTextTheme.primary),
+            highlightColor: Colors.grey[400],
+          ), // This will change to light theme.
+          child: child!,
+        );
+      },
+    );
+    if (picked != null) {
+      setState(() {
+      //  _timeOfDay = _picked;
+        _selectedtime4 = picked.format(context);
+        
+      });
+    }
+  }
 }

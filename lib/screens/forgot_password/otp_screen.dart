@@ -43,13 +43,14 @@ class _OtpScreenState extends State<OtpScreen> {
               padding: EdgeInsets.symmetric(horizontal: getWidth() * 0.05),
               child: SingleChildScrollView(
                 child: Column(
+                  
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     SizedBox(height: getHeight() * 0.04),
                     CommonWidgets.customBackButton(onPress: () {
                       Navigator.pop(context);
                     }),
-                    SizedBox(height: getHeight() * 0.1),
+                    SizedBox(height: getHeight() * 0.06),
                     _forgotPasswordComponents.otpContainer(
                         userEmail: "charlie-foodly.com",
                         otpTextEditingController: emailController!,

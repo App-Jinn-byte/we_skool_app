@@ -10,9 +10,13 @@ class Assets {
   static const String apiLoading = "assets/json/blueSimple.json";
   // images
   static const String backGroundImage = "assets/png/backGroundImage.png";
+  static const String paymenticon = "assets/png/paymenticon.png";
+  static const String calendericon = "assets/png/calendericon.png";
+
+
   static const String weClasses = "assets/png/icon_classes.png";
   static const String weAssessment = "assets/png/icon_assessment.png";
-  static const String weCalender = "assets/png/icon_calender.png";
+  static const String weCalender = "assets/png/calendar_icon.png";
   static const String weCaregivers = "assets/png/icon_caregivers.png";
   static const String weConsultation = "assets/png/icon_consultation.png";
   static const String weParents = "assets/png/icon_parents.png";
@@ -20,6 +24,9 @@ class Assets {
   static const String wePayments = "assets/png/icon_payment.png";
   static const String weSpecial = "assets/png/icon_special.png";
   static const String logout = "assets/png/logout.png";
+  static const String notificationRead = "assets/png/notificationRead.png";
+  static const String notificationUnRead = "assets/png/notificationUnRead.png";
+  static const String scheduleBackGround = "assets/png/scheduleBackGround.png";
 
 
 
@@ -29,6 +36,8 @@ class Assets {
 
 
   static const String download = "assets/png/Group.png";
+  static const String timeicon = "assets/png/time.png";
+
   static const String splashLogo = "assets/png/splashLogo.png";
   static const String logo = "assets/png/logo.png";
   static const String onBoarding1 = "assets/png/onBoarding1.png";

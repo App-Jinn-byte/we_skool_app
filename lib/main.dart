@@ -32,10 +32,8 @@ class MyApp extends StatelessWidget {
         initialRoute: Routes.splash,
         routes: Routes.routes,
         title: 'We Skool',
-
-
-
-
+       
+       
 
 
       ),

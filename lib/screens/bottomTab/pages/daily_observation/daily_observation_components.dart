@@ -9,52 +9,57 @@ import '../../../../res/sizes.dart';
 import '../../../../widgets/common_widgets.dart';
 
 class DailyObservationComponents {
-  Widget getTab({
-    @required String? text,
-  }){
-    return Container(
-      width: getWidth() * 0.4,
-      height: getHeight() * 0.05,
-      decoration: BoxDecoration(
-        border: Border.all(
-          color: AppColors.grey2colrtext,
-        ),
-        borderRadius: BorderRadius.circular(05),
-      ),
-      child: Tab(
-        // child: count == 0? Text(text+' (0)'): Text(text+' ($count)'),
-        child: TextView.size14Text(text,)
-      ),
-    );
-  }
+  // Widget getTab({
+  //   @required String? text,
+  // }){
+  //   return Container(
+  //     width: getWidth() * 0.4,
+  //     height: getHeight() * 0.05,
+  //     decoration: BoxDecoration(
+  //       border: Border.all(
+  //         color: AppColors.grey2colrtext,
+  //       ),
+  //       borderRadius: BorderRadius.circular(05),
+  //     ),
+  //     child: Tab(
+  //       // child: count == 0? Text(text+' (0)'): Text(text+' ($count)'),
+  //       child: TextView.size14Text(text,)
+  //     ),
+  //   );
+  // }
 
-  Widget textField({@required TextEditingController? textEditingController,}) {
+  Widget textField(
+      {@required TextEditingController? textEditingController,
+      Color? fieldColor,
+      Color? borderColor,
+      double? height}) {
     return Container(
       width: sizes!.widthRatio * 325,
-      height: getHeight() * 0.12,
+      height: height ?? getHeight() * 0.12,
       decoration: BoxDecoration(
         border: Border.all(
           color: AppColors.textFieldBigBorder,
           width: 0.25,
         ),
         borderRadius: BorderRadius.all(Radius.circular(getWidth() * 0.02)),
-        color: AppColors.textFieldBigBorder,
-        boxShadow: const [
+        color: fieldColor ?? AppColors.textFieldBigBorder,
+        boxShadow: [
           BoxShadow(
-            color: AppColors.borderColor,
+            color: borderColor ?? AppColors.borderColor,
             blurRadius: 2,
-            offset: Offset(0, 0),
+            offset: const Offset(0, 0),
           ),
         ],
       ),
       child: TextField(
         maxLines: 8,
         controller: textEditingController,
+        cursorHeight: getHeight() * .025,
         style: TextStyle(
-          color: AppColors.blackTextColor,
-          fontFamily: Assets.raleWayRegular,
-          fontSize: sizes!.fontSize14
-        ),
+            color: AppColors.blackTextColor,
+            fontFamily: Assets.raleWayMedium,
+            fontSize: sizes!.fontSize14,
+            fontWeight: FontWeight.w500),
         decoration: InputDecoration(
           contentPadding: EdgeInsets.only(
               left: sizes!.widthRatio * 10,
@@ -66,8 +71,7 @@ class DailyObservationComponents {
           hintStyle: TextStyle(
               color: AppColors.hintTextGreyColor,
               fontFamily: Assets.raleWayRegular,
-              fontSize: sizes!.fontSize14
-          ),
+              fontSize: sizes!.fontSize14),
         ),
       ),
     );
@@ -118,7 +122,11 @@ class DailyObservationComponents {
       ],
     );
   }
-  Widget getDateField({@required String? date, @required Function? onPressDate, Color? bgColor}) {
+
+  Widget getDateField(
+      {@required String? date,
+      @required Function? onPressDate,
+      Color? bgColor}) {
     return GestureDetector(
       onTap: () {
         if (onPressDate != null) {
@@ -126,9 +134,9 @@ class DailyObservationComponents {
         }
       },
       child: Container(
-        height: sizes!.height * 0.05,
+        height: sizes!.height * 0.04,
         width: sizes!.width * 0.4,
-        margin: EdgeInsets.symmetric(horizontal: getWidth() * 0.03),
+        margin: EdgeInsets.symmetric(horizontal: getWidth() * 0.02),
         padding: EdgeInsets.symmetric(horizontal: sizes!.width * 0.05),
         decoration: BoxDecoration(
             color: bgColor ?? AppColors.pureWhiteColor,
@@ -137,10 +145,35 @@ class DailyObservationComponents {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            TextView.size14Text(date, color: date == "Select Date" ? AppColors.grey2colrtext: AppColors.blackTextColor, fontFamily: Assets.raleWayRegular),
-
+            TextView.size14Text(date,
+                color: date == "Select Date"
+                    ? AppColors.greyColor
+                    : AppColors.greyColor,
+                fontFamily: Assets.raleWayRegular),
           ],
         ),
+      ),
+    );
+  }
+
+  Widget timefield({@required child,@required Function? onPresstime}) {
+    return GestureDetector(
+       onTap: () {
+        if (onPresstime != null) {
+          onPresstime.call();
+        }
+      },
+      child: Container(
+         height: sizes!.height * 0.031,
+          width: sizes!.width * 0.21,
+          margin: EdgeInsets.symmetric(horizontal: getWidth() * 0.02),
+          padding: EdgeInsets.symmetric(horizontal: sizes!.width * 0.02),
+          decoration: BoxDecoration(
+              color: AppColors.pureWhiteColor,
+              border: Border.all(color: AppColors.grey2colrtext),
+              borderRadius: BorderRadius.all(Radius.circular(getHeight() * .01))),
+      
+              child: child,
       ),
     );
   }

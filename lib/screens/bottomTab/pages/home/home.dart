@@ -11,7 +11,6 @@ import 'package:we_skool_app/widgets/text_views.dart';
 
 import 'package:we_skool_app/screens/development_checklist/development_checklist.dart';
 
-
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
 
@@ -35,16 +34,24 @@ class _HomeState extends State<Home> {
       selectedPage = newValue;
     });
   }
+
   void openDrawer(BuildContext context) {
     _scaffoldKey.currentState?.openDrawer();
   }
+
+ 
+ 
 
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
         key: _scaffoldKey,
-        drawer: Builddrawers(context: context,onPress: updateSelectedPage,selectedPage: selectedPage,),
+        drawer: Builddrawers(
+          context: context,
+          onPress: updateSelectedPage,
+          selectedPage: selectedPage,
+        ),
         body: Container(
             height: sizes!.height,
             width: sizes!.width,
@@ -54,17 +61,20 @@ class _HomeState extends State<Home> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   _homeComponents.appBar(
-                    onPressMenu: () {
-                      openDrawer(context);
-                    },
-                      text: "Home", image: "", isDataFetched: false),
+                      onPressMenu: () {
+                        openDrawer(context);
+                      },
+                      text: "Home",
+                      image: "",
+                      isDataFetched: false),
                   Container(
                       height: sizes!.height * 0.75,
                       decoration: const BoxDecoration(
                           image: DecorationImage(
                               image: AssetImage(Assets.lightBackground),
                               fit: BoxFit.fill)),
-                      margin: EdgeInsets.symmetric(horizontal: getWidth() * 0.05),
+                      margin:
+                          EdgeInsets.symmetric(horizontal: getWidth() * 0.05),
                       child: Column(
                         children: [
                           SizedBox(height: getHeight() * 0.03),
@@ -75,18 +85,22 @@ class _HomeState extends State<Home> {
                                   text: "Monthly Framework",
                                   image: Assets.homeKeyboardIcon,
                                   onPress: () {
-                                    Navigator.push(context,
-                                        MaterialPageRoute(builder: (_) => const MonthlyFramework()));
-                                  }
-                              ),
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (_) =>
+                                                const MonthlyFramework()));
+                                  }),
                               _homeComponents.homeCategoryContainer(
                                   text: "Daily Observation",
                                   image: Assets.homeCalendarIcon,
                                   onPress: () {
-                                    Navigator.push(context,
-                                        MaterialPageRoute(builder: (_) => DailyObservation(from: "home")));
-                                  }
-                              ),
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (_) => DailyObservation(
+                                                from: "home")));
+                                  }),
                             ],
                           ),
                           SizedBox(height: getHeight() * 0.01),
@@ -97,23 +111,28 @@ class _HomeState extends State<Home> {
                                   text: "Monthly Schedule",
                                   image: Assets.homeSearchIcon,
                                   onPress: () {
-                                     Navigator.push(context,
-                                        MaterialPageRoute(builder: (_) => const WeMonthlySchedule()));
-                                  }
-                              ),
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (_) =>
+                                                const WeMonthlySchedule()));
+                                  }),
                               _homeComponents.homeCategoryContainer(
                                   text: "Development Checklist",
                                   image: Assets.homeDevelopmentIcon,
                                   onPress: () {
-                                    Navigator.push(context,
-                                        MaterialPageRoute(builder: (_) => const DevelopemntChecklist()));
-                                  }
-                              )
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (_) =>
+                                                const DevelopmentChecklist()));
+                                  })
                             ],
                           ),
                           SizedBox(height: getHeight() * 0.02),
                           Divider(
-                              height: getHeight() * 0.02, thickness: getHeight() * 0.001,
+                              height: getHeight() * 0.02,
+                              thickness: getHeight() * 0.001,
                               color: AppColors.dividerColor),
                           SizedBox(height: getHeight() * 0.02),
                           Row(
@@ -125,8 +144,11 @@ class _HomeState extends State<Home> {
                                   fontWeight: FontWeight.w600),
                               GestureDetector(
                                 onTap: () {
-                                  Navigator.push(context,
-                                      MaterialPageRoute(builder: (_) => const DailySchedule()));
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (_) =>
+                                              const DailySchedule()));
                                 },
                                 child: TextView.size14Text("See all",
                                     color: AppColors.pinkColor,
@@ -139,38 +161,40 @@ class _HomeState extends State<Home> {
                           Container(
                             width: getWidth(),
                             height: getHeight() * 0.33,
-                            padding: EdgeInsets.symmetric(horizontal: getWidth() * 0.04, vertical: getHeight() * 0.015),
+                            padding: EdgeInsets.symmetric(
+                                horizontal: getWidth() * 0.04,
+                                vertical: getHeight() * 0.015),
                             decoration: BoxDecoration(
                               shape: BoxShape.rectangle,
-                              color: AppColors.pureWhiteColor,
-                              border:
-                              Border.all(color: AppColors.borderColor, width: getWidth() * 0.005),
+                              image: const DecorationImage(
+                                  image: AssetImage(Assets.scheduleBackGround),
+                                  fit: BoxFit.cover
+                              ),
+                              border: Border.all(
+                                  color: AppColors.borderColor,
+                                  width: getWidth() * 0.005),
                               borderRadius: BorderRadius.circular(
                                 getWidth() * .04,
                               ),
-                              boxShadow:  const [
-                                BoxShadow(
-                                    color: AppColors.borderColor,
-                                    blurRadius: 10,
-                                    offset: Offset(0,0)
-                                )
-                              ],
+                             
                             ),
                             child: ListView.separated(
-                                itemCount: 4,
-                             
-                                itemBuilder: (context, index) {
-                                  return Column(
-                                    children: [
-                                      _homeComponents.scheduleContainer(
-                                          time1: "8:30 am - 8:50 am",
-                                          text1: "Tummy Time: Caregiver"
-                                      ),
-                                    ],
-                                  );
-                                },
-                              separatorBuilder: (BuildContext context, int index) {
-                                  return Divider(height: getHeight() * 0.03, thickness: getHeight() * 0.001, color: AppColors.dividerColor);
+                              itemCount: 4,
+                              itemBuilder: (context, index) {
+                                return Column(
+                                  children: [
+                                    _homeComponents.scheduleContainer(
+                                        time1: "8:30 am - 8:50 am",
+                                        text1: "Tummy Time: Caregiver"),
+                                  ],
+                                );
+                              },
+                              separatorBuilder:
+                                  (BuildContext context, int index) {
+                                return Divider(
+                                    height: getHeight() * 0.03,
+                                    thickness: getHeight() * 0.001,
+                                    color: AppColors.dividerColor);
                               },
                             ),
                           ),
@@ -179,7 +203,10 @@ class _HomeState extends State<Home> {
                 ],
               ),
             )),
-      ),
+          
+            )
+      
+      
     );
   }
 }

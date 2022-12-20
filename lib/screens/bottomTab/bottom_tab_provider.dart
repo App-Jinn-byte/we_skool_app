@@ -4,16 +4,19 @@ import 'package:we_skool_app/screens/bottomTab/pages/chat/chat.dart';
 import 'package:we_skool_app/screens/bottomTab/pages/daily_observation/daily_observation.dart';
 import 'package:we_skool_app/screens/bottomTab/pages/home/home.dart';
 import 'package:we_skool_app/screens/bottomTab/pages/notification/notification.dart';
+import 'package:we_skool_app/screens/contact_us/contact_us.dart';
 
 
 
 class BottomTabProvider extends ChangeNotifier {
   int selectedIndex = 0;
   BuildContext? context;
+  bool hideBottomTab = false;
 
   init({@required BuildContext? context, @required int? index}) {
-    this.context = context;
     selectedIndex = index!;
+    // hideBottomTab = false;
+    this.context = context;
   }
 
   set setCurrentIndex(int index) {
@@ -23,10 +26,10 @@ class BottomTabProvider extends ChangeNotifier {
 
   List screens = [
     const Home(),
-    const Chat(),
+    DailyObservation(),
     const Calendar(),
     const NotificationScreen(),
-    DailyObservation()
+    const ContactUs()
   ];
 }
 

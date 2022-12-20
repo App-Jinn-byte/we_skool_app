@@ -19,7 +19,7 @@ class ForgotPasswordComponents {
 
   }) {
     return Container(
-      height: getHeight() * 0.58,
+      height: getHeight() * 0.56,
       width: sizes!.width,
       padding:
       EdgeInsets.symmetric(horizontal: getWidth() * 0.05),
@@ -61,7 +61,7 @@ class ForgotPasswordComponents {
               decoration: BoxLooseDecoration(
                 strokeColorBuilder: PinListenColorBuilder(
                     AppColors.pinkColor,
-                    AppColors.pinkColor.withOpacity(0.2)),
+                    AppColors.creamColor),
                 textStyle: TextStyle(
                     fontSize: sizes!.fontSize32,
                     fontWeight: FontWeight.w400,
@@ -82,7 +82,7 @@ class ForgotPasswordComponents {
               ),
             ),
           ),
-          SizedBox(height: getHeight() * 0.06),
+          SizedBox(height: getHeight() * 0.05),
           CommonWidgets.getButton(
               onPress: () {
                 onPressVerify!.call();

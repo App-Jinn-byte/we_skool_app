@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:we_skool_app/res/res.dart';
-import 'package:we_skool_app/screens/Blog%20Articles/blog_article_screen.dart';
+import 'package:we_skool_app/screens/assessment_report/assessment_report.dart';
+import 'package:we_skool_app/screens/blog_articles/blog_article_screen.dart';
 import 'package:we_skool_app/screens/Misclaneous/misc.dart';
 import 'package:we_skool_app/screens/Read/read_screen.dart';
 import 'package:we_skool_app/screens/WeSpecials/wespecial.dart';
@@ -147,64 +148,6 @@ class HomeComponents {
     );
   }
 
-  // Widget singleRow(
-  //     {@required int? index,
-  //     @required int? selectedPage,
-  //     required BuildContext context,
-  //     @required Function? onPress}) {
-  //   return GestureDetector(
-  //     onTap: () {
-  //       onPress!.call();
-  //     },
-  //     child: Container(
-  //       height: sizes!.height * 0.07,
-  //       width: sizes!.width * 0.75,
-  //       color: selectedPage == index ? AppColors.yellowColor : Colors.white,
-  //       child: Padding(
-  //         padding: EdgeInsets.only(
-  //             // top: (sizes.width ?? 0) * 0.04,
-  //             // bottom: (sizes.width ?? 0) * 0.04,
-  //             left: sizes!.width * 0.06),
-  //         child: Align(
-  //           alignment: Alignment.centerLeft,
-  //           child: Text(
-  //             menuNameList[index!],
-  //             style: const TextStyle(fontFamily: Assets.raleWayRegular),
-  //           ),
-  //         ),
-  //       ),
-  //     ),
-  //   );
-  // }
-
-  // Widget drawerListWidget({
-  //   @required int? index,
-  //   @required int? selectedPage,
-  //   required BuildContext context,
-  //   @required Function? onPress}) {
-  //   return GestureDetector(
-  //     onTap: () {
-  //       onPress!.call();
-  //     },
-  //     child: Container(
-  //       height: sizes!.height * 0.07,
-  //       width: sizes!.width * 0.57,
-  //       color: selectedPage == index ? AppColors.yellowColor : Colors.white,
-  //       child: Padding(
-  //         padding: EdgeInsets.only(
-           
-  //             left: sizes!.width * 0.06),
-  //         child:  Align(
-  //           alignment: Alignment.centerLeft,
-  //           child: Text(
-  //             menuNameList[index!],
-  //             style: const TextStyle(fontFamily: Assets.raleWayRegular),
-  //           ),
-  //         ),
-  //       ),
-  //     ),
-  //   );
-  // }
 
 
 
@@ -232,26 +175,25 @@ class _BuilddrawersState extends State<Builddrawers> {
   bool istrue = false;
   List<String> menuNameList = [
     "We Classes",
-    "We Assessment",
+    "Assessment Report",
     "We Parents Resource",
     "We Consultation",
     "We Specials",
     "We Payments",
     "We Calendar",
     "We Caregiver",
-    "Contact Us"
   ];
   List<String> menuIconList = [
     Assets.weClasses,
     Assets.weAssessment,
-    Assets.weContact,
+    Assets.weParents,
     Assets.weConsultation,
     Assets.weSpecial,
     Assets.wePayments,
     Assets.weCalender,
    Assets.weCaregivers,
-   Assets.weContact,
   ];
+  //bool visible = true;
 
   @override
   Widget build(BuildContext context) {
@@ -259,7 +201,7 @@ class _BuilddrawersState extends State<Builddrawers> {
       children: [
         Container(
           color: AppColors.pureWhiteColor,
-          width: getWidth() * 0.62,
+          width: getWidth() * 0.64,
           height: getHeight(),
           child: Row(
             children: [
@@ -288,7 +230,7 @@ class _BuilddrawersState extends State<Builddrawers> {
                                 },
                                 child: Padding(
                                   padding: EdgeInsets.only(
-                                      left: getWidth() * 0.3,
+                                      left: getWidth() * 0.35,
                                       bottom: getHeight() * 0.02),
                                   child: Container(
                                     height: getHeight() * 0.02,
@@ -315,14 +257,15 @@ class _BuilddrawersState extends State<Builddrawers> {
                         ),
                         Container(
                             height: getHeight() * 0.00078,
-                            width: getWidth() * 0.5,
-                            color: AppColors.greyColor),
+                            width: getWidth() * 0.54,
+                            color: AppColors.dividerColor),
+                        SizedBox(
+                          height: getHeight() * 0.02,
+                        ),
                       ],
                     ),
                   ),
-                  SizedBox(
-                    height: getHeight() * 0.01,
-                  ),
+
                   drawerListWidget(
                       index: 0,
                       selectedPage: widget.selectedPage,
@@ -341,8 +284,8 @@ class _BuilddrawersState extends State<Builddrawers> {
                       onPress: () {
                         widget.onPress!.call(1);
                         Navigator.pop(context);
-                        // Navigator.push(context,
-                        //     MaterialPageRoute(builder: (_) => const Classes()));
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (_) => const AssessmentReport()));
                       }
                   ),
                   drawerListWidget(
@@ -412,20 +355,20 @@ class _BuilddrawersState extends State<Builddrawers> {
                             MaterialPageRoute(builder: (_) => const CaregiversScreen()));
                       }
                   ),
-                  drawerListWidget(
-                      index: 8,
-                      selectedPage: widget.selectedPage,
-                      context: context,
-                      onPress: () {
-                        widget.onPress!.call(8);
-                        Navigator.pop(context);
-                        Navigator.push(context,
-                            MaterialPageRoute(builder: (_) => const ContactUs()));
-                      }
-                  ),
-                  SizedBox(height: getHeight() * 0.03),
+                  // drawerListWidget(
+                  //     index: 8,
+                  //     selectedPage: widget.selectedPage,
+                  //     context: context,
+                  //     onPress: () {
+                  //       widget.onPress!.call(8);
+                  //       Navigator.pop(context);
+                  //       Navigator.push(context,
+                  //           MaterialPageRoute(builder: (_) => const ContactUs()));
+                  //     }
+                  // ),
+                 SizedBox(height: getHeight() * 0.04),
                   Padding(
-                    padding: EdgeInsets.only(left: getWidth() * 0.05),
+                    padding: EdgeInsets.only(left: getWidth() * 0.04,top: getHeight()*0.01),
                     child: GestureDetector(
                       onTap: () {
                         Navigator.pushAndRemoveUntil(context,
@@ -463,7 +406,7 @@ class _BuilddrawersState extends State<Builddrawers> {
             ],
           ),
         ),
-        //this is drawer open..............
+        //this is drawer side open..............
         istrue
             ? Container(
                 decoration: const BoxDecoration(
@@ -474,7 +417,7 @@ class _BuilddrawersState extends State<Builddrawers> {
                   ),
                 ),
                 margin: EdgeInsets.only(
-                    top: getHeight() * 0.0, bottom: getHeight() * 0.117),
+                    top: getHeight() * 0.0, bottom: getHeight() * 0.022),
                 height: getHeight() * 0.15,
                 width: getWidth() * 0.33,
                 child: Column(
@@ -581,11 +524,11 @@ class _BuilddrawersState extends State<Builddrawers> {
         onPress!.call();
       },
       child: Container(
-        height: sizes!.height * 0.065,
-        width: sizes!.width * 0.62,
+        height: sizes!.height * 0.07,
+        width: sizes!.width * 0.64,
         color: selectedPage == index ? AppColors.yellowColor : AppColors.pureWhiteColor,
         child: Padding(
-          padding: EdgeInsets.only(left: sizes!.width * 0.06),
+          padding: EdgeInsets.only(left: sizes!.width * 0.05),
           child:  Row(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
@@ -593,7 +536,7 @@ class _BuilddrawersState extends State<Builddrawers> {
                   height: getHeight()*0.02,
                   width: getWidth() * 0.06,
                   color: selectedPage == index ? AppColors.pureWhiteColor: AppColors.greySideMenuText),
-               SizedBox(width: getWidth()*0.04),
+               SizedBox(width: getWidth()*0.03),
               TextView.size16Text(menuNameList[index],
                   Assets.raleWayMedium, color: selectedPage == index ? AppColors.pureWhiteColor: AppColors.greySideMenuText, lines: 1, fontWeight: FontWeight.w500),
             ],
