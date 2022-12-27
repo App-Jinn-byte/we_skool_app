@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
 import 'package:we_skool_app/widgets/text_views.dart';
 
 import '../res/assets.dart';
@@ -524,6 +525,25 @@ class CommonWidgets {
             SizedBox(width: getWidth() * 0.02),
           ],
         ),
+    );
+  }
+  static Widget loading({double? height, double? width}) {
+    return Center(
+      child: SizedBox(
+        width: width ?? getWidth() * 0.4,
+        height: height ?? getHeight() * 0.7,
+        child: Lottie.asset(
+          Assets.apiLoading,
+        ),
+      ),
+    );
+  }
+  static Widget noDataAvailable({double? height, double? width}) {
+    return SizedBox(
+      height: getHeight() * 0.7,
+      child: Center(
+          child: TextView.size20Text(
+          "No data available", fontFamily: Assets.raleWaySemiBold, color: AppColors.greyColor)),
     );
   }
 }

@@ -1,6 +1,7 @@
 import 'package:provider/provider.dart';
 import 'package:we_skool_app/screens/bottomTab/bottom_tab_provider.dart';
 import 'package:we_skool_app/screens/contact_us/contact_us_provider.dart';
+import 'package:we_skool_app/screens/daily_schedule/daily_schedule_provider.dart';
 import 'package:we_skool_app/screens/sign_in/sign_in_provider.dart';
 import 'package:we_skool_app/screens/forgot_password/forgot_password_provider.dart';
 
@@ -19,6 +20,10 @@ final multiProviders = [
   ),
   ChangeNotifierProvider<ForgotPasswordProvider>(
     create: (_) => ForgotPasswordProvider(),
+    lazy: true,
+  ),
+  ChangeNotifierProvider<DailyScheduleProvider>(
+    create: (_) => DailyScheduleProvider(),
     lazy: true,
   ),
 ];
