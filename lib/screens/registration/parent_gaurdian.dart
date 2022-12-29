@@ -10,7 +10,18 @@ import '../../res/colors.dart';
 
 
 class ParentGuardian extends StatefulWidget {
-  const ParentGuardian({Key? key}) : super(key: key);
+  final String? firstName, lastName, dateOfBirth, gender, country, state, city, address;
+
+  const ParentGuardian({Key? key,
+    this.firstName,
+    this.lastName,
+    this.dateOfBirth,
+    this.gender,
+    this.country,
+    this.state,
+    this.city,
+    this.address
+  }) : super(key: key);
 
   @override
   _ParentGuardianState createState() => _ParentGuardianState();
@@ -48,6 +59,14 @@ class _ParentGuardianState extends State<ParentGuardian> {
     phone2Controller = TextEditingController();
     country2Controller = TextEditingController();
     state2Controller = TextEditingController();
+    print(widget.firstName);
+    print(widget.lastName);
+    print(widget.dateOfBirth);
+    print(widget.gender);
+    print(widget.country);
+    print(widget.state);
+    print(widget.city);
+    print(widget.address);
   }
 
   @override
@@ -283,7 +302,7 @@ class _ParentGuardianState extends State<ParentGuardian> {
                 SizedBox(height: getHeight() * 0.09),
                 CommonWidgets.getButton(
                     onPress: () {
-
+                      Navigator.pop(context);
                     },
                     btnColor: AppColors.pinkColor,
                     text: "Next",

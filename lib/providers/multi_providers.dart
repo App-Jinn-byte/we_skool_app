@@ -4,6 +4,8 @@ import 'package:we_skool_app/screens/contact_us/contact_us_provider.dart';
 import 'package:we_skool_app/screens/daily_schedule/daily_schedule_provider.dart';
 import 'package:we_skool_app/screens/sign_in/sign_in_provider.dart';
 import 'package:we_skool_app/screens/forgot_password/forgot_password_provider.dart';
+import 'package:we_skool_app/screens/registration/registration_provider.dart';
+import 'package:we_skool_app/screens/registration/child_information_provider.dart';
 
 final multiProviders = [
   ChangeNotifierProvider<BottomTabProvider>(
@@ -24,6 +26,14 @@ final multiProviders = [
   ),
   ChangeNotifierProvider<DailyScheduleProvider>(
     create: (_) => DailyScheduleProvider(),
+    lazy: true,
+  ),
+  ChangeNotifierProvider<RegistrationProvider>(
+    create: (_) => RegistrationProvider(),
+    lazy: true,
+  ),
+  ChangeNotifierProvider<ChildInformationProvider>(
+    create: (_) => ChildInformationProvider(),
     lazy: true,
   ),
 ];

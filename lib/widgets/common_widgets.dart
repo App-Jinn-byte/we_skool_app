@@ -120,6 +120,7 @@ class CommonWidgets {
   static Widget textField(
       {TextEditingController? textEditingController,
         bool? obscureText,
+        double? height,
         String? hint,
         TextInputType? textInputType,
         double? width,
@@ -127,7 +128,7 @@ class CommonWidgets {
         Color? borderColor,
         Color? bgColor}) {
     return Container(
-      height: getHeight() * 0.07,
+      height: height ?? getHeight() * 0.07,
       width: width ?? sizes!.width,
       decoration: BoxDecoration(
           boxShadow:  const [
@@ -331,42 +332,59 @@ class CommonWidgets {
     );
   }
 
-  static Widget dropDownNew({
+  static Widget dropDownForApiList({
     @required String ?selectedCategory,
     @required Function ?updateSelectedCategory,
-    @required List<String> ?categories,
+    @required List<dynamic> ?categories,
     @required String ?hint,
   }){
-    return DropdownButton <String>(
-        hint: Text(hint ?? '',
-          style: TextStyle(
-            color: AppColors.hintTextGreyColor,
-            fontSize: sizes!.fontSize14,
-            fontFamily:Assets.raleWayRegular,
-          ),
+    return Container(
+      height: sizes!.height * 0.07,
+      padding: EdgeInsets.symmetric(horizontal: sizes!.width * 0.05),
+      decoration: BoxDecoration(
+          boxShadow:  const [
+            BoxShadow(
+              color: AppColors.shadow,
+              blurRadius: 0,
+              offset: Offset(0,3),
+            )
+          ],
+          color: AppColors.pureWhiteColor,
+          borderRadius: BorderRadius.all(Radius.circular(getHeight() * .01))),
+      child: ButtonTheme(
+        child: DropdownButton <dynamic>(
+            hint: Text(hint ?? '',
+              style: TextStyle(
+                color: AppColors.hintTextGreyColor,
+                fontSize: sizes!.fontSize14,
+                fontFamily:Assets.raleWayRegular,
+              ),
+            ),
+            value: selectedCategory,
+            isExpanded: true,
+            icon: Icon(Icons.keyboard_arrow_down,color: AppColors.hintTextGreyColor,size: getHeight()*.035,),
+            underline:const SizedBox(),
+            onChanged: (newValue) {
+              if(updateSelectedCategory != null){
+                updateSelectedCategory(newValue);
+              }
+            },
+          items: categories?.map((item) =>
+              DropdownMenuItem(
+                  value: item.id.toString(),
+                  child: Text(item.name,
+                    style: TextStyle(
+                      color: AppColors.blackTextColor,
+                      fontFamily: Assets.raleWayRegular,
+                      fontSize: sizes!.fontSize14,
+                    ),)
+              )
+          ).toList(),
         ),
-        value: selectedCategory,
-        isExpanded: true,
-        icon: Icon(Icons.keyboard_arrow_down,color: AppColors.hintTextGreyColor,size: getHeight()*.035,),
-        underline:SizedBox() ,
-        onChanged: (newValue) {
-          if(updateSelectedCategory != null){
-            updateSelectedCategory(newValue);
-          }
-        },
-        items: categories?.map<DropdownMenuItem<String>> ((String value) {
-          return DropdownMenuItem<String> (
-            value: value,
-            child: Text(value,style: TextStyle(
-              color: AppColors.blackTextColor,
-              fontFamily: Assets.raleWayRegular,
-              fontSize: sizes!.fontSize14,
-            ),
-            ),
-          );
-        }).toList()
+      ),
     );
   }
+
 
   static Widget  buildProfileContainer({required String imagePath, required bool isDataFetched}){
     return  CircleAvatar(
