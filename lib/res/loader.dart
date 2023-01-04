@@ -17,7 +17,7 @@ class Loader {
               width: getWidth() * 0.45,
               height: getHeight() * 0.45,
               child: Lottie.asset(
-                Assets.apiLoading1,
+                Assets.apiLoading,
               ),
             ),
           ),
@@ -34,7 +34,7 @@ class Loader {
     return Center(
       child: SizedBox(
         height: getHeight() * 0.1,
-        child: Lottie.asset(Assets.apiLoading1, fit: BoxFit.cover),
+        child: Lottie.asset(Assets.apiLoading, fit: BoxFit.cover),
       ),
     );
   }

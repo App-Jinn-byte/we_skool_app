@@ -7,8 +7,7 @@ class Assets {
   static const String raleWayMedium = "Raleway-Medium";
   static const String raleWayRegular = "Raleway-Regular";
   static const String raleWaySemiBold = "Raleway-SemiBold";
-  static const String apiLoading = "assets/json/blueSimple.json";
-  static const String apiLoading1 = "assets/json/redSimple.json";
+  static const String apiLoading = "assets/json/redSimple.json";
   // images
   static const String backGroundImage = "assets/png/backGroundImage.png";
   static const String paymenticon = "assets/png/paymenticon.png";

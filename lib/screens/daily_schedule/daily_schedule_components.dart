@@ -33,8 +33,13 @@ class DailyScheduleComponents {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          TextView.size14Text(time ?? "8:00 am - 8:30 am", color: AppColors.pureBlack, fontWeight: FontWeight.w600, fontFamily: Assets.raleWaySemiBold),
-          TextView.size14Text(text ?? "Tummy Time: Caregiver", color: AppColors.pureBlack, fontWeight: FontWeight.w600, fontFamily: Assets.raleWaySemiBold),
+          TextView.size14Text(time ?? "8:00 am - 8:30 am",
+              color: AppColors.pureBlack,
+              fontWeight: FontWeight.w600,
+              fontFamily: Assets.raleWaySemiBold),
+          SizedBox(
+            width: getWidth() * 0.35,
+              child: TextView.size14Text(text ?? "Tummy Time: Caregiver", color: AppColors.pureBlack, fontWeight: FontWeight.w600, fontFamily: Assets.raleWaySemiBold)),
 
         ],
       ),

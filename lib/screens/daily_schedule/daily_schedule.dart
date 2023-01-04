@@ -1,11 +1,13 @@
+import 'package:date_time_format/date_time_format.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:we_skool_app/res/assets.dart';
 import 'package:we_skool_app/res/res.dart';
 import 'package:we_skool_app/screens/daily_schedule/daily_schedule_components.dart';
-
-import '../../res/colors.dart';
-import '../../widgets/common_widgets.dart';
-import '../../widgets/text_views.dart';
+import 'package:we_skool_app/res/colors.dart';
+import 'package:we_skool_app/screens/daily_schedule/daily_schedule_provider.dart';
+import 'package:we_skool_app/widgets/common_widgets.dart';
+import 'package:we_skool_app/widgets/text_views.dart';
 
 class DailySchedule extends StatefulWidget {
   const DailySchedule({Key? key}) : super(key: key);
@@ -15,15 +17,23 @@ class DailySchedule extends StatefulWidget {
 }
 
 class _DailyScheduleState extends State<DailySchedule> {
-  final DailyScheduleComponents _dailyScheduleComponents = DailyScheduleComponents();
+  final DailyScheduleComponents _dailyScheduleComponents =
+      DailyScheduleComponents();
+  DailyScheduleProvider _dailyScheduleProvider = DailyScheduleProvider();
+  DateTime? todayDate;
 
   @override
   void initState() {
     super.initState();
+    _dailyScheduleProvider =
+        Provider.of<DailyScheduleProvider>(context, listen: false);
+    _dailyScheduleProvider.init(context: context);
+    todayDate = DateTime.now();
   }
 
   @override
   Widget build(BuildContext context) {
+    Provider.of<DailyScheduleProvider>(context, listen: true);
     return SafeArea(
       child: Scaffold(
         body: Container(
@@ -51,7 +61,10 @@ class _DailyScheduleState extends State<DailySchedule> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       SizedBox(height: getHeight() * 0.02),
-                      TextView.size20Text("1st February 2022",
+                      TextView.size20Text(
+                          DateTimeFormat.format(
+                              DateTime.parse(todayDate.toString()),
+                              format: 'j, M, Y'),
                           color: AppColors.pureBlack,
                           fontFamily: Assets.raleWaySemiBold,
                           fontWeight: FontWeight.w600),
@@ -59,20 +72,36 @@ class _DailyScheduleState extends State<DailySchedule> {
                           height: getHeight() * 0.05,
                           thickness: getHeight() * 0.0005,
                           color: AppColors.blackColor),
-                      Expanded(
-                        child: ListView.builder(
-                            itemCount: 15,
-                            itemBuilder: (context, index) {
-                              return Column(
-                                children: [
-                                  _dailyScheduleComponents.getScheduleBar(
-                                      time: "8:30 am - 8:40 am",
-                                      text: "Tummy Time: Caregiver"),
-                                  SizedBox(height: getHeight() * 0.02)
-                                ],
-                              );
-                            }),
-                      )
+                      _dailyScheduleProvider.isDataFetch
+                          ? _dailyScheduleProvider.dailyScheduleResponse.data!
+                                  .dailySchedule!.isNotEmpty
+                              ? Expanded(
+                                  child: ListView.builder(
+                                      itemCount: _dailyScheduleProvider
+                                          .dailyScheduleResponse
+                                          .data!
+                                          .dailySchedule!
+                                          .length,
+                                      itemBuilder: (context, index) {
+                                        return Column(
+                                          children: [
+                                            _dailyScheduleComponents
+                                                .getScheduleBar(
+                                                    time:
+                                                        "${DateTimeFormat.format(DateTime.parse(_dailyScheduleProvider.dailyScheduleResponse.data!.dailySchedule![index].startTime!), format: 'h:i A')} - "
+                                                        "${DateTimeFormat.format(DateTime.parse(_dailyScheduleProvider.dailyScheduleResponse.data!.dailySchedule![index].endTime!), format: 'h:i A')}",
+                                                    text: _dailyScheduleProvider
+                                                        .dailyScheduleResponse
+                                                        .data!
+                                                        .dailySchedule![index]
+                                                        .title!),
+                                            SizedBox(height: getHeight() * 0.02)
+                                          ],
+                                        );
+                                      }),
+                                )
+                              : CommonWidgets.noDataAvailable()
+                          : CommonWidgets.loading(),
                     ],
                   )),
             ],
