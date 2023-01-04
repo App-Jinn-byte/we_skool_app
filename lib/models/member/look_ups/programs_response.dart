@@ -1,12 +1,11 @@
-class CountriesResponse {
+class ProgramsListResponse {
   String? message;
   int? code;
   Data? data;
 
-  CountriesResponse({this.message, this.code, this.data});
-  CountriesResponse.empty();
+  ProgramsListResponse({this.message, this.code, this.data});
 
-  CountriesResponse.fromJson(Map<String, dynamic> json) {
+  ProgramsListResponse.fromJson(Map<String, dynamic> json) {
     message = json['Message'];
     code = json['Code'];
     data = json['Data'] != null ? Data.fromJson(json['Data']) : null;
@@ -24,46 +23,43 @@ class CountriesResponse {
 }
 
 class Data {
-  List<Countries>? countries;
+  List<Programs>? programs;
 
-  Data({this.countries});
+  Data({this.programs});
 
   Data.fromJson(Map<String, dynamic> json) {
-    if (json['Countries'] != null) {
-      countries = <Countries>[];
-      json['Countries'].forEach((v) {
-        countries!.add(Countries.fromJson(v));
+    if (json['Programs'] != null) {
+      programs = <Programs>[];
+      json['Programs'].forEach((v) {
+        programs!.add(Programs.fromJson(v));
       });
     }
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
-    if (countries != null) {
-      data['Countries'] = countries!.map((v) => v.toJson()).toList();
+    if (programs != null) {
+      data['Programs'] = programs!.map((v) => v.toJson()).toList();
     }
     return data;
   }
 }
 
-class Countries {
+class Programs {
   int? id;
   String? name;
-  String? countryCode;
 
-  Countries({this.id, this.name, this.countryCode});
+  Programs({this.id, this.name});
 
-  Countries.fromJson(Map<String, dynamic> json) {
+  Programs.fromJson(Map<String, dynamic> json) {
     id = json['Id'];
     name = json['Name'];
-    countryCode = json['CountryCode'];
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
     data['Id'] = id;
     data['Name'] = name;
-    data['CountryCode'] = countryCode;
     return data;
   }
 }

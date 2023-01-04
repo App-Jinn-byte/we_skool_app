@@ -32,6 +32,7 @@ class SignInProvider extends ChangeNotifier {
         "Password": password,
         "DeviceId" : 12345
       };
+      print(body);
       loginResponse = await MyApi.callPostApi(
         url: loginApiUrl,
         myHeaders: header,

@@ -278,6 +278,7 @@ class CommonWidgets {
   }
 
   static Widget dropDown({
+    double? width,
     @required String ?selectedCategory,
     @required Function ?updateSelectedCategory,
     @required List<String> ?categories,
@@ -285,7 +286,7 @@ class CommonWidgets {
   }){
     return Container(
       height: sizes!.height * 0.07,
-      //width: sizes.width * 0.85,
+      width: width ?? sizes!.width,
       padding: EdgeInsets.symmetric(horizontal: sizes!.width * 0.05),
       decoration: BoxDecoration(
           boxShadow:  const [
@@ -333,6 +334,7 @@ class CommonWidgets {
   }
 
   static Widget dropDownForApiList({
+    double? width,
     @required String ?selectedCategory,
     @required Function ?updateSelectedCategory,
     @required List<dynamic> ?categories,
@@ -340,6 +342,7 @@ class CommonWidgets {
   }){
     return Container(
       height: sizes!.height * 0.07,
+      width: width ?? sizes!.width,
       padding: EdgeInsets.symmetric(horizontal: sizes!.width * 0.05),
       decoration: BoxDecoration(
           boxShadow:  const [

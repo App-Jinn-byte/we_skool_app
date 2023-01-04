@@ -6,7 +6,7 @@ import 'package:we_skool_app/network/API.dart';
 import 'package:we_skool_app/network/api_url.dart';
 import 'package:we_skool_app/network/models.dart';
 
-class ChildInformationProvider extends ChangeNotifier {
+class ParentGuardianProvider extends ChangeNotifier {
   BuildContext? context;
   CountriesResponse countriesResponse = CountriesResponse.empty();
   StatesResponse statesResponse = StatesResponse.empty();

@@ -5,7 +5,7 @@ import 'package:we_skool_app/models/member/daily_schedule_response.dart';
 import 'package:we_skool_app/models/member/look_ups/countries_response.dart';
 import 'package:we_skool_app/models/member/look_ups/states_response.dart';
 import 'package:we_skool_app/models/member/look_ups/cities_response.dart';
-
+import 'package:we_skool_app/models/member/look_ups/programs_response.dart';
 
 
 class Models {
@@ -16,6 +16,7 @@ class Models {
   static const String countriesModel = "COUNTRIES_MODEL";
   static const String statesModel = "STATES_MODEL";
   static const String citiesModel = "CITIES_MODEL";
+  static const String programsModel = "PROGRAMS_MODEL";
 
 
   static Future<dynamic> getModelObject(
@@ -35,6 +36,8 @@ class Models {
         return StatesResponse.fromJson(json);
       case citiesModel:
         return CitiesResponse.fromJson(json);
+      case programsModel:
+        return ProgramsListResponse.fromJson(json);
 
     }
   }

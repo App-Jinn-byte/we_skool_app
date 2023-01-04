@@ -2,10 +2,13 @@ import 'package:provider/provider.dart';
 import 'package:we_skool_app/screens/bottomTab/bottom_tab_provider.dart';
 import 'package:we_skool_app/screens/contact_us/contact_us_provider.dart';
 import 'package:we_skool_app/screens/daily_schedule/daily_schedule_provider.dart';
+import 'package:we_skool_app/screens/registration/parent_guardian_provider.dart';
 import 'package:we_skool_app/screens/sign_in/sign_in_provider.dart';
 import 'package:we_skool_app/screens/forgot_password/forgot_password_provider.dart';
 import 'package:we_skool_app/screens/registration/registration_provider.dart';
 import 'package:we_skool_app/screens/registration/child_information_provider.dart';
+import 'package:we_skool_app/screens/registration/select_program_provider.dart';
+
 
 final multiProviders = [
   ChangeNotifierProvider<BottomTabProvider>(
@@ -34,6 +37,14 @@ final multiProviders = [
   ),
   ChangeNotifierProvider<ChildInformationProvider>(
     create: (_) => ChildInformationProvider(),
+    lazy: true,
+  ),
+  ChangeNotifierProvider<ParentGuardianProvider>(
+    create: (_) => ParentGuardianProvider(),
+    lazy: true,
+  ),
+  ChangeNotifierProvider<SelectProgramProvider>(
+    create: (_) => SelectProgramProvider(),
     lazy: true,
   ),
 ];

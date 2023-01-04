@@ -24,7 +24,7 @@ class _ChildInformationState extends State<ChildInformation> {
   TextEditingController? lastNameController;
   TextEditingController? streetAddressController;
   DateTime? dateOfBirth;
-  List <String> genderList = ['Male','Female'];
+  List <String> genderList = ['Unknown (Child not born yet)','Female','Male', 'Non-Binary','Prefer not to be disclosed'];
   String? _genderSelection;
   String? _countrySelection;
   String? _stateSelection;
@@ -78,8 +78,7 @@ class _ChildInformationState extends State<ChildInformation> {
                 Padding(
                 padding: EdgeInsets.symmetric(horizontal: getWidth() * 0.05),
                 child: SingleChildScrollView(
-                  child: _childInformationProvider.isDataFetch ?
-                  Column(
+                  child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       SizedBox(height: getHeight() * 0.02),
@@ -123,114 +122,126 @@ class _ChildInformationState extends State<ChildInformation> {
                             _selectStartDate(context);
                           }),
                       SizedBox(height: getHeight() * 0.02),
-                      CommonWidgets.dropDown(
-                          selectedCategory: _genderSelection,
-                          updateSelectedCategory: updateTypeGender,
-                          categories: genderList,
-                          hint: "Gender"),
-                      SizedBox(height: getHeight() * 0.02),
-                      Container(
-                        height: sizes!.height * 0.07,
-                        padding: EdgeInsets.symmetric(horizontal: sizes!.width * 0.05),
-                        decoration: BoxDecoration(
-                            boxShadow:  const [
-                              BoxShadow(
-                                color: AppColors.shadow,
-                                blurRadius: 0,
-                                offset: Offset(0,3),
-                              )
-                            ],
-                            color: AppColors.pureWhiteColor,
-                            borderRadius: BorderRadius.all(Radius.circular(getHeight() * .01))),
-                        child: ButtonTheme(
-                          child: DropdownButton <dynamic>(
-                            hint: Text("Select Country" ?? '',
-                              style: TextStyle(
-                                color: AppColors.hintTextGreyColor,
-                                fontSize: sizes!.fontSize14,
-                                fontFamily:Assets.raleWayRegular,
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          CommonWidgets.dropDown(
+                              width: getWidth() * 0.42,
+                              selectedCategory: _genderSelection,
+                              updateSelectedCategory: updateTypeGender,
+                              categories: genderList,
+                              hint: "Gender"),
+                          Container(
+                            height: sizes!.height * 0.07,
+                            width: getWidth() * 0.42,
+                            padding: EdgeInsets.symmetric(horizontal: sizes!.width * 0.05),
+                            decoration: BoxDecoration(
+                                boxShadow:  const [
+                                  BoxShadow(
+                                    color: AppColors.shadow,
+                                    blurRadius: 0,
+                                    offset: Offset(0,3),
+                                  )
+                                ],
+                                color: AppColors.pureWhiteColor,
+                                borderRadius: BorderRadius.all(Radius.circular(getHeight() * .01))),
+                            child: ButtonTheme(
+                              child: DropdownButton <dynamic>(
+                                hint: Text("Country" ?? '',
+                                  style: TextStyle(
+                                    color: AppColors.hintTextGreyColor,
+                                    fontSize: sizes!.fontSize14,
+                                    fontFamily:Assets.raleWayRegular,
+                                  ),
+                                ),
+                                value: _countrySelection,
+                                isExpanded: true,
+                                icon: Icon(Icons.keyboard_arrow_down,color: AppColors.hintTextGreyColor,size: getHeight()*.035,),
+                                underline:const SizedBox(),
+                                onChanged: (newValue) {
+                                  setState(() {
+                                    _stateSelection = null;
+                                    _citySelection = null;
+                                    updateCountry(newValue);
+                                  });
+                                  _childInformationProvider.stateApiHit(countryId: newValue);
+                                },
+                                items: _childInformationProvider.countriesList.map((item) =>
+                                    DropdownMenuItem(
+                                        value: item.id.toString(),
+                                        child: Text(item.name!,
+                                          style: TextStyle(
+                                            color: AppColors.blackTextColor,
+                                            fontFamily: Assets.raleWayRegular,
+                                            fontSize: sizes!.fontSize14,
+                                          ),)
+                                    )
+                                ).toList(),
                               ),
                             ),
-                            value: _countrySelection,
-                            isExpanded: true,
-                            icon: Icon(Icons.keyboard_arrow_down,color: AppColors.hintTextGreyColor,size: getHeight()*.035,),
-                            underline:const SizedBox(),
-                            onChanged: (newValue) {
-                              setState(() {
-                                _stateSelection = null;
-                                _citySelection = null;
-                                updateCountry(newValue);
-                              });
-                              _childInformationProvider.stateApiHit(countryId: newValue);
-                            },
-                            items: _childInformationProvider.countriesResponse.data!.countries?.map((item) =>
-                                DropdownMenuItem(
-                                    value: item.id.toString(),
-                                    child: Text(item.name!,
-                                      style: TextStyle(
-                                        color: AppColors.blackTextColor,
-                                        fontFamily: Assets.raleWayRegular,
-                                        fontSize: sizes!.fontSize14,
-                                      ),)
-                                )
-                            ).toList(),
                           ),
-                        ),
+                        ],
                       ),
                       SizedBox(height: getHeight() * 0.03),
-                      Container(
-                        height: sizes!.height * 0.07,
-                        padding: EdgeInsets.symmetric(horizontal: sizes!.width * 0.05),
-                        decoration: BoxDecoration(
-                            boxShadow:  const [
-                              BoxShadow(
-                                color: AppColors.shadow,
-                                blurRadius: 0,
-                                offset: Offset(0,3),
-                              )
-                            ],
-                            color: AppColors.pureWhiteColor,
-                            borderRadius: BorderRadius.all(Radius.circular(getHeight() * .01))),
-                        child: ButtonTheme(
-                          child: DropdownButton <dynamic>(
-                            hint: Text("Select State" ?? '',
-                              style: TextStyle(
-                                color: AppColors.hintTextGreyColor,
-                                fontSize: sizes!.fontSize14,
-                                fontFamily:Assets.raleWayRegular,
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Container(
+                            height: sizes!.height * 0.07,
+                            width: getWidth() * 0.42,
+                            padding: EdgeInsets.symmetric(horizontal: sizes!.width * 0.05),
+                            decoration: BoxDecoration(
+                                boxShadow:  const [
+                                  BoxShadow(
+                                    color: AppColors.shadow,
+                                    blurRadius: 0,
+                                    offset: Offset(0,3),
+                                  )
+                                ],
+                                color: AppColors.pureWhiteColor,
+                                borderRadius: BorderRadius.all(Radius.circular(getHeight() * .01))),
+                            child: ButtonTheme(
+                              child: DropdownButton <dynamic>(
+                                hint: Text("Select State" ?? '',
+                                  style: TextStyle(
+                                    color: AppColors.hintTextGreyColor,
+                                    fontSize: sizes!.fontSize14,
+                                    fontFamily:Assets.raleWayRegular,
+                                  ),
+                                ),
+                                value: _stateSelection,
+                                isExpanded: true,
+                                icon: Icon(Icons.keyboard_arrow_down,color: AppColors.hintTextGreyColor,size: getHeight()*.035,),
+                                underline:const SizedBox(),
+                                onChanged: (newValue) {
+                                  setState(() {
+                                    _citySelection = null;
+                                    updateState(newValue);
+                                  });
+                                  _childInformationProvider.cityApiHit(stateId: newValue);
+                                },
+                                items: _childInformationProvider.statesList.map((item) =>
+                                    DropdownMenuItem(
+                                        value: item.id.toString(),
+                                        child: Text(item.name!,
+                                          style: TextStyle(
+                                            color: AppColors.blackTextColor,
+                                            fontFamily: Assets.raleWayRegular,
+                                            fontSize: sizes!.fontSize14,
+                                          ),)
+                                    )
+                                ).toList(),
                               ),
                             ),
-                            value: _stateSelection,
-                            isExpanded: true,
-                            icon: Icon(Icons.keyboard_arrow_down,color: AppColors.hintTextGreyColor,size: getHeight()*.035,),
-                            underline:const SizedBox(),
-                            onChanged: (newValue) {
-                              setState(() {
-                                _citySelection = null;
-                                updateState(newValue);
-                              });
-                              _childInformationProvider.cityApiHit(stateId: newValue);
-                            },
-                            items: _childInformationProvider.statesList.map((item) =>
-                                DropdownMenuItem(
-                                    value: item.id.toString(),
-                                    child: Text(item.name!,
-                                      style: TextStyle(
-                                        color: AppColors.blackTextColor,
-                                        fontFamily: Assets.raleWayRegular,
-                                        fontSize: sizes!.fontSize14,
-                                      ),)
-                                )
-                            ).toList(),
                           ),
-                        ),
+                          CommonWidgets.dropDownForApiList(
+                              width: getWidth() * 0.42,
+                              selectedCategory: _citySelection,
+                              updateSelectedCategory: updateCity,
+                              categories: _childInformationProvider.citiesList,
+                              hint: "Select City"),
+                        ],
                       ),
-                      SizedBox(height: getHeight() * 0.02),
-                      CommonWidgets.dropDownForApiList(
-                          selectedCategory: _citySelection,
-                          updateSelectedCategory: updateCity,
-                          categories: _childInformationProvider.citiesList,
-                          hint: "Select City"),
 
                       SizedBox(height: getHeight() * 0.02),
                       CommonWidgets.textField(
@@ -238,7 +249,7 @@ class _ChildInformationState extends State<ChildInformation> {
                         hint: "Street Address",
                         textInputType: TextInputType.text,
                       ),
-                      SizedBox(height: getHeight() * 0.02),
+                      SizedBox(height: getHeight() * 0.14),
                       CommonWidgets.getButton(
                           onPress: () {
                             navigateToNextScreen();
@@ -252,7 +263,7 @@ class _ChildInformationState extends State<ChildInformation> {
                       SizedBox(height: getHeight() * 0.02),
 
                     ],
-                  ): CommonWidgets.loading()
+                  )
                 ),
               ),
                 // Positioned(
@@ -283,11 +294,12 @@ class _ChildInformationState extends State<ChildInformation> {
     final DateTime? picked = await showDatePicker(
       context: context,
       initialDate: DateTime.now(),
-      firstDate: DateTime(
-          DateTime.now().year, DateTime.now().month, DateTime.now().day),
+      // firstDate: DateTime(DateTime.now().year, DateTime.now().month, DateTime.now().day),
+      firstDate: DateTime(2000),
       lastDate: DateTime(DateTime.now().year + 20),
       helpText: 'Select booking date',
       builder: (context, child) {
+
         return Theme(
           data: ThemeData(
             dialogBackgroundColor: Colors.white,

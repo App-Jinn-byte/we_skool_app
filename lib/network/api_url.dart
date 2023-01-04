@@ -10,3 +10,7 @@ const String dailyScheduleApiUrl = "$baseUrl/api/MontlySchedule/GetDailySchedule
 const String countriesApiUrl = "$baseUrl/api/Lookup/GetCountries";
 const String statesApiUrl = "$baseUrl/api/Lookup/GetStatesByCountryId?";
 const String cityApiUrl = "$baseUrl/api/Lookup/GetCitiesByStateId?";
+const String programsApiUrl = "$baseUrl/api/Lookup/GetPrograms";
+
+
+const String memberRegisterApiUrl = "$baseUrl/api/account/MemberRegister";
