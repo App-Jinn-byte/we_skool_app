@@ -15,8 +15,8 @@ class MonthlyFrameworkComponents {
   }) {
     return Container(
       width: getWidth(),
-      height: getHeight() * 0.14,
-      padding: EdgeInsets.symmetric(horizontal: getWidth() * 0.03, vertical: getHeight() * 0.015),
+      // height: getHeight() * 0.16,
+      padding: EdgeInsets.symmetric(horizontal: getWidth() * 0.03, vertical: getHeight() * 0.02),
       decoration: BoxDecoration(
         shape: BoxShape.rectangle,
         color: AppColors.pureWhiteColor,
@@ -55,11 +55,13 @@ class MonthlyFrameworkComponents {
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              TextView.size14Text(headingText, color: AppColors.pureBlack, fontFamily: Assets.raleWaySemiBold, fontWeight: FontWeight.w600, lines: 1),
+              SizedBox(
+                  width: getWidth() * 0.6,
+                  child: TextView.size14Text(headingText, color: AppColors.pureBlack, fontFamily: Assets.raleWaySemiBold, fontWeight: FontWeight.w600, lines: 2)),
               SizedBox(height: getHeight() * 0.01),
               SizedBox(
                 width: getWidth() * 0.6,
-                  child: TextView.size14Text(text, color: AppColors.blackLight, fontFamily: Assets.raleWayRegular, lines: 3))
+                  child: TextView.size14Text(text, color: AppColors.blackLight, fontFamily: Assets.raleWayRegular, lines: 4))
             ],
           )
         ],

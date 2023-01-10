@@ -54,19 +54,22 @@ class _NotificationScreenState extends State<NotificationScreen> {
                         CommonWidgets.searchField(textEditingController: searchController),
                         SizedBox(height: getHeight() * 0.03),
                         Expanded(
-                          child: ListView.builder(
-                            itemCount: 15,
-                              itemBuilder: (context, index) {
-                                return Column(
-                                  children: [
-                                    _notificationComponents.notificationTile(
-                                        image: "",
-                                        text: "Lorem Ipsum dolar sit amet, csit amit",
-                                        isDataFetched: false),
-                                    SizedBox(height: getHeight() * 0.02)
-                                  ],
-                                );
-                              }
+                          child: ScrollConfiguration(
+                            behavior: const MaterialScrollBehavior().copyWith(overscroll: false),
+                            child: ListView.builder(
+                              itemCount: 15,
+                                itemBuilder: (context, index) {
+                                  return Column(
+                                    children: [
+                                      _notificationComponents.notificationTile(
+                                          image: "",
+                                          text: "Lorem Ipsum dolar sit amet, csit amit",
+                                          isDataFetched: false),
+                                      SizedBox(height: getHeight() * 0.02)
+                                    ],
+                                  );
+                                }
+                            ),
                           ),
                         ),
                         

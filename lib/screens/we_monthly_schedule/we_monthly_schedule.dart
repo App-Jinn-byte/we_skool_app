@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:we_skool_app/res/assets.dart';
 import 'package:we_skool_app/res/colors.dart';
 import 'package:we_skool_app/res/res.dart';
 import 'package:we_skool_app/screens/we_monthly_schedule/we_monthly_components.dart';
+import 'package:we_skool_app/screens/we_monthly_schedule/we_monthly_provider.dart';
 import 'package:we_skool_app/widgets/common_widgets.dart';
 import 'package:we_skool_app/widgets/text_views.dart';
 
@@ -15,10 +17,19 @@ class WeMonthlySchedule extends StatefulWidget {
 
 class _WeMonthlyScheduleState extends State<WeMonthlySchedule> {
   final WeMonthlyComponents _weMonthlyComponents = WeMonthlyComponents();
+  WeMonthlyProvider _weMonthlyProvider = WeMonthlyProvider();
   int? selectedIndex;
 
   @override
+  void initState() {
+    super.initState();
+    _weMonthlyProvider = Provider.of<WeMonthlyProvider>(context, listen: false);
+    _weMonthlyProvider.init(context: context);
+  }
+
+  @override
   Widget build(BuildContext context) {
+    Provider.of<WeMonthlyProvider>(context, listen: true);
     return SafeArea(
         child: Scaffold(
             body: Container(

@@ -1,4 +1,7 @@
+import 'package:date_time_format/date_time_format.dart';
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
+import 'package:provider/provider.dart';
 import 'package:we_skool_app/res/assets.dart';
 import 'package:we_skool_app/res/res.dart';
 import 'package:we_skool_app/res/colors.dart';
@@ -8,7 +11,7 @@ import 'package:we_skool_app/screens/daily_schedule/daily_schedule.dart';
 import 'package:we_skool_app/screens/monthly_framework/monthly_framework.dart';
 import 'package:we_skool_app/screens/we_monthly_schedule/we_monthly_schedule.dart';
 import 'package:we_skool_app/widgets/text_views.dart';
-
+import 'package:we_skool_app/screens/daily_schedule/daily_schedule_provider.dart';
 import 'package:we_skool_app/screens/development_checklist/development_checklist.dart';
 
 class Home extends StatefulWidget {
@@ -21,12 +24,15 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   final HomeComponents _homeComponents = HomeComponents();
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+  DailyScheduleProvider _dailyScheduleProvider = DailyScheduleProvider();
 
   int selectedPage = -1;
 
   @override
   void initState() {
     super.initState();
+    _dailyScheduleProvider = Provider.of<DailyScheduleProvider>(context, listen: false);
+    _dailyScheduleProvider.init(context: context);
   }
 
   void updateSelectedPage(int newValue) {
@@ -39,11 +45,9 @@ class _HomeState extends State<Home> {
     _scaffoldKey.currentState?.openDrawer();
   }
 
- 
- 
-
   @override
   Widget build(BuildContext context) {
+    Provider.of<DailyScheduleProvider>(context, listen: true);
     return SafeArea(
       child: Scaffold(
         key: _scaffoldKey,
@@ -135,67 +139,97 @@ class _HomeState extends State<Home> {
                               thickness: getHeight() * 0.001,
                               color: AppColors.dividerColor),
                           SizedBox(height: getHeight() * 0.02),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          _dailyScheduleProvider.isDataFetch ?
+                          Column(
                             children: [
-                              TextView.size20Text("Daily Schedule",
-                                  color: AppColors.pureBlack,
-                                  fontFamily: Assets.raleWaySemiBold,
-                                  fontWeight: FontWeight.w600),
-                              GestureDetector(
-                                onTap: () {
-                                  Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (_) =>
-                                              const DailySchedule()));
-                                },
-                                child: TextView.size14Text("See all",
-                                    color: AppColors.pinkColor,
-                                    fontFamily: Assets.raleWaySemiBold,
-                                    fontWeight: FontWeight.w600),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                children: [
+                                  TextView.size20Text("Daily Schedule",
+                                      color: AppColors.pureBlack,
+                                      fontFamily: Assets.raleWaySemiBold,
+                                      fontWeight: FontWeight.w600),
+                                  _dailyScheduleProvider.dailyScheduleResponse.data!.dailySchedule!.isNotEmpty ?
+                                  GestureDetector(
+                                    onTap: () {
+                                      Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (_) =>
+                                                  const DailySchedule()));
+                                    },
+                                    child: TextView.size14Text("See all",
+                                        color: AppColors.pinkColor,
+                                        fontFamily: Assets.raleWaySemiBold,
+                                        fontWeight: FontWeight.w600),
+                                  ): Container()
+                                ],
+                              ),
+                              SizedBox(height: getHeight() * 0.03),
+
+                              _dailyScheduleProvider.dailyScheduleResponse.data!.dailySchedule!.isNotEmpty ?
+                              Container(
+                                width: getWidth(),
+                                height: getHeight() * 0.33,
+                                padding: EdgeInsets.symmetric(
+                                    horizontal: getWidth() * 0.04,
+                                    vertical: getHeight() * 0.015),
+                                decoration: BoxDecoration(
+                                  shape: BoxShape.rectangle,
+                                  image: const DecorationImage(
+                                      image: AssetImage(Assets.scheduleBackGround),
+                                      fit: BoxFit.cover
+                                  ),
+                                  border: Border.all(
+                                      color: AppColors.borderColor,
+                                      width: getWidth() * 0.005),
+                                  borderRadius: BorderRadius.circular(
+                                    getWidth() * .04,
+                                  ),
+
+                                ),
+                                child: ScrollConfiguration(
+                                  behavior: const MaterialScrollBehavior().copyWith(overscroll: false),
+                                  child: ListView.separated(
+                                    itemCount: _dailyScheduleProvider.dailyScheduleResponse.data!.dailySchedule!.length > 4 ?
+                                    4 : _dailyScheduleProvider.dailyScheduleResponse.data!.dailySchedule!.length,
+                                    itemBuilder: (context, index) {
+                                      return Column(
+                                        children: [
+                                          _homeComponents.scheduleContainer(
+                                              time1: "${DateTimeFormat.format(DateTime.parse(_dailyScheduleProvider.dailyScheduleResponse.data!.dailySchedule![index].startTime!), format: 'h:i A')} - "
+                                                  "${DateTimeFormat.format(DateTime.parse(_dailyScheduleProvider.dailyScheduleResponse.data!.dailySchedule![index].endTime!), format: 'h:i A')}",
+                                              text1: _dailyScheduleProvider
+                                                  .dailyScheduleResponse
+                                                  .data!
+                                                  .dailySchedule![index]
+                                                  .title!),
+                                        ],
+                                      );
+                                    },
+                                    separatorBuilder:
+                                        (BuildContext context, int index) {
+                                      return Divider(
+                                          height: getHeight() * 0.03,
+                                          thickness: getHeight() * 0.001,
+                                          color: AppColors.dividerColor);
+                                    },
+                                  ),
+                                ),
+                              ): SizedBox(
+                                height: getHeight() * 0.4,
+                                child: Center(
+                                    child: TextView.size20Text(
+                                        "No data available", fontFamily: Assets.raleWaySemiBold, color: AppColors.pinkColor)),
                               )
                             ],
-                          ),
-                          SizedBox(height: getHeight() * 0.03),
-                          Container(
-                            width: getWidth(),
-                            height: getHeight() * 0.33,
-                            padding: EdgeInsets.symmetric(
-                                horizontal: getWidth() * 0.04,
-                                vertical: getHeight() * 0.015),
-                            decoration: BoxDecoration(
-                              shape: BoxShape.rectangle,
-                              image: const DecorationImage(
-                                  image: AssetImage(Assets.scheduleBackGround),
-                                  fit: BoxFit.cover
+                          ): Center(
+                            child: SizedBox(
+                              width: getWidth() * 0.4,
+                              height: getHeight() * 0.4,
+                              child: Lottie.asset(
+                                Assets.apiLoading,
                               ),
-                              border: Border.all(
-                                  color: AppColors.borderColor,
-                                  width: getWidth() * 0.005),
-                              borderRadius: BorderRadius.circular(
-                                getWidth() * .04,
-                              ),
-                             
-                            ),
-                            child: ListView.separated(
-                              itemCount: 4,
-                              itemBuilder: (context, index) {
-                                return Column(
-                                  children: [
-                                    _homeComponents.scheduleContainer(
-                                        time1: "8:30 am - 8:50 am",
-                                        text1: "Tummy Time: Caregiver"),
-                                  ],
-                                );
-                              },
-                              separatorBuilder:
-                                  (BuildContext context, int index) {
-                                return Divider(
-                                    height: getHeight() * 0.03,
-                                    thickness: getHeight() * 0.001,
-                                    color: AppColors.dividerColor);
-                              },
                             ),
                           ),
                         ],
