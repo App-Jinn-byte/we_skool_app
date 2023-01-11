@@ -32,7 +32,6 @@ class SignInProvider extends ChangeNotifier {
         "Password": password,
         "DeviceId" : 12345
       };
-      print(body);
       loginResponse = await MyApi.callPostApi(
         url: loginApiUrl,
         myHeaders: header,
@@ -49,8 +48,6 @@ class SignInProvider extends ChangeNotifier {
               SlideRightRoute(page: const BottomTab(pageIndex: 0)),
                   (Route<dynamic> route) => false);
         });
-
-
       }
       else {
         _loader.hideLoader(context!);

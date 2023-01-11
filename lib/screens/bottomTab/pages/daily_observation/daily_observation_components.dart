@@ -9,24 +9,82 @@ import '../../../../res/sizes.dart';
 import '../../../../widgets/common_widgets.dart';
 
 class DailyObservationComponents {
-  // Widget getTab({
-  //   @required String? text,
-  // }){
-  //   return Container(
-  //     width: getWidth() * 0.4,
-  //     height: getHeight() * 0.05,
-  //     decoration: BoxDecoration(
-  //       border: Border.all(
-  //         color: AppColors.grey2colrtext,
-  //       ),
-  //       borderRadius: BorderRadius.circular(05),
-  //     ),
-  //     child: Tab(
-  //       // child: count == 0? Text(text+' (0)'): Text(text+' ($count)'),
-  //       child: TextView.size14Text(text,)
-  //     ),
-  //   );
-  // }
+  Widget getHeadingAndTime({
+    @required String? text,
+    @required String? startTimeText,
+    @required String? endTimeText,
+    @required Function? onPressStartTime,
+    @required Function? onPressEndTime
+  }){
+    return Row(
+      // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        SizedBox(
+          width: getWidth() * 0.37,
+          child: TextView.size14Text(
+              text,
+              color:
+              AppColors.blackLight,
+              fontWeight:
+              FontWeight.w600,
+              fontFamily: Assets
+                  .raleWaySemiBold),
+        ),
+        timefield(
+            onPresstime: () {
+              onPressStartTime!.call();
+            },
+            timeText: startTimeText ?? "Start time"
+        ),
+        SizedBox(width: getWidth() * 0.01),
+        TextView.size12Text(
+            'To',
+            color: AppColors
+                .greyText,
+            fontFamily: Assets
+                .raleWayMedium,
+            fontWeight:
+            FontWeight
+                .w500),
+        SizedBox(width: getWidth() * 0.01),
+        timefield(
+            onPresstime: () {
+              onPressEndTime!.call();
+            },
+            timeText: endTimeText ?? "End time"
+        ),
+      ],
+    );
+  }
+
+  Widget getHeadingSingleTime({
+    @required String? text,
+    @required String? startTimeText,
+    @required Function? onPressStartTime,
+  }){
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        SizedBox(
+          width: getWidth() * 0.37,
+          child: TextView.size14Text(
+              text,
+              color:
+              AppColors.blackLight,
+              fontWeight:
+              FontWeight.w600,
+              fontFamily: Assets
+                  .raleWaySemiBold),
+        ),
+        timefield(
+            onPresstime: () {
+              onPressStartTime!.call();
+            },
+            timeText: startTimeText ?? "At time"
+        ),
+      ],
+    );
+  }
 
   Widget textField(
       {@required TextEditingController? textEditingController,
@@ -123,6 +181,39 @@ class DailyObservationComponents {
     );
   }
 
+  Widget notesButtonRow({
+    @required Function? onPressCancel,
+    @required Function? onPressSubmit,
+  }) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        CommonWidgets.getButton(
+            width: getWidth() * 0.4,
+            height: getHeight() * 0.06,
+            onPress: () {
+              onPressCancel!.call();
+            },
+            borderColor: AppColors.yellowColor,
+            btnColor: AppColors.pureWhiteColor,
+            text: "Cancel",
+            fontFamily: Assets.raleWaySemiBold,
+            fontWeight: FontWeight.w600,
+            textColor: AppColors.yellowColor),
+        CommonWidgets.getButton(
+            width: getWidth() * 0.4,
+            height: getHeight() * 0.06,
+            onPress: () {
+              onPressSubmit!.call();
+            },
+            text: "Submit",
+            fontFamily: Assets.raleWaySemiBold,
+            fontWeight: FontWeight.w600,
+            textColor: AppColors.pureWhiteColor),
+      ],
+    );
+  }
+
   Widget getDateField(
       {@required String? date,
       @required Function? onPressDate,
@@ -156,7 +247,7 @@ class DailyObservationComponents {
     );
   }
 
-  Widget timefield({@required child,@required Function? onPresstime}) {
+  Widget timefield({@required String? timeText, @required Function? onPresstime}) {
     return GestureDetector(
        onTap: () {
         if (onPresstime != null) {
@@ -165,15 +256,30 @@ class DailyObservationComponents {
       },
       child: Container(
          height: sizes!.height * 0.031,
-          width: sizes!.width * 0.21,
-          margin: EdgeInsets.symmetric(horizontal: getWidth() * 0.02),
-          padding: EdgeInsets.symmetric(horizontal: sizes!.width * 0.02),
+          width: sizes!.width * 0.22,
+          // margin: EdgeInsets.symmetric(horizontal: getWidth() * 0.02),
+          padding: EdgeInsets.symmetric(horizontal: sizes!.width * 0.01),
           decoration: BoxDecoration(
               color: AppColors.pureWhiteColor,
               border: Border.all(color: AppColors.grey2colrtext),
               borderRadius: BorderRadius.all(Radius.circular(getHeight() * .01))),
       
-              child: child,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  TextView.size12Text(
+                      timeText,
+                      color: AppColors
+                          .greyText,
+                      fontFamily: Assets
+                          .raleWayMedium,
+                      fontWeight:
+                      FontWeight
+                          .w500),
+                  Image.asset(Assets.timeicon,height: getHeight()*0.016,)
+
+                ],
+              ),
       ),
     );
   }

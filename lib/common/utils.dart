@@ -69,6 +69,8 @@ class PreferenceUtils {
     PreferenceUtils.setString(Strings.password, loginResponse.data!.user!.password ?? "");
     PreferenceUtils.setString(Strings.userType, loginResponse.data!.user!.userType ?? "");
     PreferenceUtils.setString(Strings.profilePicture, loginResponse.data!.user!.profilePicture ?? "");
+    PreferenceUtils.setString(Strings.deviceId, loginResponse.data!.user!.deviceId ?? "");
+    PreferenceUtils.setString(Strings.token, loginResponse.data!.token ?? "");
 
   }
 

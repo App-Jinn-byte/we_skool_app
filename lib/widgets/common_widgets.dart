@@ -564,7 +564,7 @@ class CommonWidgets {
       height: getHeight() * 0.7,
       child: Center(
           child: TextView.size20Text(
-          "No data available", fontFamily: Assets.raleWaySemiBold, color: AppColors.greyColor)),
+          "No data available", fontFamily: Assets.raleWaySemiBold, color: AppColors.pinkColor)),
     );
   }
 }

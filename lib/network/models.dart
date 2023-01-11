@@ -6,6 +6,7 @@ import 'package:we_skool_app/models/member/look_ups/countries_response.dart';
 import 'package:we_skool_app/models/member/look_ups/states_response.dart';
 import 'package:we_skool_app/models/member/look_ups/cities_response.dart';
 import 'package:we_skool_app/models/member/look_ups/programs_response.dart';
+import 'package:we_skool_app/models/member/monthly_framework_response.dart';
 
 
 class Models {
@@ -17,6 +18,7 @@ class Models {
   static const String statesModel = "STATES_MODEL";
   static const String citiesModel = "CITIES_MODEL";
   static const String programsModel = "PROGRAMS_MODEL";
+  static const String monthlyFrameworkModel = "MONTHLY_FRAMEWORK_MODEL";
 
 
   static Future<dynamic> getModelObject(
@@ -38,7 +40,8 @@ class Models {
         return CitiesResponse.fromJson(json);
       case programsModel:
         return ProgramsListResponse.fromJson(json);
-
+      case monthlyFrameworkModel:
+        return MonthlyFrameworkResponse.fromJson(json);
     }
   }
 }

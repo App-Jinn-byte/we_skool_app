@@ -1,9 +1,11 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:we_skool_app/res/assets.dart';
 import 'package:we_skool_app/res/res.dart';
 import 'package:we_skool_app/screens/daily_schedule/daily_schedule_components.dart';
 import 'package:we_skool_app/screens/monthly_framework/monthly_framework_components.dart';
+import 'package:we_skool_app/screens/monthly_framework/monthly_framework_provider.dart';
 
 import '../../res/colors.dart';
 import '../../res/strings.dart';
@@ -19,6 +21,7 @@ class MonthlyFramework extends StatefulWidget {
 
 class _MonthlyFrameworkState extends State<MonthlyFramework> {
   final MonthlyFrameworkComponents _monthlyFrameworkComponents = MonthlyFrameworkComponents();
+  MonthlyFrameworkProvider _monthlyFrameworkProvider = MonthlyFrameworkProvider();
   int _currentIndex=0;
   List<String> list = ["Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor inci didunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exerc kjfss bslngskngs gslgnsngkngngkngk",
     Strings.monthlyDummyTest, Strings.monthlyDummyTest, Strings.monthlyDummyTest, Strings.monthlyDummyTest
@@ -28,6 +31,8 @@ class _MonthlyFrameworkState extends State<MonthlyFramework> {
   @override
   void initState() {
     super.initState();
+    _monthlyFrameworkProvider = Provider.of<MonthlyFrameworkProvider>(context, listen: false);
+    _monthlyFrameworkProvider.init(context: context);
     isOpened = false;
   }
   List<T> map<T>(List list, Function handler) {
@@ -40,6 +45,7 @@ class _MonthlyFrameworkState extends State<MonthlyFramework> {
 
   @override
   Widget build(BuildContext context) {
+    Provider.of<MonthlyFrameworkProvider>(context, listen: true);
     return SafeArea(
       child: Scaffold(
         body: Container(
@@ -63,7 +69,10 @@ class _MonthlyFrameworkState extends State<MonthlyFramework> {
                         image: AssetImage(Assets.lightBackground),
                         fit: BoxFit.fill),
                   ),
-                  child: Column(
+                  child:
+                      _monthlyFrameworkProvider.isDataFetch ?
+                          _monthlyFrameworkProvider.monthlyFrameworkResponse.data!.monthlyFramework!.isNotEmpty ?
+                  Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       SizedBox(height: getHeight() * 0.02),
@@ -71,7 +80,7 @@ class _MonthlyFrameworkState extends State<MonthlyFramework> {
                         child: ScrollConfiguration(
                           behavior: const MaterialScrollBehavior().copyWith(overscroll: false),
                           child: ListView.builder(
-                              itemCount: 7,
+                              itemCount: _monthlyFrameworkProvider.monthlyFrameworkResponse.data!.monthlyFramework![0].monthlyFrameworkDetails!.length + 1,
                               itemBuilder: (context, index) {
                                 if  (index == 0) {
                                   return Column(
@@ -182,10 +191,10 @@ class _MonthlyFrameworkState extends State<MonthlyFramework> {
                                     children: [
                                       SizedBox(height: getHeight() * 0.01),
                                       _monthlyFrameworkComponents.frameWorkTiles(
-                                          text: "How children learn; Initiative, curiosity, persistence, problem solving, and attentiveness",
+                                          text: _monthlyFrameworkProvider.monthlyFrameworkResponse.data!.monthlyFramework![0].monthlyFrameworkDetails![index -1].description,
                                           image: "",
                                           isDataFetched: false,
-                                          headingText: "Approaches to Learning"
+                                          headingText: _monthlyFrameworkProvider.monthlyFrameworkResponse.data!.monthlyFramework![0].monthlyFrameworkDetails![index -1].title
                                       ),
                                       SizedBox(height: getHeight() * 0.02)
                                     ],
@@ -195,7 +204,9 @@ class _MonthlyFrameworkState extends State<MonthlyFramework> {
                         ),
                       )
                     ],
-                  )),
+                  ) : CommonWidgets.noDataAvailable()
+                          : CommonWidgets.loading()
+              ),
             ],
           ),
         ),

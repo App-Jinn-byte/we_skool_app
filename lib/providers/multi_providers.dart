@@ -8,7 +8,9 @@ import 'package:we_skool_app/screens/forgot_password/forgot_password_provider.da
 import 'package:we_skool_app/screens/registration/registration_provider.dart';
 import 'package:we_skool_app/screens/registration/child_information_provider.dart';
 import 'package:we_skool_app/screens/registration/select_program_provider.dart';
-
+import 'package:we_skool_app/screens/bottomTab/pages/daily_observation/daily_observation_provider.dart';
+import 'package:we_skool_app/screens/monthly_framework/monthly_framework_provider.dart';
+import 'package:we_skool_app/screens/we_monthly_schedule/we_monthly_provider.dart';
 
 final multiProviders = [
   ChangeNotifierProvider<BottomTabProvider>(
@@ -45,6 +47,18 @@ final multiProviders = [
   ),
   ChangeNotifierProvider<SelectProgramProvider>(
     create: (_) => SelectProgramProvider(),
+    lazy: true,
+  ),
+  ChangeNotifierProvider<DailyObservationProvider>(
+    create: (_) => DailyObservationProvider(),
+    lazy: true,
+  ),
+  ChangeNotifierProvider<MonthlyFrameworkProvider>(
+    create: (_) => MonthlyFrameworkProvider(),
+    lazy: true,
+  ),
+  ChangeNotifierProvider<WeMonthlyProvider>(
+    create: (_) => WeMonthlyProvider(),
     lazy: true,
   ),
 ];

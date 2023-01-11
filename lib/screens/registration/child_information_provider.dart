@@ -51,9 +51,8 @@ class ChildInformationProvider extends ChangeNotifier {
         "countryId": countryId,
       };
       statesResponse = await MyApi.callGetApi(
-        url: statesApiUrl,
+        url: '$statesApiUrl$countryId/states',
         myHeaders: header,
-        parameters: params,
         modelName: Models.statesModel,
       );
       statesList = statesResponse.data!.states!;
@@ -72,9 +71,8 @@ class ChildInformationProvider extends ChangeNotifier {
         "stateId": stateId,
       };
       citiesResponse = await MyApi.callGetApi(
-        url: cityApiUrl,
+        url: '$cityApiUrl$stateId/cities',
         myHeaders: header,
-        parameters: params,
         modelName: Models.citiesModel,
       );
       citiesList = citiesResponse.data!.cities!;

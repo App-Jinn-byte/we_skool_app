@@ -83,7 +83,7 @@ class SelectProgramProvider extends ChangeNotifier {
         "CityId": cityId,
         "Address": address,
 
-        "MemberInfos ": [
+        "MemberInfos": [
           {
             "Gender": gender
           }
@@ -102,12 +102,12 @@ class SelectProgramProvider extends ChangeNotifier {
             "CityId": cityId
           },
           {
-            "FirstName": firstNameParent2,
-            "LastName": lastNameParent2,
-            "Relationship": relationshipParent2,
-            "Email": emailParent2,
+            "FirstName": firstNameParent2 == "" ? null: firstNameParent2,
+            "LastName": lastNameParent2 == "" ? null: lastNameParent2,
+            "Relationship": relationshipParent2 == "" ? null: relationshipParent2,
+            "Email": emailParent2 == "" ? null: emailParent2,
             // "Profession": null,
-            "Cell": phoneParent2,
+            "Cell": phoneParent2 == "" ? null: phoneParent2,
             "Address": addressParent2,
             "CountryId": countryIdParent2,
             "StateId": stateIdParent2,

@@ -25,8 +25,7 @@ class _DailyScheduleState extends State<DailySchedule> {
   @override
   void initState() {
     super.initState();
-    _dailyScheduleProvider =
-        Provider.of<DailyScheduleProvider>(context, listen: false);
+    _dailyScheduleProvider = Provider.of<DailyScheduleProvider>(context, listen: false);
     _dailyScheduleProvider.init(context: context);
     todayDate = DateTime.now();
   }
@@ -76,29 +75,32 @@ class _DailyScheduleState extends State<DailySchedule> {
                           ? _dailyScheduleProvider.dailyScheduleResponse.data!
                                   .dailySchedule!.isNotEmpty
                               ? Expanded(
-                                  child: ListView.builder(
-                                      itemCount: _dailyScheduleProvider
-                                          .dailyScheduleResponse
-                                          .data!
-                                          .dailySchedule!
-                                          .length,
-                                      itemBuilder: (context, index) {
-                                        return Column(
-                                          children: [
-                                            _dailyScheduleComponents
-                                                .getScheduleBar(
-                                                    time:
-                                                        "${DateTimeFormat.format(DateTime.parse(_dailyScheduleProvider.dailyScheduleResponse.data!.dailySchedule![index].startTime!), format: 'h:i A')} - "
-                                                        "${DateTimeFormat.format(DateTime.parse(_dailyScheduleProvider.dailyScheduleResponse.data!.dailySchedule![index].endTime!), format: 'h:i A')}",
-                                                    text: _dailyScheduleProvider
-                                                        .dailyScheduleResponse
-                                                        .data!
-                                                        .dailySchedule![index]
-                                                        .title!),
-                                            SizedBox(height: getHeight() * 0.02)
-                                          ],
-                                        );
-                                      }),
+                                  child: ScrollConfiguration(
+                                    behavior: const MaterialScrollBehavior().copyWith(overscroll: false),
+                                    child: ListView.builder(
+                                        itemCount: _dailyScheduleProvider
+                                            .dailyScheduleResponse
+                                            .data!
+                                            .dailySchedule!
+                                            .length,
+                                        itemBuilder: (context, index) {
+                                          return Column(
+                                            children: [
+                                              _dailyScheduleComponents
+                                                  .getScheduleBar(
+                                                      time:
+                                                          "${DateTimeFormat.format(DateTime.parse(_dailyScheduleProvider.dailyScheduleResponse.data!.dailySchedule![index].startTime!), format: 'h:i A')} - "
+                                                          "${DateTimeFormat.format(DateTime.parse(_dailyScheduleProvider.dailyScheduleResponse.data!.dailySchedule![index].endTime!), format: 'h:i A')}",
+                                                      text: _dailyScheduleProvider
+                                                          .dailyScheduleResponse
+                                                          .data!
+                                                          .dailySchedule![index]
+                                                          .title!),
+                                              SizedBox(height: getHeight() * 0.02)
+                                            ],
+                                          );
+                                        }),
+                                  ),
                                 )
                               : CommonWidgets.noDataAvailable()
                           : CommonWidgets.loading(),

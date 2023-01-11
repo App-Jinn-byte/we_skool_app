@@ -1,23 +1,23 @@
 import 'package:flutter/cupertino.dart';
 import 'package:we_skool_app/common/utils.dart';
+import 'package:we_skool_app/models/member/monthly_framework_response.dart';
 import 'package:we_skool_app/res/strings.dart';
 import 'package:we_skool_app/network/API.dart';
 import 'package:we_skool_app/network/api_url.dart';
 import 'package:we_skool_app/network/models.dart';
-import 'package:we_skool_app/models/member/daily_schedule_response.dart';
 
-class DailyScheduleProvider extends ChangeNotifier {
+class WeMonthlyProvider extends ChangeNotifier {
   BuildContext? context;
-  DailyScheduleResponse dailyScheduleResponse = DailyScheduleResponse();
+  MonthlyFrameworkResponse monthlyFrameworkResponse = MonthlyFrameworkResponse();
   bool isDataFetch = false;
 
   init({required BuildContext context}) async {
     isDataFetch = false;
     this.context = context;
-    getDailyScheduleApi();
+    // getMonthlyScheduleApi();
   }
 
-  Future getDailyScheduleApi() async {
+  Future getMonthlyScheduleApi() async {
     try {
       int? userId = PreferenceUtils.getInt(Strings.userId);
       Map<String, dynamic> header = {"Content-Type": "application/json"};
@@ -25,21 +25,21 @@ class DailyScheduleProvider extends ChangeNotifier {
         "userId": userId,
       };
 
-      dailyScheduleResponse = await MyApi.callGetApi(
-        url: dailyScheduleApiUrl,
+      monthlyFrameworkResponse = await MyApi.callGetApi(
+        url: monthlyScheduleApiUrl,
         myHeaders: header,
         parameters: params,
-        modelName: Models.dailyScheduleModel,
+        modelName: Models.monthlyFrameworkModel,
       );
 
-      if (dailyScheduleResponse != null) {
-        debugPrint("getCheckListResponse : ${dailyScheduleResponse.message}");
-        print('Daily Schedule Api Success');
+      if (monthlyFrameworkResponse.code != null) {
+        debugPrint("getCheckListResponse : ${monthlyFrameworkResponse.message}");
+        print('MonthlyScheduleResponse Api Success');
         isDataFetch= true;
       }
       notifyListeners();
     } catch (e) {
-      debugPrint("DailyScheduleResponse Api : ${e.toString()}");
+      debugPrint("MonthlyScheduleResponse Api : ${e.toString()}");
     }
   }
 }
