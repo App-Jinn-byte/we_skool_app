@@ -1,16 +1,17 @@
-import 'package:date_time_format/date_time_format.dart';
 import 'package:flutter/material.dart';
 import 'package:table_calendar/table_calendar.dart';
 import 'package:we_skool_app/res/assets.dart';
 import 'package:we_skool_app/res/res.dart';
 import 'package:we_skool_app/res/colors.dart';
 import 'package:we_skool_app/screens/bottomTab/pages/calendar/calendar_components.dart';
-import 'package:we_skool_app/screens/bottomTab/pages/notification/notification_components.dart';
+
 import 'package:we_skool_app/widgets/common_widgets.dart';
 import 'package:we_skool_app/widgets/text_views.dart';
 
 class Calendar extends StatefulWidget {
-  const Calendar({Key? key}) : super(key: key);
+  const Calendar({
+    Key? key,
+  }) : super(key: key);
 
   @override
   _CalendarState createState() => _CalendarState();

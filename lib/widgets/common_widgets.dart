@@ -161,7 +161,7 @@ class CommonWidgets {
         textInputAction: TextInputAction.next,
         decoration: InputDecoration(
             border: InputBorder.none,
-            contentPadding: EdgeInsets.only(left: getWidth() * .04,top: getHeight()*0.006),
+            contentPadding: EdgeInsets.only(left: getWidth() * .04,top: getHeight()*0.001),
             hintText: hint ?? "",
             alignLabelWithHint: false,
 
