@@ -297,7 +297,7 @@ class _ChildInformationState extends State<ChildInformation> {
       // firstDate: DateTime(DateTime.now().year, DateTime.now().month, DateTime.now().day),
       firstDate: DateTime(2000),
       lastDate: DateTime(DateTime.now().year + 20),
-      helpText: 'Select booking date',
+      helpText: 'Select date',
       builder: (context, child) {
 
         return Theme(

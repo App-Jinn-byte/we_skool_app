@@ -87,7 +87,8 @@ class _MonthlyFrameworkState extends State<MonthlyFramework> {
                                     children: [
                                       CarouselSlider(
                                         options: CarouselOptions(
-                                          height: isOpened == true ? sizes!.height * 0.35: sizes!.height * 0.26,
+                                          // height: isOpened == true ? sizes!.height * 0.35: sizes!.height * 0.26,
+                                          height: sizes!.height * 0.26,
                                           viewportFraction: 1,
                                           onPageChanged: (index, reason) {
                                             setState(() {
@@ -95,7 +96,7 @@ class _MonthlyFrameworkState extends State<MonthlyFramework> {
                                             });
                                           },
                                         ),
-                                        items: list.map((i) {
+                                        items: _monthlyFrameworkProvider.introModelList.data!.map((i) {
                                           return Builder(
                                             builder: (BuildContext context) {
                                               return Container(
@@ -108,10 +109,10 @@ class _MonthlyFrameworkState extends State<MonthlyFramework> {
                                                 child: Column(
                                                   crossAxisAlignment: CrossAxisAlignment.start,
                                                   children: [
-                                                    TextView.size20Text("Introduction", color: AppColors.blackLight, fontFamily: Assets.raleWaySemiBold, fontWeight: FontWeight.w600, lines: 1),
+                                                    TextView.size20Text(i.heading, color: AppColors.blackLight, fontFamily: Assets.raleWaySemiBold, fontWeight: FontWeight.w600, lines: 1),
                                                     SizedBox(height: getHeight() * 0.02),
                                                     Container(
-                                                      // height: getHeight() * 0.15,
+                                                      height: getHeight() * 0.2,
                                                         width: getWidth(),
                                                         padding: EdgeInsets.symmetric(horizontal: getWidth() * 0.04, vertical: getHeight() * 0.02),
                                                         decoration: BoxDecoration(
@@ -130,12 +131,14 @@ class _MonthlyFrameworkState extends State<MonthlyFramework> {
                                                           ],
                                                         ),
                                                         child: Column(
+                                                          crossAxisAlignment: CrossAxisAlignment.start,
                                                           children: [
                                                             Text(
-                                                              i.toString(),
+                                                              i.description!,
                                                               textAlign: TextAlign.justify,
                                                               softWrap: true,
-                                                              maxLines: isOpened == true ? 10 : 4,
+                                                              // maxLines: isOpened == true ? 10 : 4,
+                                                              maxLines: 4,
                                                               overflow: TextOverflow.ellipsis,
                                                               style: TextStyle(
                                                                 fontSize: sizes!.fontSize14,
@@ -145,14 +148,14 @@ class _MonthlyFrameworkState extends State<MonthlyFramework> {
                                                                 color: AppColors.darkGreyColor,
                                                               ),
                                                             ),
-                                                            _monthlyFrameworkComponents.seeMoreIcon(
-                                                                onPressSeeMore: () {
-                                                                  setState(() {
-                                                                    isOpened = !isOpened;
-                                                                  });
-                                                                },
-                                                                isOpen: isOpened
-                                                            )
+                                                            // _monthlyFrameworkComponents.seeMoreIcon(
+                                                            //     onPressSeeMore: () {
+                                                            //       setState(() {
+                                                            //         isOpened = !isOpened;
+                                                            //       });
+                                                            //     },
+                                                            //     isOpen: isOpened
+                                                            // )
                                                           ],
                                                         )),
                                                   ],

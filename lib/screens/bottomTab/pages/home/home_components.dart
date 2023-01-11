@@ -14,6 +14,7 @@ import 'package:we_skool_app/screens/sign_in/sign_in.dart';
 import 'package:we_skool_app/common/utils.dart';
 import '../../../../res/assets.dart';
 import '../../../../res/colors.dart';
+import '../../../../res/strings.dart';
 import '../../../../widgets/common_widgets.dart';
 import '../../../../widgets/text_views.dart';
 import 'package:we_skool_app/screens/caregivers/caregivers.dart';
@@ -251,7 +252,7 @@ class _BuilddrawersState extends State<Builddrawers> {
                         SizedBox(
                           height: getHeight() * 0.02,
                         ),
-                        TextView.size18Text("Angela Williams",
+                        TextView.size18Text(PreferenceUtils.getString(Strings.fullName) ??"Angela Williams",
                             color: AppColors.pureBlack,
                             fontFamily: Assets.raleWaySemiBold,
                             fontWeight: FontWeight.w600),
