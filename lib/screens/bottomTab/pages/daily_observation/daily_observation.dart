@@ -78,18 +78,18 @@ class _DailyObservationState extends State<DailyObservation>
                     widget.from == "home"
                         ? CommonWidgets.appBarIconImageText(
                             text: "Daily Observation",
-                            image: "",
+                            image: "https://staging.weskoolhouse.com/Files/Profile%20Pictures/84565f33-5ce8-4be8-8893-50e35f9375d0.jpg",
                             onPressMenu: () {
                               Navigator.pop(context);
                             },
-                            isDataFetched: false)
+                            isDataFetched: true)
                         : Padding(
                             padding: EdgeInsets.symmetric(
                                 horizontal: getWidth() * 0.05),
                             child: CommonWidgets.appBarTextImage(
                                 text: "Daily Observation",
-                                image: "",
-                                isDataFetched: false),
+                                image: "https://staging.weskoolhouse.com/Files/Profile%20Pictures/84565f33-5ce8-4be8-8893-50e35f9375d0.jpg",
+                                isDataFetched: true),
                           ),
                     Container(
                       height: sizes!.height * 0.8,
@@ -393,12 +393,12 @@ class _DailyObservationState extends State<DailyObservation>
     if(observationDate == null){
       Toasts.getErrorToast(text: "Please select date");
     }
-    else if(activityNameController!.text.isEmpty){
-      Toasts.getErrorToast(text: "Please enter activity name");
-    }
-    else if(materialPresentedController!.text.isEmpty){
-      Toasts.getErrorToast(text: "Please enter materials presented by");
-    }
+    // else if(activityNameController!.text.isEmpty){
+    //   Toasts.getErrorToast(text: "Please enter activity name");
+    // }
+    // else if(materialPresentedController!.text.isEmpty){
+    //   Toasts.getErrorToast(text: "Please enter materials presented by");
+    // }
     else{
       await _dailyObservationProvider.addDailyObservationApi(
           date: observationDate.toString(),
