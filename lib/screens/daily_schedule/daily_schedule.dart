@@ -43,8 +43,8 @@ class _DailyScheduleState extends State<DailySchedule> {
             children: [
               CommonWidgets.appBarIconImageText(
                   text: "Daily Schedule",
-                  image: "",
-                  isDataFetched: false,
+                  image: "https://staging.weskoolhouse.com/Files/Profile%20Pictures/84565f33-5ce8-4be8-8893-50e35f9375d0.jpg",
+                  isDataFetched: true,
                   onPressMenu: () {
                     Navigator.pop(context);
                   }),

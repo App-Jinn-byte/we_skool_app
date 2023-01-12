@@ -14,6 +14,7 @@ import 'package:we_skool_app/screens/sign_in/sign_in.dart';
 import 'package:we_skool_app/common/utils.dart';
 import '../../../../res/assets.dart';
 import '../../../../res/colors.dart';
+import '../../../../res/strings.dart';
 import '../../../../widgets/common_widgets.dart';
 import '../../../../widgets/text_views.dart';
 import 'package:we_skool_app/screens/caregivers/caregivers.dart';
@@ -224,8 +225,8 @@ class _BuilddrawersState extends State<Builddrawers> {
                           // mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             CommonWidgets.buildProfileContainer(
-                                imagePath: Assets.imagePlaceHolder,
-                                isDataFetched: false
+                                imagePath: "https://staging.weskoolhouse.com/Files/Profile%20Pictures/84565f33-5ce8-4be8-8893-50e35f9375d0.jpg",
+                                isDataFetched: true
                             ),
                             GestureDetector(
                                 onTap: () {
@@ -251,7 +252,7 @@ class _BuilddrawersState extends State<Builddrawers> {
                         SizedBox(
                           height: getHeight() * 0.02,
                         ),
-                        TextView.size18Text("Angela Williams",
+                        TextView.size18Text(PreferenceUtils.getString(Strings.fullName) ??"Angela Williams",
                             color: AppColors.pureBlack,
                             fontFamily: Assets.raleWaySemiBold,
                             fontWeight: FontWeight.w600),

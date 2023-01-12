@@ -11,6 +11,7 @@ import '../../res/colors.dart';
 import '../../res/strings.dart';
 import '../../widgets/common_widgets.dart';
 import '../../widgets/text_views.dart';
+import '../popUps/popUp_components.dart';
 
 class MonthlyFramework extends StatefulWidget {
   const MonthlyFramework({Key? key}) : super(key: key);
@@ -87,7 +88,8 @@ class _MonthlyFrameworkState extends State<MonthlyFramework> {
                                     children: [
                                       CarouselSlider(
                                         options: CarouselOptions(
-                                          height: isOpened == true ? sizes!.height * 0.35: sizes!.height * 0.26,
+                                          // height: isOpened == true ? sizes!.height * 0.35: sizes!.height * 0.26,
+                                          height: sizes!.height * 0.26,
                                           viewportFraction: 1,
                                           onPageChanged: (index, reason) {
                                             setState(() {
@@ -95,7 +97,7 @@ class _MonthlyFrameworkState extends State<MonthlyFramework> {
                                             });
                                           },
                                         ),
-                                        items: list.map((i) {
+                                        items: _monthlyFrameworkProvider.introModelList.data!.map((i) {
                                           return Builder(
                                             builder: (BuildContext context) {
                                               return Container(
@@ -108,10 +110,10 @@ class _MonthlyFrameworkState extends State<MonthlyFramework> {
                                                 child: Column(
                                                   crossAxisAlignment: CrossAxisAlignment.start,
                                                   children: [
-                                                    TextView.size20Text("Introduction", color: AppColors.blackLight, fontFamily: Assets.raleWaySemiBold, fontWeight: FontWeight.w600, lines: 1),
+                                                    TextView.size20Text(i.heading, color: AppColors.blackLight, fontFamily: Assets.raleWaySemiBold, fontWeight: FontWeight.w600, lines: 1),
                                                     SizedBox(height: getHeight() * 0.02),
                                                     Container(
-                                                      // height: getHeight() * 0.15,
+                                                      height: getHeight() * 0.2,
                                                         width: getWidth(),
                                                         padding: EdgeInsets.symmetric(horizontal: getWidth() * 0.04, vertical: getHeight() * 0.02),
                                                         decoration: BoxDecoration(
@@ -130,12 +132,14 @@ class _MonthlyFrameworkState extends State<MonthlyFramework> {
                                                           ],
                                                         ),
                                                         child: Column(
+                                                          crossAxisAlignment: CrossAxisAlignment.start,
                                                           children: [
                                                             Text(
-                                                              i.toString(),
+                                                              i.description!,
                                                               textAlign: TextAlign.justify,
                                                               softWrap: true,
-                                                              maxLines: isOpened == true ? 10 : 4,
+                                                              // maxLines: isOpened == true ? 10 : 4,
+                                                              maxLines: 5,
                                                               overflow: TextOverflow.ellipsis,
                                                               style: TextStyle(
                                                                 fontSize: sizes!.fontSize14,
@@ -145,14 +149,14 @@ class _MonthlyFrameworkState extends State<MonthlyFramework> {
                                                                 color: AppColors.darkGreyColor,
                                                               ),
                                                             ),
-                                                            _monthlyFrameworkComponents.seeMoreIcon(
-                                                                onPressSeeMore: () {
-                                                                  setState(() {
-                                                                    isOpened = !isOpened;
-                                                                  });
-                                                                },
-                                                                isOpen: isOpened
-                                                            )
+                                                            // _monthlyFrameworkComponents.seeMoreIcon(
+                                                            //     onPressSeeMore: () {
+                                                            //       setState(() {
+                                                            //         isOpened = !isOpened;
+                                                            //       });
+                                                            //     },
+                                                            //     isOpen: isOpened
+                                                            // )
                                                           ],
                                                         )),
                                                   ],
@@ -194,7 +198,10 @@ class _MonthlyFrameworkState extends State<MonthlyFramework> {
                                           text: _monthlyFrameworkProvider.monthlyFrameworkResponse.data!.monthlyFramework![0].monthlyFrameworkDetails![index -1].description,
                                           image: "",
                                           isDataFetched: false,
-                                          headingText: _monthlyFrameworkProvider.monthlyFrameworkResponse.data!.monthlyFramework![0].monthlyFrameworkDetails![index -1].title
+                                          headingText: _monthlyFrameworkProvider.monthlyFrameworkResponse.data!.monthlyFramework![0].monthlyFrameworkDetails![index -1].title,
+                                          onPress: () {
+                                            showPopUp(context: context,text: _monthlyFrameworkProvider.monthlyFrameworkResponse.data!.monthlyFramework![0].monthlyFrameworkDetails![index -1].domain);
+                                          }
                                       ),
                                       SizedBox(height: getHeight() * 0.02)
                                     ],
@@ -212,5 +219,29 @@ class _MonthlyFrameworkState extends State<MonthlyFramework> {
         ),
       ),
     );
+  }
+
+  void showPopUp({@required BuildContext? context, @required String? text}) {
+    showGeneralDialog(
+        barrierColor: Colors.white.withOpacity(0.2),
+        //SHADOW EFFECT
+        // transitionBuilder: (context, animation, animationTime, widget) {
+        //   animation = CurvedAnimation(parent: animation, curve: Curves.decelerate);
+        //   return ScaleTransition(
+        //     alignment: Alignment.center,
+        //     scale: animation,
+        //     child: widget,
+        //   );
+        // },
+        // transitionDuration: Duration(milliseconds: 1500), // DURATION FOR ANIMATION
+        barrierDismissible: true,
+        barrierLabel: 'LABEL',
+        context: context!,
+        pageBuilder: (context, animation, animationTime) {
+          return Center(
+              child:
+              //PopUpComponents.awesomeCustomDialog(context)
+              PopUpComponents.monthlyFrameWorkPopUp(context: context ,text: text));
+        });
   }
 }

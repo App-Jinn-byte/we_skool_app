@@ -2,6 +2,7 @@ import 'package:date_time_format/date_time_format.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
+import 'package:we_skool_app/common/utils.dart';
 import 'package:we_skool_app/res/assets.dart';
 import 'package:we_skool_app/res/res.dart';
 import 'package:we_skool_app/res/colors.dart';
@@ -13,6 +14,8 @@ import 'package:we_skool_app/screens/we_monthly_schedule/we_monthly_schedule.dar
 import 'package:we_skool_app/widgets/text_views.dart';
 import 'package:we_skool_app/screens/daily_schedule/daily_schedule_provider.dart';
 import 'package:we_skool_app/screens/development_checklist/development_checklist.dart';
+
+import '../../../../res/strings.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -69,8 +72,8 @@ class _HomeState extends State<Home> {
                         openDrawer(context);
                       },
                       text: "Home",
-                      image: "",
-                      isDataFetched: false),
+                      image: PreferenceUtils.getString(Strings.userImageKey) ?? "",
+                      isDataFetched: true),
                   Container(
                       height: sizes!.height * 0.75,
                       decoration: const BoxDecoration(

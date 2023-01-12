@@ -9,6 +9,8 @@ import 'package:we_skool_app/screens/bottomTab/bottom_tab.dart';
 import '../../animations/slide_right.dart';
 import 'package:we_skool_app/common/utils.dart';
 
+import '../../res/strings.dart';
+
 class SignInProvider extends ChangeNotifier {
   BuildContext? context;
   final Loader _loader = Loader();
@@ -42,6 +44,7 @@ class SignInProvider extends ChangeNotifier {
         isDataFetched = true;
         _loader.hideLoader(context!);
         Toasts.getSuccessToast(text: "Login Successful");
+        PreferenceUtils.setString(Strings.userImageKey, "https://staging.weskoolhouse.com/Files/Profile%20Pictures/84565f33-5ce8-4be8-8893-50e35f9375d0.jpg");
         PreferenceUtils.setLoginResponse(loginResponse).then((value) {
           Navigator.pushAndRemoveUntil(
               context!,

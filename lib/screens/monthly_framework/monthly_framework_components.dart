@@ -10,61 +10,67 @@ class MonthlyFrameworkComponents {
     @required String? text,
     @required String? image,
     required bool isDataFetched,
-    @required String? headingText
+    @required String? headingText,
+    @required Function? onPress
 
   }) {
-    return Container(
-      width: getWidth(),
-      // height: getHeight() * 0.16,
-      padding: EdgeInsets.symmetric(horizontal: getWidth() * 0.03, vertical: getHeight() * 0.02),
-      decoration: BoxDecoration(
-        shape: BoxShape.rectangle,
-        color: AppColors.pureWhiteColor,
-        border:
-        Border.all(color: AppColors.borderColor, width: getWidth() * 0.005),
-        borderRadius: BorderRadius.circular(
-          getWidth() * .04,
-        ),
-        boxShadow:  const [
-          BoxShadow(
-              color: AppColors.borderColor,
-              blurRadius: 5,
-              offset: Offset(0,5)
-          )
-        ],
-      ),
-      child: Row(
-        children: [
-          Container(
-            padding: EdgeInsets.all(getHeight() * 0.02),
-            decoration: BoxDecoration(
-              shape: BoxShape.circle,
-              color: AppColors.backGroundColor,
-              border: Border.all(color: AppColors.yellowColor, width: getWidth() * 0.001)
-            ),
-            child: CircleAvatar(
-              backgroundImage: isDataFetched
-                  ? NetworkImage(image!)
-                  : const AssetImage(Assets.socialIcon)
-              as ImageProvider,
-              radius: getHeight() * 0.028, // 50.0
-              backgroundColor: AppColors.backGroundColor,
-            ),
+    return GestureDetector(
+      onTap: () {
+        onPress!.call();
+      },
+      child: Container(
+        width: getWidth(),
+        // height: getHeight() * 0.16,
+        padding: EdgeInsets.symmetric(horizontal: getWidth() * 0.03, vertical: getHeight() * 0.02),
+        decoration: BoxDecoration(
+          shape: BoxShape.rectangle,
+          color: AppColors.pureWhiteColor,
+          border:
+          Border.all(color: AppColors.borderColor, width: getWidth() * 0.005),
+          borderRadius: BorderRadius.circular(
+            getWidth() * .04,
           ),
-          SizedBox(width: getWidth() * 0.03),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              SizedBox(
+          boxShadow:  const [
+            BoxShadow(
+                color: AppColors.borderColor,
+                blurRadius: 5,
+                offset: Offset(0,5)
+            )
+          ],
+        ),
+        child: Row(
+          children: [
+            Container(
+              padding: EdgeInsets.all(getHeight() * 0.02),
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                color: AppColors.backGroundColor,
+                border: Border.all(color: AppColors.yellowColor, width: getWidth() * 0.001)
+              ),
+              child: CircleAvatar(
+                backgroundImage: isDataFetched
+                    ? NetworkImage(image!)
+                    : const AssetImage(Assets.socialIcon)
+                as ImageProvider,
+                radius: getHeight() * 0.028, // 50.0
+                backgroundColor: AppColors.backGroundColor,
+              ),
+            ),
+            SizedBox(width: getWidth() * 0.03),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                SizedBox(
+                    width: getWidth() * 0.6,
+                    child: TextView.size14Text(headingText, color: AppColors.pureBlack, fontFamily: Assets.raleWaySemiBold, fontWeight: FontWeight.w600, lines: 2)),
+                SizedBox(height: getHeight() * 0.01),
+                SizedBox(
                   width: getWidth() * 0.6,
-                  child: TextView.size14Text(headingText, color: AppColors.pureBlack, fontFamily: Assets.raleWaySemiBold, fontWeight: FontWeight.w600, lines: 2)),
-              SizedBox(height: getHeight() * 0.01),
-              SizedBox(
-                width: getWidth() * 0.6,
-                  child: TextView.size14Text(text, color: AppColors.blackLight, fontFamily: Assets.raleWayRegular, lines: 4))
-            ],
-          )
-        ],
+                    child: TextView.size14Text(text, color: AppColors.blackLight, fontFamily: Assets.raleWayRegular, lines: 4))
+              ],
+            )
+          ],
+        ),
       ),
     );
   }
